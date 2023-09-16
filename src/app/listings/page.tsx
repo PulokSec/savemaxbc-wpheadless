@@ -1,6 +1,6 @@
 'use client';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
@@ -78,11 +78,11 @@ export default function Listings() {
         <title>Latest Listings</title>
       </Head>
 
-      <div className='container mx-auto lg:max-w-4xl'>
+      <div className='container'>
         <Header />
       </div>
       <main>
-        <div className='mt-[350px] min-h-[15rem]'>
+        <div className='mt-[50px] min-h-[15rem]'>
           <h1 className='mt-8 text-center text-6xl text-black'>
             Popular Listings
           </h1>

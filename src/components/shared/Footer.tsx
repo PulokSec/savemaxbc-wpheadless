@@ -89,7 +89,7 @@ export default function Footer() {
             />
           </div>
         </div>
-        <p className='text-md ml-6 mt-20 text-start text-white md:ml-40 md:text-lg'>
+        <p className='md:text-md ml-6 mt-20 text-start text-sm text-white md:ml-40'>
           © {new Date().getFullYear()} SAVEMAX | DESIGN AND SEO BY CANSOFT
         </p>
       </footer>

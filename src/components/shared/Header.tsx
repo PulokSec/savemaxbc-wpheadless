@@ -21,8 +21,8 @@ const navigation = [
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <div className='container bg-transparent'>
-      <header className='z-50 w-screen bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/menu-bg.png")] shadow-md'>
+    <div className='container'>
+      <header className='z-50 w-screen bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/menu-bg.png")] bg-cover shadow-md'>
         <nav
           className='flex items-center justify-between px-10 py-3 lg:px-[200px]'
           aria-label='Global'
