@@ -1,7 +1,6 @@
 export const siteConfig = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'SaveMax: Best Realtors in BC to buy or sell Your Home',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
-  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://tsnext-tw.thcl.dev',
+    'If you are looking to buy a house or sell your home, you should work with our team of realtors in BC. We&#039;re here to help you during this transaction',
+  url: 'https://savenaxbc.com',
 };
