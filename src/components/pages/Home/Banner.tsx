@@ -5,20 +5,15 @@ import Header from '@/components/shared/Header';
 export default function Banner() {
   return (
     <div
-      className=' h-[80vh] w-full md:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-no-repeat md:h-[100vh]'
       style={{
         backgroundImage:
           "url('https://savemaxbc.com/wp-content/uploads/2023/09/landing_page.jpg')",
-        position: 'relative',
-        height: '100vh',
-        width: '100%',
-        clipPath: 'inset(0 0 0 0)',
-        backgroundSize: 'cover',
       }}
     >
       <Header />
-      <div className='mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8'>
-        <div className='mx-auto mt-[50%] flex w-full flex-col items-center justify-center text-center md:mt-[20%]'>
+      <div className='mx-auto py-16'>
+        <div className='mx-auto mt-[50%] flex w-full flex-col items-center justify-center text-center md:mt-[10%]'>
           <p className='text-leading-3 text-lg font-bold text-white md:text-5xl'>
             TOP REALTORS IN BC :
           </p>

@@ -6,8 +6,8 @@ import whoImage from '@/assets/homelanding/Who-we-are-home-side-pic.png';
 
 export default function AboutSection() {
   return (
-    <div className='bg-white'>
-      <div className='mx-auto mt-20 grid max-w-2xl grid-cols-12 gap-4 md:gap-0 lg:mx-0 lg:max-w-none'>
+    <div className='overflow-x-hidden bg-white'>
+      <div className='mx-auto mt-20 grid max-w-2xl grid-cols-12 gap-4 overflow-x-hidden md:gap-0 lg:mx-0 lg:max-w-none'>
         <div className='col-span-12 ml-5 pl-5 md:col-span-5 md:col-start-2 md:col-end-8 lg:mt-20'>
           <div className='w-full md:w-[500px]'>
             <h2 className='w-full text-2xl md:text-4xl'>Who We Are?</h2>
@@ -38,10 +38,10 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
-        <div className='col-span-4 col-start-8 col-end-12 md:col-span-3 md:col-start-10'>
+        <div className='col-span-4 col-start-8 col-end-12 overflow-x-hidden md:col-span-3 md:col-start-10'>
           <NextImage
             useSkeleton
-            className='md:[350px] w-40 md:mt-[250px] lg:w-[500px]'
+            className='w-40 md:mt-[250px] lg:w-[450px]'
             src={whoImage}
             width='500'
             height='400'

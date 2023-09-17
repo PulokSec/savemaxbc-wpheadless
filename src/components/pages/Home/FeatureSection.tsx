@@ -48,7 +48,7 @@ const featuredData = [
 ];
 export default function FeatureSection() {
   return (
-    <div className='w-screen bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/Middle_part_bg.png")] bg-cover bg-no-repeat'>
+    <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/Middle_part_bg.png")] bg-cover bg-no-repeat'>
       <section>
         <div className='py-10 md:py-20'>
           <div className='mx-auto w-full'>
@@ -58,12 +58,12 @@ export default function FeatureSection() {
                   key={i}
                   className='mx-auto mt-10 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mt-20 md:gap-0 lg:mx-0 lg:max-w-none'
                 >
-                  <div className='col-span-12 ml-5 md:col-span-4 md:col-start-1 md:col-end-5 md:ml-60 lg:mt-20'>
-                    <div className='lg:w-full'>
+                  <div className='col-span-12 ml-5 md:col-span-4 md:col-start-1 md:col-end-5 md:ml-40 lg:mt-20'>
+                    <div className='container'>
                       <h2 className='w-full text-2xl md:w-[500px] md:text-4xl'>
                         {item?.title}
                       </h2>
-                      <p className='mt-5 text-xs md:text-lg'>
+                      <p className='mt-5 text-xs md:w-[500px] md:text-lg'>
                         {item?.description}
                       </p>
                       <div className='mt-10 text-start'>
