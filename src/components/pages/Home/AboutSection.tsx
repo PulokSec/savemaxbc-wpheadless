@@ -8,8 +8,8 @@ export default function AboutSection() {
   return (
     <div className='overflow-x-hidden bg-white'>
       <div className='mx-auto mt-20 grid max-w-2xl grid-cols-12 gap-4 overflow-x-hidden md:gap-0 lg:mx-0 lg:max-w-none'>
-        <div className='col-span-12 ml-5 pl-5 md:col-span-5 md:col-start-2 md:col-end-8 lg:mt-20'>
-          <div className='w-full md:w-[500px]'>
+        <div className='col-span-12 pl-5 md:col-span-5 md:col-start-2 lg:mt-20'>
+          <div className='w-full'>
             <h2 className='w-full text-2xl md:text-4xl'>Who We Are?</h2>
             <p className='mt-5 text-xs md:text-lg'>
               Save Max Westcoast Realty Inc is a real estate brokerage and we
@@ -41,7 +41,7 @@ export default function AboutSection() {
         <div className='col-span-4 col-start-8 col-end-12 overflow-x-hidden md:col-span-3 md:col-start-10'>
           <NextImage
             useSkeleton
-            className='w-40 md:mt-[250px] lg:w-[450px]'
+            className='w-40 md:mt-[250px] md:w-[100%]'
             src={whoImage}
             width='500'
             height='400'

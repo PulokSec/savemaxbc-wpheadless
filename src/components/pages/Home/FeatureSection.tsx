@@ -58,7 +58,7 @@ export default function FeatureSection() {
                   key={i}
                   className='mx-auto mt-10 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mt-20 md:gap-0 lg:mx-0 lg:max-w-none'
                 >
-                  <div className='col-span-12 ml-5 md:col-span-4 md:col-start-1 md:col-end-5 md:ml-40 lg:mt-20'>
+                  <div className='col-span-12 ml-5 md:col-span-4 md:col-start-1 md:ml-40 lg:mt-20'>
                     <div className='container'>
                       <h2 className='w-full text-2xl md:w-[500px] md:text-4xl'>
                         {item?.title}
@@ -76,10 +76,10 @@ export default function FeatureSection() {
                       </div>
                     </div>
                   </div>
-                  <div className='col-span-4 col-start-8 col-end-12  md:col-span-3 md:col-start-10 md:col-end-12'>
+                  <div className='col-span-4 col-start-8 col-end-12  md:col-span-4 md:col-start-10'>
                     <NextImage
                       useSkeleton
-                      className='w-40 md:w-[400px]'
+                      className='w-40 md:w-[100%]'
                       src={item?.image}
                       width='500'
                       height='200'
@@ -102,7 +102,7 @@ export default function FeatureSection() {
                       alt='Icon'
                     />
                   </div>
-                  <div className='col-span-12 ml-5 mt-5 pr-5 md:col-span-4 md:col-start-7 md:col-end-11'>
+                  <div className='col-span-12 ml-5 mt-5 pr-5 md:col-span-4 md:col-start-7'>
                     <div className='lg:w-full'>
                       <h2 className='w-full text-2xl md:w-[500px] md:text-4xl'>
                         {item?.title}
