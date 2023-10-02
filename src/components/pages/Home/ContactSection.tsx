@@ -23,7 +23,7 @@ export default function ContactSection() {
             <div className='col-span-6 col-start-1 col-end-4 '>
               <NextImage
                 useSkeleton
-                className='md:[250px] w-40 lg:w-[300px]'
+                className='w-40 md:w-[250px] lg:w-[300px]'
                 src={contactImage}
                 width='500'
                 height='200'
