@@ -5,7 +5,7 @@ import Header from '@/components/shared/Header';
 export default function ListingBanner() {
   return (
     <div
-      className='bg-overlay relative h-[80vh] w-full bg-cover bg-center bg-no-repeat md:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat md:h-[100vh]'
       style={{
         backgroundImage:
           "url('https://savemaxbc.com/wp-content/uploads/2023/10/banner.jpg')",
