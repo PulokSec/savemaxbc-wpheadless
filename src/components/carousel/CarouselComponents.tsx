@@ -5,9 +5,6 @@ import Carousel from 'react-multi-carousel';
 import { ArrowProps } from 'react-multi-carousel/lib/types';
 
 import 'react-multi-carousel/lib/styles.css';
-interface CarouselButtonGroupProps extends ButtonGroupProps {
-  className?: string;
-}
 export default function CarouselComponents({
   children,
 }: {
