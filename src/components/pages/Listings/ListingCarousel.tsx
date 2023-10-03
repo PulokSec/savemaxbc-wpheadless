@@ -18,7 +18,7 @@ export default function ListingCarousel(props: MyProps) {
           {posts?.map(({ post, cardImageUrl }: any) => (
             <div
               key={post?.ListingID}
-              className='ml-3 flex flex-col justify-around rounded bg-white p-4 shadow-md md:ml-10 md:h-[400px] md:w-[300px]'
+              className='mx-4 ml-3 flex h-[400px] w-[360px] flex-col justify-around rounded bg-white p-4 shadow-md md:ml-10 md:w-[300px] '
             >
               <p className='z-5 relative top-0 text-end text-lg font-semibold text-[#E2C379]'>
                 {post?.TransactionType}

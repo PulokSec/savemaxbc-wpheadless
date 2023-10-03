@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import React from 'react';
 
+import BottomFeature from '@/components/pages/Services/BottomFeature';
 import FeaturedServices from '@/components/pages/Services/FeaturedServices';
 import ServiceBanner from '@/components/pages/Services/ServiceBanner';
+import Footer from '@/components/shared/Footer';
 
 export default function ServicePage() {
   return (
@@ -14,6 +16,8 @@ export default function ServicePage() {
         <ServiceBanner />
         <FeaturedServices />
       </section>
+      <BottomFeature />
+      <Footer />
     </main>
   );
 }
