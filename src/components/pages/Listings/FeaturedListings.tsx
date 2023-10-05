@@ -41,7 +41,7 @@ export default function FeaturedListings(props: MyProps) {
   }, [allPosts]);
   return (
     <div>
-      <section className='mx-auto'>
+      <section className='mx-auto mt-20'>
         <div className='mt-20'>
           <h2 className='text-center text-lg md:text-5xl'>
             Surrey{' '}

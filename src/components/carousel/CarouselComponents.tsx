@@ -54,7 +54,7 @@ export default function CarouselComponents({
           renderDotsOutside={false}
           minimumTouchDrag={80}
           pauseOnHover
-          // autoPlay={true}
+          autoPlay={true}
           autoPlaySpeed={2000}
           customTransition='all .5'
           transitionDuration={500}

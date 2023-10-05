@@ -1,5 +1,6 @@
 import React from 'react';
 
+import SearchTab from '@/components/pages/Listings/SearchTab';
 import Header from '@/components/shared/Header';
 
 export default function ListingBanner() {
@@ -12,12 +13,13 @@ export default function ListingBanner() {
       }}
     >
       <Header />
-      <div className='mx-auto py-16'>
-        <div className='mx-auto mt-[50%] flex w-full flex-col items-center justify-center text-center md:mt-[10%]'>
+      <div className='mx-auto flex flex-col items-center justify-between'>
+        <div className='mx-auto flex w-full flex-col items-center justify-center py-16 text-center  md:mt-[10%]'>
           <p className='text-leading-3 text-lg font-bold text-white md:text-5xl'>
             ALL PROPERTIES
           </p>
         </div>
+        <SearchTab />
       </div>
     </div>
   );
