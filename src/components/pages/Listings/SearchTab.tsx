@@ -144,7 +144,7 @@ const SearchTab = () => {
                   onClick={() => {
                     setFilterDataShow(!filterDataShow);
                   }}
-                  className='search flex w-[125px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-white'
+                  className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-white'
                 >
                   <p className='text-md'>Filter Results</p>
                 </div>
@@ -162,10 +162,13 @@ const SearchTab = () => {
                             <div
                               key={element.value}
                               className={`flex ${
-                                filters.includes(element.value)
+                                filters.includes({
+                                  name: element.name,
+                                  value: element.value,
+                                })
                                   ? 'text-primary'
                                   : 'text-[#000000]'
-                              }   cursor-pointer items-center  justify-between`}
+                              } cursor-pointer items-center justify-between`}
                               onClick={() => {
                                 setFilters((prevFilters) => [
                                   ...prevFilters,
@@ -242,7 +245,7 @@ const SearchTab = () => {
                   onClick={() => {
                     setFilterDataShow(!filterDataShow);
                   }}
-                  className='search flex w-[125px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-center text-white'
+                  className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-center text-white'
                 >
                   <p className='text-md'>Filter Results</p>
                 </div>
@@ -260,10 +263,13 @@ const SearchTab = () => {
                             <div
                               key={element.value}
                               className={`flex ${
-                                filters.includes(element.value)
+                                filters.includes({
+                                  name: element.name,
+                                  value: element.value,
+                                })
                                   ? 'text-primary'
                                   : 'text-[#000000]'
-                              }   cursor-pointer items-center  justify-between`}
+                              } cursor-pointer items-center justify-between`}
                               onClick={() => {
                                 setFilters((prevFilters) => [
                                   ...prevFilters,
