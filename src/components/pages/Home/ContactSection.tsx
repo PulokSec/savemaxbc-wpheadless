@@ -34,9 +34,9 @@ export default function ContactSection() {
               <h2 className='w-full text-3xl md:w-[500px] md:text-4xl'>
                 CONNECT
               </h2>
-              <p className='mt-5 text-xs md:text-lg'>Phone: 778-200-5050 </p>
+              <p className='mt-5 text-xs md:text-lg'>Phone: +1 778-251-5771 </p>
               <p className='mt-5 text-xs md:text-lg'>
-                Email: admin@savemaxwestcoast.com
+                Email: support@swyftcourier.ca
               </p>
               <p className='mt-5 text-xs md:text-lg'>
                 Unit 288, 12899 76 Avenue{' '}

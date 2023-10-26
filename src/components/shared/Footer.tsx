@@ -8,12 +8,12 @@ import NextImage from '@/components/NextImage';
 
 import SavemaxLogo from '../../assets/header/Save-Max-Westcoast-Realty.png';
 const navigation = [
-  { name: 'Seller Guide', href: '#' },
-  { name: 'Buyers Guide', href: '#' },
+  { name: 'About Us', href: '#' },
+  { name: 'Find a Realtor', href: '#' },
+  { name: 'Listings', href: '#' },
   { name: 'Services', href: '#' },
-  { name: 'About', href: '#' },
-  { name: 'Blog', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Careers', href: '#' },
+  { name: 'News', href: '#' },
 ];
 export default function Footer() {
   return (
@@ -29,7 +29,7 @@ export default function Footer() {
                 <span>
                   <MdPhoneInTalk className='h-5 w-5 rotate-[30deg]' />
                 </span>{' '}
-                <span>+ 778-200-5050</span>{' '}
+                <span>+1 778-251-5771</span>{' '}
               </p>
               <p className='mt-5 flex items-center justify-start gap-4 text-xs md:text-lg'>
                 <span>

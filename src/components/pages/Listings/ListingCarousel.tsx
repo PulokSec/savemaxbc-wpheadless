@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import CarouselComponents from '@/components/carousel/CarouselComponents';
+import CarouselComponent from '@/components/carousel/CarouselComponent';
 import NextImage from '@/components/NextImage';
 
 type MyProps = {
@@ -14,7 +14,7 @@ export default function ListingCarousel(props: MyProps) {
   return (
     <>
       <div className='mt-10'>
-        <CarouselComponents>
+        <CarouselComponent>
           {posts?.map(({ post, cardImageUrl }: any) => (
             <div
               key={post?.ListingID}
@@ -65,7 +65,7 @@ export default function ListingCarousel(props: MyProps) {
               </p>
             </div>
           ))}
-        </CarouselComponents>
+        </CarouselComponent>
       </div>
     </>
   );

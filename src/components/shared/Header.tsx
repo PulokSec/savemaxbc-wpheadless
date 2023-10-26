@@ -12,17 +12,25 @@ import { RxCross2 } from 'react-icons/rx';
 import SavemaxLogo from '../../assets/header/Save-Max-Westcoast-Realty.png';
 
 const navigation = [
-  { name: 'Seller Guide', href: '#' },
-  { name: 'Buyers Guide', href: '#' },
+  { name: 'About Us', href: '#' },
+  { name: 'Find a Realtor', href: '#' },
+  { name: 'Listings', href: '#' },
   { name: 'Services', href: '#' },
-  { name: 'About', href: '#' },
-  { name: 'Blog', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Careers', href: '#' },
+  { name: 'News', href: '#' },
 ];
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className=''>
+      {/* <div className='flex items-center justify-end gap-4'>
+        <a href='#' className='text-lg font-bold leading-10 text-white'>
+          <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
+        </a>
+        <a href='#' className='text-lg font-bold leading-10 text-white'>
+          <BsTelephone className='h-5 w-5' aria-hidden='true' />
+        </a>
+      </div> */}
       <header className='max-w-screen z-50 overflow-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/menu-bg.png")] bg-cover shadow-md'>
         <nav
           className='flex items-center justify-between px-10 py-3'

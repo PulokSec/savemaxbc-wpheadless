@@ -10,8 +10,12 @@ const nextConfig = {
 
   // Uncoment to add domain whitelist
   images: {
-    domains: ["res.cloudinary.com", "savemaxbc.com", "ddfcdn.realtor.ca"],
-    allowFutureImage: true,
+    domains: [
+      "res.cloudinary.com",
+      "savemaxbc.com",
+      "ddfcdn.realtor.ca",
+      "savemaxheadlessdemo-com.us.webmyway.ca",
+    ],
   },
   async headers() {
     return [

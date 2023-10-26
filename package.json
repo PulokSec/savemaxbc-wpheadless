@@ -18,11 +18,14 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.0-rc.2",
+    "@apollo/experimental-nextjs-app-support": "^0.4.3",
     "@headlessui/react": "^1.7.17",
     "@material-tailwind/react": "^2.1.2",
     "axios": "^1.5.1",
     "clsx": "^1.2.1",
     "framer-motion": "^10.16.4",
+    "graphql": "^16.8.1",
     "lucide-react": "^0.260.0",
     "mysql2": "^3.6.1",
     "next": "^13.4.10",

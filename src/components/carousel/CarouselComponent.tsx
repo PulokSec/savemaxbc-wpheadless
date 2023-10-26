@@ -2,10 +2,9 @@
 import React from 'react';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import Carousel from 'react-multi-carousel';
-import { ArrowProps } from 'react-multi-carousel/lib/types';
 
 import 'react-multi-carousel/lib/styles.css';
-export default function CarouselComponents({
+export default function CarouselComponent({
   children,
 }: {
   children: React.ReactNode;
@@ -27,18 +26,29 @@ export default function CarouselComponents({
       slidesToSlide: 1, // optional, default to 1.
     },
   };
-  const CustomRight = ({ onClick }: ArrowProps) => {
+  const CustomRight = ({ onClick }: any) => {
     return (
-      <button onClick={onClick}>
-        <IoIosArrowForward className='' />
+      <button
+        aria-label='Right Arrow'
+        className='absolute right-[48px] top-1/2 z-10 bg-none'
+        onClick={() => onClick()}
+      >
+        <IoIosArrowForward className='cursor-pointer border-none text-[#E2C379]' />
       </button>
     );
   };
-  const CustomLeft = ({ onClick }: ArrowProps) => (
-    <button onClick={onClick}>
-      <IoIosArrowBack className='cursor-pointer' />
-    </button>
-  );
+  const CustomLeft = ({ onClick }: any) => {
+    // onMove means if dragging or swiping in progress.
+    return (
+      <button
+        aria-label='Left Arrow'
+        className='absolute left-0 top-1/2 z-10 bg-none'
+        onClick={() => onClick()}
+      >
+        <IoIosArrowBack className='cursor-pointer text-center text-[#E2C379]' />
+      </button>
+    );
+  };
 
   return (
     <div id='main-slide' className='carousel slide' data-ride='carousel'>
@@ -66,8 +76,8 @@ export default function CarouselComponents({
           rewindWithAnimation={false}
           rtl={false}
           shouldResetAutoplay
-          // customRightArrow={<CustomRight />}
-          // customLeftArrow={<CustomLeft />}
+          customRightArrow={<CustomRight />}
+          customLeftArrow={<CustomLeft />}
         >
           {children}
         </Carousel>
