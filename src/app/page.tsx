@@ -1,6 +1,8 @@
 import { gql } from '@apollo/client';
 import Head from 'next/head';
 
+import { getClient } from '@/lib/apollo';
+
 import HomeLanding from '@/components/pages/Home/HomeLanding';
 
 const query = gql`
@@ -22,7 +24,7 @@ const query = gql`
           }
         }
         HomePage {
-          BannerSection {
+          bannerSection {
             bannerImage {
               sourceUrl
             }
@@ -35,7 +37,7 @@ const query = gql`
               sourceUrl
               altText
             }
-            featureDiv {
+            featuredDiv {
               title
               description
               image {
@@ -57,6 +59,10 @@ const query = gql`
             description
             heading
             backgroundImage {
+              sourceUrl
+              altText
+            }
+            galleryBg {
               sourceUrl
               altText
             }
@@ -122,8 +128,7 @@ const query = gql`
         }
       }
     }
-
-    menus(where: { location: PRIMARY }) {
+    menus(where: { location: MENU_2 }) {
       nodes {
         name
         slug
@@ -149,27 +154,46 @@ const query = gql`
   }
 `;
 export default async function HomePage() {
-  // const { data } = await getClient().query({
-  //   query,
-  //   context: {
-  //     fetchOptions: {
-  //       next: { revalidate: 5 },
-  //     },
-  //   },
-  // });
-  // console.log(data);
+  const { data } = await getClient().query({
+    query,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
+  });
+  console.log(data);
   return (
-    <main>
+    <>
       <Head>
-        <title>Hi</title>
+        {data?.pages?.nodes?.map((meta: any) => {
+          return (
+            <>
+              <title>{meta?.seo?.title}</title>
+              <meta name='description' content={meta?.seo?.description} />
+              <link rel='canonical' href={meta?.seo?.canonicalUrl} />
+              <meta property='og:title' content={meta?.seo?.title} />
+              <meta
+                property='og:description'
+                content={meta?.seo?.description}
+              />
+              <meta
+                property='og:image'
+                content={meta?.seo?.openGraph?.image?.url}
+              />
+            </>
+          );
+        })}
       </Head>
-      <section className='bg-white'>
-        <div className=''>
-          <div>
-            <HomeLanding />
+      <main>
+        <section className='bg-white'>
+          <div className=''>
+            <div>
+              <HomeLanding allData={data} />
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 }

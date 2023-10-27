@@ -2,57 +2,17 @@ import React from 'react';
 
 import NextImage from '@/components/NextImage';
 
-import featured_third from '@/assets/homelanding/commercial-buyers.png';
-import featured_sixth from '@/assets/homelanding/commercial-sellers.png';
-import featured_first from '@/assets/homelanding/first-time-buyers.png';
-import featured_second from '@/assets/homelanding/investment-buyers.png';
-import featured_fifth from '@/assets/homelanding/New-Development.png';
-import featured_fourth from '@/assets/homelanding/Selling-Your.png';
-const featuredData = [
-  {
-    id: 1,
-    title: 'First Time Home Buyers',
-    description: `Save Max Westcoast Realty Inc is a real estate brokerage and we are in the business of providing real estate services for Residential as well as Commercial properties. Our team of realtors are highly trained and bring with them many years of experience to ensure our customers enjoy highest level of services.`,
-    image: featured_first,
-  },
-  {
-    id: 2,
-    title: 'Investment Buyers',
-    description: `Save Max Westcoast Realty Inc is a real estate brokerage and we are in the business of providing real estate services for Residential as well as Commercial properties. Our team of realtors are highly trained and bring with them many years of experience to ensure our customers enjoy highest level of services.`,
-    image: featured_second,
-  },
-  {
-    id: 3,
-    title: 'Commercial Buyers',
-    description: `Save Max Westcoast Realty Inc is a real estate brokerage and we are in the business of providing real estate services for Residential as well as Commercial properties. Our team of realtors are highly trained and bring with them many years of experience to ensure our customers enjoy highest level of services.`,
-    image: featured_third,
-  },
-  {
-    id: 4,
-    title: 'Selling Your Home',
-    description: `Save Max Westcoast Realty Inc is a real estate brokerage and we are in the business of providing real estate services for Residential as well as Commercial properties. Our team of realtors are highly trained and bring with them many years of experience to ensure our customers enjoy highest level of services.`,
-    image: featured_fourth,
-  },
-  {
-    id: 5,
-    title: 'New Development',
-    description: `Save Max Westcoast Realty Inc is a real estate brokerage and we are in the business of providing real estate services for Residential as well as Commercial properties. Our team of realtors are highly trained and bring with them many years of experience to ensure our customers enjoy highest level of services.`,
-    image: featured_fifth,
-  },
-  {
-    id: 6,
-    title: 'Commercial Sellers',
-    description: `Save Max Westcoast Realty Inc is a real estate brokerage and we are in the business of providing real estate services for Residential as well as Commercial properties. Our team of realtors are highly trained and bring with them many years of experience to ensure our customers enjoy highest level of services.`,
-    image: featured_sixth,
-  },
-];
-export default function FeatureSection() {
+type MyProps = {
+  featuredData: any;
+};
+export default function FeatureSection(props: MyProps) {
+  const { featuredData } = props;
   return (
-    <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/Middle_part_bg.png")] bg-cover bg-no-repeat'>
+    <div className='max-w-screen overflow-x-hidden bg-[url("http://savemaxheadlessdemo-com.us.webmyway.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
       <section>
         <div className='py-10 md:py-20'>
           <div className='mx-auto w-full'>
-            {featuredData?.map((item: any, i: number) =>
+            {featuredData?.featuredDiv?.map((item: any, i: number) =>
               i % 2 == 0 ? (
                 <div
                   key={i}
@@ -63,9 +23,12 @@ export default function FeatureSection() {
                       <h2 className='w-full text-2xl md:w-[500px] md:text-4xl'>
                         {item?.title}
                       </h2>
-                      <p className='mt-5 text-xs md:w-[500px] md:text-lg'>
-                        {item?.description}
-                      </p>
+                      <div
+                        className='mt-5 text-xs md:w-[500px] md:text-lg'
+                        dangerouslySetInnerHTML={{
+                          __html: item?.description,
+                        }}
+                      ></div>
                       <div className='mt-10 text-start'>
                         <a
                           href='#'
@@ -80,10 +43,10 @@ export default function FeatureSection() {
                     <NextImage
                       useSkeleton
                       className='w-40 md:w-[100%]'
-                      src={item?.image}
+                      src={item?.image?.sourceUrl}
+                      alt={item?.image?.altText}
                       width='500'
                       height='200'
-                      alt='Icon'
                     />
                   </div>
                 </div>
@@ -96,10 +59,10 @@ export default function FeatureSection() {
                     <NextImage
                       useSkeleton
                       className='w-40 md:w-[400px]'
-                      src={item?.image}
+                      src={item?.image?.sourceUrl}
+                      alt={item?.image?.altText}
                       width='500'
                       height='200'
-                      alt='Icon'
                     />
                   </div>
                   <div className='col-span-12 ml-5 mt-5 pr-5 md:col-span-4 md:col-start-7'>
@@ -107,9 +70,12 @@ export default function FeatureSection() {
                       <h2 className='w-full text-2xl md:w-[500px] md:text-4xl'>
                         {item?.title}
                       </h2>
-                      <p className='mt-5 text-xs md:text-lg'>
-                        {item?.description}
-                      </p>
+                      <div
+                        className='mt-5 text-xs md:text-lg'
+                        dangerouslySetInnerHTML={{
+                          __html: item?.description,
+                        }}
+                      ></div>
                       <div className='mt-10 text-start'>
                         <a
                           href='#'

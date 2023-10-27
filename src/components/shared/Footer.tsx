@@ -6,16 +6,12 @@ import { MdLocationCity, MdPhoneInTalk } from 'react-icons/md';
 
 import NextImage from '@/components/NextImage';
 
-import SavemaxLogo from '../../assets/header/Save-Max-Westcoast-Realty.png';
-const navigation = [
-  { name: 'About Us', href: '#' },
-  { name: 'Find a Realtor', href: '#' },
-  { name: 'Listings', href: '#' },
-  { name: 'Services', href: '#' },
-  { name: 'Careers', href: '#' },
-  { name: 'News', href: '#' },
-];
-export default function Footer() {
+type MyProps = {
+  navigation: any;
+  settingsData: any;
+};
+export default function Footer(props: MyProps) {
+  const { navigation, settingsData } = props;
   return (
     <div>
       <footer className="bg-[url('https://savemaxbc.com/wp-content/uploads/2023/09/footer.png')] bg-cover bg-right bg-no-repeat py-6">
@@ -23,25 +19,25 @@ export default function Footer() {
           <div className='col-start-l col-span-12 ml-6 md:col-start-2 md:col-end-4 md:ml-0'>
             <div className='w-full text-white'>
               <p className='flex w-full items-center justify-start md:text-3xl'>
-                <span>Contact Info</span>
+                <span>{settingsData?.footerLeftWidget?.title}</span>
               </p>
               <p className='mt-5 flex items-center justify-start gap-4 text-xs md:text-lg'>
                 <span>
                   <MdPhoneInTalk className='h-5 w-5 rotate-[30deg]' />
                 </span>{' '}
-                <span>+1 778-251-5771</span>{' '}
+                <span>{settingsData?.footerLeftWidget?.phone}</span>{' '}
               </p>
               <p className='mt-5 flex items-center justify-start gap-4 text-xs md:text-lg'>
                 <span>
                   <LucideMailOpen className='h-5 w-5' />
                 </span>{' '}
-                <span>support@swiftcourier.ca</span>
+                <span>{settingsData?.footerLeftWidget?.emailAddress}</span>
               </p>
               <p className='mt-5 flex items-center justify-start gap-4 text-xs md:text-lg'>
                 <span>
                   <MdLocationCity className='h-5 w-5' />
                 </span>{' '}
-                <span>Unit 288, 12899 76 Avenue Surrey. BC. V3W1E6</span>
+                <span>{settingsData?.footerLeftWidget?.address}</span>
               </p>
               <div className='mt-10 flex items-center justify-start gap-4'>
                 <BsFacebook className='h-5 w-5' />
@@ -56,13 +52,13 @@ export default function Footer() {
             </p>
 
             <ul className='mb-0 list-none'>
-              {navigation.map((item) => (
-                <li key={item.name} className='mb-2'>
+              {navigation?.map((item: any) => (
+                <li key={item?.label} className='mb-2'>
                   <a
-                    href={item.href}
+                    href={item?.url}
                     className='text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200'
                   >
-                    {item.name}
+                    {item?.label}
                   </a>
                 </li>
               ))}
@@ -82,15 +78,15 @@ export default function Footer() {
             <NextImage
               useSkeleton
               className='md:[250px] w-60 lg:w-[300px]'
-              src={SavemaxLogo}
+              src={settingsData?.footerLogoSection?.logoUpload?.sourceUrl}
+              alt={settingsData?.footerLogoSection?.logoUpload?.altText}
               width='500'
               height='200'
-              alt='Icon'
             />
           </div>
         </div>
         <p className='md:text-md ml-6 mt-20 text-start text-sm text-white md:ml-40'>
-          © {new Date().getFullYear()} SAVEMAX | DESIGN AND SEO BY CANSOFT
+          © {new Date().getFullYear()} {settingsData?.copyrightText}
         </p>
       </footer>
     </div>

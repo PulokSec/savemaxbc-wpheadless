@@ -5,9 +5,14 @@ import { FaInstagramSquare } from 'react-icons/fa';
 
 import NextImage from '@/components/NextImage';
 
-import contactImage from '@/assets/homelanding/contact-image.png';
 const fields = [{ name: 'Buying' }, { name: 'Selling' }];
-export default function ContactSection() {
+
+type MyProps = {
+  contactData: any;
+};
+
+export default function ContactSection(props: MyProps) {
+  const { contactData } = props;
   const [selected, setSelected] = useState('');
   const handleChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -16,7 +21,7 @@ export default function ContactSection() {
     setFunction(event.target.value);
   };
   return (
-    <div className="bg-[url('https://savemaxbc.com/wp-content/uploads/2023/09/Contact-form-bg.png')] bg-cover bg-center bg-no-repeat">
+    <div className='bg-[url("http://savemaxheadlessdemo-com.us.webmyway.ca/wp-content/uploads/2023/10/Contact-form-bg.png")] bg-cover bg-center bg-no-repeat'>
       <section className='py-10'>
         <div className='mx-auto mt-5 grid max-w-2xl items-center justify-center gap-4 md:mt-10 md:grid-cols-6 md:gap-0 lg:mx-0 lg:max-w-none'>
           <div className='col-span-6 col-start-1 col-end-6 ml-6 md:col-span-3 md:col-end-3 md:ml-60'>
@@ -24,24 +29,28 @@ export default function ContactSection() {
               <NextImage
                 useSkeleton
                 className='w-40 md:w-[250px] lg:w-[300px]'
-                src={contactImage}
+                src={contactData?.contactImage?.sourceUrl}
+                alt={contactData?.contactImage?.altText}
                 width='500'
                 height='200'
-                alt='Icon'
               />
             </div>
             <div className='w-full'>
               <h2 className='w-full text-3xl md:w-[500px] md:text-4xl'>
-                CONNECT
+                {contactData?.heading}
               </h2>
-              <p className='mt-5 text-xs md:text-lg'>Phone: +1 778-251-5771 </p>
               <p className='mt-5 text-xs md:text-lg'>
-                Email: support@swyftcourier.ca
+                Phone: {contactData?.phone}{' '}
               </p>
               <p className='mt-5 text-xs md:text-lg'>
-                Unit 288, 12899 76 Avenue{' '}
+                Email: {contactData?.email}
               </p>
-              <p className='mt-5 text-xs md:text-lg'>Surrey. BC. V3W1E6</p>
+              <p className='mt-5 text-xs md:text-lg'>
+                {contactData?.addressOne}{' '}
+              </p>
+              <p className='mt-5 text-xs md:text-lg'>
+                {contactData?.addressTwo}
+              </p>
               <div className='mt-10 flex items-center justify-start gap-4'>
                 <BsFacebook className='h-7 w-7' />
                 <FaInstagramSquare className='h-7 w-7' />

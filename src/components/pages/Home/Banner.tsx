@@ -2,23 +2,28 @@ import React from 'react';
 import { GoSearch } from 'react-icons/go';
 
 import Header from '@/components/shared/Header';
-export default function Banner() {
+type MyProps = {
+  bannerData: any;
+  headerData: any;
+  settingsData: any;
+};
+export default function Banner(props: MyProps) {
+  const { bannerData, headerData, settingsData } = props;
   return (
     <div
       className='relative h-[80vh] w-full bg-cover bg-no-repeat md:h-[100vh]'
       style={{
-        backgroundImage:
-          "url('https://savemaxbc.com/wp-content/uploads/2023/09/landing_page.jpg')",
+        backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
-      <Header />
+      <Header navigation={headerData} settingsData={settingsData} />
       <div className='mx-auto py-16'>
         <div className='mx-auto mt-[50%] flex w-full flex-col items-center justify-center text-center md:mt-[10%]'>
           <p className='text-leading-3 text-lg font-bold text-white md:text-5xl'>
-            TOP REALTORS IN BC :
+            {bannerData?.bannerHeading}
           </p>
           <p className='text-leading-3 text-md mt-5 text-white md:text-3xl'>
-            BUY OR SELL YOUR HOMES WITH OUR EXPERT AGENTS
+            {bannerData?.bannerSubtitle}
           </p>
           <div className='mt-10 flex items-center justify-center gap-x-6'>
             <form
@@ -64,14 +69,12 @@ export default function Banner() {
       )} */}
             </form>
           </div>
-          <div className='mt-8 text-center text-white'>
-            <p className='text-md'>
-              Save Max provides all the active listings in Canada.
-            </p>
-            <p className='text-md'>
-              You can find your perfect property with a click of a button
-            </p>
-          </div>
+          <div
+            className='mt-8 text-center text-white'
+            dangerouslySetInnerHTML={{
+              __html: bannerData?.bannerDescription,
+            }}
+          ></div>
         </div>
       </div>
     </div>

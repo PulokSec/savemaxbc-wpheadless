@@ -9,17 +9,12 @@ import { BsTelephone } from 'react-icons/bs';
 import { HiMenu } from 'react-icons/hi';
 import { RxCross2 } from 'react-icons/rx';
 
-import SavemaxLogo from '../../assets/header/Save-Max-Westcoast-Realty.png';
-
-const navigation = [
-  { name: 'About Us', href: '#' },
-  { name: 'Find a Realtor', href: '#' },
-  { name: 'Listings', href: '#' },
-  { name: 'Services', href: '#' },
-  { name: 'Careers', href: '#' },
-  { name: 'News', href: '#' },
-];
-export default function Header() {
+type MyProps = {
+  navigation: any;
+  settingsData: any;
+};
+export default function Header(props: MyProps) {
+  const { navigation, settingsData } = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <div className=''>
@@ -42,8 +37,8 @@ export default function Header() {
               <Image
                 width='220'
                 height='75'
-                src={SavemaxLogo}
-                alt='header-logo'
+                src={settingsData?.uploadLogo?.sourceUrl}
+                alt={settingsData?.uploadLogo?.altText}
               />
             </a>
           </div>
@@ -58,13 +53,13 @@ export default function Header() {
             </button>
           </div>
           <div className='hidden items-center justify-center lg:flex lg:gap-x-12'>
-            {navigation.map((item) => (
+            {navigation.map((item: any) => (
               <a
-                key={item.name}
-                href={item.href}
+                key={item.label}
+                href={item.url}
                 className='textlg font-bold leading-10 text-white'
               >
-                {item.name}
+                {item.label}
               </a>
             ))}
             <a href='#' className='text-lg font-bold leading-10 text-white'>
@@ -89,8 +84,8 @@ export default function Header() {
                 <Image
                   width='400'
                   height='200'
-                  src={SavemaxLogo}
-                  alt='header-logo'
+                  src={settingsData?.uploadLogo?.sourceUrl}
+                  alt={settingsData?.uploadLogo?.altText}
                 />
               </a>
               <button
@@ -105,13 +100,13 @@ export default function Header() {
             <div className='mt-6 flow-root'>
               <div className='-my-6 divide-y divide-gray-500/10'>
                 <div className='space-y-2 py-6'>
-                  {navigation.map((item) => (
+                  {navigation.map((item: any) => (
                     <a
-                      key={item.name}
-                      href={item.href}
+                      key={item.label}
+                      href={item.url}
                       className='mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                     >
-                      {item.name}
+                      {item.label}
                     </a>
                   ))}
                   <a
