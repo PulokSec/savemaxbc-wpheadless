@@ -1,8 +1,13 @@
 import React from 'react';
 
 import Header from '@/components/shared/Header';
-
-export default function ServiceBanner() {
+type MyProps = {
+  // bannerData: any;
+  headerData: any;
+  settingsData: any;
+};
+export default function ServiceBanner(props: MyProps) {
+  const { headerData, settingsData } = props;
   return (
     <div
       className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat bg-blend-screen md:h-[100vh]'
@@ -11,7 +16,7 @@ export default function ServiceBanner() {
           "url('https://savemaxbc.com/wp-content/uploads/2023/10/landing-page.jpg')",
       }}
     >
-      <Header />
+      <Header navigation={headerData} settingsData={settingsData} />
       <div className='mx-auto py-16'>
         <div className='mx-auto ml-0 flex w-[380px]  flex-col items-center justify-center text-center md:ml-40 md:mt-[10%] md:w-[500px] md:items-start'>
           <p className='text-leading-3 text-center text-lg font-bold text-[#525659] md:text-start md:text-5xl'>

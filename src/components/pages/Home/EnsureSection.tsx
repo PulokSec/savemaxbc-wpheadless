@@ -31,7 +31,9 @@ export default function EnsureSection(props: MyProps) {
             }}
           >
             <div className='rotate-[-90deg]'>
-              <h2 className='text-[5px] md:text-[12px]'>{item?.title}</h2>
+              <h2 className='inline-block text-center text-[5px] leading-5 md:w-[210px] md:text-[18px]'>
+                {item?.title}
+              </h2>
             </div>
           </div>
         ))}

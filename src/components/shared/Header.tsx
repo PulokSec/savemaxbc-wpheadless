@@ -53,7 +53,7 @@ export default function Header(props: MyProps) {
             </button>
           </div>
           <div className='hidden items-center justify-center lg:flex lg:gap-x-12'>
-            {navigation.map((item: any) => (
+            {navigation?.map((item: any) => (
               <a
                 key={item.label}
                 href={item.url}
