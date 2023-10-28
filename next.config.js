@@ -14,7 +14,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "savemaxbc.com",
       "ddfcdn.realtor.ca",
-      "savemaxheadlessdemo-com.us.webmyway.ca",
+      "savemaxheadlessdemo.csoft.ca",
     ],
   },
   async headers() {

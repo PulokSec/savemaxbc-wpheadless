@@ -13,8 +13,7 @@ export default function Banner(props: MyProps) {
     <div
       className='relative h-[80vh] w-full bg-cover bg-no-repeat md:h-[100vh]'
       style={{
-        backgroundImage:
-          "url('https://savemaxbc.com/wp-content/uploads/2023/09/landing_page.jpg')",
+        backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />

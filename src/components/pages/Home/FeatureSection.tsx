@@ -8,7 +8,7 @@ type MyProps = {
 export default function FeatureSection(props: MyProps) {
   const { featuredData } = props;
   return (
-    <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/Middle_part_bg.png")] bg-cover bg-no-repeat'>
+    <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
       <section>
         <div className='py-10 md:py-20'>
           <div className='mx-auto w-full'>

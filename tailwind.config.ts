@@ -6,7 +6,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Inter', ...defaultTheme.fontFamily.sans],
+        primary: [
+          'Google Sans',
+          'Roboto',
+          'arial',
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       colors: {
         primary: {
