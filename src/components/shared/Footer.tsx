@@ -56,7 +56,7 @@ export default function Footer(props: MyProps) {
                 <li key={item?.label} className='mb-2'>
                   <a
                     href={item?.url}
-                    className='text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200'
+                    className='uppercase text-neutral-600 hover:text-[#B48237] dark:text-neutral-300'
                   >
                     {item?.label}
                   </a>
@@ -67,7 +67,7 @@ export default function Footer(props: MyProps) {
               <li className='mb-2 ml-1 mt-10'>
                 <a
                   href='#'
-                  className='text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-200'
+                  className='text-neutral-600 hover:text-[#B48237] dark:text-neutral-300 '
                 >
                   FAQ
                 </a>

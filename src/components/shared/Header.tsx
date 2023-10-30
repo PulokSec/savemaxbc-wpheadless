@@ -57,15 +57,21 @@ export default function Header(props: MyProps) {
               <a
                 key={item.label}
                 href={item.url}
-                className='textlg font-bold leading-10 text-white'
+                className='text-sm font-bold uppercase leading-10 text-white hover:text-[#B48237]'
               >
                 {item.label}
               </a>
             ))}
-            <a href='#' className='text-lg font-bold leading-10 text-white'>
+            <a
+              href='#'
+              className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
+            >
               <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
             </a>
-            <a href='#' className='text-lg font-bold leading-10 text-white'>
+            <a
+              href='#'
+              className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
+            >
               <BsTelephone className='h-5 w-5' aria-hidden='true' />
             </a>
           </div>

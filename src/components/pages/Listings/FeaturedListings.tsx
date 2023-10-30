@@ -9,13 +9,14 @@ type MyProps = {
   allPosts: Array<any>;
   // totalCount: number;
   // currentPageID: number;
+  titleData: any;
 };
 interface PostData {
   post: any;
   cardImageUrl: any;
 }
 export default function FeaturedListings(props: MyProps) {
-  const { allPosts } = props;
+  const { allPosts, titleData } = props;
   const [postData, setPostData] = useState<PostData[]>([]);
 
   useEffect(() => {
@@ -44,36 +45,36 @@ export default function FeaturedListings(props: MyProps) {
       <section className='mx-auto mt-20'>
         <div className='mt-20'>
           <h2 className='text-center text-lg md:text-5xl'>
-            Surrey{' '}
+            {titleData?.recentListingsTitle?.split(/ (.*)/)[0]}{' '}
             <span className='text-bold text-leading-3 text-[#525659]'>
-              Recent Listings
+              {titleData?.recentListingsTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
           <ListingCarousel posts={postData} />
         </div>
         <div className='mt-20'>
           <h2 className='text-center text-lg md:text-5xl'>
-            Surrey{' '}
+            {titleData?.detachedHomesTitle?.split(/ (.*)/)[0]}{' '}
             <span className='text-bold text-leading-3 text-[#525659]'>
-              Detached Homes
+              {titleData?.detachedHomesTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
           <ListingCarousel posts={postData} />
         </div>
         <div className='mt-20'>
           <h2 className='text-center text-lg md:text-5xl'>
-            Surrey{' '}
+            {titleData?.semiDetachedTitle?.split(/ (.*)/)[0]}{' '}
             <span className='text-bold text-leading-3 text-[#525659]'>
-              Semi Detached Homes
+              {titleData?.semiDetachedTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
           <ListingCarousel posts={postData} />
         </div>
         <div className='mt-20'>
           <h2 className='text-center text-lg md:text-5xl'>
-            Surrey{' '}
+            {titleData?.rentalHomesTitle?.split(/ (.*)/)[0]}{' '}
             <span className='text-bold text-leading-3 text-[#525659]'>
-              Rental Homes
+              {titleData?.rentalHomesTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
           <ListingCarousel posts={postData} />

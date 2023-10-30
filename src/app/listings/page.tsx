@@ -11,7 +11,7 @@ import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 10 }) {
+    pages(where: { id: 18 }) {
       nodes {
         seo {
           title
@@ -27,73 +27,24 @@ const query = gql`
             raw
           }
         }
-        HomePage {
+        listings {
           bannerSection {
             bannerImage {
               sourceUrl
             }
             bannerHeading
-            bannerSubtitle
-            bannerDescription
           }
-          featureSection {
-            featureBackground {
-              sourceUrl
-              altText
-            }
-            featuredDiv {
-              title
-              description
-              image {
-                sourceUrl
-                altText
-              }
-            }
+          listingSection {
+            recentListingsTitle
+            detachedHomesTitle
+            semiDetachedTitle
+            rentalHomesTitle
           }
-          aboutSection {
-            aboutTitle
-            aboutDescription
-            aboutImage {
-              sourceUrl
-              altText
-            }
-          }
-          ensureSection {
+          getInTouch {
             title
-            description
-            heading
             backgroundImage {
               sourceUrl
-              altText
             }
-            galleryBg {
-              sourceUrl
-              altText
-            }
-            gallery {
-              title
-              image {
-                sourceUrl
-                altText
-              }
-            }
-          }
-          contactSection {
-            heading
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            contactImage {
-              sourceUrl
-              altText
-            }
-            phone
-            email
-            addressOne
-            addressTwo
-            facebookLink
-            instagramLink
           }
         }
       }
@@ -182,6 +133,7 @@ export default async function Listings({
       </Head>
       <main>
         <ListingBanner
+          bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
@@ -190,8 +142,13 @@ export default async function Listings({
           totalCount={allPosts?.totalCount}
           currentPageID={parseInt(searchParams?.page?.toString() || '1')}
         /> */}
-        <FeaturedListings allPosts={allPosts?.listings} />
-        <GetInTouch />
+        <FeaturedListings
+          allPosts={allPosts?.listings}
+          titleData={data?.pages?.nodes[0]?.listings?.listingSection}
+        />
+        <GetInTouch
+          title={data?.pages?.nodes[0]?.listings?.getInTouch?.title}
+        />
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}

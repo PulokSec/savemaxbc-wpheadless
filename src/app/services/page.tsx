@@ -11,7 +11,7 @@ import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 10 }) {
+    pages(where: { id: 22 }) {
       nodes {
         seo {
           title
@@ -27,73 +27,27 @@ const query = gql`
             raw
           }
         }
-        HomePage {
+        services {
           bannerSection {
             bannerImage {
               sourceUrl
             }
+            topBannerHeading
             bannerHeading
-            bannerSubtitle
             bannerDescription
           }
-          featureSection {
-            featureBackground {
-              sourceUrl
-              altText
-            }
-            featuredDiv {
-              title
-              description
-              image {
-                sourceUrl
-                altText
-              }
-            }
-          }
-          aboutSection {
-            aboutTitle
-            aboutDescription
-            aboutImage {
-              sourceUrl
-              altText
-            }
-          }
-          ensureSection {
+          featuredServiceTitle
+          featuredServiceSection {
             title
             description
-            heading
-            backgroundImage {
+            image {
               sourceUrl
               altText
-            }
-            galleryBg {
-              sourceUrl
-              altText
-            }
-            gallery {
-              title
-              image {
-                sourceUrl
-                altText
-              }
             }
           }
-          contactSection {
-            heading
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            contactImage {
-              sourceUrl
-              altText
-            }
-            phone
-            email
-            addressOne
-            addressTwo
-            facebookLink
-            instagramLink
+          bottomSection {
+            title
+            description
           }
         }
       }
@@ -173,12 +127,18 @@ export default async function ServicePage() {
       </Head>
       <section className='bg-white'>
         <ServiceBanner
+          bannerData={data?.pages?.nodes[0]?.services?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <FeaturedServices />
+        <FeaturedServices
+          featuredData={data?.pages?.nodes[0]?.services?.featuredServiceSection}
+          featuredTitle={data?.pages?.nodes[0]?.services?.featuredServiceTitle}
+        />
       </section>
-      <BottomFeature />
+      <BottomFeature
+        bottomSection={data?.pages?.nodes[0]?.services?.bottomSection}
+      />
       <Footer
         navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
