@@ -6,12 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: [
-          'Google Sans',
-          'Roboto',
-          'arial',
-          ...defaultTheme.fontFamily.sans,
-        ],
+        primary: ['Alamia', 'Roboto', 'arial', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: {
