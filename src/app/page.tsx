@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import Head from 'next/head';
+import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
@@ -33,12 +33,13 @@ const query = gql`
             bannerDescription
           }
           featureSection {
+            featureTitle
+            featureDescription
             featureBackground {
               sourceUrl
               altText
             }
             featuredDiv {
-              title
               description
               image {
                 sourceUrl
@@ -46,12 +47,59 @@ const query = gql`
               }
             }
           }
+          exploreSection {
+            featureTitle
+            featureDescription
+            imageRight {
+              sourceUrl
+              altText
+            }
+            featuredDivLeft {
+              title
+              description
+            }
+            featuredDivRight {
+              title
+              description
+            }
+            imageLeft {
+              sourceUrl
+              altText
+            }
+          }
+          considerSection {
+            featureTitle
+            featureDescription
+            topHead
+            topDescription
+            image {
+              sourceUrl
+              altText
+            }
+          }
+          choiceSection {
+            featureTitle
+            featureDescription
+            featuredDiv {
+              title
+              description
+            }
+          }
           aboutSection {
             aboutTitle
             aboutDescription
+            aboutDescriptionBottom
             aboutImage {
               sourceUrl
               altText
+            }
+          }
+          homebuyingSection {
+            featureTitle
+            featureDescription
+            featuredDiv {
+              title
+              description
             }
           }
           ensureSection {
@@ -75,6 +123,8 @@ const query = gql`
             }
           }
           contactSection {
+            contactTitle
+            contactDescription
             heading
             backgroundImage {
               sourceUrl
@@ -153,6 +203,51 @@ const query = gql`
     }
   }
 `;
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await getClient().query({
+    query,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
+  });
+  return {
+    title: data?.pages?.nodes[0]?.seo?.title,
+    description: data?.pages?.nodes[0]?.seo?.description,
+    robots: { index: false, follow: false },
+
+    // icons: {
+    //   icon: '/favicon/favicon.ico',
+    //   shortcut: '/favicon/favicon-16x16.png',
+    //   apple: '/favicon/apple-touch-icon.png',
+    // },
+    manifest: `/favicon/site.webmanifest`,
+    openGraph: {
+      url: 'https://savemaxbc.com/',
+      title: data?.pages?.nodes[0]?.seo?.title,
+      description: data?.pages?.nodes[0]?.seo?.description,
+      siteName: 'https://savemaxbc.com/',
+      images: data?.pages?.nodes[0]?.seo?.openGraph?.image?.url,
+      type: 'website',
+      locale: 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: data?.pages?.nodes[0]?.seo?.title,
+      description: data?.pages?.nodes[0]?.seo?.description,
+      // images: [`${siteConfig.url}/images/og.jpg`],
+      creator: '@PulokSec',
+    },
+    authors: [
+      {
+        name: 'Cansoft Tech',
+        url: 'https://cansoft.com/',
+      },
+    ],
+  };
+}
+
 export default async function HomePage() {
   const { data } = await getClient().query({
     query,
@@ -165,26 +260,6 @@ export default async function HomePage() {
   console.log(data);
   return (
     <>
-      <Head>
-        {data?.pages?.nodes?.map((meta: any) => {
-          return (
-            <>
-              <title>{meta?.seo?.title}</title>
-              <meta name='description' content={meta?.seo?.description} />
-              <link rel='canonical' href={meta?.seo?.canonicalUrl} />
-              <meta property='og:title' content={meta?.seo?.title} />
-              <meta
-                property='og:description'
-                content={meta?.seo?.description}
-              />
-              <meta
-                property='og:image'
-                content={meta?.seo?.openGraph?.image?.url}
-              />
-            </>
-          );
-        })}
-      </Head>
       <main>
         <section className='bg-white'>
           <div className=''>

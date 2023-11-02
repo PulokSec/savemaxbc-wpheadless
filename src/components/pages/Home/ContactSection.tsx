@@ -23,6 +23,17 @@ export default function ContactSection(props: MyProps) {
   return (
     <div className='bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Contact-form-bg.png")] bg-cover bg-center bg-no-repeat'>
       <section className='py-10'>
+        <div className='container mx-auto px-5 text-center md:px-10 lg:w-full'>
+          <h2 className='text-center text-2xl md:text-4xl'>
+            {contactData?.contactTitle}
+          </h2>
+          <div
+            className='mt-5  text-center text-xs  md:text-lg'
+            dangerouslySetInnerHTML={{
+              __html: contactData?.contactDescription,
+            }}
+          ></div>
+        </div>
         <div className='mx-auto mt-5 grid max-w-2xl items-center justify-center gap-4 md:mt-10 md:grid-cols-6 md:gap-0 lg:mx-0 lg:max-w-none'>
           <div className='col-span-6 col-start-1 col-end-6 ml-6 md:col-span-3 md:col-end-3 md:ml-60'>
             <div className='col-span-6 col-start-1 col-end-4 '>

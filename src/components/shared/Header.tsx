@@ -17,7 +17,7 @@ export default function Header(props: MyProps) {
   const { navigation, settingsData } = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <div className=''>
+    <div className='bg-dark fixed top-0 z-10 w-full shadow'>
       {/* <div className='flex items-center justify-end gap-4'>
         <a href='#' className='text-lg font-bold leading-10 text-white'>
           <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
