@@ -15,7 +15,7 @@ export default function WhyChooseUs(props: MyProps) {
   return (
     <section className='container mx-auto bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10'>
       <div className='col-span-12 ml-5 mt-10 px-5 md:col-span-8 md:col-start-1 md:ml-40 md:mt-20'>
-        <h2 className='text-center text-2xl md:text-start md:text-5xl'>
+        <h2 className='text-center text-2xl md:text-start md:text-4xl'>
           {featuredData?.featureTitle}
         </h2>
         <div
