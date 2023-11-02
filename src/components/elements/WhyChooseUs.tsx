@@ -102,7 +102,7 @@ export default function WhyChooseUs(props: MyProps) {
                   className='w-[calc(100%-4rem)] bg-white p-4 text-end md:w-[calc(50%-2.5rem)]'
                   onClick={() => setActive(i)}
                 >
-                  <div className='flex flex-col items-end lg:w-full'>
+                  <div className='flex flex-col items-start md:items-end lg:w-full'>
                     <h2
                       className={
                         active == i

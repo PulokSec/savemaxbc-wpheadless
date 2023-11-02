@@ -5,6 +5,7 @@ type MyProps = {
   featuredData: any;
 };
 export default function HomeBuyerSection(props: MyProps) {
+  const [active, setActive] = React.useState(0);
   const { featuredData } = props;
   return (
     <section className='container mx-auto bg-white '>
@@ -22,18 +23,37 @@ export default function HomeBuyerSection(props: MyProps) {
           <ul className=''>
             {featuredData?.featuredDiv?.map((item: any, i: number) => (
               <li key={i} className='mb-10 text-left'>
-                <div className='flex flex-row items-start'>
+                <div
+                  className='flex cursor-pointer flex-row items-start'
+                  onClick={() => setActive(i)}
+                >
                   <div className='mr-5 flex flex-col items-center justify-center'>
-                    <div className='flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#051532] text-xl font-semibold text-white'>
+                    <div
+                      className={
+                        active == i
+                          ? 'flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#051532] text-xl font-semibold text-white'
+                          : 'flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-gray-200 text-xl font-semibold'
+                      }
+                    >
                       {i + 1}
                     </div>
                   </div>
-                  <div className='bg-[#051532] p-5 pb-10 '>
-                    <h3 className='text-lg font-semibold leading-6 text-white'>
+                  <div
+                    className={
+                      active == i
+                        ? 'bg-[#051532] p-5 pb-10 text-white'
+                        : 'w-full bg-gray-200 p-5 pb-10'
+                    }
+                  >
+                    <h3 className='text-lg font-semibold leading-6'>
                       {item?.title}
                     </h3>
                     <div
-                      className='mt-5 text-start text-xs text-white md:text-lg'
+                      className={
+                        active == i
+                          ? 'mt-5 block text-start text-xs  md:text-lg'
+                          : 'mt-5 hidden text-start text-xs  md:text-lg'
+                      }
                       dangerouslySetInnerHTML={{
                         __html: item?.description,
                       }}
