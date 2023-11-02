@@ -8,7 +8,7 @@ type MyProps = {
 export default function ExploreSection(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='container mx-auto mt-10 px-5 md:px-10'>
+    <section className='mt-10 px-5 md:px-10'>
       <div className='text-center md:px-10 lg:w-full'>
         <h2 className='text-center text-2xl md:text-4xl'>
           {featuredData?.topHead}

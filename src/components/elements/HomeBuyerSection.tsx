@@ -8,8 +8,8 @@ export default function HomeBuyerSection(props: MyProps) {
   const [active, setActive] = React.useState(0);
   const { featuredData } = props;
   return (
-    <section className='container mx-auto bg-white '>
-      <div className='col-span-12 ml-5 md:col-span-8 md:col-start-1 md:ml-40 md:px-10 lg:mt-20'>
+    <section className='bg-white '>
+      <div className='col-span-12 ml-5 md:col-span-8 md:col-start-1 md:px-10 lg:mt-20'>
         <h2 className='text-center text-2xl md:text-4xl'>
           {featuredData?.featureTitle}
         </h2>
@@ -27,7 +27,7 @@ export default function HomeBuyerSection(props: MyProps) {
                   className='flex cursor-pointer flex-row items-start'
                   onClick={() => setActive(i)}
                 >
-                  <div className='mr-5 flex flex-col items-center justify-center'>
+                  <div className='flex flex-col items-center justify-center'>
                     <div
                       className={
                         active == i
@@ -41,8 +41,8 @@ export default function HomeBuyerSection(props: MyProps) {
                   <div
                     className={
                       active == i
-                        ? 'bg-[#051532] p-5 pb-10 text-white'
-                        : 'w-full bg-gray-200 p-5 pb-10'
+                        ? 'bg-[#051532] p-5 py-10 text-white'
+                        : 'w-full bg-gray-200 p-5 py-10'
                     }
                   >
                     <h3 className='text-lg font-semibold leading-6'>

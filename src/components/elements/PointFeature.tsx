@@ -9,10 +9,10 @@ export default function PointFeature(props: MyProps) {
   const { featuredData } = props;
   return (
     <section className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
-      <div className='py-10 md:py-20'>
-        <div className='mx-auto w-full'>
-          <div className='mx-auto mt-10 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mt-20 md:gap-0 lg:mx-0 lg:max-w-none'>
-            <div className='col-span-12 ml-5 md:col-span-8 md:col-start-1 md:ml-40 lg:mt-20'>
+      <div className=''>
+        <div className='w-full'>
+          <div className='grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:gap-0 lg:mx-0 lg:max-w-none'>
+            <div className='col-span-12 px-5 md:col-span-8 md:col-start-1 md:px-10 lg:mt-20'>
               <h2 className='px-5 text-center text-2xl md:text-start md:text-4xl'>
                 {featuredData?.featureTitle}
               </h2>

@@ -9,7 +9,7 @@ export default function AboutSection(props: MyProps) {
   const { aboutData } = props;
   return (
     <div className='mt-10 overflow-x-hidden bg-white'>
-      <div className='container mx-auto text-center lg:w-full'>
+      <div className='px-5 text-center md:px-10 lg:w-full'>
         <h2 className='text-center text-2xl md:px-10 md:text-4xl'>
           {aboutData?.aboutTitle}
         </h2>

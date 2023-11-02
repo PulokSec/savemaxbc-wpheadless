@@ -13,37 +13,17 @@ export default function WhyChooseUs(props: MyProps) {
   const { featuredData } = props;
   const [active, setActive] = useState(0);
   return (
-    <section className='container mx-auto bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10'>
-      <div className='col-span-12 ml-5 mt-10 px-5 md:col-span-8 md:col-start-1 md:ml-40 md:mt-20'>
-        <h2 className='text-center text-2xl md:text-start md:text-4xl'>
+    <section className=' bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10'>
+      <div className='col-span-12 mt-10 px-5 md:col-span-8 md:col-start-1 md:mt-20 md:px-10'>
+        <h2 className='text-center text-2xl md:text-4xl'>
           {featuredData?.featureTitle}
         </h2>
         <div
-          className='mt-5 text-center text-xs md:text-start md:text-lg'
+          className='mt-5 text-center text-xs md:text-lg'
           dangerouslySetInnerHTML={{
             __html: featuredData?.featureDescription,
           }}
         ></div>
-        {featuredData?.featuredDivLeft?.map((item: any, i: number) => (
-          <div className='container mt-5' key={i}>
-            <h3
-              className={
-                active == i
-                  ? 'text-sky-950'
-                  : 'text-[#585858]' +
-                    'w-full text-xl leading-5 md:w-[500px] md:text-2xl'
-              }
-            >
-              {item?.title}
-            </h3>
-            <div
-              className='text-xs md:w-[600px] md:text-lg'
-              dangerouslySetInnerHTML={{
-                __html: item?.description,
-              }}
-            ></div>
-          </div>
-        ))}
       </div>
       <div className='px-10 py-10 md:py-20'>
         <div className='relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-slate-900 before:to-transparent md:before:mx-auto md:before:translate-x-0'>
@@ -86,7 +66,7 @@ export default function WhyChooseUs(props: MyProps) {
                 </div>
               </div>
             ) : (
-              <div className='is-active group relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse'>
+              <div className='is-active group relative flex items-start justify-between md:items-center md:justify-normal md:odd:flex-row-reverse'>
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2'>
                   <NextImage
                     useSkeleton
@@ -108,13 +88,13 @@ export default function WhyChooseUs(props: MyProps) {
                         active == i
                           ? 'text-sky-950'
                           : 'text-[#585858]' +
-                            'w-full text-end text-xl leading-5 md:w-[500px] md:text-2xl'
+                            'w-full text-start text-xl leading-5 md:w-[500px] md:text-end md:text-2xl'
                       }
                     >
                       {item?.title}
                     </h2>
                     <div
-                      className='mt-5 text-xs md:text-lg'
+                      className='mt-5 text-start text-xs md:text-end md:text-lg'
                       dangerouslySetInnerHTML={{
                         __html: item?.description,
                       }}
