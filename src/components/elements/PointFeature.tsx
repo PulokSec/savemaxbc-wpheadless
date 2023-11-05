@@ -12,7 +12,7 @@ export default function PointFeature(props: MyProps) {
       <div className=''>
         <div className='w-full'>
           <div className='grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:gap-0 lg:mx-0 lg:max-w-none'>
-            <div className='col-span-12 px-5 md:col-span-8 md:col-start-1 md:px-10 lg:mt-20'>
+            <div className='col-span-12 px-5 md:col-span-8 md:col-start-2 md:px-10 lg:mt-20'>
               <h2 className='px-5 text-center text-2xl md:text-start md:text-4xl'>
                 {featuredData?.featureTitle}
               </h2>
@@ -61,7 +61,7 @@ export default function PointFeature(props: MyProps) {
             </div>
             <div className='col-span-12 ml-5 mt-5 pr-5 md:col-span-4 md:col-start-7'>
               <div className='mx-auto md:px-10 lg:mt-20'>
-                <div className='mt-5'>
+                <div className='mt-5 pb-10'>
                   {featuredData?.featuredDivRight?.map(
                     (item: any, i: number) => (
                       <div className='container mt-5' key={i}>

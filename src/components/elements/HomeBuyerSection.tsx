@@ -14,7 +14,7 @@ export default function HomeBuyerSection(props: MyProps) {
           {featuredData?.featureTitle}
         </h2>
         <div
-          className='mt-5 text-center text-xs md:text-lg'
+          className='mt-5 text-center text-xs md:px-5 md:text-lg'
           dangerouslySetInnerHTML={{
             __html: featuredData?.featureDescription,
           }}
@@ -27,11 +27,11 @@ export default function HomeBuyerSection(props: MyProps) {
                   className='flex cursor-pointer flex-row items-start'
                   onClick={() => setActive(i)}
                 >
-                  <div className='flex flex-col items-center justify-center'>
+                  <div className='flex flex-col items-center justify-center md:pr-3'>
                     <div
                       className={
                         active == i
-                          ? 'flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#051532] text-xl font-semibold text-white'
+                          ? 'flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#051532] text-xl font-semibold text-white shadow'
                           : 'flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-gray-200 text-xl font-semibold'
                       }
                     >
@@ -41,8 +41,8 @@ export default function HomeBuyerSection(props: MyProps) {
                   <div
                     className={
                       active == i
-                        ? 'bg-[#051532] p-5 py-10 text-white'
-                        : 'w-full bg-gray-200 p-5 py-10'
+                        ? 'rounded bg-[#051532] p-5 py-10 text-white shadow'
+                        : 'w-full rounded bg-gray-200 p-5 py-10 shadow'
                     }
                   >
                     <h3 className='text-lg font-semibold leading-6'>
