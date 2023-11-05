@@ -39,6 +39,7 @@ const query = gql`
               shortDescription
               description
               designation
+              subDesignation
               aboutImage {
                 sourceUrl
                 altText

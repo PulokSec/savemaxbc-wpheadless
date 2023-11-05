@@ -48,6 +48,12 @@ export default function AboutFeature(props: MyProps) {
                       <div
                         className='mt-10 text-xs md:text-2xl'
                         dangerouslySetInnerHTML={{
+                          __html: item?.subDesignation,
+                        }}
+                      ></div>
+                      <div
+                        className='mt-10 text-end text-xs md:text-lg'
+                        dangerouslySetInnerHTML={{
                           __html: item?.shortDescription,
                         }}
                       ></div>
@@ -70,6 +76,12 @@ export default function AboutFeature(props: MyProps) {
                       <p className='text-bold mt-5 text-xl text-sky-950 md:w-[500px] md:text-3xl'>
                         {item?.designation}
                       </p>
+                      <div
+                        className='mt-10 text-xs md:text-2xl'
+                        dangerouslySetInnerHTML={{
+                          __html: item?.subDesignation,
+                        }}
+                      ></div>
                       <div
                         className='mt-10 text-start text-xs md:text-lg'
                         dangerouslySetInnerHTML={{
