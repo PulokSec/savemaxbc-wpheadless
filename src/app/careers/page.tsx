@@ -3,11 +3,17 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import HomeLanding from '@/components/pages/Home/HomeLanding';
+import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
+import JoinSection from '@/components/elements/JoinSection';
+import SuccessSection from '@/components/elements/SuccessSection';
+import WhoWeAre from '@/components/elements/WhoWeAre';
+import WhyChooseUs from '@/components/elements/WhyChooseUs';
+import CareersBanner from '@/components/pages/Careers/CareerBanner';
+import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 10 }) {
+    pages(where: { id: 14 }) {
       nodes {
         seo {
           title
@@ -23,55 +29,39 @@ const query = gql`
             raw
           }
         }
-        HomePage {
+        careers {
           bannerSection {
             bannerImage {
               sourceUrl
             }
             bannerHeading
-            bannerSubtitle
             bannerDescription
           }
-          featureSection {
-            featureTitle
-            featureDescription
-            featureBackground {
-              sourceUrl
-              altText
-            }
-            featuredDiv {
-              description
-              image {
-                sourceUrl
-                altText
-              }
-            }
-          }
-          exploreSection {
-            featureTitle
-            featureDescription
-            imageRight {
-              sourceUrl
-              altText
-            }
-            featuredDivLeft {
-              title
-              description
-            }
-            featuredDivRight {
-              title
-              description
-            }
-            imageLeft {
-              sourceUrl
-              altText
-            }
-          }
-          considerSection {
-            featureTitle
-            featureDescription
+          topFeatureDescription
+          topFeatureTitle
+          aboutSection {
             topHead
             topDescription
+            featureTitle
+            featureDescription
+            image {
+              sourceUrl
+              altText
+            }
+          }
+          successSection {
+            featureTitle
+            featureDescription
+            linkUrl
+            image {
+              sourceUrl
+              altText
+            }
+          }
+          joinSection {
+            featureTitle
+            featureDescription
+            linkUrl
             image {
               sourceUrl
               altText
@@ -85,61 +75,13 @@ const query = gql`
               description
             }
           }
-          aboutSection {
-            aboutTitle
-            aboutDescription
-            aboutDescriptionBottom
-            aboutImage {
-              sourceUrl
-              altText
-            }
-          }
-          homebuyingSection {
+          bottomFeatureSection {
             featureTitle
             featureDescription
-            featuredDiv {
-              title
-              description
-            }
-          }
-          ensureSection {
-            title
-            description
-            heading
             backgroundImage {
               sourceUrl
               altText
             }
-            galleryBg {
-              sourceUrl
-              altText
-            }
-            gallery {
-              title
-              image {
-                sourceUrl
-                altText
-              }
-            }
-          }
-          contactSection {
-            contactTitle
-            contactDescription
-            heading
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            contactImage {
-              sourceUrl
-              altText
-            }
-            phone
-            email
-            addressOne
-            addressTwo
-            facebookLink
-            instagramLink
           }
         }
       }
@@ -248,7 +190,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function HomePage() {
+export default async function CareersPage() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -257,14 +199,34 @@ export default async function HomePage() {
       },
     },
   });
+  console.log(data);
   return (
     <>
       <main>
-        <section className='bg-white'>
-          <div>
-            <HomeLanding allData={data} />
-          </div>
-        </section>
+        <CareersBanner
+          bannerData={data?.pages?.nodes[0]?.careers?.bannerSection}
+          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
+          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
+          topTitle={data?.pages?.nodes[0]?.careers?.topFeatureTitle}
+          topDesc={data?.pages?.nodes[0]?.careers?.topFeatureDescription}
+        />
+        <WhoWeAre featuredData={data?.pages?.nodes[0]?.careers?.aboutSection} />
+        <WhyChooseUs
+          featuredData={data?.pages?.nodes[0]?.careers?.choiceSection}
+        />
+        <SuccessSection
+          featuredData={data?.pages?.nodes[0]?.careers?.successSection}
+        />
+        <JoinSection
+          featuredData={data?.pages?.nodes[0]?.careers?.joinSection}
+        />
+        <BottomFeatureSection
+          bottomSection={data?.pages?.nodes[0]?.careers?.bottomFeatureSection}
+        />
+        <Footer
+          navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
+          settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
+        />
       </main>
     </>
   );

@@ -9,9 +9,9 @@ type MyProps = {
 export default function WhoWeAre(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='container mx-auto px-10'>
+    <section className='container mx-auto mt-40 px-10'>
       <div className='px-10 text-center lg:w-full'>
-        <h2 className='text-start text-lg md:text-5xl'>
+        <h2 className='text-center text-lg text-[#525659] md:text-5xl'>
           {featuredData?.topHead}
         </h2>
         <div
@@ -28,7 +28,7 @@ export default function WhoWeAre(props: MyProps) {
               <NextImage
                 useSkeleton
                 className='w-40 md:w-[400px]'
-                src={featuredData?.image?.sourceurl}
+                src={featuredData?.image?.sourceUrl}
                 alt={featuredData?.image?.altText}
                 width='500'
                 height='200'
