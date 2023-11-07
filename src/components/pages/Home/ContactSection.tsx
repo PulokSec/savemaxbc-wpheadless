@@ -24,18 +24,18 @@ export default function ContactSection(props: MyProps) {
     <div className='bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Contact-form-bg.png")] bg-cover bg-center bg-no-repeat'>
       <section className='py-10'>
         <div className='px-5 text-center md:px-10 lg:w-full'>
-          <h2 className='text-center text-2xl md:text-4xl'>
+          <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
             {contactData?.contactTitle}
           </h2>
           <div
-            className='mt-5  text-center text-xs  md:text-lg'
+            className='md:text-md  mt-5 text-center  text-xs lg:text-lg'
             dangerouslySetInnerHTML={{
               __html: contactData?.contactDescription,
             }}
           ></div>
         </div>
         <div className='mx-auto mt-5 grid max-w-2xl items-center justify-center gap-4 md:mt-10 md:grid-cols-6 md:gap-0 lg:mx-0 lg:max-w-none'>
-          <div className='col-span-6 col-start-1 col-end-6 ml-6 md:col-span-3 md:col-end-3 md:ml-60'>
+          <div className='col-span-6 col-start-1 col-end-6 ml-6 lg:col-span-3 lg:col-end-3 lg:ml-60'>
             <div className='col-span-6 col-start-1 col-end-4 '>
               <NextImage
                 useSkeleton
@@ -46,20 +46,20 @@ export default function ContactSection(props: MyProps) {
                 height='200'
               />
             </div>
-            <div className='w-full'>
-              <h2 className='w-full text-3xl md:w-[500px] md:text-4xl'>
+            <div className=''>
+              <h2 className='w-full text-3xl md:w-full lg:w-[500px] lg:text-4xl'>
                 {contactData?.heading}
               </h2>
-              <p className='mt-5 text-xs md:text-lg'>
+              <p className='md:text-md mt-5 text-xs lg:text-lg'>
                 Phone: {contactData?.phone}{' '}
               </p>
-              <p className='mt-5 text-xs md:text-lg'>
+              <p className='md:text-md mt-5 text-xs lg:text-lg'>
                 Email: {contactData?.email}
               </p>
-              <p className='mt-5 text-xs md:text-lg'>
+              <p className='md:text-md mt-5 text-xs lg:text-lg'>
                 {contactData?.addressOne}{' '}
               </p>
-              <p className='mt-5 text-xs md:text-lg'>
+              <p className='md:text-md mt-5 text-xs lg:text-lg'>
                 {contactData?.addressTwo}
               </p>
               <div className='mt-10 flex items-center justify-start gap-4'>
@@ -68,7 +68,7 @@ export default function ContactSection(props: MyProps) {
               </div>
             </div>
           </div>
-          <div className='col-span-3 col-start-1 col-end-6 mt-5 md:col-start-4 md:col-end-7 md:mt-0'>
+          <div className='col-span-3 col-start-1 col-end-6 mt-5 md:col-span-3 md:col-start-1 md:col-end-6 lg:col-start-4 lg:col-end-7 lg:mt-0'>
             <form className=''>
               <div className='relative mb-6' data-te-input-wrapper-init>
                 <input

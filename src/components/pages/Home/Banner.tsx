@@ -37,7 +37,7 @@ export default function Banner(props: MyProps) {
             >
               <input
                 // onClick={() => setSearchShow(true)}
-                className='search h-[42px] w-full rounded-[1000px] px-5 text-[14px] drop-shadow-2xl placeholder:pb-4 placeholder:text-[12px] md:h-[52px]  md:w-[487px] md:text-[20px] md:placeholder:text-[14px]'
+                className='search h-[42px] w-full rounded-[1000px] px-5 text-[14px] drop-shadow-2xl placeholder:pb-4 placeholder:text-[12px] md:ml-10 md:h-[52px] md:w-[400px] lg:w-[487px] lg:text-[20px] lg:placeholder:text-[14px]'
                 type='search'
                 // onChange={handleChange}
                 // defaultValue={search?.name || ""}

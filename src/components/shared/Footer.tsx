@@ -16,7 +16,7 @@ export default function Footer(props: MyProps) {
     <div>
       <footer className="bg-[url('https://savemaxbc.com/wp-content/uploads/2023/09/footer.png')] bg-cover bg-right bg-no-repeat py-6">
         <div className='mx-auto mt-5 grid justify-center gap-4 py-6 md:mt-10 md:grid-cols-12'>
-          <div className='col-start-l col-span-12 ml-6 md:col-start-2 md:col-end-4 md:ml-0'>
+          <div className='col-start-l col-span-12 ml-6 md:col-span-12 md:col-start-1 lg:col-start-2 lg:col-end-4 lg:ml-0'>
             <div className='w-full text-white'>
               <p className='flex w-full items-center justify-start md:text-3xl'>
                 <span>{settingsData?.footerLeftWidget?.title}</span>
@@ -46,7 +46,7 @@ export default function Footer(props: MyProps) {
               </div>
             </div>
           </div>
-          <div className='md:cold-end-8 col-span-6 col-start-1 mb-6 ml-6 mt-5 md:col-span-2 md:col-start-7 md:ml-0 md:mt-0'>
+          <div className='lg:cold-end-8 col-span-6 col-start-1 mb-6 ml-6 mt-5 md:col-span-12 md:col-start-1 lg:col-span-2 lg:col-start-7 lg:ml-0 lg:mt-0'>
             <p className='mb-2.5 font-bold uppercase text-neutral-800 dark:text-neutral-200'>
               Links
             </p>
@@ -74,7 +74,7 @@ export default function Footer(props: MyProps) {
               </li>
             </ul>
           </div>
-          <div className='col-span-6 col-start-1 ml-6 md:col-span-3 md:col-start-10 md:col-end-12 md:ml-0'>
+          <div className='col-span-6 col-start-1 ml-6 md:col-span-12 md:col-start-1 lg:col-span-3 lg:col-start-10 lg:col-end-12 lg:ml-0'>
             <NextImage
               useSkeleton
               className='md:[250px] w-60 lg:w-[300px]'

@@ -8,27 +8,27 @@ type MyProps = {
 export default function PointFeature(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+    <section className='max-w-screen mt-10 overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
       <div className=''>
         <div className='w-full'>
-          <div className='grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:gap-0 lg:mx-0 lg:max-w-none'>
-            <div className='col-span-12 px-5 md:col-span-8 md:col-start-2 md:px-10 lg:mt-20'>
-              <h2 className='px-5 text-center text-2xl md:text-start md:text-4xl'>
+          <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0'>
+            <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-8 lg:col-start-2 lg:mt-20 lg:px-10'>
+              <h2 className='px-5 text-center text-2xl md:text-center md:text-3xl lg:text-start lg:text-4xl'>
                 {featuredData?.featureTitle}
               </h2>
               <div
-                className='mt-5 px-2 text-start text-xs md:text-lg'
+                className='md:text-md mt-5 px-2 text-start text-xs md:text-center lg:text-lg'
                 dangerouslySetInnerHTML={{
                   __html: featuredData?.featureDescription,
                 }}
               ></div>
               {featuredData?.featuredDivLeft?.map((item: any, i: number) => (
-                <div className='container mt-5 px-2' key={i}>
-                  <h3 className='w-full text-xl leading-5 text-sky-950 md:w-[500px] md:text-2xl'>
+                <div className='mt-5 px-2 md:px-5' key={i}>
+                  <h3 className='w-full text-xl leading-5 text-sky-950 md:w-full md:text-xl lg:w-[500px] lg:text-2xl'>
                     {item?.title}
                   </h3>
                   <div
-                    className='text-xs md:w-[600px] md:text-lg'
+                    className='text-xs lg:w-[600px] lg:text-lg'
                     dangerouslySetInnerHTML={{
                       __html: item?.description,
                     }}
@@ -36,10 +36,10 @@ export default function PointFeature(props: MyProps) {
                 </div>
               ))}
             </div>
-            <div className='col-span-4 col-start-8 col-end-12  md:col-span-4 md:col-start-10'>
+            <div className='col-span-4 col-start-8 col-end-12  md:col-start-10 lg:col-span-4 lg:col-start-10'>
               <NextImage
                 useSkeleton
-                className='w-40 md:w-[100%]'
+                className='md:w-100 w-40 lg:w-[100%]'
                 width='600'
                 height='200'
                 src={featuredData?.imageRight?.sourceUrl}
@@ -48,28 +48,28 @@ export default function PointFeature(props: MyProps) {
             </div>
           </div>
 
-          <div className='mx-auto mt-10 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mt-20 lg:mx-0 lg:max-w-none'>
-            <div className='cols-end-12 md:col-span-5 md:col-start-1 md:col-end-5'>
+          <div className='mt-10 grid grid-cols-12 items-center justify-center gap-4 lg:mx-0 lg:mt-20 lg:max-w-none'>
+            <div className='cols-end-12 lg:col-span-5 lg:col-start-1 lg:col-end-5'>
               <NextImage
                 useSkeleton
-                className='w-40 md:w-[100%]'
+                className='w-100 w-40 lg:w-[100%]'
                 src={featuredData?.imageLeft?.sourceUrl}
                 alt={featuredData?.imageLeft?.altText}
                 width='500'
                 height='200'
               />
             </div>
-            <div className='col-span-12 ml-5 mt-5 pr-5 md:col-span-4 md:col-start-7'>
-              <div className='mx-auto md:px-10 lg:mt-20'>
-                <div className='mt-5 pb-10'>
+            <div className='col-span-12 ml-5 mt-5 pr-5 lg:col-span-4 lg:col-start-7'>
+              <div className='mx-auto lg:mt-20 lg:px-10'>
+                <div className='mt-5 pb-10 md:px-5'>
                   {featuredData?.featuredDivRight?.map(
                     (item: any, i: number) => (
                       <div className='container mt-5' key={i}>
-                        <h3 className='w-full text-xl leading-5 text-sky-950 md:w-[500px] md:text-2xl'>
+                        <h3 className='w-full text-xl leading-5 text-sky-950 lg:w-[500px] lg:text-2xl'>
                           {item?.title}
                         </h3>
                         <div
-                          className='text-xs md:w-[600px] md:text-lg'
+                          className='md:text-md text-xs md:w-full lg:w-[500px] lg:text-lg 2xl:w-[600px]'
                           dangerouslySetInnerHTML={{
                             __html: item?.description,
                           }}

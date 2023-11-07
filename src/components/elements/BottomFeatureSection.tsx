@@ -16,17 +16,19 @@ export default function BottomFeatureSection(props: MyProps) {
     >
       <div className='text-center'>
         <div
-          className='mt-5 leading-5'
+          className='text-md mt-5 px-5 leading-8 md:text-xl lg:mt-10'
           dangerouslySetInnerHTML={{
             __html: bottomSection?.featureTitle,
           }}
         ></div>
-        <div
-          className='container mx-auto mt-10'
-          dangerouslySetInnerHTML={{
-            __html: bottomSection?.featureDescription,
-          }}
-        ></div>
+        {bottomSection?.featureDescription && (
+          <div
+            className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-xs md:pb-0 lg:text-lg'
+            dangerouslySetInnerHTML={{
+              __html: bottomSection?.featureDescription,
+            }}
+          ></div>
+        )}
       </div>
     </section>
   );

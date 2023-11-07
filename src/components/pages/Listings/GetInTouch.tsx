@@ -1,14 +1,21 @@
 import React from 'react';
 
 type MyProps = {
-  title: string;
+  bottomSection: any;
 };
 export default function GetInTouch(props: MyProps) {
-  const { title } = props;
+  const { bottomSection } = props;
   return (
-    <section className="mt-40 flex min-h-[30vh] flex-col items-center overflow-x-hidden bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/get-in-touch.jpg')] bg-cover bg-no-repeat md:min-h-screen ">
+    <section
+      className='mt-40 flex min-h-[30vh] flex-col items-center overflow-x-hidden md:min-h-screen '
+      style={{
+        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
+        objectFit: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <h2 className='px-5 pt-5 text-center text-[16px] text-sky-950 md:pt-20 md:text-7xl'>
-        {title}
+        {bottomSection?.title}
       </h2>
       <div className='mt-5 text-center md:mt-10'>
         <a

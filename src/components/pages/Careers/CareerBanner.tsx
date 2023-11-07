@@ -13,33 +13,33 @@ export default function CareersBanner(props: MyProps) {
   const { bannerData, headerData, settingsData, topDesc, topTitle } = props;
   return (
     <div
-      className='relative h-[80vh] w-full bg-cover bg-no-repeat md:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-no-repeat lg:h-[100vh]'
       style={{
         backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
       <div className='mx-auto py-16'>
-        <div className='mx-auto mt-[50%] flex w-full flex-col items-center justify-center px-5 md:mt-[15%]  md:items-start md:px-10 md:pl-[10%]'>
-          <p className='w-full text-lg font-bold uppercase leading-5 text-white md:w-[500px] md:text-6xl'>
+        <div className='mx-auto mt-[50%] flex w-full flex-col items-center justify-center px-5 lg:mt-[15%]  lg:items-start lg:px-10 lg:pl-[10%]'>
+          <p className='w-full text-lg font-bold uppercase leading-5 text-white lg:w-[500px] lg:text-6xl'>
             {bannerData?.bannerHeading}
           </p>
           <div
-            className='mt-8 text-xl text-white md:text-3xl'
+            className='mt-8 text-xl text-white lg:text-3xl'
             dangerouslySetInnerHTML={{
               __html: bannerData?.bannerDescription,
             }}
           ></div>
         </div>
       </div>
-      <div className='container relative mx-auto bg-white py-3 text-center shadow md:mt-[300px]'>
+      <div className='container relative mx-auto mt-[40%] w-[80%] bg-white py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[15%]'>
         <div
-          className='mt-5'
+          className='md:text-md mt-5 text-xs lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: topDesc,
           }}
         ></div>
-        <p className='text-bolder mt-2 w-full text-xl md:text-2xl'>
+        <p className='text-bolder mt-2 w-full text-xl md:text-xl lg:text-2xl'>
           {topTitle}
         </p>
       </div>

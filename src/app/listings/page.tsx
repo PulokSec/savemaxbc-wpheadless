@@ -147,7 +147,7 @@ export default async function Listings({
           titleData={data?.pages?.nodes[0]?.listings?.listingSection}
         />
         <GetInTouch
-          title={data?.pages?.nodes[0]?.listings?.getInTouch?.title}
+          bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}
         />
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}

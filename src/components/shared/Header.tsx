@@ -32,7 +32,7 @@ export default function Header(props: MyProps) {
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5'>
+            <a href='/' className='-m-1.5 p-1.5'>
               <span className='sr-only'>Savemax</span>
               <Image
                 width='220'
@@ -110,7 +110,7 @@ export default function Header(props: MyProps) {
                     <a
                       key={item.label}
                       href={item.url}
-                      className='mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                      className='mx-3 block rounded-lg px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                     >
                       {item.label}
                     </a>
