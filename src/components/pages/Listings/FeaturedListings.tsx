@@ -44,12 +44,12 @@ export default function FeaturedListings(props: MyProps) {
     <div>
       <section className='mx-auto mt-20'>
         <div className='mt-20'>
-          <h2 className='text-center text-lg md:text-5xl'>
+          <h1 className='text-center text-lg md:text-5xl'>
             {titleData?.recentListingsTitle?.split(/ (.*)/)[0]}{' '}
             <span className='text-bold text-leading-3 text-[#525659]'>
               {titleData?.recentListingsTitle?.split(/ (.*)/)[1]}
             </span>
-          </h2>
+          </h1>
           <ListingCarousel posts={postData} />
         </div>
         <div className='mt-20'>

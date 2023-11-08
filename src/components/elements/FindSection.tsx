@@ -11,9 +11,9 @@ export default function FindSection(props: MyProps) {
   return (
     <section className='mt-40 lg:container md:px-10 lg:mx-auto'>
       <div className='text-center md:px-10 lg:w-full'>
-        <h2 className='px-5 text-center text-lg leading-5 text-[#525659] md:text-5xl'>
+        <h1 className='px-5 text-center text-lg leading-5 text-[#525659] md:text-5xl'>
           {featuredData?.topHead}
-        </h2>
+        </h1>
         <div
           className='mt-5 px-5 text-xs leading-5 md:text-lg'
           dangerouslySetInnerHTML={{

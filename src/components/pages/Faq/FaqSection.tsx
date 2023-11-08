@@ -15,9 +15,9 @@ export default function FaqSection(props: MyProps) {
       }}
     >
       <div className='col-span-12 ml-5 md:col-span-8 md:col-start-1 md:px-10 lg:py-20'>
-        <h2 className='text-center text-2xl md:text-4xl'>
+        <h1 className='text-center text-2xl md:text-4xl'>
           {faqData?.faqTitle}
-        </h2>
+        </h1>
         <div className='container mx-auto mt-20 flex flex-col items-center rounded shadow-xl'>
           <ul className=''>
             {faqData?.faqDataDiv?.map((item: any, i: number) => (

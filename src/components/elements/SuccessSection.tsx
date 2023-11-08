@@ -11,7 +11,7 @@ export default function SuccessSection(props: MyProps) {
     <section className='mt-10 px-5 md:px-10'>
       <div className='py-10 md:py-20'>
         <div className='mx-auto w-full'>
-          <div className='mx-auto mt-10 flex flex-col items-center justify-around gap-4 md:mt-20 md:flex-row md:px-10 lg:mx-0 lg:max-w-none'>
+          <div className=';lg:mt-20 mx-auto mt-10 flex flex-col items-center justify-around gap-4 md:mt-10 md:flex-col md:px-10 lg:mx-0 lg:max-w-none lg:flex-row'>
             <div className='flex flex-col items-start justify-center'>
               <div className='text-start lg:w-full'>
                 <h2 className='w-full text-start text-xl md:text-4xl'>

@@ -11,7 +11,7 @@ export default function JoinSection(props: MyProps) {
     <section className='mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/how-to-join-background.png")] bg-cover bg-no-repeat px-5 md:px-10'>
       <div className='py-10 md:py-20'>
         <div className='mx-auto w-full'>
-          <div className='container mx-auto mt-10 flex flex-col items-center justify-between gap-4 px-10 md:mt-20 md:flex-row lg:mx-0 lg:max-w-none'>
+          <div className='container mx-auto mt-10 flex flex-col items-center justify-between gap-4 px-10 md:mt-10 md:flex-col lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row'>
             <div className=''>
               <NextImage
                 useSkeleton

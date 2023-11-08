@@ -12,13 +12,13 @@ export default function AboutFeature(props: MyProps) {
       <section>
         <div className='py-10 md:py-20'>
           <div className=' flex w-full flex-col items-center justify-center text-center md:px-10'>
-            <h2 className='w-full text-center md:w-[1000px]'>
+            <h1 className='w-full text-center md:w-[1000px]'>
               {' '}
               <span className='text-2xl leading-5 text-[#525659] md:text-5xl'>
                 {featureSection?.topHead}
               </span>{' '}
               {featureSection?.subHead}
-            </h2>
+            </h1>
           </div>
           <div className='mx-auto mt-40 w-full md:mt-80'>
             {featureSection?.featuredData?.map((item: any, i: number) =>
