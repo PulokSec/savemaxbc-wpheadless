@@ -12,7 +12,7 @@ export default function ServicePointFeature(props: MyProps) {
       <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0'>
         <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-8 lg:col-start-2 lg:mt-20 lg:px-10'>
           {featuredData?.featuredDivLeft?.map(
-            (item: any, i: number, { length }) => (
+            (item: any, i: number, { length }: { length: number }) => (
               <li key={i} className='mb-10 list-none text-left'>
                 <div className='flex items-center justify-center'>
                   <div className='flex flex-col items-center justify-center'>
@@ -71,7 +71,7 @@ export default function ServicePointFeature(props: MyProps) {
           <div className='lg:mt-20'>
             <div className='mt-5 pb-10'>
               {featuredData?.featuredDivRight?.map(
-                (item: any, i: number, { length }) => (
+                (item: any, i: number, { length }: { length: number }) => (
                   <li key={i} className='mb-10 list-none text-left'>
                     <div className='flex items-center justify-center'>
                       <div
