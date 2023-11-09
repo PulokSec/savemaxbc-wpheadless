@@ -35,14 +35,14 @@ export default function SharedBanner(props: MyProps) {
         </div>
       </div>
       {topTitle && topDesc && (
-        <div className='container relative mx-auto mt-[40%] w-[80%] bg-white py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[10%]'>
+        <div className='container relative mx-auto mt-[40%] w-[80%] bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
           <div
             className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
             dangerouslySetInnerHTML={{
               __html: topDesc,
             }}
           ></div>
-          <p className='text-bolder mt-2 w-full text-xl md:text-xl lg:text-2xl'>
+          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
             {topTitle}
           </p>
         </div>
