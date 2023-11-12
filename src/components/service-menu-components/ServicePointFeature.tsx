@@ -44,12 +44,11 @@ export default function ServicePointFeature(props: MyProps) {
             )
           )}
         </div>
-        <div className='col-span-4 col-start-8 col-end-12  md:col-start-10 lg:col-span-4 lg:col-start-10'>
+        <div className='cover relative col-span-4  col-start-8 col-end-12 mt-5 h-60 w-40 md:col-start-10 lg:col-span-4 lg:col-start-10 lg:h-[85%] lg:w-full'>
           <NextImage
             useSkeleton
-            className='md:w-100 cover w-40 lg:w-[100%]'
-            width='600'
-            height='200'
+            className='cover'
+            layout='fill'
             src={featuredData?.featuredImageRight?.sourceUrl}
             alt={featuredData?.featuredImageRight?.altText}
           />
@@ -57,14 +56,13 @@ export default function ServicePointFeature(props: MyProps) {
       </div>
 
       <div className='lg:max-w-screen mt-10 grid grid-cols-12 items-center justify-center lg:mx-0 lg:mt-20 lg:gap-5'>
-        <div className='cols-span-12 lg:col-span-4 lg:col-end-4'>
+        <div className='cols-span-12 md:w-100 relative mt-5 h-60 w-40 lg:col-span-4 lg:col-end-4 lg:h-[85%] lg:w-[100%]'>
           <NextImage
             useSkeleton
-            className='md:w-100 cover w-40 lg:w-[100%]'
             src={featuredData?.featuredImageLeft?.sourceUrl}
             alt={featuredData?.featuredImageLeft?.altText}
-            width='500'
-            height='200'
+            className='cover'
+            layout='fill'
           />
         </div>
         <div className='col-span-12 mt-5 px-5 md:px-5 lg:col-span-7 lg:col-start-4 lg:col-end-12'>

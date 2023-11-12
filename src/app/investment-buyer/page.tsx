@@ -10,7 +10,7 @@ import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 445 }) {
+    pages(where: { id: 544 }) {
       nodes {
         seo {
           title
@@ -26,7 +26,7 @@ const query = gql`
             raw
           }
         }
-        commercialBuyers {
+        InvestmentBuyer {
           bannerSection {
             bannerImage {
               sourceUrl
@@ -172,7 +172,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function CommercialBuyers() {
+export default async function InvestmentBuyer() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -186,25 +186,25 @@ export default async function CommercialBuyers() {
     <>
       <main>
         <SharedBanner
-          bannerData={data?.pages?.nodes[0]?.commercialBuyers?.bannerSection}
+          bannerData={data?.pages?.nodes[0]?.InvestmentBuyer?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-          topTitle={data?.pages?.nodes[0]?.commercialBuyers?.topFeatureTitle}
+          topTitle={data?.pages?.nodes[0]?.InvestmentBuyer?.topFeatureTitle}
           topDesc={
-            data?.pages?.nodes[0]?.commercialBuyers?.topFeatureDescription
+            data?.pages?.nodes[0]?.InvestmentBuyer?.topFeatureDescription
           }
         />
         <div className='mt-80 md:mt-40 lg:mt-40'>
           <div className='text-center'>
             <h1 className='w-full text-center text-xl text-[#585858] md:text-2xl lg:text-3xl'>
               {
-                data?.pages?.nodes[0]?.commercialBuyers?.serviceFeatureSection
+                data?.pages?.nodes[0]?.InvestmentBuyer?.serviceFeatureSection
                   ?.featureTitle
               }
             </h1>
             <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {
-                data?.pages?.nodes[0]?.commercialBuyers?.serviceFeatureSection
+                data?.pages?.nodes[0]?.InvestmentBuyer?.serviceFeatureSection
                   ?.featureSubtitle
               }
             </h2>
@@ -212,11 +212,11 @@ export default async function CommercialBuyers() {
         </div>
         <ServicePointFeature
           featuredData={
-            data?.pages?.nodes[0]?.commercialBuyers?.serviceFeatureSection
+            data?.pages?.nodes[0]?.InvestmentBuyer?.serviceFeatureSection
           }
         />
         <BottomServiceSection
-          bottomSection={data?.pages?.nodes[0]?.commercialBuyers?.bottomSection}
+          bottomSection={data?.pages?.nodes[0]?.InvestmentBuyer?.bottomSection}
         />
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}

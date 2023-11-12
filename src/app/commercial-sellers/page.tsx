@@ -196,13 +196,13 @@ export default async function CommercialSellers() {
         />
         <div className='mt-80 md:mt-40 lg:mt-40'>
           <div className='text-center'>
-            <h1 className='w-full text-center text-xl md:text-2xl lg:text-3xl'>
+            <h1 className='w-full text-center text-xl text-[#585858] md:text-2xl lg:text-3xl'>
               {
                 data?.pages?.nodes[0]?.commercialSellers?.serviceFeatureSection
                   ?.featureTitle
               }
             </h1>
-            <h2 className='w-full text-center text-2xl text-[#585858] md:text-3xl lg:text-5xl'>
+            <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {
                 data?.pages?.nodes[0]?.commercialSellers?.serviceFeatureSection
                   ?.featureSubtitle
