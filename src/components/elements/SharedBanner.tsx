@@ -46,20 +46,37 @@ export default function SharedBanner(props: MyProps) {
           )}
         </div>
       </div>
-      {topTitle ||
-        (topDesc && (
-          <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
-            <div
-              className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
-              dangerouslySetInnerHTML={{
-                __html: topDesc,
-              }}
-            ></div>
-            <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
-              {topTitle}
-            </p>
-          </div>
-        ))}
+      {topTitle && topDesc ? (
+        <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[13%]'>
+          <div
+            className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
+            dangerouslySetInnerHTML={{
+              __html: topDesc,
+            }}
+          ></div>
+          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+            {topTitle}
+          </p>
+        </div>
+      ) : topTitle ? (
+        <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
+          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+            {topTitle}
+          </p>
+        </div>
+      ) : topDesc ? (
+        <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
+          <div
+            className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
+            dangerouslySetInnerHTML={{
+              __html: topDesc,
+            }}
+          ></div>
+          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+            {topTitle}
+          </p>
+        </div>
+      ) : null}
       {usingFor === 'seller' && (
         <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] lg:py-10 xl:mt-[5%] 2xl:mt-[16%]'>
           <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
