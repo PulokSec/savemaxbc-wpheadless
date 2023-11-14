@@ -3,8 +3,6 @@ import { Dialog } from '@headlessui/react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
-// import { BsFacebook } from 'react-icons/bs';
-// import { BsInstagram } from 'react-icons/bs';
 import { BsTelephone } from 'react-icons/bs';
 import { HiMenu } from 'react-icons/hi';
 import { RxCross2 } from 'react-icons/rx';
@@ -14,19 +12,13 @@ type MyProps = {
   settingsData: any;
 };
 export default function Header(props: MyProps) {
+  const [open, setOpen] = useState(false);
   const { navigation, settingsData } = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  console.log(navigation);
   return (
     <div className='bg-dark fixed top-0 z-10 w-full shadow'>
-      {/* <div className='flex items-center justify-end gap-4'>
-        <a href='#' className='text-lg font-bold leading-10 text-white'>
-          <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
-        </a>
-        <a href='#' className='text-lg font-bold leading-10 text-white'>
-          <BsTelephone className='h-5 w-5' aria-hidden='true' />
-        </a>
-      </div> */}
-      <header className='max-w-screen z-50 overflow-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/menu-bg.png")] bg-cover shadow-md'>
+      <header className='max-w-screen bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/menu-bg.png")] bg-cover shadow-md'>
         <nav
           className='flex items-center justify-between px-10 py-3'
           aria-label='Global'
@@ -53,22 +45,74 @@ export default function Header(props: MyProps) {
             </button>
           </div>
           <div className='hidden items-center justify-center lg:flex lg:gap-x-12'>
-            {navigation?.map((item: any) => (
-              <a
-                key={item.label}
-                href={item.url}
-                className='text-sm font-bold uppercase leading-10 text-white hover:text-[#B48237]'
-              >
-                {item.label}
-              </a>
-            ))}
+            {navigation?.map((item: any) => {
+              if (item?.parentId === null) {
+                return (
+                  <div key={item.label} className='relative'>
+                    <a
+                      href={item.url}
+                      onMouseOver={() =>
+                        item?.childItems?.nodes?.length > 0
+                          ? setOpen(true)
+                          : setOpen(false)
+                      }
+                      className={`flex items-center justify-center gap-1 text-lg font-bold leading-10  hover:text-[#B48237] ${
+                        item?.childItems?.nodes?.length > 0 && open
+                          ? 'text-[#B48237]'
+                          : 'text-white'
+                      }`}
+                    >
+                      {item.label}
+                      {item?.childItems?.nodes?.length > 0 && (
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          strokeWidth={1.5}
+                          stroke='currentColor'
+                          className='h-4 w-4'
+                        >
+                          <path
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            d='M19.5 8.25l-7.5 7.5-7.5-7.5'
+                          />
+                        </svg>
+                      )}
+                    </a>
+                    <ul
+                      className={`absolute right-0 z-10 mt-2 flex w-40 flex-col rounded-lg bg-[#0D1524] py-2 shadow-xl ${
+                        item?.childItems?.nodes?.length > 0 && open
+                          ? 'block'
+                          : 'hidden'
+                      }`}
+                    >
+                      {item.childItems.nodes.map((submenu: any) => {
+                        return (
+                          <a
+                            key={submenu.label}
+                            href={submenu.uri}
+                            className='"flex hover:bg-gray-100" w-full items-center px-3 py-2 text-sm text-white hover:text-[#B48237]'
+                          >
+                            {submenu.label}
+                          </a>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              }
+              return null;
+            })}
             <a
+              onMouseOver={() => setOpen(false)}
               href='#'
               className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
             >
               <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
             </a>
             <a
+              onMouseOver={() => setOpen(false)}
               href='#'
               className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
             >
@@ -106,24 +150,76 @@ export default function Header(props: MyProps) {
             <div className='mt-6 flow-root'>
               <div className='-my-6 divide-y divide-gray-500/10'>
                 <div className='space-y-2 py-6'>
-                  {navigation.map((item: any) => (
-                    <a
-                      key={item.label}
-                      href={item.url}
-                      className='mx-3 block rounded-lg px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
-                    >
-                      {item.label}
-                    </a>
-                  ))}
+                  {navigation?.map((item: any) => {
+                    if (item?.parentId === null) {
+                      return (
+                        <div key={item.label} className='relative'>
+                          <a
+                            href={item.url}
+                            onMouseOver={() =>
+                              item?.childItems?.nodes?.length > 0
+                                ? setOpen(true)
+                                : setOpen(false)
+                            }
+                            className={`flex items-center justify-start gap-1 text-lg font-bold leading-7 text-gray-900 hover:bg-gray-50  hover:text-[#B48237] ${
+                              item?.childItems?.nodes?.length > 0 && open
+                                ? 'text-[#B48237]'
+                                : 'text-gray-900'
+                            }`}
+                          >
+                            {item.label}
+                            {item?.childItems?.nodes?.length > 0 && (
+                              <svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                fill='none'
+                                viewBox='0 0 24 24'
+                                strokeWidth={1.5}
+                                stroke='currentColor'
+                                className='h-4 w-4'
+                              >
+                                <path
+                                  strokeLinecap='round'
+                                  strokeLinejoin='round'
+                                  d='M19.5 8.25l-7.5 7.5-7.5-7.5'
+                                />
+                              </svg>
+                            )}
+                          </a>
+                          <div
+                            className={`relative ${
+                              item?.childItems?.nodes?.length > 0 && open
+                                ? 'block'
+                                : 'hidden'
+                            }`}
+                          >
+                            {item.childItems.nodes.map((submenu: any) => {
+                              return (
+                                <a
+                                  key={submenu.label}
+                                  href={submenu.uri}
+                                  className='flex items-center justify-start gap-1 text-lg font-bold leading-7 text-gray-900 hover:bg-gray-50  hover:text-[#B48237]'
+                                >
+                                  {submenu.label}
+                                </a>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })}
                   <a
+                    onMouseOver={() => setOpen(false)}
                     href='#'
-                    className='mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                    className=' block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                   >
                     <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
                   </a>
                   <a
+                    onMouseOver={() => setOpen(false)}
                     href='#'
-                    className='mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                    className='block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                   >
                     <BsTelephone className='h-5 w-5' aria-hidden='true' />
                   </a>

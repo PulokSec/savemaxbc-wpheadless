@@ -13,7 +13,7 @@ export default function ListingCarousel(props: MyProps) {
 
   return (
     <>
-      <div className='mt-10'>
+      <div className='mt-20'>
         <CarouselComponent>
           {posts?.map(({ post, cardImageUrl }: any) => (
             <div

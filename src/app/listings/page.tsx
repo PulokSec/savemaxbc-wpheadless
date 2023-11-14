@@ -145,6 +145,7 @@ export default async function Listings({
         <FeaturedListings
           allPosts={allPosts?.listings}
           titleData={data?.pages?.nodes[0]?.listings?.listingSection}
+          usingFor='listings'
         />
         <GetInTouch
           bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}

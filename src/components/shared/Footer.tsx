@@ -1,5 +1,6 @@
+'use client';
 import { LucideMailOpen } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineInstagram, AiOutlineTwitter } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
 import { MdLocationCity, MdPhoneInTalk } from 'react-icons/md';
@@ -11,6 +12,7 @@ type MyProps = {
   settingsData: any;
 };
 export default function Footer(props: MyProps) {
+  const [open, setOpen] = useState(false);
   const { navigation, settingsData } = props;
   return (
     <div>
@@ -66,7 +68,7 @@ export default function Footer(props: MyProps) {
             <ul className='mb-0 list-none'>
               <li className='mb-2 ml-1 mt-10'>
                 <a
-                  href='#'
+                  href='/faq'
                   className='text-neutral-600 hover:text-[#B48237] dark:text-neutral-300 '
                 >
                   FAQ

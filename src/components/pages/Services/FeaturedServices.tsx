@@ -13,7 +13,7 @@ export default function FeaturedServices(props: MyProps) {
     <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/Middle_part_bg.png")] bg-cover bg-no-repeat'>
       <section>
         <div className='py-10 md:py-20'>
-          <h2 className='text-center text-lg md:text-5xl'>{featuredTitle}</h2>
+          <h1 className='text-center text-lg md:text-5xl'>{featuredTitle}</h1>
           <div className='mx-auto w-full'>
             {featuredData?.map((item: any, i: number) =>
               i % 2 == 0 ? (
