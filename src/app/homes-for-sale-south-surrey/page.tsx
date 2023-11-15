@@ -6,6 +6,9 @@ import { getAllProperties } from '@/lib/dataFetching';
 
 import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 import CardSection from '@/components/pages/Locations/CardSection';
+import ChoiceBanner from '@/components/pages/Locations/ChoiceBanner';
+import ChoiceSection from '@/components/pages/Locations/ChoiceSection';
+import EssentialSection from '@/components/pages/Locations/EssentialSection';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import OfferBanner from '@/components/pages/Locations/OfferBanner';
 import Footer from '@/components/shared/Footer';
@@ -261,28 +264,42 @@ export default async function SouthSurrey() {
   return (
     <>
       <main>
-        <LocationBanner
-          bannerData={data?.pages?.nodes[0]?.southSurrey?.bannerSection}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-          topTitle={data?.pages?.nodes[0]?.southSurrey?.topFeatureTitle}
-          topDesc={data?.pages?.nodes[0]?.southSurrey?.topFeatureDescription}
-        />
-        <FeaturedListings
-          allPosts={allPosts?.listings}
-          titleData={data?.pages?.nodes[0]?.southSurrey?.listingSection}
-          topHead={data?.pages?.nodes[0]?.southSurrey?.listingSection?.topHead}
-          listingDescription={
-            data?.pages?.nodes[0]?.southSurrey?.listingSection
-              ?.listingDescription
-          }
-        />
-        <CardSection
-          cardSection={data?.pages?.nodes[0]?.southSurrey?.cardSection}
-        />
-        <OfferBanner
-          offerBannerData={data?.pages?.nodes[0]?.southSurrey?.offerBanner}
-        />
+        <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/Middle_part_bg.png")] bg-cover bg-no-repeat'>
+          <LocationBanner
+            bannerData={data?.pages?.nodes[0]?.southSurrey?.bannerSection}
+            headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
+            settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
+            topTitle={data?.pages?.nodes[0]?.southSurrey?.topFeatureTitle}
+            topDesc={data?.pages?.nodes[0]?.southSurrey?.topFeatureDescription}
+          />
+          <FeaturedListings
+            allPosts={allPosts?.listings}
+            titleData={data?.pages?.nodes[0]?.southSurrey?.listingSection}
+            topHead={
+              data?.pages?.nodes[0]?.southSurrey?.listingSection?.topHead
+            }
+            listingDescription={
+              data?.pages?.nodes[0]?.southSurrey?.listingSection
+                ?.listingDescription
+            }
+          />
+          <CardSection
+            cardSection={data?.pages?.nodes[0]?.southSurrey?.cardSection}
+          />
+          <OfferBanner
+            offerBannerData={data?.pages?.nodes[0]?.southSurrey?.offerBanner}
+            featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
+          />
+          <ChoiceBanner
+            choiceBannerData={data?.pages?.nodes[0]?.southSurrey?.choiceBanner}
+          />
+          <ChoiceSection
+            featuredData={data?.pages?.nodes[0]?.southSurrey?.choiceSection}
+          />
+          <EssentialSection
+            featuredData={data?.pages?.nodes[0]?.southSurrey?.essentialSection}
+          />
+        </div>
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
