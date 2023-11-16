@@ -9,8 +9,10 @@ import CardSection from '@/components/pages/Locations/CardSection';
 import ChoiceBanner from '@/components/pages/Locations/ChoiceBanner';
 import ChoiceSection from '@/components/pages/Locations/ChoiceSection';
 import EssentialSection from '@/components/pages/Locations/EssentialSection';
+import HomeBuyingProcess from '@/components/pages/Locations/HomebuyingProcess';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import OfferBanner from '@/components/pages/Locations/OfferBanner';
+import OfferSection from '@/components/pages/Locations/OfferSection';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
@@ -65,6 +67,10 @@ const query = gql`
             offerSubtitle
             offerDescription
             backgroundImage {
+              sourceUrl
+              altText
+            }
+            offerImage {
               sourceUrl
               altText
             }
@@ -290,11 +296,17 @@ export default async function SouthSurrey() {
             offerBannerData={data?.pages?.nodes[0]?.southSurrey?.offerBanner}
             featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
           />
+          <OfferSection
+            featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
+          />
           <ChoiceBanner
             choiceBannerData={data?.pages?.nodes[0]?.southSurrey?.choiceBanner}
           />
           <ChoiceSection
             featuredData={data?.pages?.nodes[0]?.southSurrey?.choiceSection}
+          />
+          <HomeBuyingProcess
+            featuredData={data?.pages?.nodes[0]?.southSurrey?.homebuyingSection}
           />
           <EssentialSection
             featuredData={data?.pages?.nodes[0]?.southSurrey?.essentialSection}

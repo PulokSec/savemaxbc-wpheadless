@@ -7,33 +7,30 @@ export default function ChoiceBanner(props: MyProps) {
   const { choiceBannerData } = props;
   console.log(choiceBannerData);
   return (
-    <div
-      className='relative mt-20 w-full bg-cover bg-center'
-      style={{
-        backgroundImage: `url(${choiceBannerData?.bannerImage?.sourceUrl})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-      }}
-    >
-      <section>
-        <div className='container mx-auto py-20 md:py-40'>
-          <div className=' mt-80 flex w-full flex-col items-center justify-center text-center md:px-10'>
-            <h2 className='w-full text-center text-xl leading-5 md:text-2xl lg:text-4xl'>
-              {' '}
-              <span className='mb-5 text-2xl leading-5 md:text-3xl lg:text-6xl'>
-                {choiceBannerData?.bannerTitle} <br />
-              </span>
+    <div>
+      <div
+        style={{
+          background: `url(${choiceBannerData?.bannerImage?.sourceUrl}) no-repeat center center`,
+          backgroundSize: '100% 100%',
+        }}
+        className='mb-10 mt-10 h-[45vh] lg:mt-20'
+      >
+        <div className='mx-auto max-w-[1250px] p-3 py-36 text-center '>
+          <h2 className='text-[40px] font-semibold'>
+            {choiceBannerData?.bannerTitle} <br />
+            <span className='text-[30px] font-semibold'>
               {choiceBannerData?.bannerSubtitle}
-            </h2>
-            <div
-              className='mt-10 text-center text-xs md:text-lg'
-              dangerouslySetInnerHTML={{
-                __html: choiceBannerData?.bannerDescription,
-              }}
-            ></div>
-          </div>
+            </span>
+          </h2>
+
+          <div
+            className='mx-auto w-full md:w-2/4'
+            dangerouslySetInnerHTML={{
+              __html: choiceBannerData?.bannerDescription,
+            }}
+          ></div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
