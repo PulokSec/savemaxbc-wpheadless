@@ -17,7 +17,7 @@ export default function Header(props: MyProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   console.log(navigation);
   return (
-    <div className='bg-dark fixed top-0 z-10 w-full shadow'>
+    <div className='bg-dark fixed top-0 z-50 w-full shadow'>
       <header className='max-w-screen bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/menu-bg.png")] bg-cover shadow-md'>
         <nav
           className='flex items-center justify-between px-10 py-3'
