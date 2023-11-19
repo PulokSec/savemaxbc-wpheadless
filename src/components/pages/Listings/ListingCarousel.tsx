@@ -33,9 +33,9 @@ export default function ListingCarousel(props: MyProps) {
                 />
               </div>
               <div className=''>
-                <h3 className='mt-2 text-xl font-semibold text-black'>
+                <p className='mt-2 text-xl font-semibold text-black'>
                   {post?.StreetAddress}
-                </h3>
+                </p>
                 <p className='mt-2 text-[12px] capitalize text-gray-500'>
                   {post?.City}/{post?.Province}
                 </p>

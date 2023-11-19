@@ -20,13 +20,13 @@ export default function OfferBanner(props: MyProps) {
         <div className='pb-30 mx-auto max-w-[1250px] p-3 py-20'>
           <h2 className='text-[30px] font-semibold'>
             {offerBannerData?.offerTitle} <br />
-            <span className='text-[40px]'>
+            <span className='mt-5 text-[40px]'>
               {offerBannerData?.offerSubtitle}
             </span>
           </h2>
 
           <div
-            className='md:w-2/4'
+            className='mt-5 md:w-2/4'
             dangerouslySetInnerHTML={{
               __html: offerBannerData?.offerDescription,
             }}

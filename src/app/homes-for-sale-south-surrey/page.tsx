@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { getClient } from '@/lib/apollo';
 import { getAllProperties } from '@/lib/dataFetching';
 
+import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
 import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 import CardSection from '@/components/pages/Locations/CardSection';
 import ChoiceBanner from '@/components/pages/Locations/ChoiceBanner';
@@ -310,6 +311,9 @@ export default async function SouthSurrey() {
           />
           <EssentialSection
             featuredData={data?.pages?.nodes[0]?.southSurrey?.essentialSection}
+          />
+          <BottomFeatureSection
+            bottomSection={data?.pages?.nodes[0]?.southSurrey?.bottomSection}
           />
         </div>
         <Footer

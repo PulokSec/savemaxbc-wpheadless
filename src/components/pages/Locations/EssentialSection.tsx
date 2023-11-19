@@ -11,13 +11,15 @@ export default function EssentialSection(props: MyProps) {
   return (
     <div>
       <div className='mx-auto mt-10 max-w-[1250px] p-3 lg:mt-20'>
-        <h2 className='text-center text-[30px] font-semibold'>
+        <h2 className='text-center text-[20px] font-semibold xl:text-[30px]'>
           {featuredData?.featureTitle} <br />
-          <span className='text-[40px]'>{featuredData?.featureSubtitle}</span>
+          <span className='text-[30px] xl:text-[40px]'>
+            {featuredData?.featureSubtitle}
+          </span>
         </h2>
 
         <div
-          className='mx-auto text-center md:w-2/4'
+          className='mx-auto mt-5 text-center md:w-2/4'
           dangerouslySetInnerHTML={{
             __html: featuredData?.featureDescription,
           }}
