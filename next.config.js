@@ -15,6 +15,7 @@ const nextConfig = {
       "savemaxbc.com",
       "ddfcdn.realtor.ca",
       "savemaxheadlessdemo.csoft.ca",
+      "secure.gravatar.com",
     ],
   },
   async headers() {

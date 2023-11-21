@@ -1,11 +1,13 @@
 'use client';
 import { Dialog } from '@headlessui/react';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsTelephone } from 'react-icons/bs';
 import { HiMenu } from 'react-icons/hi';
 import { RxCross2 } from 'react-icons/rx';
+
+import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
 
 type MyProps = {
   navigation: any;
@@ -15,6 +17,10 @@ export default function Header(props: MyProps) {
   const [open, setOpen] = useState(false);
   const { navigation, settingsData } = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const domNode: any = useRef();
+  UseClickOutside(domNode.current, () => {
+    setOpen(false);
+  });
   console.log(navigation);
   return (
     <div className='bg-dark fixed top-0 z-50 w-full shadow'>
@@ -44,7 +50,10 @@ export default function Header(props: MyProps) {
               <HiMenu className='h-6 w-6' aria-hidden='true' />
             </button>
           </div>
-          <div className='hidden items-center justify-center lg:flex lg:gap-x-12'>
+          <div
+            className='hidden items-center justify-center lg:flex lg:gap-x-12'
+            ref={domNode}
+          >
             {navigation?.map((item: any) => {
               if (item?.parentId === null) {
                 return (

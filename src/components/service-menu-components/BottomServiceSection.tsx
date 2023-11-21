@@ -9,9 +9,8 @@ export default function BottomServiceSection(props: MyProps) {
     <section
       className='mt-40 flex min-h-[30vh] flex-col items-center justify-between  md:min-h-screen'
       style={{
-        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
-        objectFit: 'cover',
-        backgroundRepeat: 'no-repeat',
+        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})no-repeat center center`,
+        backgroundSize: '100% 100%',
       }}
     >
       <div

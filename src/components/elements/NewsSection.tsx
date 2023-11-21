@@ -11,13 +11,11 @@ export default function NewsSection(props: MyProps) {
   console.log(newsSection);
   return (
     <div>
-      <div
-        className={` hidden bg-no-repeat  text-white md:block md:pt-[270px]`}
-      >
+      <div className={` hidden bg-no-repeat  text-white md:block`}>
         <div className='mx-auto mt-10 max-w-[1250px] p-3'>
-          <div className='my-10 mt-36 grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-20'>
+          <div className='my-10 mt-16 grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-20'>
             {newsSection?.map((newsData: any, idx: any) => (
-              <NewsCard newsData={newsData} key={idx} />
+              <NewsCard newsData={newsData} index={idx + 1} key={idx} />
             ))}
           </div>
         </div>

@@ -6,29 +6,57 @@ import newsImage from '@/assets/news/newsPic.jpeg';
 
 type MyProps = {
   newsData: any;
+  index?: any;
 };
 const NewsCard = (props: MyProps) => {
-  const { newsData } = props;
+  const { newsData, index } = props;
+  const timeStamp = new Date(newsData?.date);
+  const day = timeStamp.getDate();
+  const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
+    timeStamp
+  );
+  const year = timeStamp.getFullYear();
+
+  // Create the formatted date string
+  const date = `${day} ${month} ${year}`;
   return (
-    <div className='border-2  bg-white'>
-      <a href={newsData?.uri} className='cursor-pointer'>
+    <div
+      className={`${
+        index % 3 === 0 && (index + 1) % 3 === 0
+          ? 'overflow-hidden rounded-t-xl border-2 border-gray-300'
+          : 'overflow-hidden rounded-t-xl border-2 border-gray-300'
+      }
+     
+  `}
+    >
+      <NextImage
+        layout='fill'
+        className='relative h-[250px] w-full'
+        src={newsData?.featuredImage?.node?.sourceUrl || newsImage}
+        alt={newsData?.featuredImage?.node?.altText || 'news'}
+      />
+      <div className='flex items-center justify-between px-4'>
+        <p className='text-[12px] text-black'>{date}</p>
         <NextImage
           layout='fill'
-          className='relative h-[250px] w-full'
-          src={newsData?.featuredImage?.node?.sourceUrl || newsImage}
-          alt={newsData?.featuredImage?.node?.altText || 'news'}
+          className='cover relative mt-[-35px] h-[70px] w-[70px] overflow-hidden rounded-full border-2 border-gray-300'
+          src={newsData?.author?.node?.avatar?.url}
+          alt='author'
         />
-
-        <div className='desc p-3 text-center text-black'>
-          <h3 className='text-[20px]'>{newsData?.title}</h3>
-          <p className='text-[12px]'>{newsData?.author?.node?.name}</p>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: newsData?.excerpt,
-            }}
-          ></div>
-        </div>
-      </a>
+      </div>
+      <div className='desc p-3 text-start text-black'>
+        <h3 className='text-[20px]'>{newsData?.title}</h3>
+        <p className='text-[12px]'>{newsData?.author?.node?.name}</p>
+        <div
+          className='overflow-hidden'
+          dangerouslySetInnerHTML={{
+            __html: newsData?.excerpt,
+          }}
+        ></div>
+        <a href={newsData?.uri} className='cursor-pointer'>
+          <p className='text-[14px] font-bold'>Read More ...</p>
+        </a>
+      </div>
     </div>
   );
 };

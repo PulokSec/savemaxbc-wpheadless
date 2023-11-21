@@ -9,9 +9,8 @@ export default function BottomFeatureSection(props: MyProps) {
     <section
       className='bg-20 mt-40 flex min-h-[30vh] flex-col items-center overflow-x-hidden md:min-h-screen md:justify-between'
       style={{
-        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
-        objectFit: 'cover',
-        backgroundRepeat: 'no-repeat',
+        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl}) no-repeat center center`,
+        backgroundSize: '100% 100%',
       }}
     >
       <div className='mt-10 text-center xl:mt-20'>

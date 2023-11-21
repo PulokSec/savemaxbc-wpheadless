@@ -16,7 +16,7 @@ export default function Footer(props: MyProps) {
   const { navigation, settingsData } = props;
   return (
     <div>
-      <footer className="bg-[url('https://savemaxbc.com/wp-content/uploads/2023/09/footer.png')] bg-cover bg-right bg-no-repeat py-6">
+      <footer className="bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/11/footer.png')] bg-cover bg-right bg-no-repeat py-6">
         <div className='mx-auto mt-5 grid justify-center gap-4 py-6 md:mt-10 md:grid-cols-12'>
           <div className='col-start-l col-span-12 ml-6 md:col-span-12 md:col-start-1 lg:col-start-2 lg:col-end-4 lg:ml-0'>
             <div className='w-full text-white'>

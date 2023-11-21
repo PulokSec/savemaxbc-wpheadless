@@ -3,9 +3,7 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
-import NewsSection from '@/components/elements/NewsSection';
-import ServiceBanner from '@/components/pages/Services/ServiceBanner';
+import BlogBanner from '@/components/elements/BlogBanner';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
@@ -24,22 +22,6 @@ const query = gql`
           }
           jsonLd {
             raw
-          }
-        }
-        news {
-          bannerSection {
-            bannerImage {
-              sourceUrl
-            }
-            bannerHeading
-            bannerButton
-          }
-          bottomSection {
-            featureTitle
-            backgroundImage {
-              sourceUrl
-            }
-            linkText
           }
         }
       }
@@ -101,38 +83,6 @@ const query = gql`
         }
       }
     }
-    posts {
-      nodes {
-        author {
-          node {
-            avatar {
-              url
-            }
-            name
-          }
-        }
-        excerpt(format: RENDERED)
-        title(format: RENDERED)
-        uri
-        date
-        featuredImage {
-          node {
-            altText
-            sourceUrl
-          }
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-        hasPreviousPage
-        offsetPagination {
-          total
-          hasPrevious
-          hasMore
-        }
-      }
-    }
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
@@ -180,7 +130,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function News() {
+export default async function SingleNews({
+  params,
+}: {
+  params: { newsId: string };
+}) {
   const { data } = await getClient().query({
     query,
     context: {
@@ -189,19 +143,71 @@ export default async function News() {
       },
     },
   });
-  console.log(data);
+  const singleQuery = gql`
+    query {
+      post(id: "${params.newsId}", idType: URI) {
+        author {
+          node {
+            avatar {
+              url
+            }
+            name
+          }
+        }
+        content(format: RENDERED)
+        title(format: RENDERED)
+        featuredImage {
+          node {
+            altText
+            sourceUrl
+          }
+        }
+        date
+      }
+    }
+  `;
+  const singleBlog = await getClient().query({
+    query: singleQuery,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
+  });
+
+  const timeStamp = new Date(singleBlog?.data?.post?.date);
+  const day = timeStamp.getDate();
+  const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
+    timeStamp
+  );
+  const year = timeStamp.getFullYear();
+
+  // Create the formatted date string
+  const date = `${day} ${month} ${year}`;
   return (
     <>
       <main>
-        <ServiceBanner
-          bannerData={data?.pages?.nodes[0]?.news?.bannerSection}
+        <BlogBanner
+          bannerImage={singleBlog?.data?.post?.featuredImage?.node}
+          bannerHeading={singleBlog?.data?.post?.title}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <NewsSection newsSection={data?.posts?.nodes} />
-        <BottomFeatureSection
-          bottomSection={data?.pages?.nodes[0]?.news?.bottomSection}
-        />
+        <div className='mx-auto mt-10 max-w-[1250px] p-3 leading-5'>
+          <h1 className='mb-5 text-4xl font-bold'>
+            {singleBlog?.data?.post?.title}
+          </h1>
+          <p className='mb-5 text-sm'>{date}</p>
+          <p className='text-md mb-5 font-bold'>
+            Author : {singleBlog?.data?.post?.author?.node?.name}
+          </p>
+          <div
+            className=''
+            dangerouslySetInnerHTML={{
+              __html: singleBlog?.data?.post?.content || '',
+            }}
+          />
+        </div>
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
