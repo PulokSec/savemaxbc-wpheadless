@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
 import NewsSection from '@/components/elements/NewsSection';
+import NewsBottom from '@/components/pages/News/NewsBottom';
 import ServiceBanner from '@/components/pages/Services/ServiceBanner';
 import Footer from '@/components/shared/Footer';
 
@@ -199,7 +199,7 @@ export default async function News() {
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
         <NewsSection newsSection={data?.posts?.nodes} />
-        <BottomFeatureSection
+        <NewsBottom
           bottomSection={data?.pages?.nodes[0]?.news?.bottomSection}
         />
         <Footer

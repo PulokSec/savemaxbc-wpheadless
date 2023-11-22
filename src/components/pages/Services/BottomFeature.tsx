@@ -6,7 +6,7 @@ type MyProps = {
 export default function BottomFeature(props: MyProps) {
   const { bottomSection } = props;
   return (
-    <section className="bg-20 mt-40 flex min-h-[30vh] flex-col items-center overflow-x-hidden bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/11/woman-showing-with-one-hand-mini-house-real-state-concept-ai-generative.jpeg')] bg-cover bg-no-repeat md:min-h-screen md:justify-between">
+    <section className="mt-40 flex min-h-[60vh] flex-col items-center overflow-x-hidden bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/11/woman-showing-with-one-hand-mini-house-real-state-concept-ai-generative.jpeg')] bg-cover bg-no-repeat md:justify-between">
       <div className='text-center'>
         <h2 className='my-20 text-center text-lg text-white md:text-5xl'>
           {bottomSection?.title}
