@@ -298,20 +298,19 @@ const SearchTab = () => {
           ''
         )}
       </div>
-      <div className='relative z-50 mt-[-20px] w-full'>
+      <div className='relative z-50 mt-[-20px] w-full overflow-hidden rounded-b-xl bg-white shadow'>
         {searchShow ? (
           filtersData?.length > 0 ? (
             <Scroll
               style={{
                 height: '22vh',
-                boxShadow: '0px 4px 15px rgba(125, 35, 224, 0.2)',
               }}
-              className='overflow-y-scroll'
+              className='mt-3 overflow-y-scroll '
             >
               {filtersData?.map((post: any, idx: number) => {
                 return (
                   <div key={idx} className=''>
-                    <p className='my-2 cursor-pointer px-5 text-[#115E59]'>
+                    <p className='my-2 cursor-pointer px-5 text-[14px] text-[#082f49]'>
                       {post?.StreetAddress} {post?.City}/{post?.Province}
                     </p>
                   </div>

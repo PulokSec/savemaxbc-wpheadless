@@ -13,27 +13,27 @@ export default function ListingCarousel(props: MyProps) {
 
   return (
     <>
-      <div className='mt-20'>
+      <div className='relative mt-20'>
         <CarouselComponent>
           {posts?.map(({ post, cardImageUrl }: any) => (
             <div
               key={post?.ListingID}
-              className='mx-4 ml-3 flex h-[400px] w-[360px] flex-col justify-around rounded bg-white p-4 shadow-md md:ml-10 md:w-[300px] '
+              className='mx-auto flex h-[400px] w-[290px] flex-col justify-around overflow-hidden rounded border-2 border-gray-300'
             >
-              <p className='z-5 relative top-0 text-end text-lg font-semibold text-[#E2C379]'>
+              <p className='z-5 relative top-0 px-5 text-end text-lg font-semibold text-[#E2C379]'>
                 {post?.TransactionType}
               </p>
               <div className='relative'>
                 <NextImage
                   useSkeleton
-                  className='h-20 w-40 object-cover md:h-[120px] md:w-[200px]'
+                  className='relative h-[150px] w-full'
                   src={cardImageUrl}
                   layout='fill'
                   alt='Icon'
                 />
               </div>
-              <div className=''>
-                <p className='mt-2 text-xl font-semibold text-black'>
+              <div className='desc p-3 text-start text-black'>
+                <p className='mt-2 text-[20px] font-semibold text-black'>
                   {post?.StreetAddress}
                 </p>
                 <p className='mt-2 text-[12px] capitalize text-gray-500'>
@@ -43,24 +43,24 @@ export default function ListingCarousel(props: MyProps) {
                   {post?.Features} {post?.WaterFrontType}
                 </p>
               </div>
-              <div className='mt-2 flex items-center justify-center gap-4 text-white'>
+              <div className='mt-2 flex items-center justify-center gap-4 px-5 text-white'>
                 {post?.BedroomsTotal && (
-                  <p className='w-full rounded border bg-teal-800 text-center text-[8px]'>
+                  <p className='w-full rounded border bg-[#082f49] text-center text-[8px]'>
                     {post?.BedroomsTotal} Bedroom
                   </p>
                 )}
                 {post?.BathroomTotal && (
-                  <p className='w-full rounded border bg-teal-800 text-center text-[8px]'>
+                  <p className='w-full rounded border bg-[#082f49] text-center text-[8px]'>
                     {post?.BathroomTotal} Bathroom
                   </p>
                 )}
                 {post?.lease && (
-                  <p className='w-full rounded border bg-teal-800 text-center text-[8px]'>
+                  <p className='w-full rounded border bg-[#082f49] text-center text-[8px]'>
                     {post?.lease} Sqft
                   </p>
                 )}
               </div>
-              <p className='mt-2 text-[10px]'>
+              <p className='mt-2 px-5 text-[10px]'>
                 MLS&reg; Number{post?.DdfListingID}
               </p>
             </div>
