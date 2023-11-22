@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { Metadata } from 'next';
 import React from 'react';
 
 import { getClient } from '@/lib/apollo';
