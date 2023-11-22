@@ -8,10 +8,7 @@ type ScrollProps = {
 
 const Scroll = ({ style = {}, children, className = '' }: ScrollProps) => {
   return (
-    <div
-      style={style}
-      className={`${className} absolute mt-9 w-full rounded-xl bg-white`}
-    >
+    <div style={style} className={`${className} relative w-full`}>
       {children}
     </div>
   );

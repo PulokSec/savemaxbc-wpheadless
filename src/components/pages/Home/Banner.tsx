@@ -1,7 +1,12 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import { GoSearch } from 'react-icons/go';
 
+import { getSearchQuery } from '@/lib/dataFetching';
+
+import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
 import Header from '@/components/shared/Header';
+import Scroll from '@/components/utils/Scroll';
 type MyProps = {
   bannerData: any;
   headerData: any;
@@ -9,6 +14,48 @@ type MyProps = {
 };
 export default function Banner(props: MyProps) {
   const { bannerData, headerData, settingsData } = props;
+  const [filterDataShow, setFilterDataShow] = useState(false);
+  const [filtersData, setFiltersData] = useState([]);
+  const [searchShow, setSearchShow] = useState(false);
+  const [searchField, setSearchField] = useState('');
+  const domNode: any = useRef();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const city = searchField.split(',')[0] || searchField;
+      const street = searchField.split(',')[1] || searchField;
+      const province = searchField.split(',')[2] || searchField;
+      const result = await getSearchQuery({
+        cityParam: city ? city : '',
+        streetParam: street ? street : '',
+        provinceParam: province ? province : '',
+        pageParam: 1,
+      });
+      setFiltersData(result?.listings);
+    };
+    fetchData();
+  }, [searchField]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchField(e.target.value);
+    if (e.target.value.length > 0) {
+      setSearchShow(true);
+    }
+  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!searchField.length) {
+        setSearchShow(false);
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [searchField]);
+
+  UseClickOutside(domNode.current, () => {
+    setSearchShow(false);
+  });
+
   return (
     <div
       className='relative h-[80vh] w-full bg-cover bg-no-repeat md:h-[100vh]'
@@ -31,43 +78,53 @@ export default function Banner(props: MyProps) {
               //   dispatch(setSearchQuery(searchField));
               //   router.push(`/search`);
               // }}
-              // ref={domNode}
-              // style={style}
+              ref={domNode}
               className='mt-3 flex flex-row items-center justify-center'
             >
               <input
-                // onClick={() => setSearchShow(true)}
+                onClick={() => setSearchShow(true)}
                 className='search h-[42px] w-full rounded-[1000px] px-5 text-[14px] drop-shadow-2xl placeholder:pb-4 placeholder:text-[12px] md:ml-10 md:h-[52px] md:w-[400px] lg:w-[487px] lg:text-[20px] lg:placeholder:text-[14px]'
                 type='search'
-                // onChange={handleChange}
-                // defaultValue={search?.name || ""}
+                onChange={handleChange}
                 placeholder='Search'
               />
               <span className='border-bg-blue relative  right-[35px] rounded-[50%] border bg-sky-950 p-3 md:right-[50px] md:p-4'>
                 <GoSearch className=' text-white md:w-5' />
               </span>
-              {/* {searchShow && (
-        <Scroll
-          style={{
-            height: "30vh",
-            boxShadow: "0px 4px 15px rgba(125, 35, 224, 0.2)",
-          }}
-          className="overflow-y-scroll "
-        >
-          {filteredItems.length > 0 ? (
-            <>
-              {filteredItems.map((item, index) => (
-                <Card key={index} currentValue={item} />
-              ))}
-            </>
-          ) : (
-            <div className="flex items-center justify-center h-full">
-              No matched Courses or Institutions
-            </div>
-          )}
-        </Scroll>
-      )} */}
             </form>
+          </div>
+          <div className='mt-2'>
+            {searchShow ? (
+              filtersData?.length > 0 ? (
+                <div className='w-full rounded-md bg-white lg:w-[450px]'>
+                  <Scroll
+                    style={{
+                      height: '22vh',
+                      boxShadow: '0px 4px 15px rgba(125, 35, 224, 0.2)',
+                    }}
+                    className='relative overflow-y-scroll'
+                  >
+                    {filtersData?.map((post: any, idx: number) => {
+                      return (
+                        <div key={idx} className='text-start'>
+                          <p className='my-2 cursor-pointer px-5 text-[14px] text-[#082F49]'>
+                            {post?.StreetAddress} {post?.City}/{post?.Province}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </Scroll>
+                </div>
+              ) : (
+                <div className='flex w-full items-center justify-center rounded-md bg-white'>
+                  <p className='w-full p-3 text-center lg:w-[450px]'>
+                    No matched Properties
+                  </p>
+                </div>
+              )
+            ) : (
+              ''
+            )}
           </div>
           <div
             className='mt-8 text-center text-white'
