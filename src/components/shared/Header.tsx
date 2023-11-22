@@ -1,13 +1,11 @@
 'use client';
 import { Dialog } from '@headlessui/react';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsTelephone } from 'react-icons/bs';
 import { HiMenu } from 'react-icons/hi';
 import { RxCross2 } from 'react-icons/rx';
-
-import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
 
 type MyProps = {
   navigation: any;
@@ -17,11 +15,7 @@ export default function Header(props: MyProps) {
   const [open, setOpen] = useState(false);
   const { navigation, settingsData } = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const domNode: any = useRef();
-  UseClickOutside(domNode.current, () => {
-    setOpen(false);
-  });
-  // console.log(navigation);
+
   return (
     <div className='bg-dark fixed top-0 z-50 w-full shadow'>
       <header className='max-w-screen bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/menu-bg.png")] bg-cover shadow-md'>
@@ -50,17 +44,14 @@ export default function Header(props: MyProps) {
               <HiMenu className='h-6 w-6' aria-hidden='true' />
             </button>
           </div>
-          <div
-            className='hidden items-center justify-center lg:flex lg:gap-x-12'
-            ref={domNode}
-          >
+          <div className='hidden items-center justify-center lg:flex lg:gap-x-12'>
             {navigation?.map((item: any) => {
               if (item?.parentId === null) {
                 return (
                   <div key={item.label} className='relative'>
                     <a
                       href={item.url}
-                      onMouseOver={() =>
+                      onMouseEnter={() =>
                         item?.childItems?.nodes?.length > 0
                           ? setOpen(true)
                           : setOpen(false)
@@ -90,6 +81,8 @@ export default function Header(props: MyProps) {
                       )}
                     </a>
                     <ul
+                      onMouseEnter={() => setOpen(true)}
+                      onMouseLeave={() => setOpen(false)}
                       className={`absolute right-0 z-10 mt-2 flex w-40 flex-col rounded-lg bg-[#0D1524] py-2 shadow-xl ${
                         item?.childItems?.nodes?.length > 0 && open
                           ? 'block'
@@ -114,14 +107,12 @@ export default function Header(props: MyProps) {
               return null;
             })}
             <a
-              onMouseOver={() => setOpen(false)}
               href='mailto:admin@savemaxwestcoast.com'
               className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
             >
               <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
             </a>
             <a
-              onMouseOver={() => setOpen(false)}
               href='tel:778-200-5050'
               className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
             >
@@ -165,7 +156,7 @@ export default function Header(props: MyProps) {
                         <div key={item.label} className='relative'>
                           <a
                             href={item.url}
-                            onMouseOver={() =>
+                            onMouseEnter={() =>
                               item?.childItems?.nodes?.length > 0
                                 ? setOpen(true)
                                 : setOpen(false)
@@ -195,6 +186,8 @@ export default function Header(props: MyProps) {
                             )}
                           </a>
                           <div
+                            onMouseEnter={() => setOpen(true)}
+                            onMouseLeave={() => setOpen(false)}
                             className={`relative ${
                               item?.childItems?.nodes?.length > 0 && open
                                 ? 'block'
@@ -219,14 +212,12 @@ export default function Header(props: MyProps) {
                     return null;
                   })}
                   <a
-                    onMouseOver={() => setOpen(false)}
                     href='mailto:admin@savemaxwestcoast.com'
                     className=' block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                   >
                     <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
                   </a>
                   <a
-                    onMouseOver={() => setOpen(false)}
                     href='tel:778-200-5050'
                     className='block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                   >

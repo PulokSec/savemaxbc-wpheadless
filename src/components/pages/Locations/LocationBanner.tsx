@@ -57,13 +57,13 @@ export default function LocationBanner(props: MyProps) {
               __html: topDesc,
             }}
           ></div>
-          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
             {topTitle}
           </p>
         </div>
       ) : topTitle ? (
         <div className='container relative mx-auto mt-[40%] w-[80%] bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
-          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
             {topTitle}
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function LocationBanner(props: MyProps) {
               __html: topDesc,
             }}
           ></div>
-          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
             {topTitle}
           </p>
         </div>

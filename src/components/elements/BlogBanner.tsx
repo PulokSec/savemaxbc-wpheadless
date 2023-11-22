@@ -11,9 +11,10 @@ export default function BlogBanner(props: MyProps) {
   const { headerData, settingsData, bannerHeading, bannerImage } = props;
   return (
     <div
-      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat md:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover md:h-[100vh]'
       style={{
-        backgroundImage: `url(${bannerImage?.sourceUrl})`,
+        backgroundImage: `url(${bannerImage?.sourceUrl}) no-repeat center center`,
+        backgroundSize: '100% 100%',
       }}
     >
       <Header settingsData={settingsData} navigation={headerData} />

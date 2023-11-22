@@ -10,6 +10,11 @@ export default function CarouselComponent({
   children: React.ReactNode;
 }) {
   const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
@@ -30,7 +35,7 @@ export default function CarouselComponent({
     return (
       <button
         aria-label='Right Arrow'
-        className='absolute right-[48px] top-1/2 z-10 bg-none'
+        className='absolute right-0 top-1/2 z-10 bg-none'
         onClick={() => onClick()}
       >
         <IoIosArrowForward className='cursor-pointer border-none text-[#E2C379]' />
@@ -51,8 +56,8 @@ export default function CarouselComponent({
   };
 
   return (
-    <div id='main-slide' className='carousel slide' data-ride='carousel'>
-      <div className='carousel-inner'>
+    <div>
+      <div className='relative px-5'>
         <Carousel
           // arrows
           responsive={responsive}
@@ -64,15 +69,15 @@ export default function CarouselComponent({
           renderDotsOutside={false}
           minimumTouchDrag={80}
           pauseOnHover
-          autoPlay={true}
-          autoPlaySpeed={2000}
+          // autoPlay={true}
+          autoPlaySpeed={3000}
           customTransition='all .5'
           transitionDuration={500}
-          containerClass='carousel-container md:ml-10 ml-0'
           removeArrowOnDeviceType={['tablet', 'mobile']}
           partialVisible={false}
           dotListClass='custom-dot-list-style'
           rewind
+          containerClass=''
           rewindWithAnimation={false}
           rtl={false}
           shouldResetAutoplay
