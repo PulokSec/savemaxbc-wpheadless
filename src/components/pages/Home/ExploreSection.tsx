@@ -20,7 +20,7 @@ export default function ExploreSection(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='py-10 md:py-10 lg:py-20'>
+      <div className='py-10 md:py-10 lg:-mt-32 lg:py-20 2xl:-mt-24'>
         <div className='mx-auto w-full'>
           <div className='mx-auto mt-10 flex flex-col items-center justify-around gap-4 md:mt-10 md:flex-col lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:px-10'>
             <div className='flex flex-col items-start justify-center'>
@@ -34,6 +34,14 @@ export default function ExploreSection(props: MyProps) {
                     __html: featuredData?.featureDescription,
                   }}
                 ></div>
+                <div className='mt-2 py-10 text-start'>
+                  <a
+                    href='/services'
+                    className='mt-10 border border-solid px-6 py-4 text-sm font-semibold text-black shadow-sm hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950'
+                  >
+                    See More
+                  </a>
+                </div>
               </div>
             </div>
             <div className=''>

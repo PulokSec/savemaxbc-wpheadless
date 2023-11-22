@@ -21,7 +21,7 @@ export default function Header(props: MyProps) {
   UseClickOutside(domNode.current, () => {
     setOpen(false);
   });
-  console.log(navigation);
+  // console.log(navigation);
   return (
     <div className='bg-dark fixed top-0 z-50 w-full shadow'>
       <header className='max-w-screen bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/menu-bg.png")] bg-cover shadow-md'>
@@ -115,14 +115,14 @@ export default function Header(props: MyProps) {
             })}
             <a
               onMouseOver={() => setOpen(false)}
-              href='#'
+              href='mailto:admin@savemaxwestcoast.com'
               className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
             >
               <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
             </a>
             <a
               onMouseOver={() => setOpen(false)}
-              href='#'
+              href='tel:778-200-5050'
               className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
             >
               <BsTelephone className='h-5 w-5' aria-hidden='true' />
@@ -220,14 +220,14 @@ export default function Header(props: MyProps) {
                   })}
                   <a
                     onMouseOver={() => setOpen(false)}
-                    href='#'
+                    href='mailto:admin@savemaxwestcoast.com'
                     className=' block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                   >
                     <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
                   </a>
                   <a
                     onMouseOver={() => setOpen(false)}
-                    href='#'
+                    href='tel:778-200-5050'
                     className='block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                   >
                     <BsTelephone className='h-5 w-5' aria-hidden='true' />
