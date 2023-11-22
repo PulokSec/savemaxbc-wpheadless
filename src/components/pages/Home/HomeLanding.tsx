@@ -7,6 +7,7 @@ import Banner from '@/components/pages/Home/Banner';
 import ContactSection from '@/components/pages/Home/ContactSection';
 import ExploreSection from '@/components/pages/Home/ExploreSection';
 import FeatureSection from '@/components/pages/Home/FeatureSection';
+import HighestLevelService from '@/components/pages/Home/HighestLevelService';
 import Footer from '@/components/shared/Footer';
 type MyProps = {
   allData: any;
@@ -43,6 +44,7 @@ export default function HomeLanding(props: MyProps) {
       {/* <EnsureSection
         ensureData={allData?.pages?.nodes[0]?.HomePage?.ensureSection}
       /> */}
+      {/* <HighestLevelService /> */}
       <ContactSection
         contactData={allData?.pages?.nodes[0]?.HomePage?.contactSection}
       />

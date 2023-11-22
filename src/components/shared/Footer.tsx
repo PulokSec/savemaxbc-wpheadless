@@ -15,7 +15,7 @@ type MyProps = {
 export default function Footer(props: MyProps) {
   const [open, setOpen] = useState(false);
   const { navigation, settingsData } = props;
-  console.log('nav  ', navigation);
+  // console.log('nav  ', navigation);
   return (
     <div>
       <footer className="bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/11/footer.png')] bg-cover bg-right bg-no-repeat py-6">
@@ -109,8 +109,7 @@ export default function Footer(props: MyProps) {
             <ul className='mb-0 list-none'>
               {navigation?.map(
                 (item: any) =>
-                  item?.parentId !== null &&
-                  item?.label !== 'Services' && (
+                  item?.parentId !== null && (
                     <li key={item?.label} className='mb-2'>
                       <a
                         href={item?.url}
@@ -121,7 +120,14 @@ export default function Footer(props: MyProps) {
                     </li>
                   )
               )}
-              
+              <li className='mb-2'>
+                <a
+                  href='/services'
+                  className='uppercase text-neutral-600 hover:text-[#B48237] dark:text-neutral-300'
+                >
+                  Services
+                </a>
+              </li>
             </ul>
           </div>
           <div className='col-span-6 col-start-1 ml-6 md:col-span-12 md:col-start-4 lg:col-span-3 lg:col-start-10 lg:col-end-12 lg:ml-0'>

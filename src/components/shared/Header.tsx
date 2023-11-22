@@ -107,13 +107,13 @@ export default function Header(props: MyProps) {
               return null;
             })}
             <a
-              href='#'
+              href='mailto:admin@savemaxwestcoast.com'
               className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
             >
               <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
             </a>
             <a
-              href='#'
+              href='tel:778-200-5050'
               className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
             >
               <BsTelephone className='h-5 w-5' aria-hidden='true' />
@@ -212,13 +212,13 @@ export default function Header(props: MyProps) {
                     return null;
                   })}
                   <a
-                    href='#'
+                    href='mailto:admin@savemaxwestcoast.com'
                     className=' block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                   >
                     <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
                   </a>
                   <a
-                    href='#'
+                    href='tel:778-200-5050'
                     className='block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                   >
                     <BsTelephone className='h-5 w-5' aria-hidden='true' />
