@@ -39,10 +39,10 @@ export default function AboutFeature(props: MyProps) {
                       />
                     </div>
                     <div className='mt-5 flex flex-col items-end md:mt-0 md:pr-5'>
-                      <h2 className='text-bold w-full text-end text-2xl leading-5 text-[#525659]  md:text-5xl '>
+                      <h2 className='w-full text-end text-2xl font-bold leading-5 text-[#525659]  md:text-5xl '>
                         {item?.name}
                       </h2>
-                      <p className='text-bold mt-5 text-end text-xl text-sky-950 md:w-[500px] md:text-3xl'>
+                      <p className='mt-5 text-end text-xl font-bold text-sky-950 md:w-[500px] md:text-3xl'>
                         {item?.designation}
                       </p>
                       <div
@@ -70,10 +70,10 @@ export default function AboutFeature(props: MyProps) {
                 <div className='mt-10 md:mt-20 md:px-10 md:py-10' key={i}>
                   <div className='mx-auto flex flex-col items-center justify-between gap-4 px-5 md:flex-row md:px-10 lg:mx-0 lg:max-w-none'>
                     <div className='flex flex-col items-start'>
-                      <h2 className='text-bold w-full text-2xl leading-5  text-[#525659] md:text-5xl'>
+                      <h2 className='w-full text-2xl font-bold leading-5  text-[#525659] md:text-5xl'>
                         {item?.name}
                       </h2>
-                      <p className='text-bold mt-5 text-xl text-sky-950 md:w-[500px] md:text-3xl'>
+                      <p className='mt-5 text-xl font-bold text-sky-950 md:w-[500px] md:text-3xl'>
                         {item?.designation}
                       </p>
                       <div

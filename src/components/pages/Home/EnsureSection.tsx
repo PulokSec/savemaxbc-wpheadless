@@ -12,10 +12,10 @@ export default function EnsureSection(props: MyProps) {
       </h2>
       <div className='mt-20 grid grid-cols-12 items-center justify-center gap-4 md:flex'>
         <div className='col-span-12 ml-5 flex h-[300px] w-[350px] flex-col items-center justify-center bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/lower-middle-invest-in-our-realtors.png")] bg-cover bg-no-repeat px-5 md:col-start-2 md:ml-0 md:h-[300px] md:w-[270px]'>
-          <h2 className='text-bold text-center text-sm md:text-[24px]'>
+          <h2 className='text-center text-sm font-bold md:text-[24px]'>
             {ensureData?.title}
           </h2>
-          <p className='text-bolder mt-10 px-5 text-center text-sm md:text-[14px]'>
+          <p className='font-bolder mt-10 px-5 text-center text-sm md:text-[14px]'>
             {ensureData?.description}
           </p>
         </div>

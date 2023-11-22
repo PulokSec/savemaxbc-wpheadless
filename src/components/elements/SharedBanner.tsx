@@ -25,7 +25,7 @@ export default function SharedBanner(props: MyProps) {
   } = props;
   return (
     <div
-      className='relative h-[80vh] w-full bg-cover bg-no-repeat lg:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat lg:h-[100vh]'
       style={{
         backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
@@ -54,13 +54,13 @@ export default function SharedBanner(props: MyProps) {
               __html: topDesc,
             }}
           ></div>
-          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
             {topTitle}
           </p>
         </div>
       ) : topTitle ? (
         <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
-          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
             {topTitle}
           </p>
         </div>
@@ -72,7 +72,7 @@ export default function SharedBanner(props: MyProps) {
               __html: topDesc,
             }}
           ></div>
-          <p className='text-bold text-md mt-2 w-full md:text-xl lg:text-2xl'>
+          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
             {topTitle}
           </p>
         </div>

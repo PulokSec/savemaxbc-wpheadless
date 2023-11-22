@@ -8,9 +8,9 @@ type MyProps = {
 export default function ServicePointFeature(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='max-w-screen mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+    <section className='max-w-screen mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
       <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0'>
-        <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-8 lg:col-start-2 lg:mt-20 lg:px-10'>
+        <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-7 lg:col-start-2 lg:mt-20 lg:px-10'>
           {featuredData?.featuredDivLeft?.map(
             (item: any, i: number, { length }: { length: number }) => (
               <li key={i} className='mb-10 list-none text-left'>
@@ -44,7 +44,7 @@ export default function ServicePointFeature(props: MyProps) {
             )
           )}
         </div>
-        <div className='cover relative col-span-4  col-start-8 col-end-12 mt-5 h-60 w-40 md:col-start-10 lg:col-span-4 lg:col-start-10 lg:h-[85%] lg:w-full'>
+        <div className='cover relative col-span-4  col-start-8 col-end-12 mt-5 h-60 w-40 md:col-start-9 lg:col-span-4 lg:col-start-9 lg:h-[85%] lg:w-full'>
           <NextImage
             useSkeleton
             className='cover'
@@ -56,7 +56,7 @@ export default function ServicePointFeature(props: MyProps) {
       </div>
 
       <div className='lg:max-w-screen mt-10 grid grid-cols-12 items-center justify-center lg:mx-0 lg:mt-20 lg:gap-5'>
-        <div className='cols-span-12 md:w-100 relative mt-5 h-60 w-40 lg:col-span-4 lg:col-end-4 lg:h-[85%] lg:w-[100%]'>
+        <div className='cols-span-12 md:w-100 relative mt-5 h-60 w-40 lg:col-span-4 lg:col-end-5 lg:h-[85%] lg:w-[100%]'>
           <NextImage
             useSkeleton
             src={featuredData?.featuredImageLeft?.sourceUrl}
@@ -65,7 +65,7 @@ export default function ServicePointFeature(props: MyProps) {
             layout='fill'
           />
         </div>
-        <div className='col-span-12 mt-5 px-5 md:px-5 lg:col-span-7 lg:col-start-4 lg:col-end-12'>
+        <div className='col-span-12 mt-5 px-5 md:px-5 lg:col-span-7 lg:col-start-5 lg:col-end-12'>
           <div className='lg:mt-20'>
             <div className='mt-5 pb-10'>
               {featuredData?.featuredDivRight?.map(

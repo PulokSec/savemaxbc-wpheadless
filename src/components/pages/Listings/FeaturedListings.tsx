@@ -45,19 +45,19 @@ export default function FeaturedListings(props: MyProps) {
   }, [allPosts]);
   return (
     <div>
-      <section className='mx-auto mt-20 lg:mt-40'>
+      <section className='mt-20 lg:mt-40'>
         <div className='mt-20'>
           {usingFor === 'listings' && (
             <h1 className='text-center text-lg md:text-5xl'>
               {titleData?.recentListingsTitle?.split(/ (.*)/)[0]}{' '}
-              <span className='text-bold text-leading-3 text-[#525659]'>
+              <span className='text-leading-3 font-bold text-[#525659]'>
                 {titleData?.recentListingsTitle?.split(/ (.*)/)[1]}
               </span>
             </h1>
           )}
           {topHead && listingDescription ? (
             <div className=''>
-              <p className='text-bold text-md mt-5 w-full text-center text-[#525659] md:text-xl lg:text-2xl'>
+              <p className='text-md mt-5 w-full text-center font-bold text-[#525659] md:text-xl lg:text-2xl'>
                 {topHead}
               </p>
               <h1 className='mt-5 text-center text-lg md:text-4xl'>
@@ -72,7 +72,7 @@ export default function FeaturedListings(props: MyProps) {
             </div>
           ) : topHead ? (
             <>
-              <p className='text-bold text-md mt-2 w-full text-[#525659] md:text-xl lg:text-2xl'>
+              <p className='text-md mt-2 w-full font-bold text-[#525659] md:text-xl lg:text-2xl'>
                 {topHead}
               </p>
               <h1 className='text-center text-lg md:text-5xl'>
@@ -93,33 +93,65 @@ export default function FeaturedListings(props: MyProps) {
             </>
           ) : null}
           <ListingCarousel posts={postData} />
+          <div className='mt-5 text-center md:mt-10'>
+            <a
+              href='#'
+              className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
+            >
+              See More
+            </a>
+          </div>
         </div>
         <div className='mt-20 lg:mt-40'>
           <h2 className='text-center text-lg md:text-5xl'>
             {titleData?.detachedHomesTitle?.split(/ (.*)/)[0]}{' '}
-            <span className='text-bold text-leading-3 text-[#525659]'>
+            <span className='text-leading-3 font-bold text-[#525659]'>
               {titleData?.detachedHomesTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
           <ListingCarousel posts={postData} />
+          <div className='mt-5 text-center md:mt-10'>
+            <a
+              href='#'
+              className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
+            >
+              See More
+            </a>
+          </div>
         </div>
         <div className='mt-20'>
           <h2 className='text-center text-lg md:text-5xl'>
             {titleData?.semiDetachedTitle?.split(/ (.*)/)[0]}{' '}
-            <span className='text-bold text-leading-3 text-[#525659]'>
+            <span className='text-leading-3 font-bold text-[#525659]'>
               {titleData?.semiDetachedTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
           <ListingCarousel posts={postData} />
+          <div className='mt-5 text-center md:mt-10'>
+            <a
+              href='#'
+              className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
+            >
+              See More
+            </a>
+          </div>
         </div>
         <div className='mt-20'>
           <h2 className='text-center text-lg md:text-5xl'>
             {titleData?.rentalHomesTitle?.split(/ (.*)/)[0]}{' '}
-            <span className='text-bold text-leading-3 text-[#525659]'>
+            <span className='text-leading-3 font-bold text-[#525659]'>
               {titleData?.rentalHomesTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
           <ListingCarousel posts={postData} />
+          <div className='mt-5 text-center md:mt-10'>
+            <a
+              href='#'
+              className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
+            >
+              See More
+            </a>
+          </div>
         </div>
       </section>
     </div>

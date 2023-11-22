@@ -13,7 +13,7 @@ export default function CareersBanner(props: MyProps) {
   const { bannerData, headerData, settingsData, topDesc, topTitle } = props;
   return (
     <div
-      className='relative h-[80vh] w-full bg-cover bg-no-repeat lg:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat lg:h-[100vh]'
       style={{
         backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
@@ -39,7 +39,7 @@ export default function CareersBanner(props: MyProps) {
             __html: topDesc,
           }}
         ></div>
-        <p className='text-bolder mt-2 w-full text-xl md:text-xl lg:text-2xl'>
+        <p className='font-bolder mt-2 w-full text-xl md:text-xl lg:text-2xl'>
           {topTitle}
         </p>
       </div>
