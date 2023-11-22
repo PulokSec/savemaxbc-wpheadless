@@ -8,6 +8,7 @@ import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import ListingBanner from '@/components/pages/Listings/ListingBanner';
 import Footer from '@/components/shared/Footer';
+import { Metadata } from 'next';
 
 const query = gql`
   query {
