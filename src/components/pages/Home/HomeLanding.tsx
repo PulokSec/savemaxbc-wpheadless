@@ -44,7 +44,7 @@ export default function HomeLanding(props: MyProps) {
       {/* <EnsureSection
         ensureData={allData?.pages?.nodes[0]?.HomePage?.ensureSection}
       /> */}
-      {/* <HighestLevelService /> */}
+      <HighestLevelService />
       <ContactSection
         contactData={allData?.pages?.nodes[0]?.HomePage?.contactSection}
       />
