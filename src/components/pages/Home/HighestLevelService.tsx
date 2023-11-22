@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 import img6 from '../../../assets/homelanding/How Do we ensure/Above _ Beyond Service.png';
 import img3 from '../../../assets/homelanding/How Do we ensure/amazing customer relations.png';
-import background from '../../../assets/homelanding/How Do we ensure/ensure highest level of services.png';
 import img4 from '../../../assets/homelanding/How Do we ensure/Highly Trained Realtors.png';
 import img1 from '../../../assets/homelanding/How Do we ensure/lower middle invest in our realtors.png';
 import img2 from '../../../assets/homelanding/How Do we ensure/quality over quantity.png';
@@ -47,25 +46,15 @@ const HighestLevelService = () => {
   const [selectedDiv, setSelectedDiv] = useState(0);
   return (
     <div
-      style={{
-        backgroundImage: `url(${background}) no-repeat center center`,
-        backgroundSize: '100% 100%',
-      }}
-      className='relative h-[80vh] bg-cover pb-24 pt-20 md:pb-36'
+      // style={{
+      //   backgroundImage: `url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/ensure-highest-level-of-services.png)`,
+      // }}
+      className='max-w-screen relative min-h-[100vh] overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/ensure-highest-level-of-services.png")] bg-cover bg-center bg-no-repeat'
     >
-      <h2 className='z-2 mb-8 text-center uppercase text-white md:mb-16'>
+      <h2 className='z-2 mb-8 mt-20 text-center uppercase text-white md:mb-16 lg:mt-36'>
         How do we ensure highest level of service
       </h2>
-      {/* <Image
-        src={background}
-        fill={true}
-        alt='bgImg'
-        style={{
-          borderBottomLeftRadius: '50% 10%',
-          borderBottomRightRadius: '50% 10%',
-        }}
-        className='z-1'
-      /> */}
+
       <div className='hidden md:block'>
         <div className='mx-auto flex w-11/12 items-center justify-center gap-5 lg:w-11/12 lg:gap-10 2xl:w-3/4 '>
           {data.map((item: any, idx: number) => (
@@ -75,7 +64,13 @@ const HighestLevelService = () => {
                 selectedDiv === idx
                   ? ' w-[500px] flex-col items-center justify-center'
                   : 'w-[150px] items-center justify-center text-center'
-              } relative flex h-96 cursor-pointer rounded-lg  p-2 md:h-[500px] lg:h-[450px] xl:h-80`}
+              } ${
+                idx === 1
+                  ? ' overflow-hidden rounded-bl-2xl rounded-tl-2xl'
+                  : idx === data.length - 1
+                  ? 'overflow-hidden rounded-br-2xl rounded-tr-2xl'
+                  : 'overflow-hidden rounded-2xl'
+              } relative flex h-96 cursor-pointer  p-2 md:h-[500px] lg:h-[450px] xl:h-80`}
               onClick={() => setSelectedDiv(idx)}
             >
               <h3
@@ -95,14 +90,14 @@ const HighestLevelService = () => {
               <Image
                 src={item?.img}
                 fill={true}
-                className='rounded-2xl object-cover opacity-50'
+                className='object-cover opacity-50'
                 alt='img'
               />
             </div>
           ))}
         </div>
       </div>
-      <div className='md:hidden'>
+      <div className='py-5 md:hidden'>
         <div className='flex flex-wrap items-center justify-center gap-4'>
           {data.map((item: any, idx: number) => (
             <div
@@ -111,7 +106,7 @@ const HighestLevelService = () => {
                 selectedDiv === idx
                   ? ' w-[320px] flex-col items-center justify-center'
                   : 'w-[100px] items-center justify-center text-center'
-              } relative flex h-[250px] cursor-pointer rounded-lg p-2 `}
+              } relative flex h-[250px] cursor-pointer p-2 `}
               onClick={() => setSelectedDiv(idx)}
             >
               <h3
