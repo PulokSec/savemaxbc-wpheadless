@@ -171,8 +171,8 @@ export default async function FaqPage() {
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <NewFeatureSection />
-        <HighestLevelService />
+        {/* <NewFeatureSection />
+        <HighestLevelService /> */}
         <FaqSection faqData={data?.pages?.nodes[0]?.faqPage?.faqSection} />
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
