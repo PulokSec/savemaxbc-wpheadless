@@ -3,15 +3,11 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import AboutSection from '@/components/pages/Home/AboutSection';
-import Banner from '@/components/pages/Home/Banner';
-import ContactSection from '@/components/pages/Home/ContactSection';
-import HighestLevelService from '@/components/pages/Home/HighestLevelService';
-import Footer from '@/components/shared/Footer';
+import HomeForSaleLanding from '@/components/pages/Home/HomeLanding';
 
 const query = gql`
   query {
-    pages(where: { id: 10 }) {
+    pages(where: { id: 65743 }) {
       nodes {
         seo {
           title
@@ -27,7 +23,7 @@ const query = gql`
             raw
           }
         }
-        HomePage {
+        homeForSaleInBc {
           bannerSection {
             bannerImage {
               sourceUrl
@@ -36,26 +32,74 @@ const query = gql`
             bannerSubtitle
             bannerDescription
           }
+          featureSection {
+            featureTitle
+            featureDescription
+            featureBackground {
+              sourceUrl
+              altText
+            }
+            featuredDiv {
+              description
+              image {
+                sourceUrl
+                altText
+              }
+            }
+          }
+          exploreSection {
+            featureTitle
+            featureDescription
+            imageRight {
+              sourceUrl
+              altText
+            }
+            featuredDivLeft {
+              title
+              description
+            }
+            featuredDivRight {
+              title
+              description
+            }
+            imageLeft {
+              sourceUrl
+              altText
+            }
+          }
+          considerSection {
+            featureTitle
+            featureDescription
+            topHead
+            topDescription
+            image {
+              sourceUrl
+              altText
+            }
+          }
+          choiceSection {
+            featureTitle
+            featureDescription
+            featuredDiv {
+              title
+              description
+            }
+          }
           aboutSection {
             aboutTitle
             aboutDescription
+            aboutDescriptionBottom
             aboutImage {
               sourceUrl
               altText
             }
           }
-          ensureSection {
-            heading
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            gallery {
+          homebuyingSection {
+            featureTitle
+            featureDescription
+            featuredDiv {
               title
-              image {
-                sourceUrl
-                altText
-              }
+              description
             }
           }
           contactSection {
@@ -184,7 +228,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function HomePage() {
+export default async function HomeForSalePage() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -198,28 +242,7 @@ export default async function HomePage() {
       <main>
         <section className='bg-white'>
           <div>
-            <Banner
-              bannerData={data?.pages?.nodes[0]?.HomePage?.bannerSection}
-              headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-              settingsData={
-                data?.settingsOptions?.savemaxOptions?.headerSettings
-              }
-            />
-            <AboutSection
-              aboutData={data?.pages?.nodes[0]?.HomePage?.aboutSection}
-            />
-            <HighestLevelService
-              serviceData={data?.pages?.nodes[0]?.HomePage?.ensureSection}
-            />
-            <ContactSection
-              contactData={data?.pages?.nodes[0]?.HomePage?.contactSection}
-            />
-            <Footer
-              navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-              settingsData={
-                data?.settingsOptions?.savemaxOptions?.footerSettings
-              }
-            />
+            <HomeForSaleLanding allData={data} />
           </div>
         </section>
       </main>

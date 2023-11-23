@@ -5,20 +5,28 @@ import NextImage from '@/components/NextImage';
 type MyProps = {
   aboutData: any;
 };
-export default function AboutSection(props: MyProps) {
+export default function AboutSaleSection(props: MyProps) {
   const { aboutData } = props;
   return (
     <div className='mt-10 bg-white'>
+      <div className='px-5 text-center md:px-5 lg:w-full lg:px-10'>
+        <h2 className='text-center text-2xl md:text-3xl lg:px-10 lg:text-4xl'>
+          {aboutData?.aboutTitle}
+        </h2>
+        <div
+          className='md:text-md mt-5  px-5 text-center text-xs md:px-5 lg:px-10    lg:text-lg'
+          dangerouslySetInnerHTML={{
+            __html: aboutData?.aboutDescription,
+          }}
+        ></div>
+      </div>
       <div className='mt-5 grid grid-cols-12 gap-4 lg:mx-0 lg:-mt-10 lg:max-w-none lg:gap-0 2xl:-mt-10'>
         <div className='container col-span-12 mx-auto px-5 md:col-span-12 md:px-10 lg:col-span-5 lg:col-start-2 lg:mt-20'>
-          <h2 className='text-start text-2xl md:text-3xl lg:px-10 lg:text-4xl'>
-            {aboutData?.aboutTitle}
-          </h2>
           <div className='w-full'>
             <div
               className='mt-5 text-start text-xs lg:text-lg'
               dangerouslySetInnerHTML={{
-                __html: aboutData?.aboutDescription,
+                __html: aboutData?.aboutDescriptionBottom,
               }}
             ></div>
             <div className='mt-10 py-10 text-start'>
