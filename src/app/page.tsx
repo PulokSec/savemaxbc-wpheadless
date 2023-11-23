@@ -7,6 +7,7 @@ import AboutSection from '@/components/pages/Home/AboutSection';
 import Banner from '@/components/pages/Home/Banner';
 import ContactSection from '@/components/pages/Home/ContactSection';
 import HighestLevelService from '@/components/pages/Home/HighestLevelService';
+import NewFeatureSection from '@/components/pages/Home/NewFeatureSection';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
@@ -35,6 +36,22 @@ const query = gql`
             bannerHeading
             bannerSubtitle
             bannerDescription
+          }
+          featureTitle
+          featureSubtitle
+          featureSection {
+            featureBackground {
+              sourceUrl
+              altText
+            }
+            featuredDiv {
+              title
+              description
+              image {
+                sourceUrl
+                altText
+              }
+            }
           }
           aboutSection {
             aboutTitle
@@ -203,6 +220,13 @@ export default async function HomePage() {
               headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
               settingsData={
                 data?.settingsOptions?.savemaxOptions?.headerSettings
+              }
+            />
+            <NewFeatureSection
+              featuredData={data?.pages?.nodes[0]?.HomePage?.featureSection}
+              featuredTitle={data?.pages?.nodes[0]?.HomePage?.featureTitle}
+              featuredSubtitle={
+                data?.pages?.nodes[0]?.HomePage?.featureSubtitle
               }
             />
             <AboutSection

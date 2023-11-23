@@ -5,8 +5,6 @@ import { getClient } from '@/lib/apollo';
 
 import SharedBanner from '@/components/elements/SharedBanner';
 import FaqSection from '@/components/pages/Faq/FaqSection';
-import HighestLevelService from '@/components/pages/Home/HighestLevelService';
-import NewFeatureSection from '@/components/pages/Home/NewFeatureSection';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
@@ -171,8 +169,6 @@ export default async function FaqPage() {
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        {/* <NewFeatureSection />
-        <HighestLevelService /> */}
         <FaqSection faqData={data?.pages?.nodes[0]?.faqPage?.faqSection} />
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
