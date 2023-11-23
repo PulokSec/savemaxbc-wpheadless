@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import HomeForSaleLanding from '@/components/pages/Home/HomeLanding';
+import HomeForSaleLanding from '@/components/pages/Home/HomeSaleLanding';
 
 const query = gql`
   query {
