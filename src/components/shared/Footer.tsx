@@ -133,7 +133,7 @@ export default function Footer(props: MyProps) {
           <div className='col-span-6 col-start-1 ml-6 md:col-span-12 md:col-start-4 lg:col-span-3 lg:col-start-10 lg:col-end-12 lg:ml-0'>
             <NextImage
               useSkeleton
-              className='md:[250px] w-60 lg:w-[300px]'
+              className='md:[250px] w-60 lg:w-[240px] xl:w-[300px]'
               src={settingsData?.footerLogoSection?.logoUpload?.sourceUrl}
               alt={settingsData?.footerLogoSection?.logoUpload?.altText}
               width='500'
@@ -141,11 +141,11 @@ export default function Footer(props: MyProps) {
             />
           </div>
         </div>
-        <div>
+        <div className='ml-6 md:ml-0'>
           <Link
             href='https://cansoft.com/'
             target='_blank'
-            className='md:text-md ml-6 mt-20 text-start text-sm text-white md:ml-40'
+            className='md:text-md ml-0 mt-20 text-start text-sm text-white md:ml-40'
           >
             © {new Date().getFullYear()} {settingsData?.copyrightText}
           </Link>

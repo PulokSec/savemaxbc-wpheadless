@@ -12,33 +12,33 @@ import img5 from '../../../assets/homelanding/How Do we ensure/Top Of the Line.p
 
 const data = [
   {
-    title: 'Invest in Our Realtors',
-    desc: 'We invest in our Realtors. We have understood and acknowledged the role played by Realtors in ensuring highest customer service levels and spare no efforts in equipping them to meet and surpass your expectations.',
+    title: 'Client-Centric Approach',
+    desc: 'Save Max Westcoast Realty Inc takes pride in its client-centric approach, placing your needs and goals at the forefront of every interaction. Our dedicated team is committed to understanding your unique requirements, ensuring that our services are tailored to deliver the highest level of satisfaction. From the initial consultation to the closing of a deal, we prioritize transparent communication and unwavering support to make your real estate journey seamless and rewarding.',
     img: img1,
   },
   {
-    title: 'Quality Over Quantity',
-    desc: 'We put quality over quantity. We focus on having a lean and smart team who are highly knowledgeable and productive.',
+    title: 'Expert Guidance',
+    desc: 'Our seasoned professionals bring a wealth of knowledge and expertise to the table. Save Max Westcoast Realty Inc is committed to providing expert guidance backed by up-to-date market insights. Whether you are a first-time homebuyer, an investor, or a commercial client, our team is equipped to navigate the complexities of the real estate landscape, ensuring informed decision-making and maximizing the value of your investment.',
     img: img2,
   },
   {
-    title: 'Amazing Customer Relations',
-    desc: 'Our customers, be it buyers or sellers are treated as partners and the relationships we establlish transcend from transactional to ones that last a lifetime.',
+    title: 'Cutting-Edge Technology',
+    desc: 'Save Max Westcoast Realty Inc stays at the forefront of technological advancements in the real estate industry. We leverage cutting-edge tools and platforms to streamline processes, enhance marketing strategies, and provide you with a competitive edge. Our commitment to embracing the latest technology ensures that you benefit from efficient and effective solutions tailored to the modern real estate landscape.',
     img: img3,
   },
   {
-    title: 'Highly Trained Realtors',
-    desc: 'Every one of our realtors is chosen after a thorough evaluation process. They are made to undergo a rigorous training to equip them with market and statutory knowledge. Our realtors are equipped with the latest CRM tools to elevate customer engagement to the next level. Weekly and monthly training by experts from within the corporate as well as external subject matter experts ensure that our realtors possess sufficient knowledge and acumen to give holistic advice on real estate to every client.',
+    title: 'Personalized Marketing Strategies',
+    desc: "Understanding that each property is unique, Save Max Westcoast Realty Inc develops personalized marketing strategies to showcase your property's distinctive features. From professional photography and compelling listing descriptions to targeted online and offline marketing efforts, we go above and beyond to ensure your property receives the attention it deserves in the market, attracting potential buyers and maximizing its visibility.",
     img: img4,
   },
   {
-    title: 'Top Of the Line Property Listings',
-    desc: 'Properties listed by our agents are taken up for extensive social media and print advertising to ensure exposure to potential buyers across Canada and even abroad. This, coupled with top of the ine virtual tour and staging services plus top quality feature sheets ensures a very quick turnaround for every listed property at the best market price.',
+    title: 'Integrity and Transparency',
+    desc: 'Integrity and transparency are the cornerstones of our business. Save Max Westcoast Realty Inc is dedicated to maintaining the highest ethical standards in all our dealings. We believe in providing transparent information, honest advice, and clear communication throughout the entire process. You can trust that our commitment to integrity ensures a trustworthy and reliable partnership.',
     img: img5,
   },
   {
-    title: 'Above & Beyond Service',
-    desc: 'We provide comprehensive real estate advice to our buyers. From arranging affordable mortgage plans to helping our clients choose the right location and property, our realtors go above and beyond their duties to ensure happiness and satisfaction of each customer.',
+    title: 'Ongoing Support and Community',
+    desc: "Our commitment to you extends beyond the transaction. We consider our clients valued members of our real estate community, and our support doesn't end at the closing of a deal. Whether you have questions months after your purchase or need advice for your next venture, our team is dedicated to providing ongoing support, ensuring you always have a trusted partner in your real estate journey. Your success and satisfaction are paramount to us, making your experience with Save Max Westcoast Realty Inc a lasting and rewarding partnership.",
     img: img6,
   },
 ];
@@ -51,12 +51,12 @@ const HighestLevelService = () => {
         backgroundImage: `url(${background}) no-repeat center center`,
         backgroundSize: '100% 100%',
       }}
-      className='relative h-[80vh] bg-cover pb-24 pt-20 md:pb-36'
+      className='relative bg-cover pb-24 pt-20 md:pb-36'
     >
       <h2 className='z-2 mb-8 text-center uppercase text-white md:mb-16'>
         How do we ensure highest level of service
       </h2>
-      {/* <Image
+      <Image
         src={background}
         fill={true}
         alt='bgImg'
@@ -65,7 +65,7 @@ const HighestLevelService = () => {
           borderBottomRightRadius: '50% 10%',
         }}
         className='z-1'
-      /> */}
+      />
       <div className='hidden md:block'>
         <div className='mx-auto flex w-11/12 items-center justify-center gap-5 lg:w-11/12 lg:gap-10 2xl:w-3/4 '>
           {data.map((item: any, idx: number) => (
@@ -75,7 +75,7 @@ const HighestLevelService = () => {
                 selectedDiv === idx
                   ? ' w-[500px] flex-col items-center justify-center'
                   : 'w-[150px] items-center justify-center text-center'
-              } relative flex h-96 cursor-pointer rounded-lg  p-2 md:h-[500px] lg:h-[450px] xl:h-80`}
+              } relative flex h-96 cursor-pointer rounded-lg  p-2 md:h-[600px] lg:h-[500px] xl:h-[350px]`}
               onClick={() => setSelectedDiv(idx)}
             >
               <h3
@@ -111,7 +111,7 @@ const HighestLevelService = () => {
                 selectedDiv === idx
                   ? ' w-[320px] flex-col items-center justify-center'
                   : 'w-[100px] items-center justify-center text-center'
-              } relative flex h-[250px] cursor-pointer rounded-lg p-2 `}
+              } relative flex h-[320px] cursor-pointer rounded-lg p-2 `}
               onClick={() => setSelectedDiv(idx)}
             >
               <h3
