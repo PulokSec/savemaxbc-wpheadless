@@ -69,6 +69,7 @@ const query = gql`
             }
             gallery {
               title
+              desc
               image {
                 sourceUrl
                 altText

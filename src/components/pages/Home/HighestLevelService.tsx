@@ -40,12 +40,15 @@ const HighestLevelService = (props: MyProps) => {
                     : 'rotate-180 [writing-mode:vertical-rl]'
                 } text-center text-xl text-slate-200 xl:text-[22px]`}
               >
-                {item.title}
+                {item?.title}
               </h3>
               {selectedDiv === idx && (
-                <p className='text-center text-slate-200 lg:px-2 2xl:px-5'>
-                  {item.desc}
-                </p>
+                <p
+                  className='text-center text-slate-200 lg:px-2 2xl:px-5'
+                  dangerouslySetInnerHTML={{
+                    __html: item?.desc,
+                  }}
+                ></p>
               )}
               <Image
                 src={item?.image?.sourceUrl}
@@ -79,15 +82,18 @@ const HighestLevelService = (props: MyProps) => {
                 {item.title}
               </h3>
               {selectedDiv === idx && (
-                <p className='text-center text-[15px] text-slate-200'>
-                  {item.desc}
-                </p>
+                <p
+                  className='text-center text-[15px] text-slate-200'
+                  dangerouslySetInnerHTML={{
+                    __html: item?.desc,
+                  }}
+                ></p>
               )}
               <Image
-                src={item?.img}
+                src={item?.image?.sourceUrl}
                 fill={true}
                 className='rounded-2xl object-cover opacity-50'
-                alt='img'
+                alt={item?.image?.altText}
               />
             </div>
           ))}
