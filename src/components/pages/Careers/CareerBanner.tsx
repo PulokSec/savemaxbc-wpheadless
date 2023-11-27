@@ -15,7 +15,7 @@ export default function CareersBanner(props: MyProps) {
     <div
       className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat lg:h-[100vh]'
       style={{
-        backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />

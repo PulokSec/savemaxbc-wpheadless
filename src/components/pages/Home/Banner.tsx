@@ -60,7 +60,7 @@ export default function Banner(props: MyProps) {
     <div
       className='relative h-[80vh] w-full bg-cover bg-no-repeat md:h-[100vh]'
       style={{
-        backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
