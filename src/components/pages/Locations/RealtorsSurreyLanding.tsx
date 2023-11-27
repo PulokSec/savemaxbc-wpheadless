@@ -61,7 +61,7 @@ export default function RealtorsSurreyLanding(props: MyProps) {
         }
       />
 
-      <div className='mx-auto max-w-[1400px] py-20 text-center'>
+      <div className='mx-auto max-w-[1400px] py-20 text-center px-5'>
         <h2 className='mb-5'>
           {allData?.pages?.nodes[0]?.realtorsSurrey?.contactSection?.title}
         </h2>

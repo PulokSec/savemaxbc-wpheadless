@@ -11,7 +11,11 @@ const RightImageLeftText = (props: Props) => {
   return (
     <div className='max-w-screen overflow-x-hidden '>
       <section>
-        <div className='mx-auto py-10 lg:py-20'>
+        <div
+          className={`${
+            featuredData?.title ? 'py-10 lg:py-20' : ''
+          } mx-auto `}
+        >
           <div className={`mx-auto max-w-[1400px] `}>
             <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
               {featuredData?.title}

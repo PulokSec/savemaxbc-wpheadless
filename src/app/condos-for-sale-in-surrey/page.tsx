@@ -4,11 +4,12 @@ import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
-import HomeSaleSurreyLanding from '@/components/pages/Locations/HomeSaleSurreyLanding';
+import TownhousesSaleSurreyLanding from '@/components/pages/Locations/TownhousesSaleSurreyLanding';
+import CondosSaleSurreyLanding from '@/components/pages/Locations/CondosSaleSurreyLanding';
 
 const query = gql`
   query {
-    pages(where: { id: 65933 }) {
+    pages(where: { id: 66230 }) {
       nodes {
         seo {
           title
@@ -24,7 +25,7 @@ const query = gql`
             raw
           }
         }
-        homeForSaleInSurrey {
+        condosForSaleSurrey {
           bannerSection {
             bannerImage {
               sourceUrl
@@ -65,21 +66,6 @@ const query = gql`
               }
             }
           }
-          featureSection3 {
-            featureTitle
-            featureDescription
-            featureBackground {
-              sourceUrl
-              altText
-            }
-            featuredDiv {
-              description
-              image {
-                sourceUrl
-                altText
-              }
-            }
-          }
 
           choiceSectionCopy {
             featureTitle
@@ -99,7 +85,7 @@ const query = gql`
             }
           }
 
-          leftImageRightTextSection {
+          benefitsSection {
             title
             description
             leftImage {
@@ -108,7 +94,25 @@ const query = gql`
             }
             rightText
           }
-          leftImageRightTextSection2 {
+          benefitsSection2 {
+            title
+            description
+            leftImage {
+              sourceUrl
+              altText
+            }
+            rightText
+          }
+          topAreasSection {
+            title
+            description
+            leftImage {
+              sourceUrl
+              altText
+            }
+            rightText
+          }
+          topAreasSection2 {
             title
             description
             leftImage {
@@ -228,7 +232,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function HouseForSaleInSurrey() {
+export default async function CondosForSaleSurrey() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -241,7 +245,7 @@ export default async function HouseForSaleInSurrey() {
     <main>
       <section className='bg-white'>
         <div>
-          <HomeSaleSurreyLanding allData={data} />
+          <CondosSaleSurreyLanding allData={data} />
         </div>
       </section>
     </main>
