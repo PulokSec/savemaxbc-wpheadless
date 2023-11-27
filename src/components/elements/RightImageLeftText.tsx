@@ -12,14 +12,12 @@ const RightImageLeftText = (props: Props) => {
     <div className='max-w-screen overflow-x-hidden '>
       <section>
         <div
-          className={`${
-            featuredData?.title ? 'py-10 lg:py-20' : ''
-          } mx-auto `}
+          className={`${featuredData?.title ? 'py-10 lg:py-20' : ''} mx-auto `}
         >
           <div className={`mx-auto max-w-[1400px] `}>
-            <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+            <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
               {featuredData?.title}
-            </h1>
+            </h2>
             <div
               className='md:text-md mb-28 mt-5 px-10 text-center text-xs lg:text-lg'
               dangerouslySetInnerHTML={{

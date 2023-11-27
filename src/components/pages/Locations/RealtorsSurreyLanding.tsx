@@ -19,12 +19,19 @@ export default function RealtorsSurreyLanding(props: MyProps) {
         bannerData={allData?.pages?.nodes[0]?.realtorsSurrey?.bannerSection}
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
-        topTitle={allData?.pages?.nodes[0]?.realtorsSurrey?.topFeatureTitle}
-        topDesc={
-          allData?.pages?.nodes[0]?.realtorsSurrey?.topFeatureDescription
-        }
       />
-
+      <div className='mt-20'>
+        <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+          {allData?.pages?.nodes[0]?.realtorsSurrey?.topFeatureTitle}
+        </h1>
+        <div
+          className='md:text-md mt-5 px-10 text-center text-xs lg:text-lg'
+          dangerouslySetInnerHTML={{
+            __html:
+              allData?.pages?.nodes[0]?.realtorsSurrey?.topFeatureDescription,
+          }}
+        ></div>
+      </div>
       <div className='mt-32'></div>
       <FeatureSection
         featuredData={allData?.pages?.nodes[0]?.realtorsSurrey?.featureSection}
@@ -61,7 +68,7 @@ export default function RealtorsSurreyLanding(props: MyProps) {
         }
       />
 
-      <div className='mx-auto max-w-[1400px] py-20 text-center px-5'>
+      <div className='mx-auto max-w-[1400px] px-5 py-20 text-center'>
         <h2 className='mb-5'>
           {allData?.pages?.nodes[0]?.realtorsSurrey?.contactSection?.title}
         </h2>
