@@ -13,16 +13,18 @@ export default function ExploreSection(props: MyProps) {
         <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
           {featuredData?.topHead}
         </h2>
-        <div
-          className='mt-5 text-xs lg:text-lg'
-          dangerouslySetInnerHTML={{
-            __html: featuredData?.topDescription,
-          }}
-        ></div>
+        {featuredData?.topDescription && (
+          <div
+            className='mt-5 text-xs lg:text-lg'
+            dangerouslySetInnerHTML={{
+              __html: featuredData?.topDescription,
+            }}
+          ></div>
+        )}
       </div>
       <div className='py-10 md:py-10 lg:-mt-32 lg:py-20 2xl:-mt-24'>
         <div className='mx-auto w-full'>
-          <div className='mx-auto mt-10 flex flex-col items-center justify-around gap-4 md:mt-10 md:flex-col lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:px-10'>
+          <div className='mx-auto mt-10 flex flex-col items-center justify-around gap-4 md:mt-10 md:flex-col lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:px-10 lg:pr-4'>
             <div className='flex flex-col items-start justify-center'>
               <div className='text-start lg:w-full'>
                 <h2 className='w-full text-start text-xl md:text-2xl lg:text-4xl'>
@@ -47,7 +49,7 @@ export default function ExploreSection(props: MyProps) {
             <div className=''>
               <NextImage
                 useSkeleton
-                className='md:w-100 w-40 lg:w-[400px]'
+                className='md:w-100 w-40 lg:w-[500px]'
                 src={featuredData?.image?.sourceUrl}
                 alt={featuredData?.image?.altText}
                 width='500'

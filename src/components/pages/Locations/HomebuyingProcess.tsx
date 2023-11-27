@@ -14,7 +14,7 @@ const HomeBuyingProcess = (props: MyProps) => {
         }}
         className={` relative mt-10 p-10 py-[300px] pb-[500px] text-white lg:mt-20 lg:py-[130px] lg:pb-[900px]`}
       >
-        <div className='mx-auto mb-20 max-w-[1250px] text-center'>
+        <div className='mx-auto mb-20 max-w-[1250px] text-center text-black'>
           <h2 className='text-[30px] font-semibold'>
             {featuredData?.featureTitle}
           </h2>

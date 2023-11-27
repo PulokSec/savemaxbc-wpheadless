@@ -27,7 +27,7 @@ export default function SharedBanner(props: MyProps) {
     <div
       className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat lg:h-[100vh]'
       style={{
-        backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
@@ -38,7 +38,7 @@ export default function SharedBanner(props: MyProps) {
           </p>
           {bannerData?.bannerDescription && (
             <div
-              className='mt-8 text-xl text-white lg:text-3xl'
+              className='mt-8 text-center text-xl text-white lg:text-3xl'
               dangerouslySetInnerHTML={{
                 __html: bannerData?.bannerDescription,
               }}
