@@ -51,6 +51,25 @@ const query = gql`
             }
           }
 
+          leftImageRightTextSection {
+            title
+            description
+            leftImage {
+              sourceUrl
+              altText
+            }
+            rightText
+          }
+          leftImageRightTextSection2 {
+            title
+            description
+            leftImage {
+              sourceUrl
+              altText
+            }
+            rightText
+          }
+
           choiceSection {
             featureTitle
             featureDescription
@@ -92,6 +111,10 @@ const query = gql`
                 altText
               }
             }
+          }
+          contactSection {
+            title
+            description
           }
         }
       }
