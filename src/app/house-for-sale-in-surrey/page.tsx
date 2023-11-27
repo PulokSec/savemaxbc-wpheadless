@@ -50,6 +50,36 @@ const query = gql`
               }
             }
           }
+          featureSection2 {
+            featureTitle
+            featureDescription
+            featureBackground {
+              sourceUrl
+              altText
+            }
+            featuredDiv {
+              description
+              image {
+                sourceUrl
+                altText
+              }
+            }
+          }
+          featureSection3 {
+            featureTitle
+            featureDescription
+            featureBackground {
+              sourceUrl
+              altText
+            }
+            featuredDiv {
+              description
+              image {
+                sourceUrl
+                altText
+              }
+            }
+          }
 
           choiceSectionCopy {
             featureTitle
@@ -86,6 +116,10 @@ const query = gql`
               altText
             }
             rightText
+          }
+          contactSection {
+            title
+            description
           }
         }
       }

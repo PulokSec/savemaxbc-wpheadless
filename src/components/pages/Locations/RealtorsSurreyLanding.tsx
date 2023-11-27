@@ -1,6 +1,7 @@
 import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
+import LeftImageRightText from '@/components/elements/LeftImageRightText';
+import RightImageLeftText from '@/components/elements/RightImageLeftText';
 import WhyChooseUs from '@/components/elements/WhyChooseUs';
-import AboutSaleSection from '@/components/pages/Home/AboutSaleSection';
 import FeatureSection from '@/components/pages/Home/FeatureSection';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import Footer from '@/components/shared/Footer';
@@ -23,8 +24,25 @@ export default function RealtorsSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.realtorsSurrey?.topFeatureDescription
         }
       />
+
+      <div className='mt-32'></div>
       <FeatureSection
         featuredData={allData?.pages?.nodes[0]?.realtorsSurrey?.featureSection}
+      />
+
+      <RightImageLeftText
+        featuredData={
+          allData?.pages?.nodes[0]?.realtorsSurrey?.leftImageRightTextSection
+        }
+      />
+      <LeftImageRightText
+        featuredData={
+          allData?.pages?.nodes[0]?.realtorsSurrey?.leftImageRightTextSection2
+        }
+      />
+
+      <WhyChooseUs
+        featuredData={allData?.pages?.nodes[0]?.realtorsSurrey?.choiceSection}
       />
 
       <HomeBuyerSection
@@ -33,18 +51,29 @@ export default function RealtorsSurreyLanding(props: MyProps) {
         }
       />
 
-      <AboutSaleSection
+      {/* <AboutSaleSection
         aboutData={allData?.pages?.nodes[0]?.realtorsSurrey?.aboutSection}
-      />
+      /> */}
 
-      <WhyChooseUs
-        featuredData={allData?.pages?.nodes[0]?.realtorsSurrey?.choiceSection}
-      />
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.realtorsSurrey?.rightRealtorSection
         }
       />
+
+      <div className='mx-auto max-w-[1400px] py-20 text-center px-5'>
+        <h2 className='mb-5'>
+          {allData?.pages?.nodes[0]?.realtorsSurrey?.contactSection?.title}
+        </h2>
+        <p
+          dangerouslySetInnerHTML={{
+            __html:
+              allData?.pages?.nodes[0]?.realtorsSurrey?.contactSection
+                ?.description,
+          }}
+        ></p>
+      </div>
+
       <Footer
         navigation={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.footerSettings}

@@ -41,7 +41,7 @@ export default function LocationBanner(props: MyProps) {
           </p>
           {bannerData?.bannerDescription && (
             <div
-              className='mt-8 text-xl text-white lg:text-3xl'
+              className='mt-8 text-center text-xl text-white lg:text-3xl'
               dangerouslySetInnerHTML={{
                 __html: bannerData?.bannerDescription,
               }}
@@ -50,17 +50,30 @@ export default function LocationBanner(props: MyProps) {
         </div>
       </div>
       {topTitle && topDesc ? (
-        <div className='container relative mx-auto mt-[40%] w-[80%] bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[8%] 2xl:mt-[16%]'>
-          <div
-            className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
-            dangerouslySetInnerHTML={{
-              __html: topDesc,
-            }}
-          ></div>
-          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
-            {topTitle}
-          </p>
-        </div>
+        <>
+          <div className='container absolute left-1/2 mx-auto hidden w-[80%] -translate-x-1/2 -translate-y-1/2 bg-white px-5 py-3 text-center shadow-md md:-bottom-48 md:block lg:-bottom-56 xl:-bottom-48 2xl:-bottom-40 '>
+            <div
+              className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
+              dangerouslySetInnerHTML={{
+                __html: topDesc,
+              }}
+            ></div>
+            <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+              {topTitle}
+            </p>
+          </div>
+          <div className='container mx-auto md:hidden w-[80%] bg-white px-5 py-3 text-center shadow-md '>
+            <div
+              className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
+              dangerouslySetInnerHTML={{
+                __html: topDesc,
+              }}
+            ></div>
+            <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+              {topTitle}
+            </p>
+          </div>
+        </>
       ) : topTitle ? (
         <div className='container relative mx-auto mt-[40%] w-[80%] bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
           <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>

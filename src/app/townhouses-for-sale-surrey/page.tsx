@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 import { getClient } from '@/lib/apollo';
+
 import TownhousesSaleSurreyLanding from '@/components/pages/Locations/TownhousesSaleSurreyLanding';
 
 const query = gql`
@@ -35,6 +36,21 @@ const query = gql`
           topFeatureDescription
           topFeatureTitle
           featureSection {
+            featureTitle
+            featureDescription
+            featureBackground {
+              sourceUrl
+              altText
+            }
+            featuredDiv {
+              description
+              image {
+                sourceUrl
+                altText
+              }
+            }
+          }
+          featureSection2 {
             featureTitle
             featureDescription
             featureBackground {
@@ -103,6 +119,10 @@ const query = gql`
               altText
             }
             rightText
+          }
+          contactSection {
+            title
+            description
           }
         }
       }

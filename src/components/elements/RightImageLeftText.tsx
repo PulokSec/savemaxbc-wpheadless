@@ -1,6 +1,6 @@
+import React from 'react';
 
 import NextImage from '@/components/NextImage';
-import React from 'react';
 
 type Props = {
   featuredData: any;
@@ -11,13 +11,17 @@ const RightImageLeftText = (props: Props) => {
   return (
     <div className='max-w-screen overflow-x-hidden '>
       <section>
-        <div className='mx-auto py-10 lg:py-20'>
-          <div className='mx-auto max-w-[1400px]'>
+        <div
+          className={`${
+            featuredData?.title ? 'py-10 lg:py-20' : ''
+          } mx-auto `}
+        >
+          <div className={`mx-auto max-w-[1400px] `}>
             <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
               {featuredData?.title}
             </h1>
             <div
-              className='md:text-md mt-5 px-10 text-center text-xs lg:text-lg'
+              className='md:text-md mb-28 mt-5 px-10 text-center text-xs lg:text-lg'
               dangerouslySetInnerHTML={{
                 __html: featuredData?.description,
               }}

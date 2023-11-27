@@ -28,9 +28,7 @@ const NewFeatureSection = (props: MyProps) => {
                 >
                   <div className='mx-auto flex w-full flex-col items-start md:w-1/2 xl:w-4/6'>
                     <div className='mx-auto w-3/4 xl:w-3/5'>
-                      <h1 className=' text-3xl lg:text-[40px] lg:leading-tight xl:text-[50px] 2xl:text-[60px] '>
-                        {item?.title}
-                      </h1>
+                      <h2 className=''>{item?.title}</h2>
                       <div
                         className='md:text-md  mt-5  text-justify text-xs lg:text-lg'
                         dangerouslySetInnerHTML={{
@@ -90,9 +88,7 @@ const NewFeatureSection = (props: MyProps) => {
                   </div>
                   <div className='mx-auto flex w-full flex-col items-end md:w-1/2 xl:w-3/5'>
                     <div className='mx-auto w-3/4 xl:w-2/3'>
-                      <h1 className=' text-3xl lg:text-[40px] lg:leading-tight xl:text-[50px] 2xl:text-[60px] '>
-                        {item?.title}
-                      </h1>
+                      <h2 className=''>{item?.title}</h2>
                       <div
                         className='md:text-md  mt-5  text-justify text-xs lg:text-lg'
                         dangerouslySetInnerHTML={{

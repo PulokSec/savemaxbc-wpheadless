@@ -1,8 +1,10 @@
 import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
 import LeftImageRightText from '@/components/elements/LeftImageRightText';
+import RightImageLeftText from '@/components/elements/RightImageLeftText';
 import WhyChooseUs from '@/components/elements/WhyChooseUs';
 import FeatureSection from '@/components/pages/Home/FeatureSection';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
+import Contact from '@/components/shared/Contact';
 import Footer from '@/components/shared/Footer';
 
 type MyProps = {
@@ -27,6 +29,7 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.topFeatureDescription
         }
       />
+      <div className='md:mt-32'></div>
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection
@@ -38,28 +41,37 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
             ?.leftImageRightTextSection
         }
       />
-
-      <HomeBuyerSection
-        featuredData={
-          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.homebuyingSectionCopy
-        }
-      />
-
-      <LeftImageRightText
+      <RightImageLeftText
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey
             ?.leftImageRightTextSection2
         }
       />
 
-      {/* <AboutSaleSection
-        aboutData={allData?.pages?.nodes[0]?.homeForSaleInSurrey?.aboutSection}
-      /> */}
+      <HomeBuyerSection
+        featuredData={
+          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.homebuyingSectionCopy
+        }
+      />
+      <FeatureSection
+        featuredData={
+          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection2
+        }
+      />
+
 
       <WhyChooseUs
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.choiceSectionCopy
         }
+      />
+      <FeatureSection
+        featuredData={
+          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection3
+        }
+      />
+      <Contact
+        data={allData?.pages?.nodes[0]?.homeForSaleInSurrey?.contactSection}
       />
 
       <Footer

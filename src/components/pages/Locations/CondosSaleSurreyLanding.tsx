@@ -10,7 +10,7 @@ import Footer from '@/components/shared/Footer';
 type MyProps = {
   allData: any;
 };
-export default function TownhousesSaleSurreyLanding(props: MyProps) {
+export default function CondosSaleSurreyLanding(props: MyProps) {
   const { allData } = props;
   // console.log(allData);
 
@@ -18,66 +18,64 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
     <main>
       <LocationBanner
         bannerData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.bannerSection
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.bannerSection
         }
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
         topTitle={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.topFeatureTitle
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.topFeatureTitle
         }
         topDesc={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey
-            ?.topFeatureDescription
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.topFeatureDescription
         }
       />
       <div className='pt-32'></div>
       <FeatureSection
         featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.featureSection
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.featureSection
         }
       />
       <LeftImageRightText
         featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.benefitsSection
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.benefitsSection
         }
       />
 
       <RightImageLeftText
         featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.benefitsSection2
-        }
-      />
-      <FeatureSection
-        featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.featureSection2
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.benefitsSection2
         }
       />
 
       <HomeBuyerSection
         featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey
-            ?.homebuyingSectionCopy
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.homebuyingSectionCopy
+        }
+      />
+      <FeatureSection
+        featuredData={
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.featureSection2
         }
       />
 
       <LeftImageRightText
         featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.topAreasSection
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.topAreasSection
         }
       />
       <RightImageLeftText
         featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.topAreasSection2
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.topAreasSection2
         }
       />
 
       <WhyChooseUs
         featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.choiceSectionCopy
+          allData?.pages?.nodes[0]?.condosForSaleSurrey?.choiceSectionCopy
         }
       />
       <Contact
-        data={allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.contactSection}
+        data={allData?.pages?.nodes[0]?.condosForSaleSurrey?.contactSection}
       />
 
       <Footer

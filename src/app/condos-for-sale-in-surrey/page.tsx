@@ -1,18 +1,15 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
-import AboutSection from '@/components/pages/Home/AboutSection';
-import Banner from '@/components/pages/Home/Banner';
-import ContactSection from '@/components/pages/Home/ContactSection';
-import HighestLevelService from '@/components/pages/Home/HighestLevelService';
-import NewFeatureSection from '@/components/pages/Home/NewFeatureSection';
-import Footer from '@/components/shared/Footer';
+import TownhousesSaleSurreyLanding from '@/components/pages/Locations/TownhousesSaleSurreyLanding';
+import CondosSaleSurreyLanding from '@/components/pages/Locations/CondosSaleSurreyLanding';
 
 const query = gql`
   query {
-    pages(where: { id: 10 }) {
+    pages(where: { id: 66230 }) {
       nodes {
         seo {
           title
@@ -28,24 +25,25 @@ const query = gql`
             raw
           }
         }
-        HomePage {
+        condosForSaleSurrey {
           bannerSection {
             bannerImage {
               sourceUrl
             }
             bannerHeading
-            bannerSubtitle
+            bannerSubhead
             bannerDescription
           }
-          featureTitle
-          featureSubtitle
+          topFeatureDescription
+          topFeatureTitle
           featureSection {
+            featureTitle
+            featureDescription
             featureBackground {
               sourceUrl
               altText
             }
             featuredDiv {
-              title
               description
               image {
                 sourceUrl
@@ -53,47 +51,79 @@ const query = gql`
               }
             }
           }
-          aboutSection {
-            aboutTitle
-            aboutDescription
-            aboutImage {
+          featureSection2 {
+            featureTitle
+            featureDescription
+            featureBackground {
               sourceUrl
               altText
             }
-          }
-          ensureSection {
-            heading
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            gallery {
-              title
-              desc
+            featuredDiv {
+              description
               image {
                 sourceUrl
                 altText
               }
             }
           }
+
+          choiceSectionCopy {
+            featureTitle
+            featureDescription
+            featuredDiv {
+              title
+              description
+            }
+          }
+
+          homebuyingSectionCopy {
+            featureTitle
+            featureDescription
+            featuredDiv {
+              title
+              description
+            }
+          }
+
+          benefitsSection {
+            title
+            description
+            leftImage {
+              sourceUrl
+              altText
+            }
+            rightText
+          }
+          benefitsSection2 {
+            title
+            description
+            leftImage {
+              sourceUrl
+              altText
+            }
+            rightText
+          }
+          topAreasSection {
+            title
+            description
+            leftImage {
+              sourceUrl
+              altText
+            }
+            rightText
+          }
+          topAreasSection2 {
+            title
+            description
+            leftImage {
+              sourceUrl
+              altText
+            }
+            rightText
+          }
           contactSection {
-            contactTitle
-            contactDescription
-            heading
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            contactImage {
-              sourceUrl
-              altText
-            }
-            phone
-            email
-            addressOne
-            addressTwo
-            facebookLink
-            instagramLink
+            title
+            description
           }
         }
       }
@@ -202,7 +232,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function HomePage() {
+export default async function CondosForSaleSurrey() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -212,42 +242,12 @@ export default async function HomePage() {
     },
   });
   return (
-    <>
-      <main>
-        <section className='bg-white'>
-          <div>
-            <Banner
-              bannerData={data?.pages?.nodes[0]?.HomePage?.bannerSection}
-              headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-              settingsData={
-                data?.settingsOptions?.savemaxOptions?.headerSettings
-              }
-            />
-            <NewFeatureSection
-              featuredData={data?.pages?.nodes[0]?.HomePage?.featureSection}
-              featuredTitle={data?.pages?.nodes[0]?.HomePage?.featureTitle}
-              featuredSubtitle={
-                data?.pages?.nodes[0]?.HomePage?.featureSubtitle
-              }
-            />
-            <AboutSection
-              aboutData={data?.pages?.nodes[0]?.HomePage?.aboutSection}
-            />
-            <HighestLevelService
-              serviceData={data?.pages?.nodes[0]?.HomePage?.ensureSection}
-            />
-            <ContactSection
-              contactData={data?.pages?.nodes[0]?.HomePage?.contactSection}
-            />
-            <Footer
-              navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-              settingsData={
-                data?.settingsOptions?.savemaxOptions?.footerSettings
-              }
-            />
-          </div>
-        </section>
-      </main>
-    </>
+    <main>
+      <section className='bg-white'>
+        <div>
+          <CondosSaleSurreyLanding allData={data} />
+        </div>
+      </section>
+    </main>
   );
 }
