@@ -29,7 +29,7 @@ export default function FeatureSection(props: MyProps) {
                   key={i}
                   className='mt-10 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mx-auto lg:mx-0 lg:mt-20 lg:max-w-none lg:gap-0'
                 >
-                  <div className='col-span-12 ml-5 md:col-span-12 md:ml-5 lg:col-span-5 lg:col-start-1 lg:mt-20 lg:pl-10 2xl:col-start-2'>
+                  <div className='col-span-12 ml-5 md:col-span-12 md:ml-5 lg:col-span-5 lg:col-start-2 lg:mt-20 2xl:col-start-2'>
                     <div className=''>
                       <div
                         className='md:text-md mt-5 text-xs lg:text-lg'
@@ -39,7 +39,7 @@ export default function FeatureSection(props: MyProps) {
                       ></div>
                     </div>
                   </div>
-                  <div className='col-span-4 col-start-8 col-end-12 md:col-span-3 md:col-start-11 md:col-end-12 lg:col-span-5 lg:col-start-7 2xl:col-start-8'>
+                  <div className='col-span-4 col-start-8 col-end-12 md:col-span-3 md:col-start-11 md:col-end-12 lg:col-span-5 lg:col-start-8 2xl:col-start-8'>
                     <NextImage
                       useSkeleton
                       className='md:w-100 w-40 lg:w-[100%]'
