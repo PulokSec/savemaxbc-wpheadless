@@ -4,7 +4,6 @@ import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
-import TownhousesSaleSurreyLanding from '@/components/pages/Locations/TownhousesSaleSurreyLanding';
 import CondosSaleSurreyLanding from '@/components/pages/Locations/CondosSaleSurreyLanding';
 
 const query = gql`

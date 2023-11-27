@@ -22,13 +22,20 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
         }
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
-        topTitle={
-          allData?.pages?.nodes[0]?.condosForSaleSurrey?.topFeatureTitle
-        }
-        topDesc={
-          allData?.pages?.nodes[0]?.condosForSaleSurrey?.topFeatureDescription
-        }
       />
+      <div className='mt-20'>
+        <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+          {allData?.pages?.nodes[0]?.condosForSaleSurrey?.topFeatureTitle}
+        </h1>
+        <div
+          className='md:text-md mt-5 px-10 text-center text-xs lg:text-lg'
+          dangerouslySetInnerHTML={{
+            __html:
+              allData?.pages?.nodes[0]?.condosForSaleSurrey
+                ?.topFeatureDescription,
+          }}
+        ></div>
+      </div>
       <div className='pt-32'></div>
       <FeatureSection
         featuredData={
