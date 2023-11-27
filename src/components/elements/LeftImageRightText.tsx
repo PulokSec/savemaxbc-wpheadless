@@ -1,5 +1,6 @@
-import NextImage from '@/components/NextImage';
 import React from 'react';
+
+import NextImage from '@/components/NextImage';
 
 type Props = {
   featuredData: any;
@@ -12,9 +13,9 @@ const LeftImageRightText = (props: Props) => {
       <section>
         <div className='mx-auto py-10 lg:py-20'>
           <div className='mx-auto max-w-[1400px]'>
-            <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+            <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
               {featuredData?.title}
-            </h1>
+            </h2>
             <div
               className='md:text-md mt-5 px-10 text-center text-xs lg:text-lg'
               dangerouslySetInnerHTML={{

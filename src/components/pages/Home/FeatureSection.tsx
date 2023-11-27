@@ -12,9 +12,9 @@ export default function FeatureSection(props: MyProps) {
       <section>
         <div className='mx-auto py-10 lg:py-20'>
           <div>
-            <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+            <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
               {featuredData?.featureTitle}
-            </h1>
+            </h2>
             <div
               className='md:text-md mt-5 px-10 text-center text-xs lg:text-lg'
               dangerouslySetInnerHTML={{
