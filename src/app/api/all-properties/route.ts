@@ -7,7 +7,7 @@ export async function GET(req: Request) {
   const offset = (currentPage - 1) * pageSize;
   const listings = await query({
     query:
-      'SELECT City, Province, PostalCode, Neighbourhood, CommunityName, BedroomsTotal, BathroomTotal, DdfListingID, TransactionType, StreetAddress, PublicRemarks, Lease, LeasePerUnit, Latitude, Longitude, ListingID, Features,WaterFrontType, MoreInformationLink CoolingType, HeatingType FROM 3d_rps_property LIMIT ? OFFSET ?',
+      'SELECT City, Province, PostalCode, Neighbourhood, CommunityName, BedroomsTotal, BathroomTotal, DdfListingID, TransactionType, LastUpdated StreetAddress, PublicRemarks, Lease, LeasePerUnit, Latitude, Longitude, ListingID, Features,WaterFrontType, MoreInformationLink CoolingType, HeatingType, PostalCode FROM 3d_rps_property ORDER BY LastUpdated DESC LIMIT ? OFFSET ?',
     values: [pageSize, offset],
   });
   const totalRows = (await query({

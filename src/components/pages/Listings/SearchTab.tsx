@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { GrLocation } from 'react-icons/gr';
@@ -28,6 +29,7 @@ const SearchTab = () => {
   const handleRemove = (data: string) => {
     setFilters(filters.filter((filter) => filter.name !== data));
   };
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -309,7 +311,24 @@ const SearchTab = () => {
             >
               {filtersData?.map((post: any, idx: number) => {
                 return (
-                  <div key={idx} className=''>
+                  <div
+                    onClick={() =>
+                      router.push(
+                        `/listing/${post?.StreetAddress?.replaceAll(
+                          ' ',
+                          '-'
+                        ).toLowerCase()}-${post?.City?.replaceAll(
+                          ' ',
+                          '-'
+                        ).toLowerCase()}-${post?.Province?.replaceAll(
+                          ' ',
+                          '-'
+                        ).toLowerCase()}-${post?.PostalCode}-${post?.ListingID}`
+                      )
+                    }
+                    key={idx}
+                    className=''
+                  >
                     <p className='my-2 cursor-pointer px-5 text-[14px] text-[#082f49]'>
                       {post?.StreetAddress} {post?.City}/{post?.Province}
                     </p>
