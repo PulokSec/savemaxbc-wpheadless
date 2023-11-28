@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { Metadata } from 'next';
 import Head from 'next/head';
 
 import { getClient } from '@/lib/apollo';
@@ -8,7 +9,6 @@ import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import ListingBanner from '@/components/pages/Listings/ListingBanner';
 import Footer from '@/components/shared/Footer';
-import { Metadata } from 'next';
 
 const query = gql`
   query {
@@ -153,7 +153,7 @@ export async function generateMetadata(): Promise<Metadata> {
     ],
   };
 }
-export default async function Listings({
+export default async function PropertiesListing({
   searchParams,
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
