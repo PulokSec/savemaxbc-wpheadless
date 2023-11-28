@@ -36,9 +36,16 @@ export default function ListingCarousel(props: MyProps) {
               key={post?.ListingID}
               className='mx-auto flex h-[400px] w-[290px] cursor-pointer flex-col justify-around overflow-hidden rounded border-2 border-gray-300'
             >
-              <p className='z-5 relative top-0 px-5 text-end text-lg font-semibold text-[#E2C379]'>
-                {post?.TransactionType}
-              </p>
+              <div className="flex justify-end items-end">
+              <div
+                className='w-[100px] origin-top bg-yellow-500 text-end absolute mb-[-50px] z-10'
+                // style={{ transform: 'translateX(50%) rotate(45deg)' }}
+              >
+                <p className='z-5 relative top-0 px-5 text-center text-lg font-semibold text-white'>
+                  {post?.TransactionType}
+                </p>
+              </div>
+              </div>
               <div className='relative'>
                 <NextImage
                   useSkeleton

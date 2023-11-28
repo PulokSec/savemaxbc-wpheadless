@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import ReactPaginate from 'react-paginate';
 
@@ -13,8 +14,9 @@ const Pagination: React.FC<PaginationProps> = ({
   currentPage,
   totalPages,
 }) => {
+  const router = useRouter();
   const handlePageClick = ({ selected }: { selected: number }) => {
-    setCurrentPage(selected);
+    router.push(`/property-listing?page=${selected}`);
   };
   const paginationVariants = {
     hidden: {
@@ -37,7 +39,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <motion.div
       variants={paginationVariants}
-      initial='hidden'
+      initial='visible'
       animate='visible'
     >
       <ReactPaginate

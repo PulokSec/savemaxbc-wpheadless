@@ -5,8 +5,6 @@ import React from 'react';
 import { getClient } from '@/lib/apollo';
 
 import ListingMap from '@/components/pages/Listings/ListingMap';
-import ListingTable from '@/components/pages/Listings/ListingTable';
-import SingleListingBanner from '@/components/pages/Listings/SingleListingBanner';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 
@@ -157,9 +155,9 @@ export default async function SingleListing() {
             settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
 
-          <SingleListingBanner
+          {/* <SingleListingBanner
             navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-          />
+          /> */}
 
           <div className='mx-auto max-w-[1400px] p-2 md:p-5 xl:py-10 '>
             <div className='mb-4 flex flex-wrap items-center gap-2'>
@@ -197,7 +195,7 @@ export default async function SingleListing() {
             <h4 className='mb-1 text-xl text-[#B48237]'>$1,999,900</h4>
           </div>
 
-          <ListingTable navigation={data?.menus?.nodes[0]?.menuItems?.nodes} />
+          {/* <ListingTable navigation={data?.menus?.nodes[0]?.menuItems?.nodes} /> */}
 
           <ListingMap map={data?.menus?.nodes[0]?.singleListing?.address} />
 

@@ -2,9 +2,11 @@ import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
-import { getSingleProperty } from '@/lib/dataFetching';
+import { getPhotos, getSingleProperty } from '@/lib/dataFetching';
 
-import BlogBanner from '@/components/elements/BlogBanner';
+import ListingMap from '@/components/pages/Listings/ListingMap';
+import ListingTable from '@/components/pages/Listings/ListingTable';
+import SingleListingBanner from '@/components/pages/Listings/SingleListingBanner';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
@@ -147,21 +149,48 @@ export default async function SingleProperty({
       },
     },
   });
+  const images = await getPhotos({ listingId: listingId});
+            
 
   const allDetails = await getSingleProperty({
     listingId: listingId,
   });
-  console.log(allDetails);
+  console.log(images);
   return (
     <>
       <main>
-        <BlogBanner
-          bannerImage={data?.post?.featuredImage?.node}
-          bannerHeading={data?.post?.title}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-        />
-        <div className=''>Helooooooo</div>
+        <SingleListingBanner
+            navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
+            allImages ={images}
+          />
+
+          <div className='mx-auto max-w-[1400px] p-2 md:p-5 xl:py-10 '>
+            <div className='mb-4 flex flex-wrap items-center gap-2'>
+              <div className='w-[150px] rounded-xl bg-gray-400 px-3 py-2 text-center text-lg text-white hover:bg-gray-500'>
+                <p>{allDetails[0]?.BedroomsTotal} Bedroom</p>
+              </div>
+              <div className='w-[150px] rounded-xl bg-gray-400 px-3 py-2 text-center text-lg text-white hover:bg-gray-500'>
+                <p>{allDetails[0]?.BathroomTotal} Bathroom</p>
+              </div>
+              <div className='w-[150px] rounded-xl bg-gray-400 px-3 py-2 text-center text-lg text-white hover:bg-gray-500'>
+                <p>{allDetails[0]?.SizeInterior} sqft</p>
+              </div>
+            </div>
+
+            <h2 className=' mb-1 text-[#B48237]'>58121 Fancher Road</h2>
+            <h3 className='mb-1 text-gray-900'>
+            {allDetails[0]?.City} {allDetails[0]?.Province} {allDetails[0]?.PostalCode}
+            </h3>
+
+            <p className='mb-2'>
+              {allDetails[0]?.PublicRemarks}
+            </p>
+            <h4 className='mb-1 text-xl text-[#B48237]'>${allDetails[0]?.Price}</h4>
+          </div>
+
+          <ListingTable navigation={data?.menus?.nodes[0]?.menuItems?.nodes} details={allDetails[0]}/>
+
+          <ListingMap latitude={allDetails[0]?.Latitude} longitude={allDetails[0]?.Longitude}/>
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
