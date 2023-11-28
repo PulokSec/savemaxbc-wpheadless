@@ -3,88 +3,90 @@ import React from 'react';
 
 type MyProps = {
   navigation: any;
+  details: any;
 };
 
-const propertyType = [
-  {
-    type: 'MLS Number',
-    value: 'R2834925',
-  },
-  {
-    type: 'Property Type',
-    value: 'Single Family',
-  },
-  {
-    type: 'View Type',
-    value: 'Mountain View, View Of Water',
-  },
-];
-const parkingType = [
-  {
-    type: 'Garage',
-    value: '2',
-  },
-  {
-    type: 'Property Type',
-    value: 'Single Family',
-  },
-  {
-    type: 'View Type',
-    value: 'Mountain View, View Of Water',
-  },
-];
-const landType = [
-  {
-    type: 'Acreage',
-    value: 'Yes',
-  },
-  {
-    type: 'Size Irregular',
-    value: '3.29',
-  },
-  {
-    type: 'Size Total',
-    value: '3.29 Ac',
-  },
-];
-
-const buildingType = [
-  {
-    type: 'Bedrooms Total',
-    value: '4',
-  },
-  {
-    type: 'Bathroom Total',
-    value: '3',
-  },
-  {
-    type: 'Basement Type',
-    value: 'Crawl Space',
-  },
-  {
-    type: 'Appliances',
-    value: 'Washer, Dryer, Refrigerator, Stove, Dishwasher',
-  },
-  {
-    type: 'Constructed Date',
-    value: '2004',
-  },
-  {
-    type: 'Construction Style Attachment',
-    value: 'Detached',
-  },
-  {
-    type: 'Construction Style Split Level',
-    value: 'Split Level',
-  },
-  {
-    type: 'Size Interior',
-    value: '2050 Sqft',
-  },
-  
-];
 
 export default function ListingTable(props: MyProps) {
+  const { navigation, details } = props;
+  const propertyType = [
+    {
+      type: 'MLS Number',
+      value: details?.DdfListingID || '',
+    },
+    {
+      type: 'Property Type',
+      value: details?.PropertyType || '',
+    },
+    {
+      type: 'View Type',
+      value: details?.ViewType || '',
+    },
+  ];
+  const parkingType = [
+    {
+      type: 'Garage',
+      value: '2',
+    },
+    {
+      type: 'Property Type',
+      value: details?.PropertyType || '',
+    },
+    {
+      type: 'View Type',
+      value: details?.ViewType || '',
+    },
+  ];
+  const landType = [
+    {
+      type: 'Acreage',
+      value: details?.Acreage || '',
+    },
+    {
+      type: 'Size Irregular',
+      value: details?.SizeIrregular || '',
+    },
+    {
+      type: 'Size Total',
+      value: details?.SizeTotal || '',
+    },
+  ];
+  
+  const buildingType = [
+    {
+      type: 'Bedrooms Total',
+      value: details?.BedroomsTotal || '',
+    },
+    {
+      type: 'Bathroom Total',
+      value: details?.BathroomTotal || '',
+    },
+    {
+      type: 'Basement Type',
+      value: details?.BasementType || '',
+    },
+    {
+      type: 'Appliances',
+      value: details?.Appliances || '',
+    },
+    {
+      type: 'Constructed Date',
+      value: details?.ConstructedDate || '',
+    },
+    {
+      type: 'Construction Style Attachment',
+      value: details?.ConstructionStyleAttachment || '',
+    },
+    {
+      type: 'Construction Style Split Level',
+      value: details?.ConstructionStyleSplitLevel || '',
+    },
+    {
+      type: 'Size Interior',
+      value: `${details?.SizeInterior} sqft` || '',
+    },
+    
+  ];
   return (
     <div className='mx-auto mb-5 max-w-[1400px] p-2 md:p-5 xl:py-5'>
       <h3 className='mb-2 text-gray-800'>Property Details</h3>
@@ -92,15 +94,11 @@ export default function ListingTable(props: MyProps) {
         {propertyType.map((item, idx) => (
           <div
             key={idx}
-            className={`${idx === 0 && 'border-t-gray-300'} ${
-              idx % 2 === 0
-                ? 'border-b-gray-100 bg-gray-100 '
-                : 'border-b-gray-50 bg-gray-50 '
-            } flex h-10 items-center justify-between overflow-auto border-2 px-1 hover:border-b-gray-200 hover:bg-gray-200`}
+            className='flex h-10 items-center justify-between overflow-auto border-2 px-1 hover:border-b-gray-200 hover:bg-gray-200'
           >
-            <h5 className='text-[15px] font-semibold text-gray-700'>
+            <p className='text-[15px] font-semibold text-gray-700'>
               {item.type}
-            </h5>
+            </p>
             <p className='text-[15px]'>{item.value}</p>
           </div>
         ))}
@@ -116,9 +114,9 @@ export default function ListingTable(props: MyProps) {
                 : 'border-b-gray-50 bg-gray-50 '
             } flex h-10 items-center justify-between overflow-auto border-2 px-1 hover:border-b-gray-200 hover:bg-gray-200`}
           >
-            <h5 className='text-[15px] font-semibold text-gray-700'>
+            <p className='text-[15px] font-semibold text-gray-700'>
               {item.type}
-            </h5>
+            </p>
             <p className='text-[15px]'>{item.value}</p>
           </div>
         ))}
@@ -134,9 +132,9 @@ export default function ListingTable(props: MyProps) {
                 : 'border-b-gray-50 bg-gray-50 '
             } flex h-10 items-center justify-between overflow-auto border-2 px-1 hover:border-b-gray-200 hover:bg-gray-200`}
           >
-            <h5 className='text-[15px] font-semibold text-gray-700'>
+            <p className='text-[15px] font-semibold text-gray-700'>
               {item.type}
-            </h5>
+            </p>
             <p className='text-[15px]'>{item.value}</p>
           </div>
         ))}
@@ -152,9 +150,9 @@ export default function ListingTable(props: MyProps) {
                 : 'border-b-gray-50 bg-gray-50 '
             } flex h-10 items-center justify-between overflow-auto border-2 px-1 hover:border-b-gray-200 hover:bg-gray-200`}
           >
-            <h5 className='text-[15px] font-semibold text-gray-700'>
+            <p className='text-[15px] font-semibold text-gray-700'>
               {item.type}
-            </h5>
+            </p>
             <p className='text-[15px]'>{item.value}</p>
           </div>
         ))}
