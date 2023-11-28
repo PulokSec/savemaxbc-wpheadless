@@ -9,7 +9,7 @@ import ListingTable from '@/components/pages/Listings/ListingTable';
 import SingleListingBanner from '@/components/pages/Listings/SingleListingBanner';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
-import SlickCarousel from '@/components/pages/Listings/SlickCarousel';
+
 
 const query = gql`
   query {
