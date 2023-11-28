@@ -13,7 +13,9 @@ export default function BlogBanner(props: MyProps) {
     <div
       className='relative h-[80vh] w-full bg-cover md:h-[100vh]'
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${bannerImage?.sourceUrl}) no-repeat center center`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${
+          bannerImage?.sourceUrl || ''
+        }) no-repeat center center`,
         backgroundSize: '100% 100%',
       }}
     >
@@ -21,7 +23,7 @@ export default function BlogBanner(props: MyProps) {
       <div className='mx-auto flex flex-col items-center justify-between'>
         <div className='mx-auto flex w-full flex-col items-center justify-center py-16 text-center  md:mt-[10%] lg:mt-[25%]'>
           <p className='text-leading-3 text-lg font-bold text-white md:text-5xl'>
-            {bannerHeading}
+            {bannerHeading || ''}
           </p>
         </div>
       </div>

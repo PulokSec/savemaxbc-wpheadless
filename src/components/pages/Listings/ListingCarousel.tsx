@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import CarouselComponent from '@/components/carousel/CarouselComponent';
@@ -10,15 +11,30 @@ type MyProps = {
 
 export default function ListingCarousel(props: MyProps) {
   const { posts } = props;
-
+  const router = useRouter();
+  console.log(posts);
   return (
     <>
       <div className='relative mt-20'>
         <CarouselComponent>
           {posts?.map(({ post, cardImageUrl }: any) => (
             <div
+              onClick={() =>
+                router.push(
+                  `/listing/${post?.StreetAddress?.replaceAll(
+                    ' ',
+                    '-'
+                  ).toLowerCase()}-${post?.City?.replaceAll(
+                    ' ',
+                    '-'
+                  ).toLowerCase()}-${post?.Province?.replaceAll(
+                    ' ',
+                    '-'
+                  ).toLowerCase()}-${post?.PostalCode}-${post?.ListingID}`
+                )
+              }
               key={post?.ListingID}
-              className='mx-auto flex h-[400px] w-[290px] flex-col justify-around overflow-hidden rounded border-2 border-gray-300'
+              className='mx-auto flex h-[400px] w-[290px] cursor-pointer flex-col justify-around overflow-hidden rounded border-2 border-gray-300'
             >
               <p className='z-5 relative top-0 px-5 text-end text-lg font-semibold text-[#E2C379]'>
                 {post?.TransactionType}

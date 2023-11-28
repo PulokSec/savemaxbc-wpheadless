@@ -35,6 +35,7 @@ export async function getSearchQuery({
 export async function getSingleProperty({
   listingId = '',
 }: { listingId?: string } = {}): Promise<any> {
+  console.log(listingId);
   const res = await fetch(
     process.env.NEXT_PUBLIC_BASEURL +
       `/api/single-property?listingId=${listingId}`,

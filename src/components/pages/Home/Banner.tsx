@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import { GoSearch } from 'react-icons/go';
 
@@ -19,7 +20,7 @@ export default function Banner(props: MyProps) {
   const [searchShow, setSearchShow] = useState(false);
   const [searchField, setSearchField] = useState('');
   const domNode: any = useRef();
-
+  const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
       const city = searchField.split(',')[0] || searchField;
@@ -106,7 +107,26 @@ export default function Banner(props: MyProps) {
                   >
                     {filtersData?.map((post: any, idx: number) => {
                       return (
-                        <div key={idx} className='text-start'>
+                        <div
+                          onClick={() =>
+                            router.push(
+                              `/listing/${post?.StreetAddress?.replaceAll(
+                                ' ',
+                                '-'
+                              ).toLowerCase()}-${post?.City?.replaceAll(
+                                ' ',
+                                '-'
+                              ).toLowerCase()}-${post?.Province?.replaceAll(
+                                ' ',
+                                '-'
+                              ).toLowerCase()}-${post?.PostalCode}-${
+                                post?.ListingID
+                              }`
+                            )
+                          }
+                          key={idx}
+                          className='text-start'
+                        >
                           <p className='my-2 cursor-pointer px-5 text-[14px] text-[#082F49]'>
                             {post?.StreetAddress} {post?.City}/{post?.Province}
                           </p>
