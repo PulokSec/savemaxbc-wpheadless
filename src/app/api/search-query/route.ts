@@ -19,7 +19,7 @@ export async function GET(req: Request) {
     (City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%'))
     AND (StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%'))
     AND (Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%'))
-    ORDER BY LastUpdated DESC LIMIT ? OFFSET ?
+     LIMIT ? OFFSET ?
 `;
 
   const values = [
