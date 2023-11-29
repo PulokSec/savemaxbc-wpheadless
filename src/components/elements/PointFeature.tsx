@@ -8,7 +8,7 @@ type MyProps = {
 export default function PointFeature(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='max-w-screen mt-10 overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+    <section className='max-w-screen pt-10 overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
       <div className=''>
         <div className='w-full'>
           <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0'>
