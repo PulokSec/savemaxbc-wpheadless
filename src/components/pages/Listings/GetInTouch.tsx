@@ -7,9 +7,10 @@ export default function GetInTouch(props: MyProps) {
   const { bottomSection } = props;
   return (
     <section
-      className='mt-40 flex min-h-[50vh] flex-col items-center overflow-x-hidden bg-cover bg-center md:min-h-screen'
+      className='mt-10 flex min-h-[30vh] flex-col items-center overflow-x-hidden bg-cover bg-center md:min-h-[50vh] 2xl:min-h-[45vh] md:rounded-tl-[30%] md:rounded-tr-[30%]'
       style={{
         backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
+        
       }}
     >
       <h2 className='px-5 pt-5 text-center text-[16px] text-sky-950 md:pt-20 md:text-7xl'>

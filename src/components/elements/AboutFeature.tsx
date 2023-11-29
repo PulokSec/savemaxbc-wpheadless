@@ -12,7 +12,7 @@ export default function AboutFeature(props: MyProps) {
       <section>
         <div className='py-10 md:py-20'>
           <div className=' flex w-full flex-col items-center justify-center text-center md:px-10'>
-            <h1 className='w-full text-center md:w-[1000px]'>
+            <h1 className='w-full text-center lg:w-[1000px]'>
               {' '}
               <span className='text-2xl leading-5 text-[#525659] md:text-5xl'>
                 {featureSection?.topHead}
@@ -20,7 +20,7 @@ export default function AboutFeature(props: MyProps) {
               {featureSection?.subHead}
             </h1>
           </div>
-          <div className='mx-auto mt-40 w-full md:mt-80'>
+          <div className='mx-auto mt-40 w-full md:mt-40 lg:mt-0'>
             {featureSection?.featuredData?.map((item: any, i: number) =>
               i % 2 == 0 ? (
                 <div
@@ -113,7 +113,7 @@ export default function AboutFeature(props: MyProps) {
         </div>
         <div className='mt-5 text-center md:mt-10'>
           <a
-            href='#'
+            href='contact-us'
             className='text-uppercase z-10 mb-[-10px] rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-sky-950  hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:absolute md:mt-[-20px] md:px-3.5'
           >
             Contact Us
