@@ -8,7 +8,7 @@ type MyProps = {
 };
 export default function NewsSection(props: MyProps) {
   const { newsSection } = props;
-  console.log(newsSection);
+  // console.log(newsSection);
   return (
     <div>
       <div className={` hidden bg-no-repeat  text-white md:block`}>
@@ -21,9 +21,9 @@ export default function NewsSection(props: MyProps) {
         </div>
       </div>
 
-      <div className={` block bg-no-repeat pt-[250px] text-white md:hidden`}>
+      <div className={` block bg-no-repeat pt-0 text-white md:hidden`}>
         <div className='mx-auto max-w-[1250px] p-3 '>
-          <div className='mt-20 grid grid-cols-1 gap-10 md:my-10 md:mt-36 md:grid-cols-3 md:gap-20'>
+          <div className='mt-10 grid grid-cols-1 gap-10 md:my-10 md:mt-36 md:grid-cols-3 md:gap-20'>
             {newsSection?.map((newsData: any, idx: any) => (
               <NewsCard newsData={newsData} key={idx} />
             ))}
