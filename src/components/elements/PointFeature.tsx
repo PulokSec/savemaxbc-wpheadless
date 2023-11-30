@@ -8,7 +8,7 @@ type MyProps = {
 export default function PointFeature(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='max-w-screen pt-10 overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+    <section className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat pt-10'>
       <div className=''>
         <div className='w-full'>
           <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0'>
@@ -79,7 +79,7 @@ export default function PointFeature(props: MyProps) {
                   )}
                   <div className='mt-2 py-10 text-start'>
                     <a
-                      href='/services'
+                      href='/properties-listing'
                       className='mt-10 border border-solid px-6 py-4 text-sm font-semibold text-black shadow-sm hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950'
                     >
                       See More

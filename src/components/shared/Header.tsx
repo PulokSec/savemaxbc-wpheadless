@@ -213,15 +213,21 @@ export default function Header(props: MyProps) {
                   })}
                   <a
                     href='mailto:admin@savemaxwestcoast.com'
-                    className=' block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                    className=' block rounded-lg py-2 text-base font-semibold leading-7 hover:bg-gray-100'
                   >
-                    <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
+                    <AiOutlineMail
+                      className='h-5 w-5 text-[#B48237]'
+                      aria-hidden='true'
+                    />
                   </a>
                   <a
                     href='tel:778-200-5050'
-                    className='block rounded-lg py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                    className='block rounded-lg py-2 text-base font-semibold leading-7 hover:bg-gray-100'
                   >
-                    <BsTelephone className='h-5 w-5' aria-hidden='true' />
+                    <BsTelephone
+                      className='h-5 w-5 text-[#B48237]'
+                      aria-hidden='true'
+                    />
                   </a>
                 </div>
               </div>
