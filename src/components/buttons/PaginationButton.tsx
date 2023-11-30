@@ -16,8 +16,8 @@ const PaginationButtons = ({
 }: PaginationButtonsProps) => {
   const router = useRouter();
   const handlePageClick = ({ selected }: { selected: number }) => {
-    router.push(`/listings?page=${selected}`);
     setCurrentPage(selected);
+    router.push(`/properties-listing?page=${selected + 1}`);
   };
 
   const paginationVariants = {

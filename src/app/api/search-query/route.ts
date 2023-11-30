@@ -13,12 +13,12 @@ export async function GET(req: Request) {
 
   // Build the SQL query with search parameters
   const sqlQuery = `
-  SELECT City, Province, PostalCode, Neighbourhood, CommunityName, BedroomsTotal,LastUpdated,PostalCode, BathroomTotal, DdfListingID, TransactionType, StreetAddress, PublicRemarks, Lease, LeasePerUnit, Latitude, Longitude, ListingID, Features, WaterFrontType, MoreInformationLink, CoolingType, HeatingType
+  SELECT City, Province, PostalCode, Neighbourhood, CommunityName, BedroomsTotal,LastUpdated,PostalCode, BathroomTotal, DdfListingID, TransactionType, Type, StreetAddress, PublicRemarks, Lease, LeasePerUnit, Latitude, Longitude, ListingID, Features, WaterFrontType, MoreInformationLink, CoolingType, HeatingType
   FROM 3d_rps_property
   WHERE 
     (City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%'))
     AND (StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%'))
-    AND (Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%'))
+    AND (Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%')) AND Type IS NOT NULL
      LIMIT ? OFFSET ?
 `;
 
