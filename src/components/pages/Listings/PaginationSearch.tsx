@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 import { getPhotos } from '@/lib/dataFetching';
 
+import PaginationButtons from '@/components/buttons/PaginationButton';
 import NextImage from '@/components/NextImage';
-import Pagination from '@/components/utils/Pagination';
 
 type MyProps = {
   allPosts: Array<any>;
@@ -120,7 +120,7 @@ export default function PaginationSearch(props: MyProps) {
             );
           })}
         </div>
-        <Pagination
+        <PaginationButtons
           currentPage={currentPage}
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
