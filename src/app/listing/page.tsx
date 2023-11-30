@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 import Head from 'next/head';
+import { Suspense } from 'react';
 
 import { getClient } from '@/lib/apollo';
 import { getAllProperties } from '@/lib/dataFetching';
@@ -9,6 +10,7 @@ import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import ListingBanner from '@/components/pages/Listings/ListingBanner';
 import Footer from '@/components/shared/Footer';
+import Skeleton from '@/components/Skeleton';
 
 const query = gql`
   query {
@@ -177,28 +179,25 @@ export default async function Listing({
         <title>Latest Listings</title>
       </Head>
       <main>
-        <ListingBanner
-          bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-        />
-        {/* <FeaturedListings
-          allPosts={allPosts?.listings}
-          totalCount={allPosts?.totalCount}
-          currentPageID={parseInt(searchParams?.page?.toString() || '1')}
-        /> */}
-        <FeaturedListings
-          allPosts={allPosts?.listings}
-          titleData={data?.pages?.nodes[0]?.listings?.listingSection}
-          usingFor='listings'
-        />
-        <GetInTouch
-          bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}
-        />
-        <Footer
-          navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
-        />
+        <Suspense fallback={<Skeleton />}>
+          <ListingBanner
+            bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}
+            headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
+            settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
+          />
+          <FeaturedListings
+            allPosts={allPosts?.listings}
+            titleData={data?.pages?.nodes[0]?.listings?.listingSection}
+            usingFor='listings'
+          />
+          <GetInTouch
+            bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}
+          />
+          <Footer
+            navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
+            settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
+          />
+        </Suspense>
       </main>
     </>
   );
