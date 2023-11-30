@@ -16,7 +16,8 @@ const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const router = useRouter();
   const handlePageClick = ({ selected }: { selected: number }) => {
-    router.push(`/property-listing?page=${selected}`);
+    setCurrentPage(selected);
+    router.push(`?page=${selected + 1}`);
   };
   const paginationVariants = {
     hidden: {
@@ -39,7 +40,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <motion.div
       variants={paginationVariants}
-      initial='visible'
+      initial='hidden'
       animate='visible'
     >
       <ReactPaginate

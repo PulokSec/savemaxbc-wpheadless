@@ -16,8 +16,8 @@ const PaginationButtons = ({
 }: PaginationButtonsProps) => {
   const router = useRouter();
   const handlePageClick = ({ selected }: { selected: number }) => {
-    router.push(`/listings?page=${selected}`);
     setCurrentPage(selected);
+    router.push(`/properties-listing?page=${selected + 1}`);
   };
 
   const paginationVariants = {
@@ -44,7 +44,7 @@ const PaginationButtons = ({
         breakLabel={<span className='mr-4'>...</span>}
         nextLabel={
           showNextButton ? (
-            <span className='flex h-10 w-10 items-center justify-center rounded-md bg-[#115E59] text-white'>
+            <span className='flex h-10 w-10 items-center justify-center rounded-md bg-[#082f49] text-white'>
               <BsChevronRight />
             </span>
           ) : null
@@ -54,14 +54,14 @@ const PaginationButtons = ({
         pageCount={totalPages}
         previousLabel={
           showPrevButton ? (
-            <span className='mr-4 flex h-10 w-10 items-center justify-center rounded-md bg-[#115E59] text-white'>
+            <span className='mr-4 flex h-10 w-10 items-center justify-center rounded-md bg-[#082f49] text-white'>
               <BsChevronLeft />
             </span>
           ) : null
         }
         containerClassName='flex items-center justify-center mt-8 mb-4'
-        pageClassName='block border-solid border-[#115E59] hover:bg-[#115E59] hover:text-white w-10 h-10 flex items-center justify-center rounded-md mr-4'
-        activeClassName='bg-[#115E59] text-white'
+        pageClassName='block border-solid border-[#082f49] hover:bg-[#082f49] hover:text-white w-10 h-10 flex items-center justify-center rounded-md mr-4'
+        activeClassName='bg-[#082f49] text-white'
       />
     </motion.div>
   );

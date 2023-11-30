@@ -6,7 +6,6 @@ type MyProps = {
   details: any;
 };
 
-
 export default function ListingTable(props: MyProps) {
   const { navigation, details } = props;
   const propertyType = [
@@ -21,6 +20,10 @@ export default function ListingTable(props: MyProps) {
     {
       type: 'View Type',
       value: details?.ViewType || '',
+    },
+    {
+      type: 'Type',
+      value: details?.Type || '',
     },
   ];
   const parkingType = [
@@ -51,7 +54,7 @@ export default function ListingTable(props: MyProps) {
       value: details?.SizeTotal || '',
     },
   ];
-  
+
   const buildingType = [
     {
       type: 'Bedrooms Total',
@@ -83,9 +86,8 @@ export default function ListingTable(props: MyProps) {
     },
     {
       type: 'Size Interior',
-      value: `${details?.SizeInterior} sqft` || '',
+      value: details?.SizeInterior || '',
     },
-    
   ];
   return (
     <div className='mx-auto mb-5 max-w-[1400px] p-2 md:p-5 xl:py-5'>
