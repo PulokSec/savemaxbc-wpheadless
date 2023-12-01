@@ -280,7 +280,6 @@ export default async function SouthSurrey() {
             topDesc={data?.pages?.nodes[0]?.southSurrey?.topFeatureDescription}
           />
           <FeaturedListings
-            allPosts={allPosts?.listings}
             titleData={data?.pages?.nodes[0]?.southSurrey?.listingSection}
             topHead={
               data?.pages?.nodes[0]?.southSurrey?.listingSection?.topHead
