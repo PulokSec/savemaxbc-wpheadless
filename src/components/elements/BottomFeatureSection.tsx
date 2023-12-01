@@ -7,7 +7,7 @@ export default function BottomFeatureSection(props: MyProps) {
   const { bottomSection } = props;
   return (
     <section
-      className='mt-40 flex h-[50vh] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:min-h-screen md:justify-between'
+      className='mt-20 md:mt-40 flex h-[50vh] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:min-h-screen md:justify-between'
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${bottomSection?.backgroundImage?.sourceUrl})`,
       }}

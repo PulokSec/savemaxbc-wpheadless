@@ -191,7 +191,7 @@ export default async function CareersPage() {
       },
     },
   });
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <main>

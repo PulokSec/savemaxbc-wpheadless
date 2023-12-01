@@ -28,7 +28,7 @@ export default function ContactSection(props: MyProps) {
             {contactData?.contactTitle}
           </h2>
           <div
-            className='md:text-md  mt-5 text-center  text-xs lg:text-lg'
+            className='md:text-md  mt-5 text-center text-xs lg:text-lg max-w-[1400px] mx-auto px-5'
             dangerouslySetInnerHTML={{
               __html: contactData?.contactDescription,
             }}

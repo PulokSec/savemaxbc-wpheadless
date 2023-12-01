@@ -15,7 +15,7 @@ export default function WhoWeAre(props: MyProps) {
           {featuredData?.topHead}
         </h1>
         <div
-          className='mt-5 text-xs leading-7 md:text-lg'
+          className='mt-5 text-xs leading-7 md:text-lg mx-5 md:mx-0'
           dangerouslySetInnerHTML={{
             __html: featuredData?.topDescription,
           }}
