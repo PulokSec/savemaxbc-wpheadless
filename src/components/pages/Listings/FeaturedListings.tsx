@@ -1,51 +1,42 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { getPhotos } from '@/lib/dataFetching';
+import { getAllProperties } from '@/lib/dataFetching';
 
 import ListingCarousel from '@/components/pages/Listings/ListingCarousel';
 
 type MyProps = {
-  allPosts: Array<any>;
   // totalCount: number;
   // currentPageID: number;
   titleData: any;
   topHead?: any;
   listingDescription?: any;
   usingFor?: any;
+  searchParams?: any;
 };
-interface PostData {
-  post: any;
-  cardImageUrl: any;
-}
-export default function FeaturedListings(props: MyProps) {
-  const { allPosts, titleData, usingFor, topHead, listingDescription } = props;
-  const [postData, setPostData] = useState<PostData[]>([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await Promise.all(
-        allPosts?.map(async (post: any) => {
-          const image = await getPhotos({ listingId: post?.ListingID });
-          const bufferOriginal = Buffer.from(image[0].Photos.data);
-          const cardImageUrl = JSON.parse(bufferOriginal.toString('utf8'))
-            ?.LargePhoto?.filename;
+export default async function FeaturedListings(props: MyProps) {
+  const { titleData, usingFor, topHead, listingDescription, searchParams } =
+    props;
 
-          return {
-            post,
-            cardImageUrl,
-          };
-        })
-      );
+  const recentPosts = await getAllProperties({
+    pageParam: parseInt(searchParams?.page?.toString() || '1'),
+    typeParam: searchParams?.type?.toString() || '',
+    cityParam: searchParams?.city?.toString() || 'Surrey',
+  });
+  const housePosts = await getAllProperties({
+    pageParam: parseInt(searchParams?.page?.toString() || '1'),
+    typeParam: searchParams?.type?.toString() || 'House',
+    cityParam: searchParams?.city?.toString() || 'Surrey',
+  });
+  const townPosts = await getAllProperties({
+    pageParam: parseInt(searchParams?.page?.toString() || '1'),
+    typeParam: searchParams?.type?.toString() || 'Town',
+    cityParam: searchParams?.city?.toString() || 'Surrey',
+  });
 
-      setPostData(data);
-    }
-
-    fetchData();
-  }, [allPosts]);
   return (
     <div>
-      <section className='mt-20 lg:mt-40'>
+      <section className='mt-20'>
         <div className='mt-20'>
           {usingFor === 'listings' && (
             <h1 className='text-center text-lg md:text-5xl'>
@@ -92,7 +83,7 @@ export default function FeaturedListings(props: MyProps) {
               ></div>
             </>
           ) : null}
-          <ListingCarousel posts={postData} />
+          <ListingCarousel posts={recentPosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
               href='/properties-listing?city=Surrey'
@@ -102,14 +93,14 @@ export default function FeaturedListings(props: MyProps) {
             </a>
           </div>
         </div>
-        <div className='mt-20 lg:mt-40'>
+        <div className='mt-20'>
           <h2 className='text-center text-lg md:text-5xl'>
             {titleData?.detachedHomesTitle?.split(/ (.*)/)[0]}{' '}
             <span className='text-leading-3 font-bold text-[#525659]'>
               {titleData?.detachedHomesTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
-          <ListingCarousel posts={postData} />
+          <ListingCarousel posts={housePosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
               href='/properties-listing?city=Surrey&type=House'
@@ -126,7 +117,7 @@ export default function FeaturedListings(props: MyProps) {
               {titleData?.semiDetachedTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
-          <ListingCarousel posts={postData} />
+          <ListingCarousel posts={townPosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
               href='/properties-listing?city=Surrey&type=Town'
@@ -143,7 +134,7 @@ export default function FeaturedListings(props: MyProps) {
               {titleData?.rentalHomesTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
-          <ListingCarousel posts={postData} />
+          <ListingCarousel posts={housePosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
               href='/properties-listing?city=Surrey&type=Condo'

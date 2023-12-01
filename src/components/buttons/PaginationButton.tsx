@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import ReactPaginate from 'react-paginate';
 interface PaginationButtonsProps {
-  setCurrentPage: (page: number) => void;
+  setCurrentPageClick: (page: number) => void;
   currentPage: number;
   totalPages: number;
 }
@@ -12,12 +12,12 @@ interface PaginationButtonsProps {
 const PaginationButtons = ({
   currentPage,
   totalPages,
-  setCurrentPage,
+  setCurrentPageClick,
 }: PaginationButtonsProps) => {
   const router = useRouter();
+  console.log(router);
   const handlePageClick = ({ selected }: { selected: number }) => {
-    setCurrentPage(selected);
-    router.push(`/properties-listing?page=${selected + 1}`);
+    setCurrentPageClick(selected);
   };
 
   const paginationVariants = {

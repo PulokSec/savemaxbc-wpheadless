@@ -62,7 +62,7 @@ export default function CarouselComponent({
           // arrows
           responsive={responsive}
           // centerMode={true}
-          showDots={true}
+          showDots={false}
           infinite={false}
           keyBoardControl
           renderButtonGroupOutside={false}
