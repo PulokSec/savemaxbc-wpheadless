@@ -1,6 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { getPhotos } from '@/lib/dataFetching';
 
 import CarouselComponent from '@/components/carousel/CarouselComponent';
 import NextImage from '@/components/NextImage';
@@ -8,16 +10,41 @@ import NextImage from '@/components/NextImage';
 type MyProps = {
   posts: Array<any>;
 };
-
+interface PostData {
+  post: any;
+  cardImageUrl: any;
+}
 export default function ListingCarousel(props: MyProps) {
   const { posts } = props;
+  const [postData, setPostData] = useState<PostData[]>([]);
+  useEffect(() => {
+    async function fetchData() {
+      const data = await Promise.all(
+        posts?.map(async (post: any) => {
+          const image = await getPhotos({ listingId: post?.ListingID });
+          const bufferOriginal = Buffer.from(image[0].Photos.data);
+          const cardImageUrl = JSON.parse(bufferOriginal.toString('utf8'))
+            ?.LargePhoto?.filename;
+
+          return {
+            post,
+            cardImageUrl,
+          };
+        })
+      );
+
+      setPostData(data);
+    }
+
+    fetchData();
+  }, [posts]);
   const router = useRouter();
   console.log(posts);
   return (
     <>
       <div className='relative mt-20'>
         <CarouselComponent>
-          {posts?.map(({ post, cardImageUrl }: any) => (
+          {postData?.map(({ post, cardImageUrl }: any) => (
             <div
               onClick={() =>
                 router.push(

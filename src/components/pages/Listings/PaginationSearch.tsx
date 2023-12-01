@@ -6,6 +6,7 @@ import { getPhotos } from '@/lib/dataFetching';
 
 import PaginationButtons from '@/components/buttons/PaginationButton';
 import NextImage from '@/components/NextImage';
+import useQueryParams from '@/components/utils/useQueryParams';
 
 type MyProps = {
   allPosts: Array<any>;
@@ -18,8 +19,12 @@ export default function PaginationSearch(props: MyProps) {
   const [currentPage, setCurrentPage] = useState<number>(currentPageID);
   const [posts, setPosts] = useState(allPosts);
   const router = useRouter();
-
+  const { setQueryParam } = useQueryParams();
   console.log(currentPageID);
+  const handlePageClick = (selected: number) => {
+    setCurrentPage(selected);
+    setQueryParam('page', (selected + 1).toString());
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -120,11 +125,13 @@ export default function PaginationSearch(props: MyProps) {
             );
           })}
         </div>
-        <PaginationButtons
-          currentPage={currentPage}
-          totalPages={totalPages}
-          setCurrentPage={setCurrentPage}
-        />
+        <div className='px-3'>
+          <PaginationButtons
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPageClick={handlePageClick}
+          />
+        </div>
       </section>
     </div>
   );

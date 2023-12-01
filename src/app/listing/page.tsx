@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { Suspense } from 'react';
 
 import { getClient } from '@/lib/apollo';
-import { getAllProperties } from '@/lib/dataFetching';
 
 import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
@@ -168,10 +167,6 @@ export default async function Listing({
       },
     },
   });
-  const allPosts = await getAllProperties({
-    pageParam: parseInt(searchParams?.page?.toString() || '1'),
-  });
-  // console.log(allPosts?.listings);
 
   return (
     <>
@@ -186,7 +181,7 @@ export default async function Listing({
             settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
           <FeaturedListings
-            allPosts={allPosts?.listings}
+            searchParams={searchParams}
             titleData={data?.pages?.nodes[0]?.listings?.listingSection}
             usingFor='listings'
           />

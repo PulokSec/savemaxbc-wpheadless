@@ -1,8 +1,15 @@
 export async function getAllProperties({
   pageParam = 1,
-}: { pageParam?: number } = {}): Promise<any> {
+  typeParam,
+  cityParam,
+}: {
+  pageParam?: number;
+  typeParam?: string;
+  cityParam?: string;
+} = {}): Promise<any> {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_BASEURL + `/api/all-properties?page=${pageParam}`,
+    process.env.NEXT_PUBLIC_BASEURL +
+      `/api/all-properties?type=${typeParam}&city=${cityParam}&page=${pageParam}`,
     { method: 'GET', cache: 'no-cache' }
   );
   if (res?.status !== 200) {

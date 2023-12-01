@@ -168,6 +168,8 @@ export default async function PropertiesListing({
   });
   const allPosts = await getAllProperties({
     pageParam: parseInt(searchParams?.page?.toString() || '1'),
+    typeParam: searchParams?.type?.toString() || '',
+    cityParam: searchParams?.city?.toString() || '',
   });
   // console.log(allPosts?.listings);
 
