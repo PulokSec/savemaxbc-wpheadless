@@ -1,5 +1,6 @@
 'use client';
 import { Dialog } from '@headlessui/react';
+import { Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
@@ -122,13 +123,13 @@ export default function Header(props: MyProps) {
         </nav>
         <Dialog
           as='div'
-          className='lg:hidden'
+          className=' lg:hidden'
           open={mobileMenuOpen}
           onClose={setMobileMenuOpen}
         >
           <div className='fixed inset-0 z-50' />
-          <Dialog.Panel className='fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
-            <div className='flex items-center justify-center'>
+          <Dialog.Panel className='fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white  sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
+            <div className='flex items-center justify-center bg-[#0D1524] px-6 py-6'>
               <a href='#' className='-m-1.5 p-1.5'>
                 <span className='sr-only'>Your Company</span>
                 <Image
@@ -147,7 +148,7 @@ export default function Header(props: MyProps) {
                 <RxCross2 className='h-6 w-6' aria-hidden='true' />
               </button>
             </div>
-            <div className='mt-6 flow-root'>
+            <div className='mt-6 flow-root px-6'>
               <div className='-my-6 divide-y divide-gray-500/10'>
                 <div className='space-y-2 py-6'>
                   {navigation?.map((item: any) => {
@@ -213,21 +214,15 @@ export default function Header(props: MyProps) {
                   })}
                   <a
                     href='mailto:admin@savemaxwestcoast.com'
-                    className=' block rounded-lg py-2 text-base font-semibold leading-7 hover:bg-gray-100'
+                    className='-ml-[2px] flex h-7 w-7 items-center justify-center rounded-xl bg-gray-50 hover:bg-gray-200'
                   >
-                    <AiOutlineMail
-                      className='h-5 w-5 text-[#B48237]'
-                      aria-hidden='true'
-                    />
+                    <Mail className='h-5 w-5 font-bold text-[#B48237] ' />
                   </a>
                   <a
                     href='tel:778-200-5050'
-                    className='block rounded-lg py-2 text-base font-semibold leading-7 hover:bg-gray-100'
+                    className='-ml-[2px] flex h-7 w-7 items-center justify-center rounded-xl bg-gray-50 hover:bg-gray-200'
                   >
-                    <BsTelephone
-                      className='h-5 w-5 text-[#B48237]'
-                      aria-hidden='true'
-                    />
+                    <Phone className='h-5 w-5 font-bold text-[#B48237]' />
                   </a>
                 </div>
               </div>
