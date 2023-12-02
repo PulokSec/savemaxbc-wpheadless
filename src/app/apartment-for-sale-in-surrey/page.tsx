@@ -254,7 +254,7 @@ export default async function ApartmentForSaleSurrey() {
   return (
     <>
       <main>
-        <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/Middle_part_bg.png")] bg-cover bg-no-repeat'>
+        <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
           <SharedBanner
             bannerData={
               data?.pages?.nodes[0]?.apartmentForSaleSurrey?.bannerSection
@@ -262,7 +262,7 @@ export default async function ApartmentForSaleSurrey() {
             headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
             settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
-          <div className='mt-20'>
+          <div className='mt-20 lg:mt-40'>
             <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
               {data?.pages?.nodes[0]?.apartmentForSaleSurrey?.topFeatureTitle}
             </h1>

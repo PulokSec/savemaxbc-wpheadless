@@ -62,7 +62,7 @@ export default function LocationBanner(props: MyProps) {
               {topTitle}
             </p>
           </div>
-          <div className='container mx-auto md:hidden w-[80%] bg-white px-5 py-3 text-center shadow-md '>
+          <div className='container mx-auto w-[80%] bg-white px-5 py-3 text-center shadow-md md:hidden '>
             <div
               className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
               dangerouslySetInnerHTML={{
@@ -94,7 +94,7 @@ export default function LocationBanner(props: MyProps) {
         </div>
       ) : null}
       {usingFor === 'seller' && (
-        <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] lg:py-10 xl:mt-[5%] 2xl:mt-[16%]'>
+        <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:mt-[20%] lg:py-10 xl:mt-[5%] 2xl:mt-[16%]'>
           <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
             <span className='text-[#585858]'>{featureTitle}</span>{' '}
             {featureSubtitle}
