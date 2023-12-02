@@ -17,6 +17,7 @@ interface PostData {
 export default function ListingCarousel(props: MyProps) {
   const { posts } = props;
   const [postData, setPostData] = useState<PostData[]>([]);
+
   useEffect(() => {
     async function fetchData() {
       const data = await Promise.all(
@@ -38,8 +39,8 @@ export default function ListingCarousel(props: MyProps) {
 
     fetchData();
   }, [posts]);
+
   const router = useRouter();
-  console.log(posts);
   return (
     <>
       <div className='relative mt-20'>

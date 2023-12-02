@@ -271,7 +271,7 @@ export default async function SouthSurrey() {
   return (
     <>
       <main>
-        <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.com/wp-content/uploads/2023/09/Middle_part_bg.png")] bg-cover bg-no-repeat'>
+        <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
           <LocationBanner
             bannerData={data?.pages?.nodes[0]?.southSurrey?.bannerSection}
             headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
