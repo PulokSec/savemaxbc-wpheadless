@@ -18,12 +18,14 @@ const RightImageLeftText = (props: Props) => {
             <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
               {featuredData?.title}
             </h2>
-            <div
-              className='md:text-md mb-28 mt-5 px-10 text-center text-xs lg:text-lg'
-              dangerouslySetInnerHTML={{
-                __html: featuredData?.description,
-              }}
-            ></div>
+            {featuredData?.description && (
+              <div
+                className='md:text-md mb-28 mt-5 px-10 text-center text-xs lg:text-lg'
+                dangerouslySetInnerHTML={{
+                  __html: featuredData?.description,
+                }}
+              ></div>
+            )}
           </div>
 
           <div className='w-full lg:-mt-56 xl:-mt-48 2xl:-mt-36'>

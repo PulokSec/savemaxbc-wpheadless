@@ -27,9 +27,9 @@ export default function BannerWithButton(props: MyProps) {
           <p className='w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
             {bannerData?.bannerSubhead}
           </p>
-          <p className='w-full text-center text-xl font-bold leading-5 text-white lg:text-5xl'>
+          <h1 className='w-full text-center text-xl font-bold leading-5 text-white lg:text-5xl'>
             {bannerData?.bannerHeading}
-          </p>
+          </h1>
           {bannerData?.bannerDescription && (
             <div
               className='mt-8 text-center text-xl text-white lg:text-3xl'
