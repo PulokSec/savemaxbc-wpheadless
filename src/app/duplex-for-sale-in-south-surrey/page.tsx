@@ -4,15 +4,17 @@ import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
+import BenefitsSection from '@/components/elements/BenefitsSection';
 import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
 import NextImage from '@/components/NextImage';
 import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
+import ChoiceCard from '@/components/pages/Locations/ChoiceCard';
 import SouthSurreyRealtorServiceLeftRight from '@/components/pages/Locations/SouthSurreyRealtorServiceLeftRight';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 66520 }) {
+    pages(where: { id: 66659 }) {
       nodes {
         seo {
           title
@@ -28,15 +30,13 @@ const query = gql`
             raw
           }
         }
-        southSurreyRealtors {
+        duplexSaleSouthSurrey {
           bannerSection {
             bannerImage {
               sourceUrl
             }
             bannerHeading
           }
-          topBannerTitle
-          topBannerDescription
           aboutSection {
             title
             rightText
@@ -44,6 +44,32 @@ const query = gql`
               sourceUrl
               altText
             }
+          }
+          choiceBanner {
+            bannerImage {
+              sourceUrl
+              altText
+            }
+            bannerTitle
+            bannerSubtitle
+            bannerDescription
+          }
+          choiceFeature {
+            title
+            description
+            image {
+              sourceUrl
+              altText
+            }
+          }
+          benefitsSection {
+            featureTitle
+            featureDescription
+            featuredDiv {
+              title
+              description
+            }
+            bottomDescription
           }
           homebuyingSection {
             featureTitle
@@ -180,7 +206,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function southSurreyRealtors() {
+export default async function duplexSaleSouthSurrey() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -196,53 +222,31 @@ export default async function southSurreyRealtors() {
         <div>
           <BannerWithButton
             bannerData={
-              data?.pages?.nodes[0]?.southSurreyRealtors?.bannerSection
+              data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.bannerSection
             }
             headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
             settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
-          <div className='py-20'>
-            <h2 className='px-5 text-center text-2xl md:text-3xl lg:text-4xl'>
-              {data?.pages?.nodes[0]?.southSurreyRealtors?.topBannerTitle}
-            </h2>
-            <div
-              className='md:text-md mx-auto mt-5 max-w-[1400px] px-10 text-center text-xs lg:text-lg'
-              dangerouslySetInnerHTML={{
-                __html:
-                  data?.pages?.nodes[0]?.southSurreyRealtors
-                    ?.topBannerDescription,
-              }}
-            ></div>
-          </div>
-          <div className='bg-gray-100'>
+          <div className=''>
             <div className='max-w-screen overflow-x-hidden '>
               <section>
                 <div
                   className={`${
-                    data?.pages?.nodes[0]?.southSurreyRealtors?.aboutSection
+                    data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.aboutSection
                       ?.title
                       ? 'py-10 lg:py-20'
                       : ''
                   } mx-auto `}
                 >
-                  <div className={`mx-auto max-w-[1400px] `}>
-                    <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
-                      {
-                        data?.pages?.nodes[0]?.southSurreyRealtors?.aboutSection
-                          ?.title
-                      }
-                    </h2>
-                  </div>
-
-                  <div className='w-full '>
-                    <div className='mt-10 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mx-auto lg:mx-0 lg:mt-20 lg:max-w-none lg:gap-0'>
+                  <div className='w-full py-10 lg:py-20'>
+                    <div className='grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mx-auto lg:mx-0 lg:max-w-none lg:gap-0'>
                       <div className='col-span-12 ml-5 md:col-span-12 md:ml-5 lg:col-span-5 lg:col-start-1 lg:pl-10 2xl:col-start-2'>
                         <div className=''>
                           <div
                             className='md:text-md text-xs lg:text-lg'
                             dangerouslySetInnerHTML={{
                               __html:
-                                data?.pages?.nodes[0]?.southSurreyRealtors
+                                data?.pages?.nodes[0]?.duplexSaleSouthSurrey
                                   ?.aboutSection?.rightText,
                             }}
                           ></div>
@@ -253,11 +257,11 @@ export default async function southSurreyRealtors() {
                           useSkeleton
                           className='w-[100%]'
                           src={
-                            data?.pages?.nodes[0]?.southSurreyRealtors
+                            data?.pages?.nodes[0]?.duplexSaleSouthSurrey
                               ?.aboutSection?.leftImage?.sourceUrl
                           }
                           alt={
-                            data?.pages?.nodes[0]?.southSurreyRealtors
+                            data?.pages?.nodes[0]?.duplexSaleSouthSurrey
                               ?.aboutSection?.leftImage?.altText
                           }
                           width='600'
@@ -270,41 +274,85 @@ export default async function southSurreyRealtors() {
               </section>
             </div>
           </div>
-          <HomeBuyerSection
+          <div
+            style={{
+              background: `url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner?.bannerImage?.sourceUrl}) no-repeat center center`,
+              backgroundSize: '100% 100%',
+            }}
+            className='flex h-[350px] items-center 2xl:h-[45vh] '
+          >
+            <div className='mx-auto max-w-[1250px] p-3 text-center'>
+              <h2 className='text-[30px] font-semibold lg:mt-5 xl:text-[40px]'>
+                {
+                  data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner
+                    ?.bannerTitle
+                }
+              </h2>
+              <div
+                className='mx-auto mt-5 w-full md:w-2/4'
+                dangerouslySetInnerHTML={{
+                  __html:
+                    data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner
+                      ?.bannerDescription,
+                }}
+              ></div>
+            </div>
+          </div>
+          <div className='bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat pb-[20px] text-white'>
+            <div className='mx-auto max-w-[1250px] p-3'>
+              <div className=' my-10'>
+                {data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceFeature?.map(
+                  (cardData: any, index: number) => (
+                    <ChoiceCard
+                      cardData={cardData}
+                      index={index + 1}
+                      key={index}
+                    />
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+          <SouthSurreyRealtorServiceLeftRight
+            data={data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.estateServices}
+          />
+          <BenefitsSection
             featuredData={
-              data?.pages?.nodes[0]?.southSurreyRealtors?.homebuyingSection
+              data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.benefitsSection
             }
           />
-          {/*  */}
-          <SouthSurreyRealtorServiceLeftRight
-            data={data?.pages?.nodes[0]?.southSurreyRealtors?.estateServices}
+
+          <HomeBuyerSection
+            featuredData={
+              data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.homebuyingSection
+            }
           />
 
           <section
             className='flex h-[500px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection?.image?.sourceUrl})`,
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.contactSection?.image?.sourceUrl})`,
             }}
           >
             <div className='mt-10 flex h-full flex-col items-center justify-center text-center '>
-              {data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection
+              {data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.contactSection
                 ?.title && (
                 <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
                   {
-                    data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection
+                    data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.contactSection
                       ?.title
                   }
                 </h2>
               )}
 
-              {data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection
+              {data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.contactSection
                 ?.description && (
                 <div
                   className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-justify text-xs md:pb-12 lg:text-lg'
                   dangerouslySetInnerHTML={{
                     __html:
-                      data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection
-                        ?.description,
+                      data?.pages?.nodes[0]?.duplexSaleSouthSurrey
+                        ?.contactSection?.description,
                   }}
                 ></div>
               )}
