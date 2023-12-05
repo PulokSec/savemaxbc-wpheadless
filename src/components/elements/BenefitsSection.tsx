@@ -9,17 +9,17 @@ import homeImg from '../../assets/elements/why choose home icon.png';
 type MyProps = {
   featuredData: any;
 };
-export default function WhyChooseUs(props: MyProps) {
+export default function BenefitsSection(props: MyProps) {
   const { featuredData } = props;
   const [active, setActive] = useState(0);
   return (
     <section className=' bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10'>
-      <div className='col-span-12 mt-10 px-5 md:col-span-12 md:mt-10 md:px-5 lg:col-span-8 lg:col-start-1 lg:mt-20 2xl:mt-28 lg:px-10'>
+      <div className='col-span-12 mt-10 px-5 md:col-span-12 md:mt-10 md:px-5 lg:col-span-8 lg:col-start-1 lg:mt-20 lg:px-10 2xl:mt-28'>
         <h2 className='text-center text-2xl md:text-4xl'>
           {featuredData?.featureTitle}
         </h2>
         <div
-          className='md:text-md mt-5 text-center text-xs lg:text-lg max-w-[1400px] mx-auto'
+          className='md:text-md mx-auto mt-5 max-w-[1400px] text-center text-xs lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: featuredData?.featureDescription,
           }}
@@ -49,7 +49,7 @@ export default function WhyChooseUs(props: MyProps) {
                   onClick={() => setActive(i)}
                 >
                   <div className='text-start lg:w-full'>
-                    <h2
+                    <h3
                       className={
                         active == i
                           ? 'text-sky-950'
@@ -58,7 +58,7 @@ export default function WhyChooseUs(props: MyProps) {
                       }
                     >
                       {item?.title}
-                    </h2>
+                    </h3>
                     <div
                       className='md:text-md mt-5 text-xs lg:text-lg'
                       dangerouslySetInnerHTML={{
@@ -89,7 +89,7 @@ export default function WhyChooseUs(props: MyProps) {
                   onClick={() => setActive(i)}
                 >
                   <div className='flex flex-col items-start md:items-start lg:w-full lg:items-end'>
-                    <h2
+                    <h3
                       className={
                         active == i
                           ? 'text-sky-950'
@@ -98,7 +98,7 @@ export default function WhyChooseUs(props: MyProps) {
                       }
                     >
                       {item?.title}
-                    </h2>
+                    </h3>
                     <div
                       className='md:text-md mt-5 text-xs lg:text-lg'
                       dangerouslySetInnerHTML={{

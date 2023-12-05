@@ -14,7 +14,7 @@ export default function HomeBuyerSection(props: MyProps) {
           {featuredData?.featureTitle}
         </h2>
         <div
-          className='md:text-md mt-5 text-center text-xs lg:px-5 lg:text-lg'
+          className='md:text-md mx-auto mt-5 max-w-[1400px] text-center text-xs lg:px-5 lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: featuredData?.featureDescription,
           }}
