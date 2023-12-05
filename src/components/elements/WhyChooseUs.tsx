@@ -29,7 +29,10 @@ export default function WhyChooseUs(props: MyProps) {
         <div className='relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-slate-900 before:to-transparent lg:before:mx-auto lg:before:translate-x-0'>
           {featuredData?.featuredDiv?.map((item: any, i: number) =>
             i % 2 == 0 ? (
-              <div className='is-active group relative flex items-center justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'>
+              <div
+                className='is-active group relative flex items-center justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
+                key={i}
+              >
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2'>
                   <NextImage
                     useSkeleton
@@ -46,7 +49,7 @@ export default function WhyChooseUs(props: MyProps) {
                   onClick={() => setActive(i)}
                 >
                   <div className='text-start lg:w-full'>
-                    <h2
+                    <h3
                       className={
                         active == i
                           ? 'text-sky-950'
@@ -55,7 +58,7 @@ export default function WhyChooseUs(props: MyProps) {
                       }
                     >
                       {item?.title}
-                    </h2>
+                    </h3>
                     <div
                       className='md:text-md mt-5 text-xs lg:text-lg'
                       dangerouslySetInnerHTML={{
@@ -66,7 +69,10 @@ export default function WhyChooseUs(props: MyProps) {
                 </div>
               </div>
             ) : (
-              <div className='is-active group relative flex items-start justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'>
+              <div
+                className='is-active group relative flex items-start justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
+                key={i}
+              >
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2'>
                   <NextImage
                     useSkeleton
@@ -83,7 +89,7 @@ export default function WhyChooseUs(props: MyProps) {
                   onClick={() => setActive(i)}
                 >
                   <div className='flex flex-col items-start md:items-start lg:w-full lg:items-end'>
-                    <h2
+                    <h3
                       className={
                         active == i
                           ? 'text-sky-950'
@@ -92,7 +98,7 @@ export default function WhyChooseUs(props: MyProps) {
                       }
                     >
                       {item?.title}
-                    </h2>
+                    </h3>
                     <div
                       className='md:text-md mt-5 text-xs lg:text-lg'
                       dangerouslySetInnerHTML={{

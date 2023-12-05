@@ -7,6 +7,7 @@ module.exports = {
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   siteUrl: "https://savemaxbc.com",
   generateRobotsTxt: true,
+  exclude: ["/server-sitemap.xml", "/api/*", "/admin/*"],
   robotsTxtOptions: {
     policies: [{ userAgent: "*", allow: "/" }],
   },

@@ -5,20 +5,18 @@ import { getClient } from '@/lib/apollo';
 import { getAllProperties } from '@/lib/dataFetching';
 
 import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
+import WhyChooseUs from '@/components/elements/WhyChooseUs';
 import ListingCarousel from '@/components/pages/Listings/ListingCarousel';
 import CardSection from '@/components/pages/Locations/CardSection';
 import ChoiceBanner from '@/components/pages/Locations/ChoiceBanner';
 import ChoiceSection from '@/components/pages/Locations/ChoiceSection';
 import EssentialSection from '@/components/pages/Locations/EssentialSection';
-import HomeBuyingProcess from '@/components/pages/Locations/HomebuyingProcess';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
-import OfferBanner from '@/components/pages/Locations/OfferBanner';
-import OfferSection from '@/components/pages/Locations/OfferSection';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 374 }) {
+    pages(where: { id: 66568 }) {
       nodes {
         seo {
           title
@@ -34,7 +32,7 @@ const query = gql`
             raw
           }
         }
-        southSurrey {
+        townSouthSurrey {
           bannerSection {
             bannerImage {
               sourceUrl
@@ -63,17 +61,12 @@ const query = gql`
               cardDescription
             }
           }
-          offerBanner {
-            offerTitle
-            offerSubtitle
-            offerDescription
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            offerImage {
-              sourceUrl
-              altText
+          chooseUsSection {
+            featureTitle
+            featureDescription
+            featuredDiv {
+              title
+              description
             }
           }
           listingSection {
@@ -83,14 +76,6 @@ const query = gql`
             detachedHomesTitle
             semiDetachedTitle
             rentalHomesTitle
-          }
-          offerSection {
-            title
-            description
-            image {
-              sourceUrl
-              altText
-            }
           }
           choiceBanner {
             bannerImage {
@@ -108,19 +93,6 @@ const query = gql`
               sourceUrl
               altText
             }
-          }
-          homebuyingSection {
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            featureTitle
-            featureDescription
-            featuredDiv {
-              title
-              description
-            }
-            bottomFeatureDescription
           }
           essentialSection {
             backgroundImage {
@@ -255,7 +227,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function HomeSouthSurrey({
+export default async function SouthSurrey({
   searchParams,
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
@@ -268,42 +240,35 @@ export default async function HomeSouthSurrey({
       },
     },
   });
-  const homePosts = await getAllProperties({
+  const townPosts = await getAllProperties({
     pageParam: parseInt(searchParams?.page?.toString() || '1'),
-    typeParam: searchParams?.type?.toString() || 'House',
+    typeParam: searchParams?.type?.toString() || 'Town',
     cityParam: searchParams?.city?.toString() || 'Surrey',
   });
   return (
     <main>
       <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
         <LocationBanner
-          bannerData={data?.pages?.nodes[0]?.southSurrey?.bannerSection}
+          bannerData={data?.pages?.nodes[0]?.townSouthSurrey?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-          topTitle={data?.pages?.nodes[0]?.southSurrey?.topFeatureTitle}
-          topDesc={data?.pages?.nodes[0]?.southSurrey?.topFeatureDescription}
         />
         <div className=''>
-          <div className=''>
-            <p className='text-md mt-5 w-full text-center font-bold text-[#525659] md:text-xl lg:text-2xl'>
-              {data?.pages?.nodes[0]?.southSurrey?.listingSection?.topHead}
-            </p>
-            <h1 className='mt-36 text-center text-lg md:text-4xl'>
-              {
-                data?.pages?.nodes[0]?.southSurrey?.listingSection
-                  ?.recentListingsTitle
-              }
-            </h1>
-            <div
-              className='md:text-md mt-5 px-5 text-center text-xs leading-6 lg:px-20 lg:text-lg'
-              dangerouslySetInnerHTML={{
-                __html:
-                  data?.pages?.nodes[0]?.southSurrey?.listingSection
-                    ?.listingDescription,
-              }}
-            ></div>
-          </div>
-          <ListingCarousel posts={homePosts?.listings} />
+          <h1 className='mt-5 text-center text-lg md:text-4xl'>
+            {
+              data?.pages?.nodes[0]?.townSouthSurrey?.listingSection
+                ?.recentListingsTitle
+            }
+          </h1>
+          <div
+            className='md:text-md mt-5 px-5 text-center text-xs leading-6 lg:px-20 lg:text-lg'
+            dangerouslySetInnerHTML={{
+              __html:
+                data?.pages?.nodes[0]?.townSouthSurrey?.listingSection
+                  ?.listingDescription,
+            }}
+          ></div>
+          <ListingCarousel posts={townPosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
               href='/properties-listing?city=Surrey&type=Town'
@@ -314,29 +279,26 @@ export default async function HomeSouthSurrey({
           </div>
         </div>
         <CardSection
-          cardSection={data?.pages?.nodes[0]?.southSurrey?.cardSection}
+          cardSection={data?.pages?.nodes[0]?.townSouthSurrey?.cardSection}
         />
-        <OfferBanner
-          offerBannerData={data?.pages?.nodes[0]?.southSurrey?.offerBanner}
-          featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
-        />
-        <OfferSection
-          featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
+        <WhyChooseUs
+          featuredData={data?.pages?.nodes[0]?.townSouthSurrey?.chooseUsSection}
         />
         <ChoiceBanner
-          choiceBannerData={data?.pages?.nodes[0]?.southSurrey?.choiceBanner}
+          choiceBannerData={
+            data?.pages?.nodes[0]?.townSouthSurrey?.choiceBanner
+          }
         />
         <ChoiceSection
-          featuredData={data?.pages?.nodes[0]?.southSurrey?.choiceSection}
-        />
-        <HomeBuyingProcess
-          featuredData={data?.pages?.nodes[0]?.southSurrey?.homebuyingSection}
+          featuredData={data?.pages?.nodes[0]?.townSouthSurrey?.choiceSection}
         />
         <EssentialSection
-          featuredData={data?.pages?.nodes[0]?.southSurrey?.essentialSection}
+          featuredData={
+            data?.pages?.nodes[0]?.townSouthSurrey?.essentialSection
+          }
         />
         <BottomFeatureSection
-          bottomSection={data?.pages?.nodes[0]?.southSurrey?.bottomSection}
+          bottomSection={data?.pages?.nodes[0]?.townSouthSurrey?.bottomSection}
         />
       </div>
       <Footer
