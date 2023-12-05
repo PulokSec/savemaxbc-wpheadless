@@ -20,6 +20,7 @@ export default async function FeaturedListings(props: MyProps) {
 
   const recentPosts = await getAllProperties({
     pageParam: parseInt(searchParams?.page?.toString() || '1'),
+    typeParam: searchParams?.type?.toString() || '',
     cityParam: searchParams?.city?.toString() || 'Surrey',
   });
   const housePosts = await getAllProperties({

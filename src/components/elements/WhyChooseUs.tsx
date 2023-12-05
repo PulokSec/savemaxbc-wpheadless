@@ -14,12 +14,12 @@ export default function WhyChooseUs(props: MyProps) {
   const [active, setActive] = useState(0);
   return (
     <section className=' bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10'>
-      <div className='col-span-12 mt-10 px-5 md:col-span-12 md:mt-10 md:px-5 lg:col-span-8 lg:col-start-1 lg:mt-20 2xl:mt-28 lg:px-10'>
+      <div className='col-span-12 mt-10 px-5 md:col-span-12 md:mt-10 md:px-5 lg:col-span-8 lg:col-start-1 lg:mt-20 lg:px-10 2xl:mt-28'>
         <h2 className='text-center text-2xl md:text-4xl'>
           {featuredData?.featureTitle}
         </h2>
         <div
-          className='md:text-md mt-5 text-center text-xs lg:text-lg max-w-[1400px] mx-auto'
+          className='md:text-md mx-auto mt-5 max-w-[1400px] text-center text-xs lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: featuredData?.featureDescription,
           }}
@@ -30,8 +30,8 @@ export default function WhyChooseUs(props: MyProps) {
           {featuredData?.featuredDiv?.map((item: any, i: number) =>
             i % 2 == 0 ? (
               <div
-                key={i}
                 className='is-active group relative flex items-center justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
+                key={i}
               >
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2'>
                   <NextImage
@@ -49,7 +49,7 @@ export default function WhyChooseUs(props: MyProps) {
                   onClick={() => setActive(i)}
                 >
                   <div className='text-start lg:w-full'>
-                    <h2
+                    <h3
                       className={
                         active == i
                           ? 'text-sky-950'
@@ -58,7 +58,7 @@ export default function WhyChooseUs(props: MyProps) {
                       }
                     >
                       {item?.title}
-                    </h2>
+                    </h3>
                     <div
                       className='md:text-md mt-5 text-xs lg:text-lg'
                       dangerouslySetInnerHTML={{
@@ -70,8 +70,8 @@ export default function WhyChooseUs(props: MyProps) {
               </div>
             ) : (
               <div
-                key={i}
                 className='is-active group relative flex items-start justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
+                key={i}
               >
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2'>
                   <NextImage
@@ -89,7 +89,7 @@ export default function WhyChooseUs(props: MyProps) {
                   onClick={() => setActive(i)}
                 >
                   <div className='flex flex-col items-start md:items-start lg:w-full lg:items-end'>
-                    <h2
+                    <h3
                       className={
                         active == i
                           ? 'text-sky-950'
@@ -98,7 +98,7 @@ export default function WhyChooseUs(props: MyProps) {
                       }
                     >
                       {item?.title}
-                    </h2>
+                    </h3>
                     <div
                       className='md:text-md mt-5 text-xs lg:text-lg'
                       dangerouslySetInnerHTML={{
