@@ -4,11 +4,7 @@ import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
-import BenefitsSection from '@/components/elements/BenefitsSection';
-import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
-import NextImage from '@/components/NextImage';
 import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
-import ChoiceCard from '@/components/pages/Locations/ChoiceCard';
 import SouthSurreyRealtorServiceLeftRight from '@/components/pages/Locations/SouthSurreyRealtorServiceLeftRight';
 import Footer from '@/components/shared/Footer';
 
@@ -189,8 +185,8 @@ export default async function NewDevelopmentPreConstruction() {
             settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
 
-          <div className='py-20 bg-[#464646] text-white'>
-            <h1 className='px-5 text-center text-2xl md:text-3xl lg:text-4xl max-w-[1400px] mx-auto'>
+          <div className='bg-[#464646] py-20 text-white'>
+            <h1 className='mx-auto max-w-[1400px] px-5 text-center text-2xl md:text-3xl lg:text-4xl'>
               {
                 data?.pages?.nodes[0]?.newDevelopmentPreConstruction
                   ?.topBannerTitle
