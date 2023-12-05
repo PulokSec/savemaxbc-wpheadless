@@ -9,7 +9,7 @@ import homeImg from '../../assets/elements/why choose home icon.png';
 type MyProps = {
   featuredData: any;
 };
-export default function WhyChooseUs(props: MyProps) {
+export default function BenefitsSection(props: MyProps) {
   const { featuredData } = props;
   const [active, setActive] = useState(0);
   return (
@@ -30,8 +30,8 @@ export default function WhyChooseUs(props: MyProps) {
           {featuredData?.featuredDiv?.map((item: any, i: number) =>
             i % 2 == 0 ? (
               <div
-                className='is-active group relative flex items-center justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
                 key={i}
+                className='is-active group relative flex items-center justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
               >
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2'>
                   <NextImage
@@ -70,8 +70,8 @@ export default function WhyChooseUs(props: MyProps) {
               </div>
             ) : (
               <div
-                className='is-active group relative flex items-start justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
                 key={i}
+                className='is-active group relative flex items-start justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
               >
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2'>
                   <NextImage
