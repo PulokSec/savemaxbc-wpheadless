@@ -43,7 +43,7 @@ export default function ListingCarousel(props: MyProps) {
   const router = useRouter();
   return (
     <>
-      <div className='relative mt-20'>
+      <div className='relative mt-7 md:mt-20'>
         <CarouselComponent>
           {postData?.map(({ post, cardImageUrl }: any) => (
             <div

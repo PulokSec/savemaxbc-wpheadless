@@ -180,7 +180,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function southSurreyRealtors() {
+export default async function SouthSurreyRealtors() {
   const { data } = await getClient().query({
     query,
     context: {

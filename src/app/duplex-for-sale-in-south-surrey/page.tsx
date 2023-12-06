@@ -206,7 +206,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function duplexSaleSouthSurrey() {
+export default async function DuplexSaleSouthSurrey() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -274,6 +274,7 @@ export default async function duplexSaleSouthSurrey() {
               </section>
             </div>
           </div>
+
           <div
             style={{
               background: `url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner?.bannerImage?.sourceUrl}) no-repeat center center`,
