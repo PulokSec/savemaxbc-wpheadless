@@ -227,7 +227,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function SouthSurrey({
+export default async function TownhouseSaleSouthSurrey({
   searchParams,
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
