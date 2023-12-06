@@ -68,7 +68,7 @@ const SearchTab = () => {
   });
 
   return (
-    <div className='mt-[10%] min-h-[500px] w-full px-5 md:mt-[15%] md:max-w-[1400px] md:pb-10'>
+    <div className='mt-[10%] min-h-[500px] w-full px-5 md:max-w-[1400px] md:pb-10'>
       <div className='flex gap-2'>
         <div
           onClick={() => {
