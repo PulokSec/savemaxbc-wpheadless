@@ -250,7 +250,7 @@ export default async function ApartmentForSaleSurrey() {
       },
     },
   });
-  console.log(data);
+
   return (
     <>
       <main>

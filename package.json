@@ -22,6 +22,7 @@
     "@apollo/experimental-nextjs-app-support": "^0.4.3",
     "@headlessui/react": "^1.7.17",
     "@material-tailwind/react": "^2.1.2",
+    "@next/font": "^14.0.3",
     "axios": "^1.5.1",
     "clsx": "^1.2.1",
     "framer-motion": "^10.16.5",

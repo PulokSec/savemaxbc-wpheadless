@@ -28,7 +28,7 @@ export default function ContactSection(props: MyProps) {
             {contactData?.contactTitle}
           </h2>
           <div
-            className='md:text-md  mt-5 text-center text-xs lg:text-lg max-w-[1400px] mx-auto px-5'
+            className='md:text-md  mx-auto mt-5 max-w-[1400px] px-5 text-center text-xs lg:text-lg'
             dangerouslySetInnerHTML={{
               __html: contactData?.contactDescription,
             }}
@@ -63,8 +63,12 @@ export default function ContactSection(props: MyProps) {
                 {contactData?.addressTwo}
               </p>
               <div className='mt-10 flex items-center justify-start gap-4'>
-                <BsFacebook className='h-7 w-7' />
-                <FaInstagramSquare className='h-7 w-7' />
+                <a href={contactData?.facebookLink}>
+                  <BsFacebook className='h-7 w-7' />
+                </a>
+                <a href={contactData?.instagramLink}>
+                  <FaInstagramSquare className='h-7 w-7' />
+                </a>
               </div>
             </div>
           </div>

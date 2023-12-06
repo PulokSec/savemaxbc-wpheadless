@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Alamia', 'Roboto', 'arial', ...defaultTheme.fontFamily.sans],
+        primary: ['Alamia', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: {

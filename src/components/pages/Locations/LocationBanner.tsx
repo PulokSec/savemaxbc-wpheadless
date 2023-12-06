@@ -1,3 +1,5 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import Header from '@/components/shared/Header';
@@ -23,6 +25,7 @@ export default function LocationBanner(props: MyProps) {
     featureSubtitle,
     usingFor,
   } = props;
+  const router = useRouter();
   return (
     <div
       className='relative h-[80vh] w-full bg-cover bg-fixed bg-[center_center] bg-no-repeat lg:h-[100vh]'
@@ -58,7 +61,10 @@ export default function LocationBanner(props: MyProps) {
                 __html: topDesc,
               }}
             ></div>
-            <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+            <p
+              onClick={() => router.push('/properties-listing')}
+              className='text-md mt-2 w-full cursor-pointer font-bold md:text-xl lg:text-2xl'
+            >
               {topTitle}
             </p>
           </div>
@@ -69,14 +75,20 @@ export default function LocationBanner(props: MyProps) {
                 __html: topDesc,
               }}
             ></div>
-            <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+            <p
+              onClick={() => router.push('/properties-listing')}
+              className='text-md mt-2 w-full cursor-pointer font-bold md:text-xl lg:text-2xl'
+            >
               {topTitle}
             </p>
           </div>
         </>
       ) : topTitle ? (
         <div className='container relative mx-auto mt-[40%] w-[80%] bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
-          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+          <p
+            onClick={() => router.push('/properties-listing')}
+            className='text-md mt-2 w-full cursor-pointer font-bold md:text-xl lg:text-2xl'
+          >
             {topTitle}
           </p>
         </div>
@@ -88,7 +100,10 @@ export default function LocationBanner(props: MyProps) {
               __html: topDesc,
             }}
           ></div>
-          <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+          <p
+            onClick={() => router.push('/properties-listing')}
+            className='text-md mt-2 w-full cursor-pointer font-bold md:text-xl lg:text-2xl'
+          >
             {topTitle}
           </p>
         </div>

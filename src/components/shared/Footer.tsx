@@ -2,7 +2,7 @@
 import { LucideMailOpen } from 'lucide-react';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { AiOutlineInstagram, AiOutlineTwitter } from 'react-icons/ai';
+import { AiOutlineInstagram } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
 import { MdLocationCity, MdPhoneInTalk } from 'react-icons/md';
 
@@ -54,20 +54,11 @@ export default function Footer(props: MyProps) {
                 <span>{settingsData?.footerLeftWidget?.address}</span>
               </Link>
               <div className='mt-10 flex items-center justify-start gap-4'>
-                <Link
-                  href='https://www.facebook.com/SMWestcoastRealty'
-                  target='_blank'
-                >
+                <Link href={settingsData?.socialUrl?.facebook} target='_blank'>
                   <BsFacebook className='h-5 w-5' />
                 </Link>
-                <Link
-                  href='https://www.instagram.com/savemaxwestcoast/'
-                  target='_blank'
-                >
+                <Link href={settingsData?.socialUrl?.instagram} target='_blank'>
                   <AiOutlineInstagram className='h-5 w-5' />
-                </Link>
-                <Link href='/'>
-                  <AiOutlineTwitter className='h-5 w-5' />
                 </Link>
               </div>
             </div>
@@ -103,9 +94,11 @@ export default function Footer(props: MyProps) {
             </ul>
           </div>
           <div className='col-span-6 col-start-1 mb-6 ml-6 mt-5 md:col-span-12 md:col-start-4 lg:col-span-2 lg:col-start-8 lg:col-end-10 lg:ml-0 lg:mt-0'>
-            <p className='mb-2.5 font-bold uppercase text-neutral-800 dark:text-neutral-200'>
-              Services
-            </p>
+            <a href='/services'>
+              <p className='mb-2.5 font-bold uppercase text-neutral-800 hover:text-[#B48237] dark:text-neutral-200'>
+                Services
+              </p>
+            </a>
             <ul className='mb-0 list-none'>
               {navigation?.map(
                 (item: any) =>
@@ -120,14 +113,6 @@ export default function Footer(props: MyProps) {
                     </li>
                   )
               )}
-              <li className='mb-2'>
-                <a
-                  href='/services'
-                  className='uppercase text-neutral-600 hover:text-[#B48237] dark:text-neutral-300'
-                >
-                  Services
-                </a>
-              </li>
             </ul>
           </div>
           <div className='col-span-6 col-start-1 ml-6 md:col-span-12 md:col-start-4 lg:col-span-3 lg:col-start-10 lg:col-end-12 lg:ml-0'>
