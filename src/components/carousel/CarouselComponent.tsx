@@ -13,20 +13,30 @@ export default function CarouselComponent({
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5,
+      items: 6,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 1800 },
+      items: 5,
+      slidesToSlide: 3, // optional, default to 1.
+    },
+    miniDesktop: {
+      breakpoint: { max: 1799, min: 1600 },
       items: 4,
       slidesToSlide: 3, // optional, default to 1.
     },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
+    laptop: {
+      breakpoint: { max: 1599, min: 1024 },
       items: 3,
+      slidesToSlide: 3, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1023, min: 676 },
+      items: 2,
       slidesToSlide: 2, // optional, default to 1.
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 675, min: 0 },
       items: 1,
       slidesToSlide: 1, // optional, default to 1.
     },

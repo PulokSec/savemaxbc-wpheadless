@@ -18,8 +18,8 @@ export default function BlogBanner(props: MyProps) {
       }}
     >
       <Header settingsData={settingsData} navigation={headerData} />
-      <div className='mx-auto flex flex-col items-center justify-between'>
-        <div className='mx-auto flex w-full flex-col items-center justify-center py-16 text-center  md:mt-[10%] lg:mt-[25%]'>
+      <div className='mx-auto flex flex-col items-center justify-center h-[70vh] lg:h-auto'>
+        <div className='mx-auto flex w-full flex-col items-center justify-center py-16 text-center md:mt-[10%] lg:mt-[25%]'>
           <p className='text-leading-3 text-lg font-bold text-white md:text-5xl'>
             {bannerHeading || ''}
           </p>
