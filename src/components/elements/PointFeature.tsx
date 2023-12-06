@@ -13,11 +13,11 @@ export default function PointFeature(props: MyProps) {
         <div className='w-full'>
           <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0'>
             <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-8 lg:col-start-2 lg:mt-20 lg:px-10'>
-              <h2 className='px-5 text-center text-2xl md:text-center md:text-3xl lg:text-start lg:text-4xl'>
+              <h2 className='px-5 text-center text-2xl md:text-3xl lg:text-start lg:text-4xl'>
                 {featuredData?.featureTitle}
               </h2>
               <div
-                className='md:text-md mt-5 px-2 text-start text-xs md:text-center lg:text-lg'
+                className='md:text-md mt-5 px-2 text-start text-xs lg:text-lg'
                 dangerouslySetInnerHTML={{
                   __html: featuredData?.featureDescription,
                 }}

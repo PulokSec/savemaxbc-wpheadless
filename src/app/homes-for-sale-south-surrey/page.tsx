@@ -303,7 +303,9 @@ export default async function HomeSouthSurrey({
               }}
             ></div>
           </div>
-          <ListingCarousel posts={homePosts?.listings} />
+          {homePosts?.listings && (
+            <ListingCarousel posts={homePosts?.listings} />
+          )}
           <div className='mt-5 text-center md:mt-10'>
             <a
               href='/properties-listing?city=Surrey&type=Town'

@@ -33,7 +33,7 @@ const RightImageLeftText = (props: Props) => {
               <div className='col-span-12 ml-5 md:col-span-12 md:ml-5 lg:col-span-5 lg:col-start-1 lg:mt-20 lg:pl-10 2xl:col-start-2'>
                 <div className=''>
                   <div
-                    className='md:text-md mt-5 text-xs lg:text-lg'
+                    className='md:text-md mt-10 text-xs lg:text-lg'
                     dangerouslySetInnerHTML={{
                       __html: featuredData?.rightText,
                     }}

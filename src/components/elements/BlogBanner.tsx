@@ -9,11 +9,12 @@ type MyProps = {
 };
 export default function BlogBanner(props: MyProps) {
   const { headerData, settingsData, bannerHeading, bannerImage } = props;
+  console.log(bannerImage);
   return (
     <div
-      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat md:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-fixed bg-[center_center] bg-no-repeat lg:h-[100vh]'
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),url(${bannerImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${bannerImage?.sourceUrl})`,
       }}
     >
       <Header settingsData={settingsData} navigation={headerData} />
