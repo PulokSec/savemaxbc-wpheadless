@@ -7,7 +7,7 @@ export default function BottomServiceSection(props: MyProps) {
   const { bottomSection } = props;
   return (
     <section
-      className='mt-40 flex min-h-[60vh] flex-col items-center justify-between  bg-cover'
+      className='mt-40 flex min-h-[60vh] w-full flex-col items-center  justify-between bg-cover bg-center'
       style={{
         backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
       }}
