@@ -34,14 +34,25 @@ export default function CareersBanner(props: MyProps) {
       </div>
       <div className='container relative mx-auto mt-[40%] w-[80%] bg-white py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[15%]'>
         <div
-          className='md:text-md mt-5 text-xs lg:text-lg'
+          className='md:text-md mt-2 md:mt-5 text-xs lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: topDesc,
           }}
         ></div>
-        <p className='font-bolder mt-2 w-full text-xl md:text-xl lg:text-2xl'>
-          {topTitle}
-        </p>
+        {topTitle === 'Start your journey now!' ? (
+          <div className='mt-1 flex items-center justify-center'>
+            <a
+              href='/apply-now'
+              className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+            >
+              Start your journey now!
+            </a>
+          </div>
+        ) : (
+          <p className='font-bolder mt-2 w-full text-xl md:text-xl lg:text-2xl'>
+            {topTitle}
+          </p>
+        )}
       </div>
     </div>
   );
