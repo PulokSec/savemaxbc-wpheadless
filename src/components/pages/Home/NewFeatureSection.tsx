@@ -28,7 +28,9 @@ const NewFeatureSection = (props: MyProps) => {
                 >
                   <div className='mx-auto flex w-full flex-col items-start md:w-1/2 xl:w-4/6'>
                     <div className='mx-auto w-3/4 xl:w-3/5'>
-                      <h2 className=''>{item?.title}</h2>
+                      <h2 className='text-xl text-[#061632] md:text-3xl xl:text-6xl'>
+                        {item?.title}
+                      </h2>
                       <div
                         className='md:text-md  mt-5  text-justify text-xs lg:text-lg'
                         dangerouslySetInnerHTML={{
@@ -55,14 +57,11 @@ const NewFeatureSection = (props: MyProps) => {
                     />
                     <Image
                       className='md:hidden'
-                      src={item?.img}
+                      src={item?.image?.sourceUrl}
                       width={250}
                       height={250}
-                      alt='img'
+                      alt={item?.image?.altText}
                     />
-                    {/* <div className='block xl:hidden'>
-                      <Image src={item?.img} width={100} height={100} alt='' />
-                    </div> */}
                   </div>
                 </div>
               ) : (
@@ -80,15 +79,17 @@ const NewFeatureSection = (props: MyProps) => {
                     />
                     <Image
                       className='md:hidden'
-                      src={item?.img}
+                      src={item?.image?.sourceUrl}
                       width={250}
                       height={250}
-                      alt='img'
+                      alt={item?.image?.altText}
                     />
                   </div>
                   <div className='mx-auto flex w-full flex-col items-end md:w-1/2 xl:w-3/5'>
                     <div className='mx-auto w-3/4 xl:w-2/3'>
-                      <h2 className=''>{item?.title}</h2>
+                      <h2 className='text-xl text-[#061632] md:text-3xl xl:text-6xl'>
+                        {item?.title}
+                      </h2>
                       <div
                         className='md:text-md  mt-5  text-justify text-xs lg:text-lg'
                         dangerouslySetInnerHTML={{

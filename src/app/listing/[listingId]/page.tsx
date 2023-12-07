@@ -164,6 +164,8 @@ export default async function SingleProperty({
           <SingleListingBanner
             navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
             allImages={images}
+            headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
+            settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
 
           <div className='mx-auto max-w-[1400px] p-2 md:p-5 xl:py-10 '>
