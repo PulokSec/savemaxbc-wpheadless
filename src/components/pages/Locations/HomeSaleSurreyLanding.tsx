@@ -15,7 +15,7 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
   // console.log(allData);
 
   return (
-    <main>
+    <main className='font-primary'>
       <LocationBanner
         bannerData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection
@@ -58,7 +58,6 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection2
         }
       />
-
 
       <WhyChooseUs
         featuredData={

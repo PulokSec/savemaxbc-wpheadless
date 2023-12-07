@@ -69,7 +69,7 @@ export default function PaginationSearch(props: MyProps) {
                   )
                 }
                 key={post?.ListingID}
-                className='mx-auto flex h-[400px] w-[290px] cursor-pointer flex-col justify-around overflow-hidden rounded border-2 border-gray-300'
+                className='mx-auto flex h-[430px] w-[290px] cursor-pointer flex-col justify-around overflow-hidden rounded border-2 border-gray-300'
               >
                 <div className='flex items-end justify-end'>
                   <div
@@ -99,6 +99,11 @@ export default function PaginationSearch(props: MyProps) {
                   </p>
                   <p className='mt-2 text-gray-500 md:text-[11px]'>
                     {post?.Features} {post?.WaterFrontType}
+                  </p>
+                </div>
+                <div className='desc p-3 text-start text-black'>
+                  <p className='mt-2 text-gray-500 md:text-[18px]'>
+                    {post?.Price} $
                   </p>
                 </div>
                 <div className='mt-2 flex items-center justify-center gap-4 px-5 text-white'>

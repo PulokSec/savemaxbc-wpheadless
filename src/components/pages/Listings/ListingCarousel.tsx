@@ -17,7 +17,7 @@ interface PostData {
 export default function ListingCarousel(props: MyProps) {
   const { posts } = props;
   const [postData, setPostData] = useState<PostData[]>([]);
-
+  console.log(posts);
   useEffect(() => {
     async function fetchData() {
       const data = await Promise.all(
@@ -92,6 +92,11 @@ export default function ListingCarousel(props: MyProps) {
                 </p>
                 <p className='mt-2 text-gray-500 md:text-[11px]'>
                   {post?.Features} {post?.WaterFrontType}
+                </p>
+              </div>
+              <div className='desc p-3 text-start text-black'>
+                <p className='mt-2 text-gray-500 md:text-[18px]'>
+                  {post?.Price} $
                 </p>
               </div>
               <div className='mt-2 flex items-center justify-center gap-4 px-5 text-white'>

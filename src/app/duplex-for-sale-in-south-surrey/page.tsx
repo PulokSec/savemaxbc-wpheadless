@@ -217,7 +217,7 @@ export default async function DuplexSaleSouthSurrey() {
   });
 
   return (
-    <main>
+    <main className='font-primary'>
       <section className='bg-white'>
         <div>
           <BannerWithButton

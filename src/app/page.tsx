@@ -213,7 +213,7 @@ export default async function HomePage() {
   });
   return (
     <>
-      <main>
+      <main className='font-primary'>
         <section className='bg-white'>
           <div>
             <Banner

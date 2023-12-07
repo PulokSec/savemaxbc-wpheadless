@@ -241,7 +241,7 @@ export default async function CondosForSaleSurrey() {
     },
   });
   return (
-    <main>
+    <main className='font-primary'>
       <section className='bg-white'>
         <div>
           <CondosSaleSurreyLanding allData={data} />

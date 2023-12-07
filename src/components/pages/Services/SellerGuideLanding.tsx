@@ -23,7 +23,7 @@ export default function SellerGuideLanding(props: MyProps) {
     setFunction(event.target.value);
   };
   return (
-    <main>
+    <main className='font-primary'>
       <BannerWithButton
         bannerData={allData?.pages?.nodes[0]?.sellerGuide?.bannerSection}
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
@@ -89,7 +89,6 @@ export default function SellerGuideLanding(props: MyProps) {
         address={allData?.pages?.nodes[0]?.sellerGuide?.contactSection?.address}
         heading={false}
       />
-      
 
       <Footer
         navigation={allData?.menus?.nodes[0]?.menuItems?.nodes}

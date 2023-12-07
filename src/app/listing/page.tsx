@@ -4,10 +4,12 @@ import Head from 'next/head';
 import { Suspense } from 'react';
 
 import { getClient } from '@/lib/apollo';
+import { getAllProperties, getSearchQuery } from '@/lib/dataFetching';
 
 import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import ListingBanner from '@/components/pages/Listings/ListingBanner';
+import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
 import Footer from '@/components/shared/Footer';
 import Skeleton from '@/components/Skeleton';
 
@@ -157,7 +159,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Listing({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | undefined };
 }) {
   const { data } = await getClient().query({
     query,
@@ -167,24 +169,62 @@ export default async function Listing({
       },
     },
   });
+  let allData = {
+    listings: [],
+    totalCount: 0,
+  };
+
+  if (searchParams?.query) {
+    const commonParams = {
+      pageParam: parseInt(searchParams?.page?.toString() || '1'),
+    };
+
+    if (
+      searchParams?.type === 'House' ||
+      searchParams?.type === 'Town' ||
+      searchParams?.type === 'Condo'
+    ) {
+      allData = await getAllProperties({
+        ...commonParams,
+        typeParam: searchParams.type,
+        cityParam: searchParams?.query,
+      });
+    } else {
+      const [city, street, province] = searchParams?.query?.split(',') || [];
+      allData = await getSearchQuery({
+        cityParam: city || '',
+        streetParam: street || '',
+        provinceParam: province || '',
+        ...commonParams,
+      });
+    }
+  }
 
   return (
     <>
       <Head>
         <title>Latest Listings</title>
       </Head>
-      <main>
+      <main className='font-primary'>
         <Suspense fallback={<Skeleton />}>
           <ListingBanner
             bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}
             headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
             settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
-          <FeaturedListings
-            searchParams={searchParams}
-            titleData={data?.pages?.nodes[0]?.listings?.listingSection}
-            usingFor='listings'
-          />
+          {searchParams?.query ? (
+            <PaginationSearch
+              allPosts={allData?.listings}
+              totalCount={allData?.totalCount}
+              currentPageID={parseInt(searchParams?.page?.toString() || '1')}
+            />
+          ) : (
+            <FeaturedListings
+              searchParams={searchParams}
+              titleData={data?.pages?.nodes[0]?.listings?.listingSection}
+              usingFor='listings'
+            />
+          )}
           <GetInTouch
             bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}
           />

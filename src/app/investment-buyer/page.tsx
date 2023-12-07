@@ -184,7 +184,7 @@ export default async function InvestmentBuyer() {
   console.log(data);
   return (
     <>
-      <main>
+      <main className='font-primary'>
         <SharedBanner
           bannerData={data?.pages?.nodes[0]?.InvestmentBuyer?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

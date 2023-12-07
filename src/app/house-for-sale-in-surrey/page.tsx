@@ -238,7 +238,7 @@ export default async function HouseForSaleInSurrey() {
     },
   });
   return (
-    <main>
+    <main className='font-primary'>
       <section className='bg-white'>
         <div>
           <HomeSaleSurreyLanding allData={data} />

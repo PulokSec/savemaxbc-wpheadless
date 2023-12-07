@@ -160,7 +160,7 @@ export default async function BuyersGuide() {
     },
   });
   return (
-    <main>
+    <main className='font-primary'>
       <section className='bg-white'>
         <div>
           <ContactPageLanding allData={data} />
