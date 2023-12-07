@@ -24,16 +24,16 @@ export default function SingleListingBanner(props: MyProps) {
       <Header settingsData={settingsData} navigation={headerData} />
 
       <div className='mx-auto flex w-full flex-col items-center justify-center md:flex-row'>
-        <div className='relative h-[450px] w-full md:h-[500px] md:w-1/2 lg:h-[700px]'>
+        <div className='relative h-[450px] w-full md:h-[500px] md:w-1/2 2xl:w-2/3 lg:h-[700px]'>
           <Image
             src={firstImageUrl}
             fill={true}
             alt='First Image'
-            className='object-cover'
+            className='object-cover '
             priority={true}
           />
         </div>
-        <div className='h-[150px] w-full bg-sky-950 md:h-[500px] md:w-1/2 lg:h-[700px] '>
+        <div className='h-[150px] w-full bg-sky-950 md:h-[500px] md:w-1/2 2xl:w-1/3 lg:h-[700px] '>
           <div className='flex h-full flex-col items-center justify-center'>
             <h3 className='mb-2 flex items-center gap-x-3 text-xl text-white md:mb-5 lg:text-3xl'>
               Free Account Required <KeyRound />
