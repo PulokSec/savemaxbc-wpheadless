@@ -13,7 +13,7 @@ type MyProps = {
 };
 export default function HomeSaleLanding(props: MyProps) {
   const { allData } = props;
-  console.log(allData);
+  // console.log(allData);
 
   return (
     <main>
@@ -25,6 +25,7 @@ export default function HomeSaleLanding(props: MyProps) {
       <FeatureSection
         featuredData={allData?.pages?.nodes[0]?.homeForSaleInBc?.featureSection}
       />
+
       <ExploreSection
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInBc?.considerSection
