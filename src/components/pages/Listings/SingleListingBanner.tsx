@@ -36,6 +36,7 @@ export default function SingleListingBanner(props: MyProps) {
                 fill={true}
                 alt={img?.altName}
                 className='object-cover'
+                priority={true}
               />
             </div>
           );

@@ -12,8 +12,8 @@ export default function NewsSection(props: MyProps) {
   return (
     <div>
       <div className={` hidden bg-no-repeat  text-white md:block`}>
-        <div className='mx-auto mt-10 max-w-[1250px] p-3'>
-          <div className='my-10 mt-16 grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-20'>
+        <div className='mx-auto mt-10 max-w-[1500px] p-3'>
+          <div className='my-10 mt-16 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 md:gap-10 lg:gap-5 xl:gap-20 2xl:gap-7'>
             {newsSection?.map((newsData: any, idx: any) => (
               <NewsCard newsData={newsData} index={idx + 1} key={idx} />
             ))}
