@@ -184,7 +184,7 @@ export default async function LeasingService() {
 
   return (
     <>
-      <main>
+      <main className='font-primary'>
         <BannerWithButton
           bannerData={data?.pages?.nodes[0]?.leasingService?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
@@ -197,7 +197,8 @@ export default async function LeasingService() {
           <div
             className='md:text-md mx-auto mt-5 max-w-[1400px] px-10 text-center text-xs lg:text-lg'
             dangerouslySetInnerHTML={{
-              __html: data?.pages?.nodes[0]?.leasingService?.topFeatureDescription,
+              __html:
+                data?.pages?.nodes[0]?.leasingService?.topFeatureDescription,
             }}
           ></div>
         </div>
@@ -219,7 +220,8 @@ export default async function LeasingService() {
               </h2>
             )}
 
-            {data?.pages?.nodes[0]?.leasingService?.bottomSection?.description && (
+            {data?.pages?.nodes[0]?.leasingService?.bottomSection
+              ?.description && (
               <div
                 className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-justify text-xs md:pb-12 lg:text-lg'
                 dangerouslySetInnerHTML={{

@@ -178,7 +178,7 @@ export default async function PropertiesListing({
       <Head>
         <title>Latest Listings</title>
       </Head>
-      <main>
+      <main className='font-primary'>
         <ListingBanner
           bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
@@ -189,11 +189,6 @@ export default async function PropertiesListing({
           totalCount={allPosts?.totalCount}
           currentPageID={parseInt(searchParams?.page?.toString() || '1')}
         />
-        {/* <FeaturedListings
-          allPosts={allPosts?.listings}
-          titleData={data?.pages?.nodes[0]?.listings?.listingSection}
-          usingFor='listings'
-        /> */}
         <GetInTouch
           bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}
         />

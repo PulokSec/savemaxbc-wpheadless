@@ -173,7 +173,7 @@ export default async function NewDevelopmentPreConstruction() {
   });
 
   return (
-    <main>
+    <main className='font-primary'>
       <section className='bg-white'>
         <div>
           <BannerWithButton

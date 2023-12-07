@@ -11,7 +11,7 @@ export async function GET(req: Request) {
   const hasTypeFilter = typeToSearch !== undefined && typeToSearch !== null;
 
   const listingsQuery = `
-    SELECT City, Province, PostalCode, Neighbourhood, CommunityName, BedroomsTotal, BathroomTotal, DdfListingID, Type, TransactionType, LastUpdated, StreetAddress, PublicRemarks, Lease, LeasePerUnit, Latitude, Longitude, ListingID, Features, WaterFrontType, MoreInformationLink, CoolingType, HeatingType
+    SELECT City, Province, PostalCode, Neighbourhood, CommunityName, BedroomsTotal, BathroomTotal, Price, DdfListingID, Type, TransactionType, LastUpdated, StreetAddress, PublicRemarks, Lease, LeasePerUnit, Latitude, Longitude, ListingID, Features, WaterFrontType, MoreInformationLink, CoolingType, HeatingType
     FROM 3d_rps_property
     WHERE
       (${hasTypeFilter ? 'Type LIKE ?' : 'Type IS NOT NULL'})

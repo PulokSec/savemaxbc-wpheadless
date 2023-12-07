@@ -23,7 +23,7 @@ export default function BuyersGuideLanding(props: MyProps) {
   };
 
   return (
-    <main>
+    <main className='font-primary'>
       <BannerWithButton
         bannerData={allData?.pages?.nodes[0]?.buyerGuide?.bannerSection}
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}

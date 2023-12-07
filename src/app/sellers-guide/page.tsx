@@ -42,7 +42,7 @@ const query = gql`
                 altText
               }
             }
-          } 
+          }
           contactSection {
             title
             description
@@ -167,7 +167,7 @@ export default async function SellersGuide() {
     },
   });
   return (
-    <main>
+    <main className='font-primary'>
       <section className='bg-white'>
         <div>
           <SellerGuideLanding allData={data} />

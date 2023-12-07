@@ -43,6 +43,11 @@ export default function Banner(props: MyProps) {
       setSearchShow(true);
     }
   };
+  const handleSubmit = () => {
+    if (searchField?.length > 0) {
+      router.push(`/listing?query=${searchField}`);
+    }
+  };
   useEffect(() => {
     const interval = setInterval(() => {
       if (!searchField.length) {
@@ -75,10 +80,7 @@ export default function Banner(props: MyProps) {
           </p>
           <div className='mt-10 flex items-center justify-center gap-x-6'>
             <form
-              // onSubmit={() => {
-              //   dispatch(setSearchQuery(searchField));
-              //   router.push(`/search`);
-              // }}
+              onSubmit={() => handleSubmit()}
               ref={domNode}
               className='mt-3 flex flex-row items-center justify-center'
             >
@@ -89,7 +91,10 @@ export default function Banner(props: MyProps) {
                 onChange={handleChange}
                 placeholder='Search'
               />
-              <span className='border-bg-blue relative  right-[35px] rounded-[50%] border bg-sky-950 p-3 md:right-[50px] md:p-4'>
+              <span
+                onClick={handleSubmit}
+                className='border-bg-blue relative  right-[35px] cursor-pointer rounded-[50%] border bg-sky-950 p-3 md:right-[50px] md:p-4'
+              >
                 <GoSearch className=' text-white md:w-5' />
               </span>
             </form>

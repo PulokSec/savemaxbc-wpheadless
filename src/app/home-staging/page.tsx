@@ -184,7 +184,7 @@ export default async function HomeStaging() {
 
   return (
     <>
-      <main>
+      <main className='font-primary'>
         <BannerWithButton
           bannerData={data?.pages?.nodes[0]?.homeStaging?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

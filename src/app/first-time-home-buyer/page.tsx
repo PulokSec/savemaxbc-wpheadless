@@ -184,7 +184,7 @@ export default async function FirstTimeBuyers() {
   console.log(data);
   return (
     <>
-      <main>
+      <main className='font-primary'>
         <SharedBanner
           bannerData={data?.pages?.nodes[0]?.FirstTimeBuyers?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

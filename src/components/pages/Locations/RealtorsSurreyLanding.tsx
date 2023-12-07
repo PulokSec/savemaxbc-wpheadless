@@ -14,7 +14,7 @@ export default function RealtorsSurreyLanding(props: MyProps) {
   // console.log(allData);
 
   return (
-    <main>
+    <main className='font-primary'>
       <LocationBanner
         bannerData={allData?.pages?.nodes[0]?.realtorsSurrey?.bannerSection}
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}

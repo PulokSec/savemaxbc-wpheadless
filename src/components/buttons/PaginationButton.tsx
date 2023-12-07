@@ -1,6 +1,5 @@
 'use client';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
 import ReactPaginate from 'react-paginate';
 interface PaginationButtonsProps {
@@ -14,8 +13,6 @@ const PaginationButtons = ({
   totalPages,
   setCurrentPageClick,
 }: PaginationButtonsProps) => {
-  const router = useRouter();
-  console.log(router);
   const handlePageClick = ({ selected }: { selected: number }) => {
     setCurrentPageClick(selected);
   };
@@ -49,6 +46,7 @@ const PaginationButtons = ({
             </span>
           ) : null
         }
+        initialPage={currentPage}
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         pageCount={totalPages}

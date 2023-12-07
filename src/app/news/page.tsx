@@ -192,7 +192,7 @@ export default async function News() {
   // console.log(data);
   return (
     <>
-      <main>
+      <main className='font-primary'>
         <ServiceBanner
           bannerData={data?.pages?.nodes[0]?.news?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

@@ -159,7 +159,7 @@ export default async function SingleProperty({
 
   return (
     <>
-      <main>
+      <main className='font-primary'>
         <Suspense fallback={<Skeleton />}>
           <SingleListingBanner
             navigation={data?.menus?.nodes[0]?.menuItems?.nodes}

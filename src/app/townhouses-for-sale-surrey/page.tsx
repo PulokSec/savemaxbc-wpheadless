@@ -241,7 +241,7 @@ export default async function TownhousesForSaleSurrey() {
     },
   });
   return (
-    <main>
+    <main className='font-primary'>
       <section className='bg-white'>
         <div>
           <TownhousesSaleSurreyLanding allData={data} />

@@ -10,11 +10,12 @@ import { getSearchQuery } from '@/lib/dataFetching';
 
 import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
 import Scroll from '@/components/utils/Scroll';
+import useQueryParams from '@/components/utils/useQueryParams';
 
 const filterData = [
   { name: 'House', value: 'House' },
-  { name: 'Garden', value: 'Garden' },
-  { name: 'Pool', value: 'Pool' },
+  { name: 'Townhouse', value: 'Town' },
+  { name: 'Condominium', value: 'Condo' },
 ];
 
 const SearchTab = () => {
@@ -25,11 +26,20 @@ const SearchTab = () => {
   const [rentShow, setRentShow] = useState(false);
   const [searchShow, setSearchShow] = useState(false);
   const [searchField, setSearchField] = useState('');
+  const [type, setType] = useState('');
   const domNode: any = useRef();
-  const handleRemove = (data: string) => {
-    setFilters(filters.filter((filter) => filter.name !== data));
-  };
   const router = useRouter();
+  const { setQueryParam } = useQueryParams();
+
+  const handleSelect = (data: string) => {
+    setType(data);
+    setQueryParam('type', data);
+  };
+  const handleSubmit = () => {
+    if (searchField?.length > 0) {
+      router.push(`/listing?query=${searchField}`);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -105,12 +115,15 @@ const SearchTab = () => {
                   <div
                     key={idx}
                     onClick={() => {
-                      handleRemove(filter.value);
+                      handleSelect(filter.value);
                     }}
-                    className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
+                    className={`flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] ${
+                      type === filter.value
+                        ? 'bg-[#082f49] text-white'
+                        : 'text-gray-400'
+                    }`}
                   >
                     <p className=''>{filter.name}</p>
-                    <RxCross2 className='ml-1 ' />
                   </div>
                 )
               )}
@@ -123,6 +136,7 @@ const SearchTab = () => {
                   type='text'
                   placeholder='Search Street City, Province, RP number'
                   onChange={handleChange}
+                  onSubmit={() => handleSubmit()}
                 />
               </div>
               <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
@@ -143,55 +157,11 @@ const SearchTab = () => {
               </div>
               <div className='relative'>
                 <div
-                  onClick={() => {
-                    setFilterDataShow(!filterDataShow);
-                  }}
+                  onClick={handleSubmit}
                   className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-white'
                 >
                   <p className='text-md'>Filter Results</p>
                 </div>
-
-                {filterDataShow ? (
-                  <>
-                    {/* <div className="arrow  absolute h-[20px]  w-[20px] bg-black rotate-45" id="arrow"/> */}
-                    <div className='absolute left-0 z-10 mt-5 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                      <div
-                        className='divide-gray/20 max-h-[400px] divide-y overflow-y-scroll py-2'
-                        role='none'
-                      >
-                        {filterData?.map((element) => {
-                          return (
-                            <div
-                              key={element.value}
-                              className={`flex ${
-                                filters.includes({
-                                  name: element.name,
-                                  value: element.value,
-                                })
-                                  ? 'text-primary'
-                                  : 'text-[#000000]'
-                              } cursor-pointer items-center justify-between`}
-                              onClick={() => {
-                                setFilters((prevFilters) => [
-                                  ...prevFilters,
-                                  { name: element.name, value: element.value },
-                                ]);
-
-                                setFilterDataShow(false);
-                              }}
-                            >
-                              <p className={`  px-4  py-2 text-[14px] `}>
-                                {element.name}
-                              </p>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  ''
-                )}
               </div>
             </div>
           </div>
@@ -206,7 +176,7 @@ const SearchTab = () => {
                   <div
                     key={idx}
                     onClick={() => {
-                      handleRemove(filter.value);
+                      handleSelect(filter.value);
                     }}
                     className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
                   >
@@ -224,6 +194,7 @@ const SearchTab = () => {
                   type='text'
                   placeholder='Search Street City, Province, RP number'
                   onChange={handleChange}
+                  onSubmit={() => handleSubmit()}
                 />
               </div>
               <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
@@ -244,55 +215,11 @@ const SearchTab = () => {
               </div>
               <div className='relative'>
                 <div
-                  onClick={() => {
-                    setFilterDataShow(!filterDataShow);
-                  }}
+                  onClick={handleSubmit}
                   className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-center text-white'
                 >
                   <p className='text-md'>Filter Results</p>
                 </div>
-
-                {filterDataShow ? (
-                  <>
-                    {/* <div className="arrow  absolute h-[20px]  w-[20px] bg-black rotate-45" id="arrow"/> */}
-                    <div className='absolute left-0 z-10 mt-5 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                      <div
-                        className='divide-gray/20 max-h-[400px] divide-y overflow-y-scroll py-2'
-                        role='none'
-                      >
-                        {filterData?.map((element) => {
-                          return (
-                            <div
-                              key={element.value}
-                              className={`flex ${
-                                filters.includes({
-                                  name: element.name,
-                                  value: element.value,
-                                })
-                                  ? 'text-primary'
-                                  : 'text-[#000000]'
-                              } cursor-pointer items-center justify-between`}
-                              onClick={() => {
-                                setFilters((prevFilters) => [
-                                  ...prevFilters,
-                                  { name: element.name, value: element.value },
-                                ]);
-
-                                setFilterDataShow(false);
-                              }}
-                            >
-                              <p className={`  px-4  py-2 text-[14px] `}>
-                                {element.name}
-                              </p>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  ''
-                )}
               </div>
             </div>
           </div>

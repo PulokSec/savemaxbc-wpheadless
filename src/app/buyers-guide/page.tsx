@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 import { getClient } from '@/lib/apollo';
+
 import BuyersGuideLanding from '@/components/pages/Services/BuyersGuideLanding';
 
 const query = gql`
@@ -167,7 +168,7 @@ export default async function BuyersGuide() {
     },
   });
   return (
-    <main>
+    <main className='font-primary'>
       <section className='bg-white'>
         <div>
           <BuyersGuideLanding allData={data} />
