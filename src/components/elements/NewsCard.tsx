@@ -45,7 +45,9 @@ const NewsCard = (props: MyProps) => {
         />
       </div>
       <div className='desc p-3 text-start text-black'>
-        <h3 className='text-[20px]'>{newsData?.title}</h3>
+        <a href={newsData?.uri}>
+          <h3 className='text-[20px]'>{newsData?.title}</h3>
+        </a>
         <p className='text-[12px]'>{newsData?.author?.node?.name}</p>
         <div
           className='overflow-hidden'
