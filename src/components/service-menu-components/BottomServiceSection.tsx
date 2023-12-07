@@ -9,11 +9,11 @@ export default function BottomServiceSection(props: MyProps) {
     <section
       className='mt-40 flex min-h-[60vh] w-full flex-col items-center  justify-between bg-cover bg-center'
       style={{
-        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),url(${bottomSection?.backgroundImage?.sourceUrl})`,
       }}
     >
       <div
-        className='md:text-md container mx-auto mt-5 px-5 text-start text-xs lg:mt-40 lg:text-lg'
+        className='md:text-md container mx-auto mt-5 px-5 text-start text-xs text-white lg:mt-40 lg:text-lg'
         dangerouslySetInnerHTML={{
           __html: bottomSection.description,
         }}

@@ -39,7 +39,7 @@ const query = gql`
           serviceFeatureSection {
             featureTitle
             featureDescription
-            featuredDiv
+            featuredDiv {
               title
               description
               image {
