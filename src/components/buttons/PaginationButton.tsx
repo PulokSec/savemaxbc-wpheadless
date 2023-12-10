@@ -62,8 +62,8 @@ const PaginationButtons = ({
           ) : null
         }
         containerClassName='flex items-center justify-center mt-8 mb-4'
-        pageClassName='block border-solid border-[#082f49] hover:bg-[#082f49] hover:text-white w-10 h-10 flex items-center justify-center rounded-md mr-4'
-        activeClassName='bg-[#082f49] text-white'
+        pageLinkClassName='block border-solid border-[#082f49] hover:bg-[#082f49] hover:text-white w-10 h-10 flex items-center justify-center rounded-md mr-4'
+        activeLinkClassName='bg-[#082f49] text-white'
       />
     </motion.div>
   );
