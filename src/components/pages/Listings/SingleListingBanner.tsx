@@ -1,5 +1,5 @@
 'use client';
-import { KeyRound, X } from 'lucide-react';
+import { Dot, KeyRound, X } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
@@ -16,34 +16,56 @@ type MyProps = {
 export default function SingleListingBanner(props: MyProps) {
   const { navigation, allImages, headerData, settingsData } = props;
   const [loginModal, setLoginModal] = useState(false);
-  const bufferOriginal = Buffer.from(allImages[0].Photos.data);
-  const firstImageUrl = JSON.parse(bufferOriginal.toString('utf8'))?.LargePhoto
-    ?.filename;
+  const firstbufferOriginal = Buffer.from(allImages[0].Photos.data);
+  const firstImageUrl = JSON.parse(firstbufferOriginal.toString('utf8'))
+    ?.LargePhoto?.filename;
+  const secondbufferOriginal = Buffer.from(allImages[1].Photos.data);
+  const secondImageUrl = JSON.parse(secondbufferOriginal.toString('utf8'))
+    ?.LargePhoto?.filename;
   return (
     <div className='relative'>
       <Header settingsData={settingsData} navigation={headerData} />
 
-      <div className='mx-auto flex w-full flex-col items-center justify-center md:flex-row'>
-        <div className='relative h-[450px] w-full md:h-[500px] md:w-1/2 2xl:w-2/3 lg:h-[700px]'>
+      <div className='mx-auto flex w-full flex-col items-center justify-center gap-2 p-5 md:flex-row md:p-3 lg:p-5 '>
+        <div className='relative h-[350px] w-full rounded-xl md:w-1/2 lg:h-[350px] xl:h-[500px]'>
           <Image
             src={firstImageUrl}
             fill={true}
             alt='First Image'
-            className='object-cover '
+            className='rounded-xl object-cover'
             priority={true}
           />
         </div>
-        <div className='h-[150px] w-full bg-sky-950 md:h-[500px] md:w-1/2 2xl:w-1/3 lg:h-[700px] '>
-          <div className='flex h-full flex-col items-center justify-center'>
-            <h3 className='mb-2 flex items-center gap-x-3 text-xl text-white md:mb-5 lg:text-3xl'>
+        <div
+          className='flex h-[350px] w-full items-center justify-center rounded-xl bg-cover bg-fixed bg-[center_center] bg-no-repeat md:w-1/2 lg:h-[350px] xl:h-[500px]'
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(${secondImageUrl})`,
+          }}
+        >
+          <div className='mx-auto flex h-[90%] w-[95%] flex-col items-start justify-center rounded-xl bg-white pl-8'>
+            <h3 className='mb-2 flex items-center gap-x-3 text-xl text-gray-800 md:mb-3 lg:text-3xl'>
               Free Account Required <KeyRound />
             </h3>
-            <p className='mb-4 text-white md:mb-10'>
+            <p className='text-gray-800'>
               Join millions of Canadians searching for homes
             </p>
+            <ul className='my-6 -ml-3 text-gray-800'>
+              <li className='flex items-center '>
+                <Dot className='h-8 w-8' />
+                Faster listings than everyone
+              </li>
+              <li className='flex items-center '>
+                <Dot className='h-8 w-8' />
+                See 27% more homes & sold history
+              </li>
+              <li className='flex items-center '>
+                <Dot className='h-8 w-8' />
+                Instant access to photos & features
+              </li>
+            </ul>
             <div
               onClick={() => setLoginModal(true)}
-              className='w-[225px] cursor-pointer rounded-lg bg-white px-4 py-2 text-center font-semibold text-sky-800 transition-all duration-500 ease-in-out hover:bg-gray-100 hover:text-[17px] hover:tracking-wide'
+              className='w-[225px] cursor-pointer rounded-lg bg-sky-900 px-4 py-2 text-center font-semibold text-white transition-all duration-500 ease-in-out  hover:text-[17px] hover:tracking-wide'
             >
               Login to see all photos!
             </div>

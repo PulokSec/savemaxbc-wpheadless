@@ -1,9 +1,10 @@
 'use client';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import Carousel from 'react-multi-carousel';
 
 import 'react-multi-carousel/lib/styles.css';
+import '../../styles/carousel.css';
 export default function CarouselComponent({
   children,
 }: {
@@ -13,20 +14,16 @@ export default function CarouselComponent({
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 6,
+      items: 4,
+      slidesToSlide: 4,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1800 },
-      items: 5,
-      slidesToSlide: 3, // optional, default to 1.
-    },
-    miniDesktop: {
-      breakpoint: { max: 1799, min: 1600 },
+      breakpoint: { max: 3000, min: 1675 },
       items: 4,
       slidesToSlide: 3, // optional, default to 1.
     },
     laptop: {
-      breakpoint: { max: 1599, min: 1024 },
+      breakpoint: { max: 1674, min: 1024 },
       items: 3,
       slidesToSlide: 3, // optional, default to 1.
     },
@@ -48,7 +45,14 @@ export default function CarouselComponent({
         className='absolute right-0 top-1/2 z-10 bg-none'
         onClick={() => onClick()}
       >
-        <IoIosArrowForward className='cursor-pointer border-none text-[#E2C379]' />
+        {/* <IoIosArrowForward
+          className='cursor-pointer border-none text-[#E2C379]'
+          strokeWidth={10}
+        /> */}
+        <ChevronRight
+          className='h-6 w-6 cursor-pointer border-none text-[#e7c26a] transition-all duration-300 ease-in-out hover:scale-125'
+          strokeWidth={4}
+        />
       </button>
     );
   };
@@ -60,7 +64,14 @@ export default function CarouselComponent({
         className='absolute left-0 top-1/2 z-10 bg-none'
         onClick={() => onClick()}
       >
-        <IoIosArrowBack className='cursor-pointer text-center text-[#E2C379]' />
+        {/* <IoIosArrowBack
+          className='cursor-pointer text-center text-[#E2C379]'
+          strokeWidth={10}
+        /> */}
+        <ChevronLeft
+          className='h-6 w-6 cursor-pointer border-none text-[#e7c26a] transition-all duration-300 ease-in-out hover:scale-125'
+          strokeWidth={4}
+        />
       </button>
     );
   };
@@ -93,6 +104,7 @@ export default function CarouselComponent({
           shouldResetAutoplay
           customRightArrow={<CustomRight />}
           customLeftArrow={<CustomLeft />}
+          itemClass=''
         >
           {children}
         </Carousel>
