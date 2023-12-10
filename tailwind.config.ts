@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss';
 export default {
   mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
