@@ -36,7 +36,11 @@ const PaginationButtons = ({
   const showNextButton = currentPage !== totalPages - 1;
   const showPrevButton = currentPage !== 0;
   return (
-    <motion.div variants={paginationVariants} initial='block' animate='visible'>
+    <motion.div
+      variants={paginationVariants}
+      initial='hidden'
+      animate='visible'
+    >
       <ReactPaginate
         breakLabel={<span className='mr-4'>...</span>}
         nextLabel={
