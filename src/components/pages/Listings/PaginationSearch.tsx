@@ -23,7 +23,7 @@ export default function PaginationSearch(props: MyProps) {
   console.log(currentPageID);
   const handlePageClick = (selected: number) => {
     setCurrentPage(selected);
-    setQueryParam('page', (selected + 1).toString());
+    setQueryParam('page', selected.toString());
   };
 
   useEffect(() => {
@@ -132,7 +132,7 @@ export default function PaginationSearch(props: MyProps) {
         </div>
         <div className='px-3'>
           <PaginationButtons
-            currentPage={currentPage}
+            currentPage={currentPage - 1}
             totalPages={totalPages}
             setCurrentPageClick={handlePageClick}
           />
