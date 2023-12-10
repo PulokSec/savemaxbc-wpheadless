@@ -14,7 +14,7 @@ const PaginationButtons = ({
   setCurrentPageClick,
 }: PaginationButtonsProps) => {
   const handlePageClick = ({ selected }: { selected: number }) => {
-    setCurrentPageClick(selected);
+    setCurrentPageClick(selected + 1);
   };
 
   const paginationVariants = {
