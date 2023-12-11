@@ -49,7 +49,7 @@ export default function PointFeature(props: MyProps) {
           </div>
 
           <div className='mt-10 grid grid-cols-12 items-center justify-center gap-4 lg:mx-0 lg:mt-20 lg:max-w-none'>
-            <div className='cols-end-12 lg:col-span-5 lg:col-start-1 lg:col-end-5'>
+            <div className='cols-end-12 hidden md:block lg:col-span-5 lg:col-start-1 lg:col-end-5'>
               <NextImage
                 useSkeleton
                 className='w-100 w-40 lg:w-[100%]'
@@ -87,6 +87,17 @@ export default function PointFeature(props: MyProps) {
                   </div>
                 </div>
               </div>
+            </div>
+            \
+            <div className='col-span-4 col-start-8 col-end-12 md:col-start-10  md:hidden lg:col-span-4 lg:col-start-10'>
+              <NextImage
+                useSkeleton
+                className='md:w-100 w-40 lg:w-[100%]'
+                width='600'
+                height='200'
+                src={featuredData?.imageRight?.sourceUrl}
+                alt={featuredData?.imageRight?.altText}
+              />
             </div>
           </div>
         </div>
