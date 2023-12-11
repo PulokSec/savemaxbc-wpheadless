@@ -7,7 +7,7 @@ export default function GetInTouch(props: MyProps) {
   const { bottomSection } = props;
   return (
     <section
-      className='relative mt-10 flex h-[30vh] md:h-[80vh] w-full flex-col items-center overflow-hidden overflow-y-hidden bg-cover bg-no-repeat md:rounded-t-[40%]'
+      className='relative mt-10 flex h-[30vh] md:h-[40vh] 2xl:h-[80vh] w-full flex-col items-center overflow-hidden overflow-y-hidden bg-cover bg-no-repeat md:rounded-t-[20%] 2xl:rounded-t-[40%]'
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${bottomSection?.backgroundImage?.sourceUrl})`,
       }}
