@@ -2,11 +2,17 @@
 import { Dialog } from '@headlessui/react';
 import { Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsTelephone } from 'react-icons/bs';
 import { HiMenu } from 'react-icons/hi';
 import { RxCross2 } from 'react-icons/rx';
+
+import { getSearchQuery } from '@/lib/dataFetching';
+
+import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
+import Scroll from '@/components/utils/Scroll';
 
 type MyProps = {
   navigation: any;
@@ -16,6 +22,53 @@ export default function Header(props: MyProps) {
   const [open, setOpen] = useState(false);
   const { navigation, settingsData } = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [filtersData, setFiltersData] = useState([]);
+  const [searchShow, setSearchShow] = useState(false);
+  const [searchField, setSearchField] = useState('');
+  const domNode: any = useRef();
+  const router = useRouter();
+
+  const handleSubmit = () => {
+    if (searchField?.length > 0) {
+      router.push(`/listing?query=${searchField}`);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const city = searchField.split(',')[0] || searchField;
+      const street = searchField.split(',')[1] || searchField;
+      const province = searchField.split(',')[2] || searchField;
+      const result = await getSearchQuery({
+        cityParam: city ? city : '',
+        streetParam: street ? street : '',
+        provinceParam: province ? province : '',
+        pageParam: 1,
+      });
+      setFiltersData(result?.listings);
+    };
+    fetchData();
+  }, [searchField]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchField(e.target.value);
+    if (e.target.value.length > 0) {
+      setSearchShow(true);
+    }
+  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!searchField.length) {
+        setSearchShow(false);
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [searchField]);
+
+  UseClickOutside(domNode.current, () => {
+    setSearchShow(false);
+  });
 
   return (
     <div className='top-0 z-50 w-full shadow'>
@@ -214,29 +267,31 @@ export default function Header(props: MyProps) {
                   })}
                   <a
                     href='mailto:admin@savemaxwestcoast.com'
-                    className='hover:bg-100 -ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
+                    className='hover:bg-100 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
                     <Mail className='mr-2 h-5 w-5 font-bold text-[#B48237]' />
                     <p className='text-[15px]'>admin@savemaxwestcoast.com</p>
                   </a>
                   <a
                     href='tel:778-200-5050'
-                    className='hover:bg-100 -ml-[2px] mb-12 flex h-10 w-auto items-center justify-start rounded-xl'
+                    className='hover:bg-100 mb-12 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
                     <Phone className='mr-2 h-5 w-5 font-bold text-[#B48237]' />
                     <p className='mt-1 text-[15px]'>778-200-5050</p>
                   </a>
                   <form
                     action=''
-                    className='relative w-max rounded-full bg-gray-100 -ml-1'
+                    className='relative w-max rounded-full bg-gray-100'
                   >
                     <input
                       type='search'
-                      className='peer relative z-10 h-12 w-12 cursor-pointer border border-transparent rounded-full bg-transparent pl-0 outline-none focus:w-[300px] focus:cursor-text focus:border-yellow-300 focus:pl-16 focus:pr-4'
+                      onChange={handleChange}
+                      onSubmit={() => handleSubmit()}
+                      className='peer relative z-10 h-12 w-12 cursor-pointer rounded-full border border-transparent bg-transparent pl-0 outline-none focus:w-[300px] focus:cursor-text focus:border-yellow-300 focus:pl-16 focus:pr-4'
                     />
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
-                      className='absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-[#B48237] px-3.5 focus:border-[#B48237] peer-focus:border-[#B48237] peer-focus:stroke-[#B48237]'
+                      className='absolute inset-y-0 my-auto h-5 w-12 border-r border-transparent stroke-[#B48237]  focus:border-[#B48237] peer-focus:border-[#B48237] peer-focus:stroke-[#B48237]'
                       fill='none'
                       viewBox='0 0 24 24'
                       stroke='currentColor'
@@ -250,6 +305,56 @@ export default function Header(props: MyProps) {
                     </svg>
                   </form>
                 </div>
+                {searchShow ? (
+                  <div className='relative z-50 w-full overflow-hidden rounded-b-xl bg-white shadow focus:mt-[-20px]'>
+                    {filtersData?.length > 0 ? (
+                      <Scroll
+                        style={{
+                          height: '22vh',
+                        }}
+                        className='mt-3 overflow-y-scroll '
+                      >
+                        {filtersData?.map((post: any, idx: number) => {
+                          return (
+                            <div
+                              onClick={() =>
+                                router.push(
+                                  `/listing/${post?.StreetAddress?.replaceAll(
+                                    ' ',
+                                    '-'
+                                  ).toLowerCase()}-${post?.City?.replaceAll(
+                                    ' ',
+                                    '-'
+                                  ).toLowerCase()}-${post?.Province?.replaceAll(
+                                    ' ',
+                                    '-'
+                                  ).toLowerCase()}-${post?.PostalCode}-${
+                                    post?.ListingID
+                                  }`
+                                )
+                              }
+                              key={idx}
+                              className=''
+                            >
+                              <p className='my-2 cursor-pointer px-5 text-[14px] text-[#082f49]'>
+                                {post?.StreetAddress} {post?.City}/
+                                {post?.Province}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </Scroll>
+                    ) : (
+                      <Scroll>
+                        <p className='my-8 flex items-center justify-center '>
+                          No matched Properties
+                        </p>
+                      </Scroll>
+                    )}
+                  </div>
+                ) : (
+                  ''
+                )}
               </div>
             </div>
           </Dialog.Panel>

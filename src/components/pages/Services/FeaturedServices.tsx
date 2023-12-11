@@ -24,7 +24,7 @@ export default function FeaturedServices(props: MyProps) {
                   <div className='ml-5 md:ml-40 lg:mt-20'>
                     <div className='container'>
                       <h2 className='w-full text-2xl leading-5 text-sky-950 md:w-[500px] md:text-5xl'>
-                        <span className='text-[#525659]'>
+                        <span className='leading-5 text-[#525659]'>
                           {item?.title?.split(/ (.*)/)[0]}
                         </span>{' '}
                         {item?.title?.split(/ (.*)/)[1]}

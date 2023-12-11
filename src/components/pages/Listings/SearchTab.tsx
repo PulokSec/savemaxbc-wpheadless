@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { GrLocation } from 'react-icons/gr';
 import { MdOutlineDateRange } from 'react-icons/md';
-import { RxCross2 } from 'react-icons/rx';
 
 import { getSearchQuery } from '@/lib/dataFetching';
 
@@ -180,7 +179,6 @@ const SearchTab = () => {
                     className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
                   >
                     <p className=''>{filter.name}</p>
-                    <RxCross2 className='ml-1 ' />
                   </div>
                 )
               )}

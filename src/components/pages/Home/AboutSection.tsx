@@ -11,7 +11,7 @@ export default function AboutSection(props: MyProps) {
     <div className='mt-10 bg-white'>
       <div className='mt-5 grid grid-cols-12 gap-4 lg:mx-0 lg:-mt-10 lg:max-w-none lg:gap-0 2xl:-mt-10'>
         <div className='container col-span-12 mx-auto px-5 md:col-span-12 md:px-10 lg:col-span-5 lg:col-start-2 lg:mt-20'>
-          <h2 className='text-start text-2xl md:text-3xl lg:px-10 lg:text-4xl'>
+          <h2 className='text-start text-2xl md:text-3xl lg:text-4xl'>
             {aboutData?.aboutTitle}
           </h2>
           <div className='w-full'>
