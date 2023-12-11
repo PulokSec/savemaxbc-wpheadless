@@ -15,7 +15,7 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
   // console.log(allData);
 
   return (
-    <main className='font-primary'>
+    <main>
       <LocationBanner
         bannerData={
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.bannerSection

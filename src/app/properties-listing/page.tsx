@@ -178,7 +178,7 @@ export default async function PropertiesListing({
       <Head>
         <title>Latest Listings</title>
       </Head>
-      <main className='font-primary'>
+      <main>
         <ListingBanner
           bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

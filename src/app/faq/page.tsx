@@ -163,7 +163,7 @@ export default async function FaqPage() {
   // console.log(data);
   return (
     <>
-      <main className='font-primary'>
+      <main>
         <SharedBanner
           bannerData={data?.pages?.nodes[0]?.faqPage?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

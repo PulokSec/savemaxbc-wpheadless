@@ -16,7 +16,7 @@ export default function HomeSaleLanding(props: MyProps) {
   // console.log(allData);
 
   return (
-    <main className='font-primary'>
+    <main>
       <Banner
         bannerData={allData?.pages?.nodes[0]?.homeForSaleInBc?.bannerSection}
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}

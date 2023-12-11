@@ -30,7 +30,7 @@ export default function ContactPageLanding(props: MyProps) {
 
   // console.log('bg', allData?.pages?.nodes[0]?.contactUs?.background?.sourceUrl);
   return (
-    <main className='font-primary'>
+    <main>
       <BannerWithButton
         bannerData={allData?.pages?.nodes[0]?.contactUs?.bannerSection}
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}

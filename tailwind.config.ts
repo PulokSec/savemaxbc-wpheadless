@@ -1,6 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+import type { Config } from 'tailwindcss';
+export default {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -50,5 +50,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
-};
+  plugins: [require('@tailwindcss/forms')],
+} satisfies Config;

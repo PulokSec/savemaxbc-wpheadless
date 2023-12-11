@@ -1,24 +1,25 @@
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
-import ReactPaginate from 'react-paginate';
 
-interface PaginationProps {
-  setCurrentPage: (selected: number) => void;
+import { getPaginationItems } from '@/lib/usePagination';
+
+import PageLink from './PageLink';
+
+export type Props = {
   currentPage: number;
-  totalPages: number;
-}
+  lastPage: number;
+  maxLength: number;
+  setCurrentPage: (page: number) => void;
+};
 
-const Pagination: React.FC<PaginationProps> = ({
-  setCurrentPage,
+export default function Pagination({
   currentPage,
-  totalPages,
-}) => {
-  const router = useRouter();
-  const handlePageClick = ({ selected }: { selected: number }) => {
-    setCurrentPage(selected);
-    router.push(`?page=${selected + 1}`);
-  };
+  lastPage,
+  maxLength,
+  setCurrentPage,
+}: Props) {
+  const pageNums = getPaginationItems(currentPage, lastPage, maxLength);
+
   const paginationVariants = {
     hidden: {
       opacity: 0,
@@ -35,39 +36,42 @@ const Pagination: React.FC<PaginationProps> = ({
       },
     },
   };
-  const showNextButton = currentPage !== totalPages - 1;
-  const showPrevButton = currentPage !== 0;
   return (
     <motion.div
       variants={paginationVariants}
       initial='hidden'
       animate='visible'
     >
-      <ReactPaginate
-        breakLabel={<span className='mr-4'>...</span>}
-        nextLabel={
-          showNextButton ? (
-            <span className='bg-lightGray flex h-10 w-10 items-center justify-center rounded-md'>
-              <BsChevronRight />
-            </span>
-          ) : null
-        }
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        pageCount={totalPages}
-        previousLabel={
-          showPrevButton ? (
-            <span className='bg-lightGray mr-4 flex h-10 w-10 items-center justify-center rounded-md'>
-              <BsChevronLeft />
-            </span>
-          ) : null
-        }
-        containerClassName='flex items-center justify-center mt-8 mb-4'
-        pageClassName='block border- border-solid border-lightGray hover:bg-lightGray w-10 h-10 flex items-center justify-center rounded-md mr-4'
-        activeClassName='bg-[#082f49] text-white'
-      />
+      <nav className='flex flex-wrap' aria-label='Pagination'>
+        <PageLink
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(currentPage - 1)}
+          className='flex h-10 w-10 items-center justify-center rounded-md'
+        >
+          <p className='text-white'>
+            <BsChevronLeft />
+          </p>
+        </PageLink>
+        {pageNums.map((pageNum, idx) => (
+          <PageLink
+            key={idx}
+            active={currentPage === pageNum}
+            disabled={isNaN(pageNum)}
+            onClick={() => setCurrentPage(pageNum)}
+          >
+            {pageNum === -1 ? '...' : pageNum}
+          </PageLink>
+        ))}
+        <PageLink
+          disabled={currentPage === lastPage}
+          onClick={() => setCurrentPage(currentPage + 1)}
+          className='flex h-10 w-10 items-center justify-center rounded-md '
+        >
+          <p className='text-white'>
+            <BsChevronRight />
+          </p>
+        </PageLink>
+      </nav>
     </motion.div>
   );
-};
-
-export default Pagination;
+}
