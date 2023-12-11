@@ -184,7 +184,7 @@ export default async function LeasingService() {
 
   return (
     <>
-      <main className='font-primary'>
+      <main>
         <BannerWithButton
           bannerData={data?.pages?.nodes[0]?.leasingService?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 import { getPhotos } from '@/lib/dataFetching';
 
-import PaginationButtons from '@/components/buttons/PaginationButton';
 import NextImage from '@/components/NextImage';
+import Pagination from '@/components/utils/Pagination';
 import useQueryParams from '@/components/utils/useQueryParams';
 
 type MyProps = {
@@ -20,7 +20,7 @@ export default function PaginationSearch(props: MyProps) {
   const [posts, setPosts] = useState(allPosts);
   const router = useRouter();
   const { setQueryParam } = useQueryParams();
-  console.log(currentPageID);
+  console.log(totalPages);
   const handlePageClick = (selected: number) => {
     setCurrentPage(selected);
     setQueryParam('page', selected.toString());
@@ -130,11 +130,12 @@ export default function PaginationSearch(props: MyProps) {
             );
           })}
         </div>
-        <div className='px-3'>
-          <PaginationButtons
-            currentPage={currentPage - 1}
-            totalPages={totalPages}
-            setCurrentPageClick={handlePageClick}
+        <div className='flex items-center justify-center'>
+          <Pagination
+            currentPage={currentPage}
+            maxLength={10}
+            lastPage={totalPages}
+            setCurrentPage={handlePageClick}
           />
         </div>
       </section>

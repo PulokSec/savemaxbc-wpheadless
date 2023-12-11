@@ -205,7 +205,7 @@ export default async function Listing({
       <Head>
         <title>Latest Listings</title>
       </Head>
-      <main className='font-primary'>
+      <main>
         <Suspense fallback={<Skeleton />}>
           <ListingBanner
             bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}

@@ -239,7 +239,7 @@ export default async function HomeForSalePage() {
   });
   return (
     <>
-      <main className='font-primary'>
+      <main>
         <section className='bg-white'>
           <div>
             <HomeForSaleLanding allData={data} />

@@ -52,7 +52,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>{children}</body>
+      <body className='font-primary'>{children}</body>
     </html>
   );
 }

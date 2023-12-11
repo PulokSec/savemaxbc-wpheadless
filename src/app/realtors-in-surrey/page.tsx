@@ -1,8 +1,9 @@
-import React from 'react';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import React from 'react';
 
 import { getClient } from '@/lib/apollo';
+
 import RealtorsSurreyLanding from '@/components/pages/Locations/RealtorsSurreyLanding';
 
 const query = gql`
@@ -232,7 +233,7 @@ export default async function RealtorsInSurrey() {
     },
   });
   return (
-    <main className='font-primary'>
+    <main>
       <section className='bg-white'>
         <div>
           <RealtorsSurreyLanding allData={data} />

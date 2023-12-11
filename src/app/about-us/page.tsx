@@ -164,7 +164,7 @@ export default async function page() {
   });
   return (
     <>
-      <main className='font-primary'>
+      <main>
         <SharedBanner
           bannerData={data?.pages?.nodes[0]?.aboutUs?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
