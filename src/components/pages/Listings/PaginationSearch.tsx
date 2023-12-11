@@ -20,7 +20,7 @@ export default function PaginationSearch(props: MyProps) {
   const [posts, setPosts] = useState(allPosts);
   const router = useRouter();
   const { setQueryParam } = useQueryParams();
-  console.log(totalPages);
+
   const handlePageClick = (selected: number) => {
     setCurrentPage(selected);
     setQueryParam('page', selected.toString());
@@ -133,7 +133,7 @@ export default function PaginationSearch(props: MyProps) {
         <div className='flex items-center justify-center'>
           <Pagination
             currentPage={currentPage}
-            maxLength={10}
+            maxLength={6}
             lastPage={totalPages}
             setCurrentPage={handlePageClick}
           />
