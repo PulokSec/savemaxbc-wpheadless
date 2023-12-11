@@ -214,23 +214,25 @@ export default function Header(props: MyProps) {
                   })}
                   <a
                     href='mailto:admin@savemaxwestcoast.com'
-                    className='-ml-[2px] flex h-7 w-7 items-center justify-center rounded-xl bg-gray-50 hover:bg-gray-200'
+                    className='hover:bg-100 -ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
-                    <Mail className='h-5 w-5 font-bold text-[#B48237] ' />
+                    <Mail className='mr-2 h-5 w-5 font-bold text-[#B48237]' />
+                    <p className='text-[15px]'>admin@savemaxwestcoast.com</p>
                   </a>
                   <a
                     href='tel:778-200-5050'
-                    className='-ml-[2px] mb-12 flex h-7 w-7 items-center justify-center rounded-xl bg-gray-50 hover:bg-gray-200'
+                    className='hover:bg-100 -ml-[2px] mb-12 flex h-10 w-auto items-center justify-start rounded-xl'
                   >
-                    <Phone className='h-5 w-5 font-bold text-[#B48237]' />
+                    <Phone className='mr-2 h-5 w-5 font-bold text-[#B48237]' />
+                    <p className='mt-1 text-[15px]'>778-200-5050</p>
                   </a>
                   <form
                     action=''
-                    className='relative w-max rounded-full bg-gray-50'
+                    className='relative w-max rounded-full bg-gray-100 -ml-1'
                   >
                     <input
                       type='search'
-                      className='peer relative z-10 h-12 w-12 cursor-pointer rounded-full border border-[#B48237] bg-transparent pl-0 outline-none focus:w-[300px] focus:cursor-text focus:border-yellow-300 focus:pl-16 focus:pr-4'
+                      className='peer relative z-10 h-12 w-12 cursor-pointer border border-transparent rounded-full bg-transparent pl-0 outline-none focus:w-[300px] focus:cursor-text focus:border-yellow-300 focus:pl-16 focus:pr-4'
                     />
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
