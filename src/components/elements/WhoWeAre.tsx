@@ -9,13 +9,13 @@ type MyProps = {
 export default function WhoWeAre(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='mt-14 lg:mt-28 2xl:mt-40 lg:container md:px-10 lg:mx-auto'>
+    <section className='mt-14 lg:container md:px-10 lg:mx-auto lg:mt-28 2xl:mt-40'>
       <div className='text-center md:px-10 lg:w-full'>
         <h1 className='px-5 text-center text-lg leading-7 text-[#525659] md:text-5xl'>
           {featuredData?.topHead}
         </h1>
         <div
-          className='mt-5 text-xs leading-7 md:text-lg mx-5 md:mx-0'
+          className='mx-5 mt-5 text-xs leading-7 md:mx-0 md:text-lg'
           dangerouslySetInnerHTML={{
             __html: featuredData?.topDescription,
           }}
