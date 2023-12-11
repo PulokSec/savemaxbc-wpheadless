@@ -69,19 +69,12 @@ const NewFeatureSection = (props: MyProps) => {
                   key={i}
                   className='mx-auto mt-10 flex w-full flex-col items-center justify-center gap-8 md:mt-20 md:flex-row md:gap-0'
                 >
-                  <div className='flex w-full items-start justify-start md:w-1/2 xl:w-2/5'>
+                  <div className='hidden w-full items-start justify-start md:flex md:w-1/2 xl:w-2/5'>
                     <Image
-                      className='hidden md:block md:w-[500px] 2xl:w-[650px]'
+                      className='md:w-[500px] 2xl:w-[650px]'
                       src={item?.image?.sourceUrl}
                       width={500}
                       height={500}
-                      alt={item?.image?.altText}
-                    />
-                    <Image
-                      className='md:hidden'
-                      src={item?.image?.sourceUrl}
-                      width={250}
-                      height={250}
                       alt={item?.image?.altText}
                     />
                   </div>
@@ -105,6 +98,15 @@ const NewFeatureSection = (props: MyProps) => {
                         </a>
                       </div>
                     </div>
+                  </div>
+                  <div className='flex w-full items-start justify-start md:hidden md:w-1/2 xl:w-2/5'>
+                    <Image
+                      className=''
+                      src={item?.image?.sourceUrl}
+                      width={250}
+                      height={250}
+                      alt={item?.image?.altText}
+                    />
                   </div>
                 </div>
               )
