@@ -37,7 +37,7 @@ export default async function FeaturedListings(props: MyProps) {
   return (
     <div>
       <section className='mt-20'>
-        <div className='mt-20'>
+        <div className='mt-20 2xl:mt-32'>
           {usingFor === 'listings' && (
             <h1 className='text-center text-lg md:text-5xl'>
               {titleData?.recentListingsTitle?.split(/ (.*)/)[0]}{' '}

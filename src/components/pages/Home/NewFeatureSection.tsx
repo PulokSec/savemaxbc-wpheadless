@@ -49,7 +49,7 @@ const NewFeatureSection = (props: MyProps) => {
                   </div>
                   <div className='flex w-full items-end justify-end md:w-1/2 xl:w-1/3'>
                     <Image
-                      className='hidden md:block'
+                      className='hidden md:block md:w-[500px] 2xl:w-[650px]'
                       src={item?.image?.sourceUrl}
                       width={500}
                       height={500}
@@ -71,7 +71,7 @@ const NewFeatureSection = (props: MyProps) => {
                 >
                   <div className='flex w-full items-start justify-start md:w-1/2 xl:w-2/5'>
                     <Image
-                      className='hidden md:block'
+                      className='hidden md:block md:w-[500px] 2xl:w-[650px]'
                       src={item?.image?.sourceUrl}
                       width={500}
                       height={500}

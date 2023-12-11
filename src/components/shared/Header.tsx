@@ -220,10 +220,33 @@ export default function Header(props: MyProps) {
                   </a>
                   <a
                     href='tel:778-200-5050'
-                    className='-ml-[2px] flex h-7 w-7 items-center justify-center rounded-xl bg-gray-50 hover:bg-gray-200'
+                    className='-ml-[2px] mb-12 flex h-7 w-7 items-center justify-center rounded-xl bg-gray-50 hover:bg-gray-200'
                   >
                     <Phone className='h-5 w-5 font-bold text-[#B48237]' />
                   </a>
+                  <form
+                    action=''
+                    className='relative w-max rounded-full bg-gray-50'
+                  >
+                    <input
+                      type='search'
+                      className='peer relative z-10 h-12 w-12 cursor-pointer rounded-full border border-[#B48237] bg-transparent pl-0 outline-none focus:w-[300px] focus:cursor-text focus:border-yellow-300 focus:pl-16 focus:pr-4'
+                    />
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      className='absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent stroke-[#B48237] px-3.5 focus:border-[#B48237] peer-focus:border-[#B48237] peer-focus:stroke-[#B48237]'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                      strokeWidth='2'
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
+                      />
+                    </svg>
+                  </form>
                 </div>
               </div>
             </div>
