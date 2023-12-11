@@ -95,7 +95,7 @@ export default function PaginationSearch(props: MyProps) {
                 </div>
                 <div className='desc p-3 text-start text-black'>
                   <p className='mt-2 text-[20px] font-semibold text-black'>
-                    {post?.DdfListingID} {post?.CommunityName}{' '}
+                    {post?.StreetAddress} {post?.CommunityName}{' '}
                     {post?.PostalCode}
                   </p>
                   <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
