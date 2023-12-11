@@ -90,7 +90,13 @@ const query = gql`
     }
   }
 `;
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { listingId: string };
+}): Promise<Metadata> {
+  const link = params.listingId;
+  const listingId = link.split('-').pop();
   const { data } = await getClient().query({
     query,
     context: {
@@ -99,9 +105,17 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
   });
+  const images = await getPhotos({ listingId: listingId });
+  const imageUrl = JSON.parse(
+    Buffer.from(images[0].Photos.data).toString('utf8')
+  )?.LargePhoto?.filename;
+
+  const allDetails = await getSingleProperty({
+    listingId: listingId,
+  });
   return {
-    title: data?.pages?.nodes[0]?.seo?.title,
-    description: data?.pages?.nodes[0]?.seo?.description,
+    title: allDetails[0]?.StreetAddress,
+    description: allDetails[0]?.PublicRemarks,
     robots: { index: false, follow: false },
 
     // icons: {
@@ -111,19 +125,19 @@ export async function generateMetadata(): Promise<Metadata> {
     // },
     manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
-      title: data?.pages?.nodes[0]?.seo?.title,
-      description: data?.pages?.nodes[0]?.seo?.description,
+      url: `https://savemaxbc.com/listing/${params.listingId}`,
+      title: allDetails[0]?.StreetAddress,
+      description: allDetails[0]?.PublicRemarks,
       siteName: 'https://savemaxbc.com/',
-      images: data?.pages?.nodes[0]?.seo?.openGraph?.image?.url,
+      images: imageUrl,
       type: 'website',
       locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
-      title: data?.pages?.nodes[0]?.seo?.title,
-      description: data?.pages?.nodes[0]?.seo?.description,
-      // images: [`${siteConfig.url}/images/og.jpg`],
+      title: allDetails[0]?.StreetAddress,
+      description: allDetails[0]?.PublicRemarks,
+      images: imageUrl,
       creator: '@PulokSec',
     },
     authors: [
@@ -183,7 +197,9 @@ export default async function SingleProperty({
               )}
             </div>
 
-            <h2 className=' mb-1 text-[#B48237]'>58121 Fancher Road</h2>
+            <h2 className=' mb-1 text-[#B48237]'>
+              {allDetails[0]?.StreetAddress}
+            </h2>
             <h3 className='mb-1 text-gray-900'>
               {allDetails[0]?.City} {allDetails[0]?.Province}{' '}
               {allDetails[0]?.PostalCode}
@@ -203,6 +219,7 @@ export default async function SingleProperty({
           <ListingMap
             latitude={allDetails[0]?.Latitude}
             longitude={allDetails[0]?.Longitude}
+            address={allDetails[0]?.StreetAddress}
           />
           <Footer
             navigation={data?.menus?.nodes[0]?.menuItems?.nodes}

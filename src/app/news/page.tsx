@@ -136,6 +136,8 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
+  // You can set this dynamically based on user input or route parameter
+
   const { data } = await getClient().query({
     query,
     context: {
@@ -180,16 +182,185 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function News() {
-  const { data } = await getClient().query({
-    query,
+export default async function News({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | undefined };
+}) {
+  const perPage = 12;
+  const currentPage = parseInt(searchParams?.page || '1');
+  const prevPage = currentPage - 1;
+  const firstPage = prevPage > 1 ? prevPage * 12 : 12;
+
+  const newsCursor = gql`
+    query GetPrevNews($previousPage: Int!) {
+      posts(first: $previousPage) {
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          offsetPagination {
+            total
+            hasPrevious
+            hasMore
+          }
+        }
+      }
+    }
+  `;
+  const prevData = await getClient().query({
+    query: newsCursor,
+    variables: { previousPage: firstPage },
     context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
     },
   });
-  // console.log(data);
+  const endCursor =
+    prevPage > 0 ? prevData?.data?.posts?.pageInfo.endCursor : '';
+
+  const newsQuery = gql`
+    query GetNews($perPage: Int!, $after: String) {
+      pages(where: { id: 20 }) {
+        nodes {
+          seo {
+            title
+            description
+            canonicalUrl
+            focusKeywords
+            openGraph {
+              image {
+                url
+              }
+            }
+            jsonLd {
+              raw
+            }
+          }
+          news {
+            bannerSection {
+              bannerImage {
+                sourceUrl
+              }
+              bannerHeading
+              bannerButton
+            }
+            bottomSection {
+              featureTitle
+              backgroundImage {
+                sourceUrl
+              }
+              linkText
+            }
+          }
+        }
+      }
+      settingsOptions {
+        savemaxOptions {
+          headerSettings {
+            uploadLogo {
+              sourceUrl
+              altText
+            }
+          }
+          generalSettings {
+            schemaProductRating
+          }
+          footerSettings {
+            socialUrl {
+              facebook
+              twitter
+              instagram
+            }
+            copyrightText
+            footerLeftWidget {
+              title
+              phone
+              emailAddress
+              address
+            }
+            footerLogoSection {
+              logoText
+              logoUpload {
+                altText
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+      menus(where: { location: MENU_2 }) {
+        nodes {
+          name
+          slug
+          menuItems(first: 50) {
+            nodes {
+              url
+              target
+              parentId
+              label
+              cssClasses
+              description
+              id
+              childItems {
+                nodes {
+                  uri
+                  label
+                }
+              }
+            }
+          }
+        }
+      }
+      posts(first: $perPage, after: $after) {
+        nodes {
+          author {
+            node {
+              avatar {
+                url
+              }
+              name
+            }
+          }
+          excerpt(format: RENDERED)
+          title(format: RENDERED)
+          uri
+          date
+          featuredImage {
+            node {
+              altText
+              sourceUrl
+            }
+          }
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+          hasPreviousPage
+          offsetPagination {
+            total
+            hasPrevious
+            hasMore
+          }
+        }
+      }
+    }
+  `;
+
+  const { data } = await getClient().query({
+    query: newsQuery,
+    variables: { perPage, after: endCursor },
+    context: {
+      fetchOptions: {
+        next: { revalidate: 5 },
+      },
+    },
+  });
+
+  const totalPages = Math.ceil(
+    data?.posts?.pageInfo.offsetPagination.total / perPage
+  );
   return (
     <>
       <main>
@@ -198,7 +369,11 @@ export default async function News() {
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <NewsSection newsSection={data?.posts?.nodes} />
+        <NewsSection
+          totalPages={totalPages}
+          currentPageID={parseInt(searchParams?.page?.toString() || '1')}
+          newsSection={data?.posts?.nodes}
+        />
         <NewsBottom
           bottomSection={data?.pages?.nodes[0]?.news?.bottomSection}
         />

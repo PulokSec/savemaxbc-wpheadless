@@ -2,7 +2,7 @@ import React from 'react';
 
 import NextImage from '@/components/NextImage';
 
-import newsImage from '@/assets/news/newsPic.jpeg';
+import newsImage from '@/assets/header/Save-Max-Westcoast-Realty.png';
 
 type MyProps = {
   newsData: any;
@@ -40,7 +40,7 @@ const NewsCard = (props: MyProps) => {
         <NextImage
           layout='fill'
           className='cover relative mt-[-35px] h-[70px] w-[70px] overflow-hidden rounded-full border-2 border-gray-300'
-          src={newsData?.author?.node?.avatar?.url}
+          src={newsImage}
           alt='author'
         />
       </div>
