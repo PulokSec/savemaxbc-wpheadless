@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import * as React from 'react';
 
 import '@/styles/globals.css';
@@ -52,7 +53,10 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body className='font-primary'>{children}</body>
+      <body className='font-primary'>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
