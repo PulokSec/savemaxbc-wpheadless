@@ -19,7 +19,6 @@ const filterData = [
 ];
 
 const SearchTab = () => {
-  const [filterDataShow, setFilterDataShow] = useState(false);
   const [filters, setFilters] = useState(filterData);
   const [filtersData, setFiltersData] = useState([]);
   const [buyShow, setBuyShow] = useState(true);
@@ -104,7 +103,7 @@ const SearchTab = () => {
         </div>
       </div>
       <div
-        className='rounded-bl-[10px] rounded-br-[10px] rounded-tr-[10px] bg-white  p-5'
+        className='rounded-bl-[10px] rounded-br-[10px] rounded-tr-[10px] bg-white  p-5  shadow'
         ref={domNode}
       >
         {buyShow ? (

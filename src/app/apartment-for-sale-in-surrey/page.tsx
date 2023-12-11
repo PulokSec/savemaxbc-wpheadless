@@ -253,7 +253,7 @@ export default async function ApartmentForSaleSurrey() {
 
   return (
     <>
-      <main className='font-primary'>
+      <main>
         <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
           <SharedBanner
             bannerData={

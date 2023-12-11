@@ -191,7 +191,7 @@ export default async function SouthSurreyRealtors() {
   });
 
   return (
-    <main className='font-primary'>
+    <main>
       <section className='bg-white'>
         <div>
           <BannerWithButton

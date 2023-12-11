@@ -166,7 +166,7 @@ export default async function ServicePage() {
     },
   });
   return (
-    <main className='font-primary'>
+    <main>
       <Head>
         <title>Hi</title>
       </Head>

@@ -246,7 +246,7 @@ export default async function TownhouseSaleSouthSurrey({
     cityParam: searchParams?.city?.toString() || 'Surrey',
   });
   return (
-    <main className='font-primary'>
+    <main>
       <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
         <LocationBanner
           bannerData={data?.pages?.nodes[0]?.townSouthSurrey?.bannerSection}

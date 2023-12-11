@@ -15,7 +15,8 @@
     "format": "prettier -w .",
     "format:check": "prettier -c .",
     "postbuild": "next-sitemap --config next-sitemap.config.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "tailwind:watch": "tailwindcss -i src/styles/globals.css -o src/build.css --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.8.0-rc.2",
@@ -23,6 +24,7 @@
     "@headlessui/react": "^1.7.17",
     "@material-tailwind/react": "^2.1.2",
     "@next/font": "^14.0.3",
+    "@types/react-paginate": "^7.1.4",
     "axios": "^1.5.1",
     "clsx": "^1.2.1",
     "framer-motion": "^10.16.5",
@@ -37,8 +39,7 @@
     "react-multi-carousel": "^2.8.4",
     "react-paginate": "^8.2.0",
     "react-responsive-carousel": "^3.2.23",
-    "tailwind-merge": "^1.13.2",
-    "tw-elements": "^1.0.0"
+    "tailwind-merge": "^1.13.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.3.0",
@@ -50,7 +51,7 @@
     "@types/react": "^18.2.41",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
-    "autoprefixer": "^10.4.14",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8.45.0",
     "eslint-config-next": "^13.4.10",
     "eslint-config-prettier": "^8.8.0",
@@ -61,10 +62,10 @@
     "lint-staged": "^12.5.0",
     "next-router-mock": "^0.7.5",
     "next-sitemap": "^2.5.28",
-    "postcss": "^8.4.26",
+    "postcss": "^8.4.32",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^3.3.6",
     "typescript": "^5.3.2"
   },
   "lint-staged": {

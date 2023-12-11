@@ -1,5 +1,5 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss';
+export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -50,13 +50,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    {
-      strategy: 'class', // only generate classes
-    },
-    {
-      strategy: 'base', // only generate classes
-    },
-  ],
-};
+  plugins: [require('@tailwindcss/forms')],
+} satisfies Config;

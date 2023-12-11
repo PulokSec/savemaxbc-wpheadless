@@ -186,7 +186,7 @@ export default async function SingleNews({
   const date = `${day} ${month} ${year}`;
   return (
     <>
-      <main className='font-primary'>
+      <main>
         <BlogBanner
           bannerImage={singleBlog?.data?.post?.featuredImage?.node}
           bannerHeading={singleBlog?.data?.post?.title}

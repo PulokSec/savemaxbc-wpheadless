@@ -2,12 +2,10 @@
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-import '../../../styles/carousel.css';
-
 import { getPhotos } from '@/lib/dataFetching';
 
-import PaginationButtons from '@/components/buttons/PaginationButton';
 import NextImage from '@/components/NextImage';
+import Pagination from '@/components/utils/Pagination';
 import useQueryParams from '@/components/utils/useQueryParams';
 
 type MyProps = {
@@ -22,10 +20,10 @@ export default function PaginationSearch(props: MyProps) {
   const [posts, setPosts] = useState(allPosts);
   const router = useRouter();
   const { setQueryParam } = useQueryParams();
-  console.log(currentPageID);
+  console.log(totalPages);
   const handlePageClick = (selected: number) => {
     setCurrentPage(selected);
-    setQueryParam('page', (selected + 1).toString());
+    setQueryParam('page', selected.toString());
   };
 
   useEffect(() => {
@@ -51,7 +49,7 @@ export default function PaginationSearch(props: MyProps) {
   }, [allPosts]);
   return (
     <div>
-      <section className=''>
+      <section className='mt-20'>
         <div className='mt-8 xl:mt-20 grid grid-cols-1 gap-x-4 gap-y-10 pb-10 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
           {posts?.map(({ post, cardImageUrl }: any) => {
             return (
@@ -71,8 +69,7 @@ export default function PaginationSearch(props: MyProps) {
                   )
                 }
                 key={post?.ListingID}
-                className='card2-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white hover:shadow-2xl hover:shadow-slate-800 md:h-[480px]'
-                style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
+                className='mx-auto flex h-[430px] w-[290px] cursor-pointer flex-col justify-around overflow-hidden rounded border-2 border-gray-300'
               >
                 <div className='flex items-end justify-end'>
                   <div
@@ -86,8 +83,8 @@ export default function PaginationSearch(props: MyProps) {
                 </div>
                 <div className='relative'>
                   <NextImage
-                    useSkeleton
-                    className='relative h-[275px] w-full rounded-lg'
+                    useSkeleton={true}
+                    className='relative h-[150px] w-full'
                     src={cardImageUrl}
                     layout='fill'
                     alt='Icon'
@@ -95,42 +92,50 @@ export default function PaginationSearch(props: MyProps) {
                 </div>
                 <div className='desc p-3 text-start text-black'>
                   <p className='mt-2 text-[20px] font-semibold text-black'>
-                    {post?.DdfListingID} {post?.CommunityName}{' '}
-                    {post?.PostalCode}
+                    {post?.StreetAddress}
                   </p>
-                  <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
+                  <p className='mt-2 text-[12px] capitalize text-gray-500'>
+                    {post?.City}/{post?.Province}
+                  </p>
+                  <p className='mt-2 text-gray-500 md:text-[11px]'>
+                    {post?.Features} {post?.WaterFrontType}
+                  </p>
+                </div>
+                <div className='desc p-3 text-start text-black'>
+                  <p className='mt-2 text-gray-500 md:text-[18px]'>
                     {post?.Price} $
                   </p>
                 </div>
-
-                <div className='flex items-center justify-start gap-2 px-3 text-black'>
-                  {/* {post?.BedroomsTotal && (
-                  
-                )} */}
-                  <p className='text-[15px]'>{post?.BedroomsTotal} Bedroom</p>
-                  <p className='text-[15px]'>{post?.BathroomTotal} Bathroom</p>
+                <div className='mt-2 flex items-center justify-center gap-4 px-5 text-white'>
+                  {post?.BedroomsTotal && (
+                    <p className='w-full rounded border bg-[#082f49] text-center text-[8px]'>
+                      {post?.BedroomsTotal} Bedroom
+                    </p>
+                  )}
+                  {post?.BathroomTotal && (
+                    <p className='w-full rounded border bg-[#082f49] text-center text-[8px]'>
+                      {post?.BathroomTotal} Bathroom
+                    </p>
+                  )}
                   {post?.lease && (
-                    <p className='text-[15px]'>{post?.lease} Sqft</p>
+                    <p className='w-full rounded border bg-[#082f49] text-center text-[8px]'>
+                      {post?.lease} Sqft
+                    </p>
                   )}
                 </div>
-                <p className='px-3 text-[15px] capitalize text-black'>
-                  {post?.City}/{post?.Province}
-                </p>
-                <p className='px-3 text-[15px] text-black'>
-                  {post?.Features} {post?.WaterFrontType}
-                </p>
-                <p className='mt-2 px-3 text-[11px] font-semibold tracking-wide text-gray-700'>
+                <p className='mt-2 px-5 text-[10px]'>
                   MLS&reg; Number{post?.DdfListingID}
                 </p>
               </div>
             );
           })}
         </div>
-        <div className='px-3'>
-          <PaginationButtons
+        <div className='flex items-center justify-center'>
+          <Pagination
             currentPage={currentPage}
-            totalPages={totalPages}
-            setCurrentPageClick={handlePageClick}
+            maxLength={10}
+            lastPage={totalPages}
+            setCurrentPage={handlePageClick}
           />
         </div>
       </section>
