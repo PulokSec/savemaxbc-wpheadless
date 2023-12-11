@@ -19,7 +19,7 @@ export default function Pagination({
   setCurrentPage,
 }: Props) {
   const pageNums = getPaginationItems(currentPage, lastPage, maxLength);
-
+  console.log(pageNums);
   const paginationVariants = {
     hidden: {
       opacity: 0,
@@ -59,7 +59,7 @@ export default function Pagination({
             disabled={isNaN(pageNum)}
             onClick={() => setCurrentPage(pageNum)}
           >
-            {pageNum === -1 ? '...' : pageNum}
+            {pageNum === -1 || NaN ? '...' : pageNum}
           </PageLink>
         ))}
         <PageLink

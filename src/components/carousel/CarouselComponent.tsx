@@ -90,15 +90,15 @@ export default function CarouselComponent({
           renderDotsOutside={false}
           minimumTouchDrag={80}
           pauseOnHover
-          // autoPlay={true}
-          autoPlaySpeed={3000}
-          customTransition='all .5'
+          autoPlay={true}
+          autoPlaySpeed={5000}
+          customTransition='all 15s linear'
           transitionDuration={500}
           removeArrowOnDeviceType={['tablet', 'mobile']}
           partialVisible={false}
           dotListClass='custom-dot-list-style'
           rewind
-          containerClass=''
+          containerClass='py-5'
           rewindWithAnimation={false}
           rtl={false}
           shouldResetAutoplay

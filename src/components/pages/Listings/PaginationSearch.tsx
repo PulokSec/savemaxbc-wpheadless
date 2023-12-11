@@ -22,7 +22,7 @@ export default function PaginationSearch(props: MyProps) {
   const [posts, setPosts] = useState(allPosts);
   const router = useRouter();
   const { setQueryParam } = useQueryParams();
-  console.log(totalPages);
+
   const handlePageClick = (selected: number) => {
     setCurrentPage(selected);
     setQueryParam('page', selected.toString());
@@ -95,7 +95,7 @@ export default function PaginationSearch(props: MyProps) {
                 </div>
                 <div className='desc p-3 text-start text-black'>
                   <p className='mt-2 text-[20px] font-semibold text-black'>
-                    {post?.DdfListingID} {post?.CommunityName}{' '}
+                    {post?.StreetAddress} {post?.CommunityName}{' '}
                     {post?.PostalCode}
                   </p>
                   <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
@@ -129,7 +129,7 @@ export default function PaginationSearch(props: MyProps) {
         <div className='flex items-center justify-center'>
           <Pagination
             currentPage={currentPage}
-            maxLength={10}
+            maxLength={6}
             lastPage={totalPages}
             setCurrentPage={handlePageClick}
           />

@@ -45,7 +45,7 @@ export default function ListingCarousel(props: MyProps) {
   const router = useRouter();
   return (
     <>
-      <div className='relative mt-7 md:mt-20'>
+      <div className='relative mt-7 py-5 md:mt-20'>
         <CarouselComponent>
           {postData?.map(({ post, cardImageUrl }: any) => (
             <div
@@ -64,12 +64,12 @@ export default function ListingCarousel(props: MyProps) {
                 )
               }
               key={post?.ListingID}
-              className='card-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white hover:shadow-2xl hover:shadow-slate-800 md:h-[480px] '
+              className='card-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start rounded-lg bg-white shadow hover:shadow-2xl hover:shadow-slate-800 md:h-[480px] '
               style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
             >
               <div className='flex items-end justify-end'>
                 <div
-                  className='absolute z-10 mb-[-50px] w-[100px] origin-top bg-yellow-500 text-end'
+                  className='relative z-10 mb-[-50px] w-[100px] origin-top bg-yellow-500 text-end'
                   // style={{ transform: 'translateX(50%) rotate(45deg)' }}
                 >
                   <p className='z-5 relative top-0 px-5 text-center text-lg font-semibold text-white'>
@@ -88,7 +88,7 @@ export default function ListingCarousel(props: MyProps) {
               </div>
               <div className='desc p-3 text-start text-black'>
                 <p className='mt-2 text-[20px] font-semibold text-black'>
-                  {post?.DdfListingID} {post?.CommunityName} {post?.PostalCode}
+                  {post?.StreetAddress} {post?.CommunityName} {post?.PostalCode}
                 </p>
                 <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
                   {post?.Price} $
