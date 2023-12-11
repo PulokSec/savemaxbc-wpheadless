@@ -96,7 +96,7 @@ export default function SharedBanner(props: MyProps) {
           </div>
         ) : null}
         {usingFor === 'seller' && (
-          <div className='container relative mx-auto w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:py-10 '>
+          <div className='container relative mx-auto mt-20 w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:mt-60 lg:py-10'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               <span className='text-[#585858]'>{featureTitle}</span>{' '}
               {featureSubtitle}
