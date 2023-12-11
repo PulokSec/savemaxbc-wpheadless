@@ -1,4 +1,52 @@
-.react-multi-carousel-track {
+/* .react-multi-carousel-track {
   gap: 25px;
 }
-
+ */
+@media only screen and (max-width: 675px) {
+  .card-width {
+    width: 320px;
+  }
+  .card2-width {
+    width: 320px;
+  }
+}
+@media only screen and (min-width: 676px) and (max-width: 1023px) {
+  .card-width {
+    width: 350px;
+  }
+  .card2-width {
+    width: 350px;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+  .card-width {
+    width: 450px;
+  }
+  .card2-width {
+    width: 320px;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1799px) {
+  .card-width {
+    width: 375px;
+  }
+  .card2-width {
+    width: 375px;
+  }
+}
+@media only screen and (min-width: 1800px) and (max-width: 3000px) {
+  .card-width {
+    width: 420px;
+  }
+  .card2-width {
+    width: 420px;
+  }
+}
+@media only screen and (min-width: 3001px) {
+  .card-width {
+    width: 500px;
+  }
+  .card2-width {
+    width: 500px;
+  }
+}

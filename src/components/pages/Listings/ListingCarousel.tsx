@@ -2,6 +2,8 @@
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
+import '../../../styles/carousel.css';
+
 import { getPhotos } from '@/lib/dataFetching';
 
 import CarouselComponent from '@/components/carousel/CarouselComponent';
@@ -62,7 +64,7 @@ export default function ListingCarousel(props: MyProps) {
                 )
               }
               key={post?.ListingID}
-              className='mx-auto flex h-[450px] w-[300px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white hover:shadow-2xl hover:shadow-slate-800 md:h-[480px] md:w-full'
+              className='card-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white hover:shadow-2xl hover:shadow-slate-800 md:h-[480px] '
               style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
             >
               <div className='flex items-end justify-end'>
