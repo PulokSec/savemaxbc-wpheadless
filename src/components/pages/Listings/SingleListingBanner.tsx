@@ -14,7 +14,7 @@ type MyProps = {
   settingsData: any;
 };
 export default function SingleListingBanner(props: MyProps) {
-  const { navigation, allImages, headerData, settingsData } = props;
+  const { allImages, headerData, settingsData } = props;
   const [loginModal, setLoginModal] = useState(false);
   const firstbufferOriginal = Buffer.from(allImages[0].Photos.data);
   const firstImageUrl = JSON.parse(firstbufferOriginal.toString('utf8'))
