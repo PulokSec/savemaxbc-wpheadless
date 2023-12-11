@@ -116,14 +116,16 @@ export default function Footer(props: MyProps) {
             </ul>
           </div>
           <div className='col-span-6 col-start-1 ml-6 md:col-span-12 md:col-start-4 lg:col-span-3 lg:col-start-10 lg:col-end-12 lg:ml-0'>
-            <NextImage
-              useSkeleton
-              className='md:[250px] w-60 lg:w-[240px] xl:w-[300px]'
-              src={settingsData?.footerLogoSection?.logoUpload?.sourceUrl}
-              alt={settingsData?.footerLogoSection?.logoUpload?.altText}
-              width='500'
-              height='200'
-            />
+            <a href='/'>
+              <NextImage
+                useSkeleton
+                className='md:[250px] w-60 lg:w-[240px] xl:w-[300px]'
+                src={settingsData?.footerLogoSection?.logoUpload?.sourceUrl}
+                alt={settingsData?.footerLogoSection?.logoUpload?.altText}
+                width='500'
+                height='200'
+              />
+            </a>
           </div>
         </div>
         <div className='ml-6 md:ml-0'>
