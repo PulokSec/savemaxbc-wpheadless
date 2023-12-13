@@ -11,7 +11,7 @@ const HighestLevelService = (props: MyProps) => {
   const [selectedDiv, setSelectedDiv] = useState(0);
   return (
     <div className='max-w-screen relative min-h-[100vh] overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/ensure-highest-level-of-services.png")] bg-cover bg-center bg-no-repeat'>
-      <h2 className='z-2 mb-8 mt-20 text-center uppercase text-white md:mb-16 lg:mt-36'>
+      <h2 className='z-2 mb-8 mt-20 px-3 text-center uppercase text-white md:mb-16 lg:mt-36'>
         {serviceData?.heading}
       </h2>
 
@@ -30,7 +30,7 @@ const HighestLevelService = (props: MyProps) => {
                   : idx === serviceData?.gallery?.length - 1
                   ? 'overflow-hidden rounded-br-2xl rounded-tr-2xl'
                   : 'overflow-hidden rounded-2xl'
-              } relative flex h-96 cursor-pointer  p-2 md:h-[500px] lg:h-[450px] xl:h-80`}
+              } relative flex h-96 cursor-pointer  p-2 md:h-[535px] lg:h-[500px] xl:h-[360px] 2xl:h-80`}
               onClick={() => setSelectedDiv(idx)}
             >
               <h3
@@ -67,16 +67,14 @@ const HighestLevelService = (props: MyProps) => {
               key={idx}
               className={`${
                 selectedDiv === idx
-                  ? ' w-[320px] flex-col items-center justify-center'
-                  : 'w-[100px] items-center justify-center text-center'
-              } relative flex h-[250px] cursor-pointer p-2 `}
+                  ? 'h-[315px] flex-col items-center justify-center '
+                  : 'h-[50px] items-center justify-center text-center'
+              } relative flex w-[320px] cursor-pointer p-2`}
               onClick={() => setSelectedDiv(idx)}
             >
               <h3
                 className={`${
-                  selectedDiv === idx
-                    ? 'mb-1'
-                    : 'rotate-180 [writing-mode:vertical-rl]'
+                  selectedDiv === idx ? 'mb-1' : ''
                 } text-center text-lg text-slate-200 `}
               >
                 {item.title}
