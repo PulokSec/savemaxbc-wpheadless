@@ -29,7 +29,6 @@ export async function POST(request: NextRequest) {
           field,
           mail,
           phone,
-
           message,
         })
       ),

@@ -71,16 +71,23 @@ export default function SharedBanner(props: MyProps) {
                 </div>
               </div>
             ) : (
-              <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
-                {topTitle}
-              </p>
+              <a
+                href='/contact-us'
+                className='flex cursor-pointer items-center justify-start'
+              >
+                <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+                  {topTitle}
+                </p>
+              </a>
             )}
           </div>
         ) : topTitle ? (
           <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
-            <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
-              {topTitle}
-            </p>
+            <a href='/contact-us' className='cursor-pointer'>
+              <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+                {topTitle}
+              </p>
+            </a>
           </div>
         ) : topDesc ? (
           <div className='container relative mx-auto w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md '>
@@ -90,13 +97,15 @@ export default function SharedBanner(props: MyProps) {
                 __html: topDesc,
               }}
             ></div>
-            <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
-              {topTitle}
-            </p>
+            <a href='/contact-us' className='cursor-pointer'>
+              <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+                {topTitle}
+              </p>
+            </a>
           </div>
         ) : null}
         {usingFor === 'seller' && (
-          <div className='container relative mx-auto mt-20 w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:mt-60 lg:py-10'>
+          <div className='container relative mx-auto mt-20 flex w-[80%] items-center justify-center rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:py-10'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               <span className='text-[#585858]'>{featureTitle}</span>{' '}
               {featureSubtitle}
