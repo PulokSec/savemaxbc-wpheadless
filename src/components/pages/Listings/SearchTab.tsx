@@ -33,7 +33,8 @@ const SearchTab = () => {
     setType(data);
     setQueryParam('type', data);
   };
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     if (searchField?.length > 0) {
       router.push(`/listing?query=${searchField}`);
     }
@@ -126,7 +127,10 @@ const SearchTab = () => {
                 )
               )}
             </div>
-            <div className='flex flex-col justify-around gap-2 md:flex-row'>
+            <form
+              onSubmit={(e: any) => handleSubmit(e)}
+              className='flex flex-col justify-around gap-2 md:flex-row'
+            >
               <div className='search flex w-full items-center rounded border-2 bg-gray-200 px-3 py-1 md:w-[450px]'>
                 <BsSearch className='mr-1 text-gray-400 ' />
                 <input
@@ -134,7 +138,6 @@ const SearchTab = () => {
                   type='text'
                   placeholder='Search Street City, Province, RP number'
                   onChange={handleChange}
-                  onSubmit={() => handleSubmit()}
                 />
               </div>
               <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
@@ -154,14 +157,15 @@ const SearchTab = () => {
                 />
               </div>
               <div className='relative'>
-                <div
-                  onClick={handleSubmit}
+                <button
+                  onClick={(e: any) => handleSubmit(e)}
+                  type='submit'
                   className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-white'
                 >
                   <p className='text-md'>Filter Results</p>
-                </div>
+                </button>
               </div>
-            </div>
+            </form>
           </div>
         ) : (
           ''
@@ -183,7 +187,10 @@ const SearchTab = () => {
                 )
               )}
             </div>
-            <div className='flex flex-col justify-around gap-2 md:flex-row'>
+            <form
+              onSubmit={(e: any) => handleSubmit(e)}
+              className='flex flex-col justify-around gap-2 md:flex-row'
+            >
               <div className='search flex w-full items-center rounded border-2 bg-gray-200 px-3 py-1 md:w-[450px]'>
                 <BsSearch className='mr-1 text-gray-400 ' />
                 <input
@@ -191,7 +198,6 @@ const SearchTab = () => {
                   type='text'
                   placeholder='Search Street City, Province, RP number'
                   onChange={handleChange}
-                  onSubmit={() => handleSubmit()}
                 />
               </div>
               <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
@@ -211,14 +217,15 @@ const SearchTab = () => {
                 />
               </div>
               <div className='relative'>
-                <div
-                  onClick={handleSubmit}
+                <button
+                  onClick={(e: any) => handleSubmit(e)}
+                  type='submit'
                   className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-center text-white'
                 >
                   <p className='text-md'>Filter Results</p>
-                </div>
+                </button>
               </div>
-            </div>
+            </form>
           </div>
         ) : (
           ''

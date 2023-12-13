@@ -1,5 +1,6 @@
+'use client';
 import { Facebook, Instagram } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type Props = {
   fields: any;
@@ -12,12 +13,58 @@ type Props = {
 const ContactForm = (props: Props) => {
   const { fields, phone, email, address, heading } = props;
   const [selected, setSelected] = useState('');
-  const handleChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-    setFunction: (arg0: any) => void
-  ) => {
+  const [name, setName] = useState('');
+  const [mail, setMail] = useState('');
+  const [message, setMessage] = useState('');
+  const [number, setNumber] = useState('');
+  const [success, setSuccess] = useState(null);
+  const [alert, setAlert] = useState(false);
+  const handleChange = (event: any, setFunction: (arg0: any) => void) => {
     setFunction(event.target.value);
   };
+  const sendEmail = async (e: {
+    preventDefault: () => void;
+    target: { reset: () => void };
+  }) => {
+    e.preventDefault();
+
+    const bodyData = JSON.stringify({
+      fromEmail: 'noreply@savemaxbc.com',
+      toEmail: 'admin@savemaxwestcoast.com',
+      emailSubject: 'New Submission From' + '- ' + name,
+      name: name || '',
+      field: selected || '',
+      mail: mail || '',
+      phone: number || '',
+      message: message || '',
+    });
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        body: bodyData,
+      });
+      const data = await response.json();
+
+      setSuccess(data.message);
+      e.target.reset();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setName('');
+      setMail('');
+      setNumber('');
+      setMessage('');
+      setSelected('');
+      setAlert(true);
+    }
+  };
+  useEffect(() => {
+    // when the component is mounted, the alert is displayed for 3 seconds
+    setTimeout(() => {
+      setAlert(false);
+    }, 3000);
+  }, [alert]);
   return (
     <div className='mx-auto flex max-w-[1400px] flex-col items-center justify-center gap-5 p-5 pb-10 md:flex-row lg:gap-10'>
       <div className='mx-auto flex flex-col items-center md:w-1/2 md:items-start'>
@@ -49,38 +96,52 @@ const ContactForm = (props: Props) => {
         </div>
       </div>
       <div className='mx-auto md:w-1/2'>
-        <form className='pt-2'>
-          <div className=' mb-3' data-te-input-wrapper-init>
+        <form
+          className=''
+          onSubmit={(e: any) => sendEmail(e)}
+          id='contact-form'
+        >
+          <div className='relative mb-6' data-te-input-wrapper-init>
             <input
+              onChange={(e) => handleChange(e, setName)}
+              value={name}
               type='text'
-              className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[350px] lg:w-[400px] xl:w-[600px]'
-              id='exampleInput90'
+              name='name'
+              id='name'
+              className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
               placeholder='Name'
             />
           </div>
-          <div className=' mb-3' data-te-input-wrapper-init>
+          <div className='relative mb-6' data-te-input-wrapper-init>
             <input
+              onChange={(e) => handleChange(e, setMail)}
+              value={mail}
               type='email'
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[350px] lg:w-[400px] xl:w-[600px]'
-              id='exampleInput91'
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+              name='mail'
+              id='mail'
               placeholder='Email address'
             />
           </div>
-          <div className='relative mb-3' data-te-input-wrapper-init>
+          <div className='relative mb-6' data-te-input-wrapper-init>
             <input
+              onChange={(e) => handleChange(e, setNumber)}
+              value={number}
               type='number'
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[350px] lg:w-[400px] xl:w-[600px]'
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
               placeholder='Phone Number'
+              name='phone'
+              id='phone'
             />
           </div>
-          <div className='relative mb-3' data-te-input-wrapper-init>
+          <div className='relative mb-6' data-te-input-wrapper-init>
             <select
               onChange={(e) => handleChange(e, setSelected)}
               value={selected}
-              className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[350px] lg:w-[400px] xl:w-[600px]'
+              className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
             >
               <option
-                className=' w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[350px] lg:w-[400px] xl:w-[600px]'
+                className=' w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
                 selected
                 value=''
                 disabled
@@ -92,7 +153,8 @@ const ContactForm = (props: Props) => {
                 return (
                   <option
                     key={idx}
-                    className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[350px] lg:w-[400px] xl:w-[600px]'
+                    value={a?.name}
+                    className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
                   >
                     {a?.name}
                   </option>
@@ -100,25 +162,49 @@ const ContactForm = (props: Props) => {
               })}
             </select>
           </div>
-
-          <div className=' mb-3' data-te-input-wrapper-init>
+          <div className='relative mb-6' data-te-input-wrapper-init>
             <textarea
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[350px] lg:w-[400px] xl:w-[600px]'
-              id='exampleFormControlTextarea1'
+              onChange={(e) => handleChange(e, setMessage)}
+              value={message}
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+              name='message'
+              id='message'
               rows={3}
               placeholder='Your message'
             ></textarea>
           </div>
 
           <button
-            type='button'
+            onClick={(e: any) => sendEmail(e)}
+            type='submit'
             data-te-ripple-init
             data-te-ripple-color='light'
-            className=' w-full rounded border border-gray-400 bg-sky-950  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-sky-950 focus:border md:w-[350px] lg:w-[400px] xl:w-[600px]'
+            className=' w-full rounded border border-gray-400 bg-sky-950  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-sky-950 focus:border md:w-[600px]'
           >
             Send Message
           </button>
         </form>
+        {alert && success && (
+          <div
+            className='mt-5 flex w-full items-center rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 md:w-[600px]'
+            role='alert'
+          >
+            <svg
+              className='me-3 inline h-4 w-4 flex-shrink-0'
+              aria-hidden='true'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='currentColor'
+              viewBox='0 0 20 20'
+            >
+              <path d='M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z' />
+            </svg>
+            <span className='sr-only'>Info</span>
+            <div>
+              <span className='font-medium'>Success!</span> Thanks for
+              contacting us, we will get back to you.
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ export default function PaginationSearch(props: MyProps) {
   }, [allPosts]);
   return (
     <div>
-      <section className='mt-20 lg:mt-60'>
+      <section className='mt-20 lg:mt-40'>
         <div className='mt-8 grid grid-cols-1 gap-x-4 gap-y-10 pb-10 md:grid-cols-2 lg:grid-cols-3 2xl:mt-32 2xl:grid-cols-4'>
           {posts?.map(({ post, cardImageUrl }: any) => {
             return (
@@ -71,7 +71,7 @@ export default function PaginationSearch(props: MyProps) {
                   )
                 }
                 key={post?.ListingID}
-                className='card2-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white hover:shadow-2xl hover:shadow-slate-800 md:h-[480px]'
+                className='card2-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white hover:shadow-2xl hover:shadow-slate-800 md:h-[500px]'
                 style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
               >
                 <div className='flex items-end justify-end'>
