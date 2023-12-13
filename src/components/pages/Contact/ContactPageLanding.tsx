@@ -38,7 +38,7 @@ export default function ContactPageLanding(props: MyProps) {
 
     const bodyData = JSON.stringify({
       fromEmail: 'noreply@savemaxbc.com',
-      toEmail: 'pulok@cansoft.com',
+      toEmail: 'admin@savemaxwestcoast.com',
       emailSubject: 'New Submission From' + '- ' + name,
       name: name || '',
       field: selected || '',
