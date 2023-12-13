@@ -71,23 +71,36 @@ export default function SharedBanner(props: MyProps) {
                 </div>
               </div>
             ) : (
-              <a
-                href='/contact-us'
-                className='flex cursor-pointer items-center justify-start'
-              >
+              <div className=''>
                 <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
                   {topTitle}
                 </p>
-              </a>
+                <div className='mt-1 flex items-center justify-center'>
+                  <a
+                    href='/contact-us'
+                    className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                  >
+                    Contact us now!
+                  </a>
+                </div>
+              </div>
             )}
           </div>
         ) : topTitle ? (
           <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
-            <a href='/contact-us' className='cursor-pointer'>
+            <div className=''>
               <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
                 {topTitle}
               </p>
-            </a>
+              <div className='mt-1 flex items-center justify-center'>
+                <a
+                  href='/contact-us'
+                  className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                >
+                  Contact us now!
+                </a>
+              </div>
+            </div>
           </div>
         ) : topDesc ? (
           <div className='container relative mx-auto w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md '>
@@ -97,19 +110,35 @@ export default function SharedBanner(props: MyProps) {
                 __html: topDesc,
               }}
             ></div>
-            <a href='/contact-us' className='cursor-pointer'>
+            <div className=''>
               <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
                 {topTitle}
               </p>
-            </a>
+              <div className='mt-1 flex items-center justify-center'>
+                <a
+                  href='/contact-us'
+                  className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                >
+                  Contact us now!
+                </a>
+              </div>
+            </div>
           </div>
         ) : null}
         {usingFor === 'seller' && (
-          <div className='container relative mx-auto mt-20 flex w-[80%] items-center justify-center rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:py-10'>
+          <div className='container relative mx-auto mt-20 flex w-[80%] flex-col items-center justify-center rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:py-10'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               <span className='text-[#585858]'>{featureTitle}</span>{' '}
               {featureSubtitle}
             </h1>
+            <div className='mt-5 flex items-center justify-center'>
+              <a
+                href='/contact-us'
+                className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+              >
+                Contact us now!
+              </a>
+            </div>
           </div>
         )}
       </div>

@@ -5,6 +5,7 @@ type EmailPayload = {
   to: string;
   subject: string;
   html: string;
+  cc?: string;
 };
 
 // Replace with your SMTP credentials
