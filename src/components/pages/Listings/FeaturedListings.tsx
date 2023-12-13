@@ -86,7 +86,7 @@ export default async function FeaturedListings(props: MyProps) {
           <ListingCarousel posts={recentPosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
-              href='/properties-listing?city=Surrey'
+              href='/properties-listing?city=Surrey&category=recent'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
             >
               See More
@@ -103,7 +103,7 @@ export default async function FeaturedListings(props: MyProps) {
           <ListingCarousel posts={housePosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
-              href='/properties-listing?city=Surrey&type=House'
+              href='/properties-listing?city=Surrey&type=House&category=house'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
             >
               See More
@@ -120,7 +120,7 @@ export default async function FeaturedListings(props: MyProps) {
           <ListingCarousel posts={townPosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
-              href='/properties-listing?city=Surrey&type=Town'
+              href='/properties-listing?city=Surrey&type=Town&category=townhouse'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
             >
               See More
@@ -137,7 +137,7 @@ export default async function FeaturedListings(props: MyProps) {
           <ListingCarousel posts={housePosts?.listings} />
           <div className='mt-5 text-center md:mt-10'>
             <a
-              href='/properties-listing?city=Surrey&type=Condo'
+              href='/properties-listing?city=Surrey&type=Condo&category=condominium'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
             >
               See More
