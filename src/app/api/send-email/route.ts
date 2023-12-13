@@ -17,12 +17,14 @@ export async function POST(request: NextRequest) {
       phone,
       field,
       message,
+      cc,
     } = body;
 
     await sendEmail({
       from: fromEmail,
       to: toEmail,
       subject: emailSubject,
+      cc: cc,
       html: render(
         ApplyNowEmail({
           name,
@@ -37,6 +39,7 @@ export async function POST(request: NextRequest) {
       from: fromEmail,
       to: mail,
       subject: 'Thank you so much for contacting us on our website ' + name,
+      cc: cc,
       html: render(
         AutoReply({
           name,
