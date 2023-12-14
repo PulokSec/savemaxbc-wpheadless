@@ -4,11 +4,13 @@ import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
-import ContactPageLanding from '@/components/pages/Contact/ContactPageLanding';
+import ApplyNowForm from '@/components/pages/Contact/ApplyNowForm';
+import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
+import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 66500 }) {
+    pages(where: { id: 89107 }) {
       nodes {
         seo {
           title
@@ -24,7 +26,7 @@ const query = gql`
             raw
           }
         }
-        contactUs {
+        applyNow {
           bannerSection {
             bannerImage {
               sourceUrl
@@ -32,10 +34,8 @@ const query = gql`
             }
             bannerHeading
           }
-          title1
-          title2
-          description1
-          description2
+          title
+          description
           phone
           email
           address
@@ -150,7 +150,9 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function ContactUs() {
+const fields = [{ name: 'Buying' }, { name: 'Selling' }, { name: 'Other' }];
+
+export default async function ApplyNow() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -163,7 +165,31 @@ export default async function ContactUs() {
     <main>
       <section className='bg-white'>
         <div>
-          <ContactPageLanding allData={data} />
+          <BannerWithButton
+            bannerData={data?.pages?.nodes[0]?.applyNow?.bannerSection}
+            headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
+            settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
+          />
+          <div
+            className='bg-cover bg-no-repeat '
+            style={{
+              backgroundImage: `url(${data?.pages?.nodes[0]?.applyNow?.background?.sourceUrl})`,
+            }}
+          >
+            <ApplyNowForm
+              title={data?.pages?.nodes[0]?.applyNow?.title}
+              desc={data?.pages?.nodes[0]?.applyNow?.description}
+              phone={data?.pages?.nodes[0]?.applyNow?.phone}
+              email={data?.pages?.nodes[0]?.applyNow?.email}
+              address={data?.pages?.nodes[0]?.applyNow?.address}
+              fields={fields}
+            />
+          </div>
+
+          <Footer
+            navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
+            settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
+          />
         </div>
       </section>
     </main>
