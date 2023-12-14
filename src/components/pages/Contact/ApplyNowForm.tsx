@@ -18,7 +18,7 @@ const ApplyNowForm = (props: Props) => {
   const [mail, setMail] = useState('');
   const [message, setMessage] = useState('');
   const [number, setNumber] = useState('');
-  const [cv, setCv] = useState<File | null | string>(null);
+  const [cv, setCv] = useState(null);
   const [success, setSuccess] = useState(null);
   const [alert, setAlert] = useState(false);
   const handleChange = (event: any, setFunction: (arg0: any) => void) => {
