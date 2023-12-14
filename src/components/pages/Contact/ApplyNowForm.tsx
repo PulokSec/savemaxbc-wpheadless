@@ -19,10 +19,20 @@ const ApplyNowForm = (props: Props) => {
   const [message, setMessage] = useState('');
   const [number, setNumber] = useState('');
   const [cv, setCv] = useState(null);
+  const [cvName, setCvName] = useState(null);
   const [success, setSuccess] = useState(null);
   const [alert, setAlert] = useState(false);
   const handleChange = (event: any, setFunction: (arg0: any) => void) => {
     setFunction(event.target.value);
+  };
+
+  const handleFileChange = (event: any) => {
+    const files = event?.target?.files;
+    if (files && files.length > 0) {
+      const selected = files[0];
+      setCv(selected);
+      setCvName(selected?.name);
+    }
   };
 
   const sendEmail = async (e: {
@@ -194,11 +204,12 @@ const ApplyNowForm = (props: Props) => {
                 className='cv-label inline-block w-full rounded border border-gray-400 bg-white py-2 text-[18px] placeholder:text-[14px] hover:bg-gray-100 focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
               >
                 <span className='w-auto cursor-pointer rounded bg-gray-400 px-3 pb-[11.5px] pt-[13px] text-sm md:pb-[13px] md:pt-[15px]'>
-                  {cv ? cv?.name : 'Upload CV'}
+                  {cvName ? cvName : 'Upload CV'}
                 </span>
               </label>
               <input
-                onChange={(e) => setCv(e?.target?.files?.[0])}
+                // onChange={(e) => setCv(e?.target?.files?.[0])}
+                onChange={handleFileChange}
                 // value={cv}
                 type='file'
                 className='hidden w-full rounded border border-gray-400 bg-white  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
