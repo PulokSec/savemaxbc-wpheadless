@@ -244,10 +244,12 @@ export default async function News({
                 sourceUrl
               }
               bannerHeading
+              bannerSubheading
               bannerButton
             }
             bottomSection {
               featureTitle
+              featureSubtitle
               backgroundImage {
                 sourceUrl
               }
@@ -368,6 +370,7 @@ export default async function News({
           bannerData={data?.pages?.nodes[0]?.news?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
+          usingFor='news'
         />
         <NewsSection
           totalPages={totalPages}
