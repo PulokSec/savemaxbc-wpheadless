@@ -18,10 +18,15 @@ export default function NewsBottom(props: MyProps) {
             {bottomSection?.title}
           </h2>
         )}
+        {bottomSection?.featureSubtitle && (
+          <p className='text-md ml-10 text-start font-bold text-[#525659] md:text-3xl lg:ml-40 '>
+            {bottomSection?.featureSubtitle}
+          </p>
+        )}
         {bottomSection?.featureTitle && (
-          <h2 className='my-10 ml-10 text-start text-lg text-black md:text-5xl lg:ml-40 '>
+          <p className='ml-10 mt-5 text-start text-lg font-bold text-black md:text-5xl lg:ml-40 '>
             {bottomSection?.featureTitle}
-          </h2>
+          </p>
         )}
 
         {bottomSection?.description && (
@@ -41,7 +46,7 @@ export default function NewsBottom(props: MyProps) {
           ></div>
         )}
         {bottomSection?.linkText && (
-          <div className='ml-10 mt-5 text-center lg:ml-40'>
+          <div className='ml-10 mt-10 text-center lg:ml-40'>
             <a
               href='/apply-now'
               className='text-uppercase relative mt-0 rounded border border-solid border-black px-3 py-2.5 text-sm font-semibold  text-black shadow-sm hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'

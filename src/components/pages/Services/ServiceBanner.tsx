@@ -5,9 +5,10 @@ type MyProps = {
   bannerData: any;
   headerData: any;
   settingsData: any;
+  usingFor?: any;
 };
 export default function ServiceBanner(props: MyProps) {
-  const { headerData, settingsData, bannerData } = props;
+  const { headerData, settingsData, bannerData, usingFor } = props;
   return (
     <div
       className='relative h-[70vh] w-full bg-cover bg-center bg-no-repeat bg-blend-screen md:h-[100vh]'
@@ -23,18 +24,23 @@ export default function ServiceBanner(props: MyProps) {
               {bannerData?.topBannerHeading}
             </p>
           )}
+          {usingFor === 'news' && (
+            <p className='text-leading-3 text-md mt-5 font-bold text-[#525659] md:text-3xl'>
+              {bannerData?.bannerSubheading}
+            </p>
+          )}
           <p className='text-leading-3 mt-5 text-xl font-bold text-sky-950 md:text-6xl'>
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (
-            <div className='mt-8 text-center text-black md:text-start max-w-[1400px] mx-auto px-3'>
+            <div className='mx-auto mt-8 max-w-[1400px] px-3 text-center text-black md:text-start'>
               <p className='text-md'>{bannerData?.bannerDescription}</p>
             </div>
           )}
           {bannerData?.bannerButton && (
             <div className='mt-8 text-center text-black md:text-start'>
               <a href={bannerData?.bannerButton} className=''>
-                <button className='rounded-md bg-sky-950 px-8 py-3 text-white hover:bg-white border-[1px] border-bg-sky-950 hover:text-gray-800 hover:border-sky-950'>
+                <button className='border-bg-sky-950 rounded-md border-[1px] bg-sky-950 px-8 py-3 text-white hover:border-sky-950 hover:bg-white hover:text-gray-800'>
                   CONTACT US
                 </button>
               </a>
