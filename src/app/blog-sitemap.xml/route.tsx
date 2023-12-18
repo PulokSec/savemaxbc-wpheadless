@@ -19,7 +19,7 @@ export async function GET() {
     },
   });
   const postsSitemaps = data?.posts?.nodes.map((item: any) => ({
-    loc: `https://asimali.ca${item?.uri?.toString()}`,
+    loc: `https://savemaxbc.com${item?.uri?.toString()}`,
     lastmod: new Date().toISOString(),
     changefreq: 'daily',
     priority: 0.9,
