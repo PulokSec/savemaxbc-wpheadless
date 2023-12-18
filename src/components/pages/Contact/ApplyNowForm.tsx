@@ -1,7 +1,7 @@
 'use client';
+import axios from 'axios';
 import { Facebook, Instagram } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
-
 type Props = {
   title: any;
   desc: any;
@@ -18,7 +18,7 @@ const ApplyNowForm = (props: Props) => {
   const [mail, setMail] = useState('');
   const [message, setMessage] = useState('');
   const [number, setNumber] = useState('');
-  const [cv, setCv] = useState(null);
+  const [cv, setCv] = useState<File>();
   const [cvName, setCvName] = useState(null);
   const [success, setSuccess] = useState(null);
   const [alert, setAlert] = useState(false);
@@ -40,28 +40,33 @@ const ApplyNowForm = (props: Props) => {
     target: { reset: () => void };
   }) => {
     e.preventDefault();
-
-    const bodyData = JSON.stringify({
-      fromEmail: 'noreply@savemaxbc.com',
-      toEmail: 'admin@savemaxwestcoast.com',
-      cc: 'keegan@cansoft.com, pulok@cansoft.com, huzaifa@cansoft.com',
-      emailSubject: 'New Submission From' + '- ' + name,
-      name: name || '',
-      field: selected || '',
-      mail: mail || '',
-      phone: number || '',
-      message: message || '',
-    });
+    const bodyData = new FormData();
+    bodyData.set('fromEmail', 'noreply@savemaxbc.com');
+    bodyData.set('toEmail', 'pulok@cansoft.com');
+    bodyData.set(
+      'cc',
+      'keegan@cansoft.com, pulok@cansoft.com, huzaifa@cansoft.com'
+    );
+    bodyData.set('emailSubject', 'New Submission From' + '- ' + name);
+    bodyData.set('name', name);
+    bodyData.set('field', selected);
+    bodyData.set('mail', mail);
+    bodyData.set('phone', number);
+    bodyData.set('message', message);
+    if (cv) {
+      bodyData.set('cv', cv);
+    }
 
     try {
-      const response = await fetch('/api/send-email', {
+      const config = {
         method: 'POST',
-        body: bodyData,
-      });
-      const data = await response.json();
-
-      setSuccess(data.message);
-      e.target.reset();
+        url: `${process.env.NEXT_PUBLIC_BASEURL}/api/apply-now`,
+        data: bodyData,
+        headers: { 'Content-Type': 'multipart/form-data' },
+      };
+      const response = await axios(config);
+      setSuccess(response?.data.message);
+      // e.target.reset();
     } catch (error) {
       console.log(error);
     } finally {
@@ -70,6 +75,7 @@ const ApplyNowForm = (props: Props) => {
       setNumber('');
       setMessage('');
       setSelected('');
+      setCv(undefined);
       setAlert(true);
     }
   };
@@ -216,6 +222,7 @@ const ApplyNowForm = (props: Props) => {
                 placeholder='Upload CV'
                 name='cv'
                 id='cv'
+                multiple={false}
                 accept='.pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document'
               />
             </div>
