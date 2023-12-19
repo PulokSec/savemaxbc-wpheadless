@@ -4,8 +4,8 @@ import { Metadata } from 'next';
 import { getClient } from '@/lib/apollo';
 
 import NewsSection from '@/components/elements/NewsSection';
+import NewsBanner from '@/components/pages/News/NewsBanner';
 import NewsBottom from '@/components/pages/News/NewsBottom';
-import ServiceBanner from '@/components/pages/Services/ServiceBanner';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
@@ -366,7 +366,7 @@ export default async function News({
   return (
     <>
       <main>
-        <ServiceBanner
+        <NewsBanner
           bannerData={data?.pages?.nodes[0]?.news?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
