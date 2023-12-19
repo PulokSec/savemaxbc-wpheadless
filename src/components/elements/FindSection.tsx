@@ -10,7 +10,7 @@ export default function FindSection(props: MyProps) {
   const { featuredData } = props;
   return (
     <section className='mt-20 lg:container md:px-10 lg:mx-auto lg:mt-40 2xl:mt-40'>
-      <div className='text-center md:px-10 lg:w-full'>
+      <div className='text-center md:px-10 lg:w-full pb-10 lg:pb-20'>
         <h1 className='px-5 text-center text-lg leading-5 text-[#525659] md:text-5xl'>
           {featuredData?.topHead}
         </h1>
@@ -21,7 +21,7 @@ export default function FindSection(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='py-10 md:py-20 lg:pb-10 lg:pt-0'>
+      <div className='py-10 md:py-20 lg:pb-24 lg:pt-0'>
         <div className='mx-auto w-full'>
           <div className='mx-auto mt-10 flex flex-col-reverse items-center justify-around gap-4 px-10 md:mt-20 md:flex-row lg:mx-0 lg:max-w-none'>
             <div className='flex flex-col items-start justify-center'>
