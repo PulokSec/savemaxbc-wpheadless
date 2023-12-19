@@ -75,7 +75,7 @@ export default function Footer(props: MyProps) {
                     <li key={item?.label} className='mb-2'>
                       <a
                         href={item?.url}
-                        className='uppercase text-white hover:text-[#B48237] dark:text-neutral-300'
+                        className='from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text uppercase  text-white hover:bg-gradient-to-r hover:text-transparent dark:text-neutral-300'
                       >
                         {item?.label}
                       </a>
@@ -85,7 +85,7 @@ export default function Footer(props: MyProps) {
               <li className='mb-2'>
                 <a
                   href='/faq'
-                  className='text-white hover:text-[#B48237] dark:text-neutral-300 '
+                  className='from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent dark:text-neutral-300 '
                 >
                   FAQ
                 </a>
@@ -94,7 +94,7 @@ export default function Footer(props: MyProps) {
           </div>
           <div className='col-span-6 col-start-1 mb-6 ml-6 mt-5 md:col-span-12 md:col-start-4 lg:col-span-2 lg:col-start-8 lg:col-end-10 lg:ml-0 lg:mt-0'>
             <a href='/services'>
-              <p className='mb-2.5 font-bold uppercase text-white hover:text-[#B48237] dark:text-neutral-200'>
+              <p className='mb-2.5 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text font-bold uppercase  text-white hover:bg-gradient-to-r hover:text-transparent dark:text-neutral-200'>
                 Services
               </p>
             </a>
@@ -105,7 +105,7 @@ export default function Footer(props: MyProps) {
                     <li key={item?.label} className='mb-2'>
                       <a
                         href={item?.url}
-                        className='uppercase text-white hover:text-[#B48237] dark:text-neutral-300'
+                        className='from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text uppercase  text-white hover:bg-gradient-to-r hover:text-transparent dark:text-neutral-300'
                       >
                         {item?.label}
                       </a>
