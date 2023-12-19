@@ -1,7 +1,7 @@
 'use client';
 import { LucideMailOpen } from 'lucide-react';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
 import { MdLocationCity, MdPhoneInTalk } from 'react-icons/md';
@@ -13,12 +13,11 @@ type MyProps = {
   settingsData: any;
 };
 export default function Footer(props: MyProps) {
-  const [open, setOpen] = useState(false);
   const { navigation, settingsData } = props;
   // console.log('nav  ', navigation);
   return (
     <div>
-      <footer className="bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/11/footer.png')] bg-cover bg-right bg-no-repeat py-6">
+      <footer className="flex h-full flex-col justify-between bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/footer-1-1.png')] bg-cover bg-right bg-no-repeat py-6 lg:h-[80vh]">
         <div className='mx-auto mt-5 grid justify-center gap-4 py-6 md:mt-10 md:grid-cols-12'>
           <div className='col-start-l col-span-12 ml-6 md:col-span-12 md:col-start-4 lg:col-start-2 lg:col-end-4 lg:ml-0'>
             <div className='w-full text-white'>
@@ -64,7 +63,7 @@ export default function Footer(props: MyProps) {
             </div>
           </div>
           <div className=' col-span-6 col-start-1 mb-6 ml-6 mt-5 md:col-span-12 md:col-start-4 lg:col-span-3 lg:col-start-6 lg:col-end-7 lg:ml-0 lg:mt-0'>
-            <p className='mb-2.5 font-bold uppercase text-neutral-800 dark:text-neutral-200'>
+            <p className='mb-2.5 font-bold uppercase text-white dark:text-neutral-200'>
               Resources
             </p>
 
@@ -76,7 +75,7 @@ export default function Footer(props: MyProps) {
                     <li key={item?.label} className='mb-2'>
                       <a
                         href={item?.url}
-                        className='uppercase text-neutral-600 hover:text-[#B48237] dark:text-neutral-300'
+                        className='uppercase text-white hover:text-[#B48237] dark:text-neutral-300'
                       >
                         {item?.label}
                       </a>
@@ -86,7 +85,7 @@ export default function Footer(props: MyProps) {
               <li className='mb-2'>
                 <a
                   href='/faq'
-                  className='text-neutral-600 hover:text-[#B48237] dark:text-neutral-300 '
+                  className='text-white hover:text-[#B48237] dark:text-neutral-300 '
                 >
                   FAQ
                 </a>
@@ -95,7 +94,7 @@ export default function Footer(props: MyProps) {
           </div>
           <div className='col-span-6 col-start-1 mb-6 ml-6 mt-5 md:col-span-12 md:col-start-4 lg:col-span-2 lg:col-start-8 lg:col-end-10 lg:ml-0 lg:mt-0'>
             <a href='/services'>
-              <p className='mb-2.5 font-bold uppercase text-neutral-800 hover:text-[#B48237] dark:text-neutral-200'>
+              <p className='mb-2.5 font-bold uppercase text-white hover:text-[#B48237] dark:text-neutral-200'>
                 Services
               </p>
             </a>
@@ -106,7 +105,7 @@ export default function Footer(props: MyProps) {
                     <li key={item?.label} className='mb-2'>
                       <a
                         href={item?.url}
-                        className='uppercase text-neutral-600 hover:text-[#B48237] dark:text-neutral-300'
+                        className='uppercase text-white hover:text-[#B48237] dark:text-neutral-300'
                       >
                         {item?.label}
                       </a>
