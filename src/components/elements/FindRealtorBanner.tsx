@@ -43,7 +43,7 @@ export default function FindRealtorBanner(props: MyProps) {
             </p>
             {bannerData?.bannerDescription && (
               <div
-                className='mt-8 text-center text-xl text-white lg:text-3xl font-semibold'
+                className='mt-8 text-center text-xl font-semibold text-white lg:text-3xl'
                 dangerouslySetInnerHTML={{
                   __html: bannerData?.bannerDescription,
                 }}
@@ -64,7 +64,7 @@ export default function FindRealtorBanner(props: MyProps) {
                 <div className='mt-1 flex items-center justify-center'>
                   <a
                     href='/contact-us'
-                    className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                    className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
                   >
                     Contact us now!
                   </a>
@@ -78,7 +78,7 @@ export default function FindRealtorBanner(props: MyProps) {
                 <div className='mt-1 flex items-center justify-center'>
                   <a
                     href='/contact-us'
-                    className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                    className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
                   >
                     Contact us now!
                   </a>
@@ -95,7 +95,7 @@ export default function FindRealtorBanner(props: MyProps) {
               <div className='mt-1 flex items-center justify-center'>
                 <a
                   href='/contact-us'
-                  className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                  className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
                 >
                   Contact us now!
                 </a>
@@ -117,7 +117,7 @@ export default function FindRealtorBanner(props: MyProps) {
               <div className='mt-1 flex items-center justify-center'>
                 <a
                   href='/contact-us'
-                  className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                  className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
                 >
                   Contact us now!
                 </a>
@@ -134,7 +134,7 @@ export default function FindRealtorBanner(props: MyProps) {
             <div className='mt-5 flex items-center justify-center'>
               <a
                 href='/contact-us'
-                className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
               >
                 Contact us now!
               </a>

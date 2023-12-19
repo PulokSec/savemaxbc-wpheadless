@@ -19,7 +19,7 @@ export default function NewsBottom(props: MyProps) {
           </h2>
         )}
         {bottomSection?.featureSubtitle && (
-          <p className='text-md ml-10 text-start font-bold text-[#525659] md:text-3xl lg:ml-40 '>
+          <p className='text-md ml-10 text-start font-bold text-[#515151] md:text-3xl lg:ml-40 '>
             {bottomSection?.featureSubtitle}
           </p>
         )}
@@ -49,7 +49,7 @@ export default function NewsBottom(props: MyProps) {
           <div className='ml-10 mt-10 text-center lg:ml-40'>
             <a
               href='/apply-now'
-              className='text-uppercase relative mt-0 rounded border border-solid border-black px-3 py-2.5 text-sm font-semibold  text-black shadow-sm hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:mt-[-20px] md:px-3.5'
+              className='text-uppercase relative mt-0 rounded border border-solid border-black px-3 py-2.5 text-sm font-semibold  text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:mt-[-20px] md:px-3.5'
             >
               Learn More
             </a>

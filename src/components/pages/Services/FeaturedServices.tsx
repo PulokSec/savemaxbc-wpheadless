@@ -11,9 +11,9 @@ export default function FeaturedServices(props: MyProps) {
   return (
     <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
       <section>
-        <div className='pb-10 pt-44 md:pb-20 md:pt-32'>
+        <div className='py-10 md:py-20'>
           <h1
-            className='mb-10 text-center text-2xl md:text-5xl lg:mb-32'
+            className='text-center text-lg md:text-5xl'
             dangerouslySetInnerHTML={{
               __html: featuredTitle,
             }}
@@ -51,7 +51,7 @@ export default function FeaturedServices(props: MyProps) {
                       <div className='mt-10 text-start'>
                         <a
                           href='/properties-listing'
-                          className='mt-10 border border-solid px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950'
+                          className='mt-10 border border-solid px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632]'
                         >
                           See More
                         </a>
@@ -90,7 +90,7 @@ export default function FeaturedServices(props: MyProps) {
                       <div className='mt-10 text-start'>
                         <a
                           href='/properties-listing'
-                          className='mt-10 border border-solid px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950'
+                          className='mt-10 border border-solid px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632]'
                         >
                           See More
                         </a>

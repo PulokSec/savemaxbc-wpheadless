@@ -6,7 +6,7 @@ type MyProps = {
 export default function BottomFeature(props: MyProps) {
   const { bottomSection } = props;
   return (
-    <section className="mt-40 flex min-h-[60vh] flex-col items-center overflow-x-hidden bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/11/woman-showing-with-one-hand-mini-house-real-state-concept-ai-generative.jpeg')] bg-cover bg-no-repeat md:justify-between">
+    <section className="mt-40 flex h-[80vh] flex-col items-center overflow-x-hidden bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/11/woman-showing-with-one-hand-mini-house-real-state-concept-ai-generative.jpeg')] bg-cover bg-no-repeat md:justify-between lg:h-[120vh]">
       <div className='text-center'>
         <h2 className='my-20 text-center text-lg text-white md:text-5xl'>
           {bottomSection?.title}
@@ -18,7 +18,7 @@ export default function BottomFeature(props: MyProps) {
       <div className='mt-5 text-center md:mt-10'>
         <a
           href='/properties-listing'
-          className='text-uppercase z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-sky-950  hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:absolute md:mt-[-20px] md:px-3.5'
+          className='text-uppercase z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-[#061632]  hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:absolute md:mt-[-20px] md:px-3.5'
         >
           See More
         </a>
