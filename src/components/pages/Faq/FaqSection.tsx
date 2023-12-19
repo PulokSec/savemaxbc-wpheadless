@@ -28,7 +28,6 @@ export default function FaqSection(props: MyProps) {
     }
   };
 
-
   const faqDataDiv = faqData?.faqDataDiv;
   return (
     <section
@@ -54,7 +53,7 @@ export default function FaqSection(props: MyProps) {
                   <div
                     className={`${
                       faqDataDiv?.length - 1 === i ? 'pt-5' : 'py-5'
-                    } w-full  text-[#051532]`}
+                    } w-full  text-[#061632]`}
                   >
                     <h3 className='rounded-t-xl border-2 px-5 py-5 text-lg font-bold leading-6 shadow-xl '>
                       {item?.title}

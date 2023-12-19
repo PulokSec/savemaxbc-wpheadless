@@ -20,16 +20,16 @@ export default function NewsBanner(props: MyProps) {
       <div className='mx-auto h-[60vh] py-16 md:h-[90vh]'>
         <div className='mx-auto ml-0 flex h-full w-full flex-col items-center justify-center text-center md:items-center'>
           {bannerData?.topBannerHeading && (
-            <p className='text-leading-3 text-center text-lg font-bold text-[#525659] md:text-start md:text-5xl'>
+            <p className='text-leading-3 text-center text-lg font-bold text-[#515151] md:text-start md:text-5xl'>
               {bannerData?.topBannerHeading}
             </p>
           )}
           {usingFor === 'news' && (
-            <p className='text-leading-3 text-md mt-5 font-bold text-[#525659] md:text-3xl'>
+            <p className='text-leading-3 text-md mt-5 font-bold text-[#515151] md:text-3xl'>
               {bannerData?.bannerSubheading}
             </p>
           )}
-          <p className='text-leading-3 mt-5 text-xl font-bold text-sky-950 md:text-6xl'>
+          <p className='text-leading-3 mt-5 text-xl font-bold text-[#061632] md:text-6xl'>
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (
@@ -40,7 +40,7 @@ export default function NewsBanner(props: MyProps) {
           {bannerData?.bannerButton && (
             <div className='mt-8 text-center text-black md:text-start'>
               <a href={bannerData?.bannerButton} className=''>
-                <button className='border-bg-sky-950 rounded-md border-[1px] bg-sky-950 px-8 py-3 text-white hover:border-sky-950 hover:bg-white hover:text-gray-800'>
+                <button className='border-bg-[#061632] rounded-md border-[1px] bg-[#061632] px-8 py-3 text-white hover:border-[#061632] hover:bg-white hover:text-gray-800'>
                   CONTACT US
                 </button>
               </a>

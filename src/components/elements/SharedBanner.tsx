@@ -64,7 +64,7 @@ export default function SharedBanner(props: MyProps) {
                 <div className='mt-1 flex items-center justify-center'>
                   <a
                     href='/contact-us'
-                    className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                    className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
                   >
                     Contact us now!
                   </a>
@@ -78,7 +78,7 @@ export default function SharedBanner(props: MyProps) {
                 <div className='mt-1 flex items-center justify-center'>
                   <a
                     href='/contact-us'
-                    className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                    className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
                   >
                     Contact us now!
                   </a>
@@ -95,7 +95,7 @@ export default function SharedBanner(props: MyProps) {
               <div className='mt-1 flex items-center justify-center'>
                 <a
                   href='/contact-us'
-                  className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                  className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
                 >
                   Contact us now!
                 </a>
@@ -105,7 +105,7 @@ export default function SharedBanner(props: MyProps) {
         ) : topDesc ? (
           <div className='container relative mx-auto w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md '>
             <div
-              className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
+              className='md:text-md mt-5 text-xs font-bold font-medium leading-6 lg:text-lg'
               dangerouslySetInnerHTML={{
                 __html: topDesc,
               }}
@@ -117,7 +117,7 @@ export default function SharedBanner(props: MyProps) {
               <div className='mt-1 flex items-center justify-center'>
                 <a
                   href='/contact-us'
-                  className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                  className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
                 >
                   Contact us now!
                 </a>
@@ -134,7 +134,7 @@ export default function SharedBanner(props: MyProps) {
             <div className='mt-5 flex items-center justify-center'>
               <a
                 href='/contact-us'
-                className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
               >
                 Contact us now!
               </a>

@@ -27,7 +27,7 @@ export default function BannerWithButton(props: MyProps) {
           <p className='w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
             {bannerData?.bannerSubhead}
           </p>
-          <h1 className='w-full text-center text-2xl font-bold leading-7 md:text-3xl text-white lg:text-5xl'>
+          <h1 className='w-full text-center text-2xl font-bold leading-7 text-white md:text-3xl lg:text-5xl'>
             {bannerData?.bannerHeading}
           </h1>
           {bannerData?.bannerDescription && (
@@ -42,7 +42,7 @@ export default function BannerWithButton(props: MyProps) {
             <div className='flex items-center justify-center'>
               <a
                 href='/contact-us'
-                className='text-uppercase mt-5 rounded-xl border border-solid bg-white px-2 py-1 text-xs font-semibold text-black shadow-sm hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+                className='text-uppercase mt-5 rounded-xl border border-solid bg-white px-2 py-1 text-xs font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
               >
                 {bannerData?.bannerButton}
               </a>

@@ -54,10 +54,10 @@ export default function Footer(props: MyProps) {
               </Link>
               <div className='mt-10 flex items-center justify-start gap-4'>
                 <Link href={settingsData?.socialUrl?.facebook} target='_blank'>
-                  <BsFacebook className='h-5 w-5' />
+                  <BsFacebook className='h-8 w-8' />
                 </Link>
                 <Link href={settingsData?.socialUrl?.instagram} target='_blank'>
-                  <AiOutlineInstagram className='h-5 w-5' />
+                  <AiOutlineInstagram className='h-10 w-10' />
                 </Link>
               </div>
             </div>

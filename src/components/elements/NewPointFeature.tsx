@@ -12,7 +12,7 @@ export default function NewPointFeature(props: MyProps) {
       <div className=''>
         <div className='mx-auto px-2 md:px-10'>
           <h2
-            className=' px-2 pt-5 text-center text-2xl md:mb-20 md:text-3xl lg:text-5xl'
+            className=' px-2 pt-5 text-start text-2xl md:mb-20 md:ml-52 md:text-3xl lg:text-5xl'
             dangerouslySetInnerHTML={{
               __html: featuredData?.featureTitle,
             }}
@@ -33,7 +33,7 @@ export default function NewPointFeature(props: MyProps) {
                     <Circle className='h-4 w-4 rounded-[50%] bg-black' />
                   </div>
                   <div className=''>
-                    <h3 className='mb-2 text-xl leading-5 text-sky-950 md:text-xl lg:text-2xl'>
+                    <h3 className='mb-2 text-xl leading-5 text-[#061632] md:text-xl lg:text-2xl'>
                       {item?.title}
                     </h3>
                     <div
@@ -79,7 +79,7 @@ export default function NewPointFeature(props: MyProps) {
               {featuredData?.featuredDivRight?.map((item: any, i: number) => (
                 <div className='mt-7 flex items-start' key={i}>
                   <div className=''>
-                    <h3 className='mb-2 text-end text-xl leading-5 text-sky-950 md:text-xl lg:text-2xl'>
+                    <h3 className='mb-2 text-end text-xl leading-5 text-[#061632] md:text-xl lg:text-2xl'>
                       {item?.title}
                     </h3>
                     <div

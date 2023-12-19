@@ -162,15 +162,18 @@ export default function Header(props: MyProps) {
             })}
             <a
               href='mailto:admin@savemaxwestcoast.com'
-              className='from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text text-lg font-bold leading-10  text-white hover:bg-gradient-to-r hover:text-transparent'
+              className='text-lg font-bold leading-10'
             >
-              <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
+              <AiOutlineMail
+                className='h-5 w-5 text-white hover:text-[#ad782f]'
+                aria-hidden='true'
+              />
             </a>
-            <a
-              href='tel:778-200-5050'
-              className='from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text text-lg font-bold leading-10  text-white hover:bg-gradient-to-r hover:text-transparent'
-            >
-              <BsTelephone className='h-5 w-5' aria-hidden='true' />
+            <a href='tel:778-200-5050' className='text-lg font-bold leading-10'>
+              <BsTelephone
+                className='h-5 w-5 text-white hover:text-[#ad782f]'
+                aria-hidden='true'
+              />
             </a>
           </div>
         </nav>
@@ -269,14 +272,14 @@ export default function Header(props: MyProps) {
                     href='mailto:admin@savemaxwestcoast.com'
                     className='hover:bg-100 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
-                    <Mail className='mr-2 h-5 w-5 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  font-bold hover:bg-gradient-to-r hover:text-transparent' />
+                    <Mail className='mr-2 h-5 w-5 text-white hover:text-[#ad782f] ' />
                     <p className='text-[15px]'>admin@savemaxwestcoast.com</p>
                   </a>
                   <a
                     href='tel:778-200-5050'
                     className='hover:bg-100 mb-12 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
-                    <Phone className='mr-2 h-5 w-5 bg-gradient-to-r from-[#eee38f] via-[#ad782f] to-[#dbc071]  bg-clip-text font-bold text-transparent' />
+                    <Phone className='mr-2 h-5 w-5 font-bold text-white hover:text-[#ad782f]' />
                     <p className='mt-1 text-[15px]'>778-200-5050</p>
                   </a>
                   <form

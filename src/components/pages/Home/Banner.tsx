@@ -94,7 +94,7 @@ export default function Banner(props: MyProps) {
               <button
                 onClick={(e: any) => handleSubmit(e)}
                 type='submit'
-                className='border-bg-blue relative  right-[35px] cursor-pointer rounded-[50%] border bg-sky-950 p-3 md:right-[50px] md:p-4'
+                className='border-bg-blue relative  right-[35px] cursor-pointer rounded-[50%] border bg-[#061632] p-3 md:right-[50px] md:p-4'
               >
                 <GoSearch className=' text-white md:w-5' />
               </button>

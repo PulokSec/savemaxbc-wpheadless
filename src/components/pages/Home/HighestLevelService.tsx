@@ -10,8 +10,8 @@ const HighestLevelService = (props: MyProps) => {
   const { serviceData } = props;
   const [selectedDiv, setSelectedDiv] = useState(0);
   return (
-    <div className='max-w-screen relative min-h-[100vh] overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/ensure-highest-level-of-services.png")] bg-cover bg-center bg-no-repeat'>
-      <h2 className='z-2 mb-8 mt-20 px-3 text-center uppercase text-white md:mb-16 lg:mt-36'>
+    <div className='max-w-screen relative h-[100vh] overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/ensure-highest-level-of-services.png")] bg-cover bg-center bg-no-repeat lg:h-[120vh]'>
+      <h2 className='z-2 mb-8 mt-20 px-3 text-center uppercase text-white md:mb-16 lg:mt-56'>
         {serviceData?.heading}
       </h2>
 
