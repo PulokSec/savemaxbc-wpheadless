@@ -180,7 +180,7 @@ export default async function SellingServices() {
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mt-20 px-5 md:mt-40 lg:mt-40'>
+        <div className='mt-80 px-5 md:mt-40 lg:mt-40'>
           <div className='text-center'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {data?.pages?.nodes[0]?.sellingServices?.topFeatureTitle}
