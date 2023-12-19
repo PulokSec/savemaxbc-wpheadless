@@ -1,6 +1,5 @@
+import Image from 'next/image';
 import React from 'react';
-
-import NextImage from '@/components/NextImage';
 
 type MyProps = {
   featuredData: any;
@@ -12,18 +11,32 @@ export default function FeaturedServices(props: MyProps) {
   return (
     <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
       <section>
-        <div className='py-10 md:py-20'>
-          <h1 className='text-center text-lg md:text-5xl'>{featuredTitle}</h1>
+        <div className='pb-10 pt-44 md:pb-20 md:pt-32'>
+          <h1
+            className='mb-10 text-center text-2xl md:text-5xl lg:mb-32'
+            dangerouslySetInnerHTML={{
+              __html: featuredTitle,
+            }}
+          ></h1>
           <div className='mx-auto w-full'>
             {featuredData?.map((item: any, i: number) =>
               i % 2 == 0 ? (
                 <div
                   key={i}
-                  className='mx-auto mt-10 flex items-center justify-between gap-4 md:mt-20 md:gap-4 lg:mx-0 lg:max-w-none'
+                  className='mx-auto mt-10 flex w-full flex-col items-center justify-center gap-8 md:mt-20 md:flex-row md:gap-0'
                 >
-                  <div className='ml-5 md:ml-40 lg:mt-20'>
-                    <div className='container'>
-                      <h2 className='w-full text-2xl leading-8 text-sky-950 md:w-[500px] md:text-5xl'>
+                  <div className='hidden w-full items-start justify-start md:flex md:w-1/2 xl:w-2/5'>
+                    <Image
+                      className='md:w-[500px] 2xl:w-[650px]'
+                      src={item?.image?.sourceUrl}
+                      width={500}
+                      height={500}
+                      alt={item?.image?.altText}
+                    />
+                  </div>
+                  <div className='mx-auto flex w-full flex-col items-end md:w-1/2 xl:w-3/5'>
+                    <div className='mx-auto w-3/4 xl:w-2/3'>
+                      <h2 className='w-full text-2xl leading-8 text-sky-950  md:text-5xl'>
                         <span className='text-[#525659]'>
                           {item?.title?.split(/ (.*)/)[0]}
                         </span>{' '}
@@ -45,13 +58,12 @@ export default function FeaturedServices(props: MyProps) {
                       </div>
                     </div>
                   </div>
-                  <div className=''>
-                    <NextImage
-                      useSkeleton
-                      className='cover w-50 md:w-["100%"]'
-                      width='500'
-                      height='200'
+                  <div className='flex w-full items-start justify-start md:hidden md:w-1/2 xl:w-2/5'>
+                    <Image
+                      className=''
                       src={item?.image?.sourceUrl}
+                      width={250}
+                      height={250}
                       alt={item?.image?.altText}
                     />
                   </div>
@@ -59,21 +71,11 @@ export default function FeaturedServices(props: MyProps) {
               ) : (
                 <div
                   key={i}
-                  className='mx-auto mt-10 flex items-center justify-between gap-4 md:mt-20 lg:mx-0 lg:max-w-none'
+                  className='mx-auto mt-10 flex w-full flex-col items-center justify-center gap-8 md:mt-20 md:flex-row md:gap-0'
                 >
-                  <div className=''>
-                    <NextImage
-                      useSkeleton
-                      className='cover w-50 md:w-["100%"]'
-                      width='500'
-                      height='200'
-                      src={item?.image?.sourceUrl}
-                      alt={item?.image?.altText}
-                    />
-                  </div>
-                  <div className='mt-5 pr-5 md:pr-40'>
-                    <div className='lg:w-full'>
-                      <h2 className='w-full text-2xl leading-8 text-sky-950 md:w-[500px] md:text-5xl'>
+                  <div className='mx-auto flex w-full flex-col items-start md:w-1/2 xl:w-4/6'>
+                    <div className='mx-auto w-3/4 xl:w-3/5'>
+                      <h2 className='w-full text-2xl leading-8 text-sky-950  md:text-5xl'>
                         <span className='text-[#525659]'>
                           {item?.title?.split(/ (.*)/)[0]}
                         </span>{' '}
@@ -94,6 +96,22 @@ export default function FeaturedServices(props: MyProps) {
                         </a>
                       </div>
                     </div>
+                  </div>
+                  <div className='flex w-full items-end justify-end md:w-1/2 xl:w-1/3'>
+                    <Image
+                      className='hidden md:block md:w-[500px] 2xl:w-[650px]'
+                      src={item?.image?.sourceUrl}
+                      width={500}
+                      height={500}
+                      alt={item?.image?.altText}
+                    />
+                    <Image
+                      className='md:hidden'
+                      src={item?.image?.sourceUrl}
+                      width={250}
+                      height={250}
+                      alt={item?.image?.altText}
+                    />
                   </div>
                 </div>
               )

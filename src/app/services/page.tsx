@@ -5,7 +5,7 @@ import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
-import BottomFeature from '@/components/pages/Services/BottomFeature';
+import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import FeaturedServices from '@/components/pages/Services/FeaturedServices';
 import ServiceBanner from '@/components/pages/Services/ServiceBanner';
 import Footer from '@/components/shared/Footer';
@@ -181,7 +181,10 @@ export default async function ServicePage() {
           featuredTitle={data?.pages?.nodes[0]?.services?.featuredServiceTitle}
         />
       </section>
-      <BottomFeature
+      {/* <BottomFeature
+        bottomSection={data?.pages?.nodes[0]?.services?.bottomSection}
+      /> */}
+      <GetInTouch
         bottomSection={data?.pages?.nodes[0]?.services?.bottomSection}
       />
       <Footer
