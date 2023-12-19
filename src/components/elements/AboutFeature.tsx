@@ -13,18 +13,19 @@ export default function AboutFeature(props: MyProps) {
         <div className='py-10 md:py-20'>
           <div className=' flex w-full flex-col items-center justify-center text-center md:px-10'>
             <h1 className='w-full text-center lg:w-[1000px]'>
-              {' '}
               <span className='text-2xl leading-5 text-[#525659] md:text-5xl'>
                 {featureSection?.topHead}
-              </span>{' '}
+              </span>
             </h1>
-            <h1 className='mt-2 px-2'>{featureSection?.subHead}</h1>
+            <h1 className='mt-2 px-2 text-xl md:text-3xl'>
+              {featureSection?.subHead}
+            </h1>
           </div>
           <div className='mx-auto -mt-10 w-full md:mt-40 lg:mt-0'>
             {featureSection?.featuredData?.map((item: any, i: number) =>
               i % 2 == 0 ? (
                 <div
-                  className='mt-20 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/grey-bg.png")] bg-cover bg-no-repeat px-5 md:mt-60 md:px-20'
+                  className='mt-20 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/grey-bg.png")] bg-cover bg-no-repeat px-5 md:mt-60 md:px-20'
                   key={i}
                 >
                   <div className='hidden md:block'>
@@ -183,8 +184,6 @@ export default function AboutFeature(props: MyProps) {
             )}
           </div>
         </div>
-        
-        
       </section>
     </div>
   );
