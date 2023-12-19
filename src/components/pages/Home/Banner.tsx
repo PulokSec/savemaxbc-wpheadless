@@ -72,7 +72,7 @@ export default function Banner(props: MyProps) {
       <Header navigation={headerData} settingsData={settingsData} />
       <div className='mx-auto py-16'>
         <div className='mx-auto mt-[15%] flex w-full flex-col items-center justify-center px-5 text-center md:mt-[10%] md:px-10'>
-          <p className='text-leading-3 text-lg font-bold text-white md:text-5xl'>
+          <p className='text-leading-3 text-lg font-black font-medium text-white md:text-5xl'>
             {bannerData?.bannerHeading}
           </p>
           <p className='text-leading-3 text-md mt-5 text-white md:text-3xl'>

@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Alamia'],
+        primary: ['Alamia-Regular'],
+        medium: ['Alamia-Medium'],
       },
       colors: {
         primary: {
