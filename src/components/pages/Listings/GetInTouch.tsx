@@ -19,7 +19,7 @@ export default function GetInTouch(props: MyProps) {
           <div className='absolute left-1/2 top-14 mx-auto w-[350px] -translate-x-1/2 px-3 md:top-2 md:w-[700px] lg:top-10'>
             <div className=''>
               <h2 className='px-5 pt-7 text-center text-xl text-white md:pt-24 md:text-5xl xl:pt-32'>
-                {bottomSection?.title}
+                Meet Our Exceptional Realtors
               </h2>
               <div className='mt-7 text-center md:mt-14'>
                 <a
