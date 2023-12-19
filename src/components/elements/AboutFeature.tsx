@@ -17,8 +17,8 @@ export default function AboutFeature(props: MyProps) {
               <span className='text-2xl leading-5 text-[#525659] md:text-5xl'>
                 {featureSection?.topHead}
               </span>{' '}
-              {featureSection?.subHead}
             </h1>
+            <h1 className='mt-2 px-2'>{featureSection?.subHead}</h1>
           </div>
           <div className='mx-auto -mt-10 w-full md:mt-40 lg:mt-0'>
             {featureSection?.featuredData?.map((item: any, i: number) =>
@@ -53,7 +53,7 @@ export default function AboutFeature(props: MyProps) {
                           }}
                         ></div>
                         <div
-                          className='mt-10 text-end text-xs md:text-lg'
+                          className='mt-10 text-justify text-xs md:ml-10 md:text-lg xl:ml-20'
                           dangerouslySetInnerHTML={{
                             __html: item?.shortDescription,
                           }}
@@ -77,7 +77,7 @@ export default function AboutFeature(props: MyProps) {
                           }}
                         ></div>
                         <div
-                          className='mt-10 text-end text-xs md:text-lg mb-2'
+                          className='mb-2 mt-10 text-justify text-xs md:text-lg'
                           dangerouslySetInnerHTML={{
                             __html: item?.shortDescription,
                           }}
@@ -96,7 +96,7 @@ export default function AboutFeature(props: MyProps) {
                     </div>
                   </div>
                   <div
-                    className='mt-10 pb-20 text-start text-xs md:text-lg'
+                    className='mt-10 pb-20 text-justify text-xs md:text-lg'
                     dangerouslySetInnerHTML={{
                       __html: item?.description,
                     }}
@@ -120,7 +120,7 @@ export default function AboutFeature(props: MyProps) {
                           }}
                         ></div>
                         <div
-                          className='mt-10 text-start text-xs md:text-lg'
+                          className='mt-10 text-justify text-xs md:mr-10 md:text-lg xl:mr-20'
                           dangerouslySetInnerHTML={{
                             __html: item?.shortDescription,
                           }}
@@ -154,7 +154,7 @@ export default function AboutFeature(props: MyProps) {
                           }}
                         ></div>
                         <div
-                          className='mt-10 text-start text-xs md:text-lg mb-2'
+                          className='mb-2 mt-10 text-justify text-xs md:text-lg'
                           dangerouslySetInnerHTML={{
                             __html: item?.shortDescription,
                           }}
@@ -173,7 +173,7 @@ export default function AboutFeature(props: MyProps) {
                     </div>
                   </div>
                   <div
-                    className='mt-10 px-5 text-start text-xs md:px-10 md:text-lg'
+                    className='mt-10 px-5 text-justify text-xs md:px-10 md:text-lg'
                     dangerouslySetInnerHTML={{
                       __html: item?.description,
                     }}
@@ -183,14 +183,8 @@ export default function AboutFeature(props: MyProps) {
             )}
           </div>
         </div>
-        <div className='mt-5 text-center md:mt-10'>
-          <a
-            href='contact-us'
-            className='text-uppercase z-10 mb-[-10px] rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-sky-950  hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:absolute md:mt-[-20px] md:px-3.5'
-          >
-            Contact Us
-          </a>
-        </div>
+        
+        
       </section>
     </div>
   );

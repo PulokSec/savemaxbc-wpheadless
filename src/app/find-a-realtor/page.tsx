@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import { getClient } from '@/lib/apollo';
 
 import FindSection from '@/components/elements/FindSection';
+import NewPointFeature from '@/components/elements/NewPointFeature';
 import PointFeature from '@/components/elements/PointFeature';
 import SharedBanner from '@/components/elements/SharedBanner';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
@@ -205,7 +206,10 @@ export default async function CareersPage() {
         <FindSection
           featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}
         />
-        <PointFeature
+        {/* <PointFeature
+          featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
+        /> */}
+        <NewPointFeature
           featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
         />
         <GetInTouch
