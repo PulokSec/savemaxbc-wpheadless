@@ -6,6 +6,7 @@ import { getClient } from '@/lib/apollo';
 
 import AboutFeature from '@/components/elements/AboutFeature';
 import SharedBanner from '@/components/elements/SharedBanner';
+import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import Footer from '@/components/shared/Footer';
 const query = gql`
   query {
@@ -45,6 +46,14 @@ const query = gql`
                 sourceUrl
                 altText
               }
+            }
+          }
+          bottomFeatureSection {
+            title
+            featureDescription
+            backgroundImage {
+              sourceUrl
+              altText
             }
           }
         }
@@ -172,6 +181,9 @@ export default async function page() {
         />
         <AboutFeature
           featureSection={data?.pages?.nodes[0]?.aboutUs?.aboutFeatureSection}
+        />
+        <GetInTouch
+          bottomSection={data?.pages?.nodes[0]?.aboutUs?.bottomFeatureSection}
         />
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
