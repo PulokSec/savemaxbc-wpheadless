@@ -201,6 +201,7 @@ export default async function SellerService() {
               ?.featureSubtitle
           }
         />
+        <div className='mt-20 md:mt-24 lg:mt-60'></div>
         <ServicePointFeature
           featuredData={
             data?.pages?.nodes[0]?.SellerService?.serviceFeatureSection

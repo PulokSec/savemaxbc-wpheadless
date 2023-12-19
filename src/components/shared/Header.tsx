@@ -74,7 +74,7 @@ export default function Header(props: MyProps) {
     <div className='top-0 z-50 w-full shadow'>
       <header className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/menu-bg.png")] bg-cover shadow-md'>
         <nav
-          className='flex items-center justify-between px-10 py-3'
+          className='flex items-center justify-between px-10 py-3 lg:px-40'
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
@@ -112,8 +112,8 @@ export default function Header(props: MyProps) {
                       }
                       className={`flex cursor-pointer items-center justify-center gap-1 text-lg font-bold leading-10 ${
                         item?.childItems?.nodes?.length > 0 && open
-                          ? 'bg-gradient-to-r from-[#eee38f] via-[#ad782f]  to-[#dbc071] bg-clip-text text-transparent'
-                          : 'bg-gradient-to-r from-[#eee38f] via-[#ad782f]  to-[#dbc071] bg-clip-text text-transparent'
+                          ? 'from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
+                          : 'from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
                       }`}
                     >
                       {item.label}
@@ -124,7 +124,7 @@ export default function Header(props: MyProps) {
                           viewBox='0 0 24 24'
                           strokeWidth={1.5}
                           stroke='currentColor'
-                          className='h-4 w-4'
+                          className='h-4 w-4 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
                         >
                           <path
                             strokeLinecap='round'
@@ -272,14 +272,14 @@ export default function Header(props: MyProps) {
                     href='mailto:admin@savemaxwestcoast.com'
                     className='hover:bg-100 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
-                    <Mail className='mr-2 h-5 w-5 text-white hover:text-[#ad782f] ' />
+                    <Mail className='mr-2 h-5 w-5 text-[#061632] hover:text-[#ad782f] ' />
                     <p className='text-[15px]'>admin@savemaxwestcoast.com</p>
                   </a>
                   <a
                     href='tel:778-200-5050'
                     className='hover:bg-100 mb-12 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
-                    <Phone className='mr-2 h-5 w-5 font-bold text-white hover:text-[#ad782f]' />
+                    <Phone className='mr-2 h-5 w-5 font-bold text-[#061632] hover:text-[#ad782f]' />
                     <p className='mt-1 text-[15px]'>778-200-5050</p>
                   </a>
                   <form

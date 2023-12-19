@@ -31,13 +31,9 @@ export default function SharedBanner(props: MyProps) {
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
-      <div className='flex h-[70vh] flex-col items-center justify-center lg:h-[90vh]'>
+      <div className='mt-40 flex flex-col items-center justify-center lg:mt-60'>
         <div className='py-16'>
-          <div
-            className={`${
-              bannerData?.bannerDescription ? 'md:mb-[20%]' : 'md:mb-[10%]'
-            }  flex h-[40vh] w-full flex-col items-center justify-center px-5 lg:h-[60vh] lg:px-10`}
-          >
+          <div className='flex w-full flex-col items-center justify-center px-5 lg:px-10'>
             <p className='w-full text-center text-lg font-bold uppercase leading-5 text-white lg:text-6xl'>
               {bannerData?.bannerHeading}
             </p>
@@ -52,7 +48,7 @@ export default function SharedBanner(props: MyProps) {
           </div>
         </div>
         {topTitle && topDesc ? (
-          <div className='container relative mx-auto w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md '>
+          <div className=' container relative mx-auto mt-40 w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:mt-[18%] '>
             <div
               className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
               dangerouslySetInnerHTML={{
@@ -126,7 +122,7 @@ export default function SharedBanner(props: MyProps) {
           </div>
         ) : null}
         {usingFor === 'seller' && (
-          <div className='container relative mx-auto mt-20 flex w-[80%] flex-col items-center justify-center rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:py-10'>
+          <div className='container relative mx-auto mt-[40%] flex w-[80%] flex-col items-center justify-center rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:mt-[18%] lg:py-10'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               <span className='text-[#585858]'>{featureTitle}</span>{' '}
               {featureSubtitle}
