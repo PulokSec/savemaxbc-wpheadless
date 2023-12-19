@@ -5,7 +5,6 @@ import { getClient } from '@/lib/apollo';
 
 import FindSection from '@/components/elements/FindSection';
 import NewPointFeature from '@/components/elements/NewPointFeature';
-import PointFeature from '@/components/elements/PointFeature';
 import SharedBanner from '@/components/elements/SharedBanner';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import Footer from '@/components/shared/Footer';
@@ -203,20 +202,22 @@ export default async function CareersPage() {
           topTitle={data?.pages?.nodes[0]?.findARealtor?.topFeatureTitle}
           topDesc={data?.pages?.nodes[0]?.findARealtor?.topFeatureDescription}
         />
-        <FindSection
-          featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}
-        />
-        {/* <PointFeature
+        <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/bg.png")] bg-cover bg-no-repeat'>
+          <FindSection
+            featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}
+          />
+          {/* <PointFeature
           featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
         /> */}
-        <NewPointFeature
-          featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
-        />
-        <GetInTouch
-          bottomSection={
-            data?.pages?.nodes[0]?.findARealtor?.bottomFeatureSection
-          }
-        />
+          <NewPointFeature
+            featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
+          />
+          <GetInTouch
+            bottomSection={
+              data?.pages?.nodes[0]?.findARealtor?.bottomFeatureSection
+            }
+          />
+        </div>
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}

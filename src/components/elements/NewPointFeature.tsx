@@ -8,11 +8,11 @@ type MyProps = {
 export default function NewPointFeature(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='max-w-screen overflow-x-hidden bg-gray-50 pb-14 pt-10'>
+    <section className='max-w-screen overflow-x-hidden pb-14 pt-10'>
       <div className=''>
-        <div className='px-2 md:px-10'>
+        <div className='mx-auto px-2 md:px-10'>
           <h2
-            className='mx-auto max-w-[1000px] px-2 pt-5 text-center text-2xl md:mb-20 md:text-3xl lg:text-4xl'
+            className='ml-56 max-w-[1400px] px-2 pt-5 text-center text-2xl md:mb-20 md:text-3xl lg:text-start lg:text-5xl'
             dangerouslySetInnerHTML={{
               __html: featuredData?.featureTitle,
             }}
@@ -30,7 +30,7 @@ export default function NewPointFeature(props: MyProps) {
               {featuredData?.featuredDivLeft?.map((item: any, i: number) => (
                 <div className='mt-7 flex items-start' key={i}>
                   <div className='mr-4 mt-2'>
-                    <Circle className='h-4 w-4 rounded-full bg-black' />
+                    <Circle className='h-4 w-4 rounded-[50%] bg-black' />
                   </div>
                   <div className=''>
                     <h3 className='mb-2 text-xl leading-5 text-sky-950 md:text-xl lg:text-2xl'>
