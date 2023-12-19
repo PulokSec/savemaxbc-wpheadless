@@ -8,6 +8,7 @@ import NewPointFeature from '@/components/elements/NewPointFeature';
 import SharedBanner from '@/components/elements/SharedBanner';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import Footer from '@/components/shared/Footer';
+import FindRealtorBanner from '@/components/elements/FindRealtorBanner';
 
 const query = gql`
   query {
@@ -195,13 +196,20 @@ export default async function CareersPage() {
   return (
     <>
       <main>
-        <SharedBanner
+        <FindRealtorBanner
           bannerData={data?.pages?.nodes[0]?.findARealtor?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           topTitle={data?.pages?.nodes[0]?.findARealtor?.topFeatureTitle}
           topDesc={data?.pages?.nodes[0]?.findARealtor?.topFeatureDescription}
         />
+        {/* <SharedBanner
+          bannerData={data?.pages?.nodes[0]?.findARealtor?.bannerSection}
+          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
+          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
+          topTitle={data?.pages?.nodes[0]?.findARealtor?.topFeatureTitle}
+          topDesc={data?.pages?.nodes[0]?.findARealtor?.topFeatureDescription}
+        /> */}
         <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/bg.png")] bg-cover bg-no-repeat'>
           <FindSection
             featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}

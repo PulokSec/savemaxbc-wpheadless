@@ -10,11 +10,11 @@ export default function FindSection(props: MyProps) {
   return (
     <section className='mt-20 lg:mx-auto lg:mt-40 2xl:mt-40'>
       <div className='pb-10 text-center md:px-10 lg:w-full lg:pb-20'>
-        <h1 className='px-5 text-center text-lg leading-5 text-[#525659] md:text-5xl'>
+        <h1 className='px-5 text-center text-lg leading-5 text-gray-800 md:text-4xl font-semibold'>
           {featuredData?.topHead}
         </h1>
         <div
-          className='mt-5 px-5 text-xs leading-5 md:text-lg'
+          className='mt-5 px-5 text-xs leading-5 md:text-lg max-w-[1400px] mx-auto text-[#515151]'
           dangerouslySetInnerHTML={{
             __html: featuredData?.topDescription,
           }}
@@ -42,11 +42,11 @@ export default function FindSection(props: MyProps) {
         </div>
         <div className='mx-auto flex w-full flex-col items-end md:w-1/2 xl:w-3/5'>
           <div className='mx-auto w-3/4 xl:w-2/3'>
-            <h2 className='w-full text-start text-2xl md:text-4xl'>
+            <h2 className='w-full text-start text-2xl md:text-4xl '>
               {featuredData?.featureTitle}
             </h2>
             <div
-              className='mt-5 text-justify text-xs md:text-lg '
+              className='mt-5 text-justify text-xs md:text-lg text-[#515151]'
               dangerouslySetInnerHTML={{
                 __html: featuredData?.featureDescription,
               }}

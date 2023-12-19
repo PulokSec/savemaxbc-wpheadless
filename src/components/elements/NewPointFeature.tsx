@@ -29,7 +29,7 @@ export default function NewPointFeature(props: MyProps) {
               ></p>
               {featuredData?.featuredDivLeft?.map((item: any, i: number) => (
                 <div className='mt-7 flex items-start' key={i}>
-                  <div className='mr-4 mt-2'>
+                  <div className='mr-4 mt-1'>
                     <Circle className='h-4 w-4 rounded-[50%] bg-black' />
                   </div>
                   <div className=''>
@@ -37,7 +37,7 @@ export default function NewPointFeature(props: MyProps) {
                       {item?.title}
                     </h3>
                     <div
-                      className='text-justify text-xs lg:text-lg'
+                      className='text-justify text-xs text-[#515151] lg:text-lg'
                       dangerouslySetInnerHTML={{
                         __html: item?.description,
                       }}
@@ -83,7 +83,7 @@ export default function NewPointFeature(props: MyProps) {
                       {item?.title}
                     </h3>
                     <div
-                      className='text-justify text-xs lg:text-lg'
+                      className='text-justify text-xs text-[#515151] lg:text-lg'
                       dangerouslySetInnerHTML={{
                         __html: item?.description,
                       }}
