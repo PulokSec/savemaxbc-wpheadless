@@ -18,10 +18,12 @@ interface MyProps {
   name: string;
 }
 
-const ReplyEmail = ({ name }: MyProps) => (
+const ConfirmationEmail = ({ name }: MyProps) => (
   <Html>
     <Head />
-    <Preview>Thank You for Contacting Save Max Westcoast Realty Inc.</Preview>
+    <Preview>
+      Form Submission Confirmation - Save Max Westcoast Realty Inc.
+    </Preview>
     <Body style={main}>
       <Container style={container}>
         <Section>
@@ -39,44 +41,34 @@ const ReplyEmail = ({ name }: MyProps) => (
         <Section style={paragraphContent}>
           <Hr style={hr} />
           <Text style={heading}>
-            Thank You for Contacting Save Max Westcoast Realty Inc.
+            Form Submission Confirmation - Save Max Westcoast Realty Inc.
           </Text>
           <Text style={paragraph}>Dear {name}</Text>
           <Text style={paragraph}>
-            Thank you for reaching out to Save Max Westcoast Realty Inc. We
-            appreciate your interest in our real estate services and the
-            opportunity to assist you with your property needs in beautiful
-            British Columbia.
+            Thank you for choosing Save Max Westcoast Realty Inc. for your real
+            estate needs. We appreciate the opportunity to assist you in your
+            property search or sale.
           </Text>
         </Section>
         <Section style={paragraphList}>
           <Text style={paragraph}>
-            Your contact form has been successfully received, and we want to
-            assure you that our team is dedicated to providing you with
-            exceptional service throughout your real estate journey. One of our
-            experienced agents will carefully review the information you
-            provided, and we will be in touch with you shortly to discuss your
-            specific requirements and preferences.
+            Your form submission details have been successfully received, and
+            one of our experienced agents will review the information provided.
+            Rest assured, we will promptly get in touch with you to discuss your
+            requirements and preferences in more detail.
           </Text>
         </Section>
         <Section style={paragraphContent}>
           <Text style={paragraph}>
-            If you have any immediate questions or additional details you'd like
-            to share, please feel free to reply to this email or contact us
-            directly at{' '}
+            If you have any immediate questions or additional information to
+            share, feel free to reach out to us at{' '}
             <Link href='mailto:admin@savemaxwestcoast.com' style={link}>
               admin@savemaxwestcoast.com
             </Link>
           </Text>
           <Hr style={hr} />
         </Section>
-        <Section style={paragraphList}>
-          <Text style={paragraph}>
-            Thank you once again for considering Save Max Westcoast Realty Inc.
-            for your real estate needs. We look forward to the opportunity to
-            assist you and help you achieve your property goals.
-          </Text>
-        </Section>
+
         <Section style={paragraphContent}>
           <Text style={paragraph}>Thank you,</Text>
           <Text style={{ ...paragraph, fontSize: '20px' }}>
@@ -136,7 +128,7 @@ const ReplyEmail = ({ name }: MyProps) => (
     </Body>
   </Html>
 );
-export default ReplyEmail;
+export default ConfirmationEmail;
 const main = {
   backgroundColor: '#dbddde',
   fontFamily:

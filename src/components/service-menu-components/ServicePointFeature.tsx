@@ -56,7 +56,7 @@ export default function ServicePointFeature(props: MyProps) {
       </div>
 
       <div className='lg:max-w-screen mt-10 grid grid-cols-12 items-center justify-center lg:mx-0 lg:mt-20 lg:gap-5'>
-        <div className='cover relative col-span-12 mx-auto mt-5 h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[550px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
+        <div className='cover relative col-span-12 mx-auto mt-5 hidden h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:block lg:h-[550px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
           <NextImage
             useSkeleton
             src={featuredData?.featuredImageLeft?.sourceUrl}
@@ -102,6 +102,15 @@ export default function ServicePointFeature(props: MyProps) {
               )}
             </div>
           </div>
+        </div>
+        <div className='cover relative col-span-12 mx-auto mt-5 block h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:hidden lg:h-[550px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
+          <NextImage
+            useSkeleton
+            src={featuredData?.featuredImageLeft?.sourceUrl}
+            alt={featuredData?.featuredImageLeft?.altText}
+            className='cover'
+            layout='fill'
+          />
         </div>
       </div>
     </section>

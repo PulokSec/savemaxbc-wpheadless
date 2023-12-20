@@ -91,7 +91,7 @@ export default function ListingCarousel(props: MyProps) {
                   {post?.StreetAddress} {post?.CommunityName} {post?.PostalCode}
                 </p>
                 <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
-                  {post?.Price} $
+                  {parseFloat(post?.Price).toLocaleString('en-US')} $
                 </p>
               </div>
 

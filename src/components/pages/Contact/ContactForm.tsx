@@ -26,8 +26,11 @@ const ContactForm = (props: Props) => {
     preventDefault: () => void;
     target: { reset: () => void };
   }) => {
-    e.preventDefault();
-
+    if (name.length < 1 || mail.length < 5 || phone.length < 8) {
+      setAlert(true);
+      setSuccess(null);
+      return;
+    }
     const bodyData = JSON.stringify({
       fromEmail: 'noreply@savemaxbc.com',
       toEmail: 'admin@savemaxwestcoast.com',
@@ -46,9 +49,7 @@ const ContactForm = (props: Props) => {
         body: bodyData,
       });
       const data = await response.json();
-
       setSuccess(data.message);
-      e.target.reset();
     } catch (error) {
       console.log(error);
     } finally {
@@ -59,6 +60,7 @@ const ContactForm = (props: Props) => {
       setSelected('');
       setAlert(true);
     }
+    e.preventDefault();
   };
   useEffect(() => {
     // when the component is mounted, the alert is displayed for 3 seconds
@@ -73,10 +75,10 @@ const ContactForm = (props: Props) => {
         <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
           Phone: <a href={`tel:${phone}`}>{phone}</a>
         </p>
-        <p className='md:text-md mt-[10px] md:mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
+        <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
           Email: <a href={`mailto:${email}`}>{email}</a>
         </p>
-        <p className='md:text-md mt-[10px] md:mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
+        <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
           Address:{' '}
           <a
             href='https://maps.app.goo.gl/YVWPgcZgGzkoat7W7'
@@ -111,6 +113,7 @@ const ContactForm = (props: Props) => {
               id='name'
               className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
               placeholder='Name'
+              required
             />
           </div>
           <div className='relative mb-6' data-te-input-wrapper-init>
@@ -122,6 +125,7 @@ const ContactForm = (props: Props) => {
               name='mail'
               id='mail'
               placeholder='Email address'
+              required
             />
           </div>
           <div className='relative mb-6' data-te-input-wrapper-init>
@@ -133,6 +137,7 @@ const ContactForm = (props: Props) => {
               placeholder='Phone Number'
               name='phone'
               id='phone'
+              required
             />
           </div>
           <div className='relative mb-6' data-te-input-wrapper-init>
@@ -203,6 +208,30 @@ const ContactForm = (props: Props) => {
             <div>
               <span className='font-medium'>Success!</span> Thanks for
               contacting us, we will get back to you.
+            </div>
+          </div>
+        )}
+        {alert && !success && (
+          <div
+            className='mt-5 flex w-full items-center rounded-lg border bg-red-300 p-4 text-sm text-red-700 md:w-[600px]'
+            role='alert'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              viewBox='0 0 24 24'
+              fill='currentColor'
+              className='h-5 w-5'
+            >
+              <path
+                fill-rule='evenodd'
+                d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z'
+                clip-rule='evenodd'
+              />
+            </svg>
+            <span className='sr-only'>Info</span>
+            <div>
+              <span className='font-medium'>Sorry! </span> Please fill all the
+              fields.
             </div>
           </div>
         )}

@@ -12,7 +12,7 @@ export default function BottomServiceSection(props: MyProps) {
         backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
       }}
     >
-      <div className=''>
+      <div className='mt-5 lg:mt-0'>
         <div
           className='md:text-md container mx-auto mt-10 px-5 text-start text-xs text-white lg:mt-40 lg:text-lg'
           dangerouslySetInnerHTML={{

@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { sendEmail } from '@/lib/email-helper';
 
-import AutoReply from '@/components/utils/email-template/auto_reply';
+import ReplyEmail from '@/components/utils/email-template/auto_reply';
+import ConfirmationEmail from '@/components/utils/email-template/confirmationMail';
 import ApplyNowEmail from '@/components/utils/email-template/contact_form';
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -38,10 +39,21 @@ export async function POST(request: NextRequest) {
     await sendEmail({
       from: fromEmail,
       to: mail,
+      subject: 'Form Submission Confirmation - Save Max Westcoast Realty Inc.',
+      cc: cc,
+      html: render(
+        ConfirmationEmail({
+          name,
+        })
+      ),
+    });
+    await sendEmail({
+      from: fromEmail,
+      to: mail,
       subject: 'Thank you so much for contacting us on our website ' + name,
       cc: cc,
       html: render(
-        AutoReply({
+        ReplyEmail({
           name,
         })
       ),

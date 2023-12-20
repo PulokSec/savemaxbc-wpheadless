@@ -25,7 +25,7 @@ export default function NewsBanner(props: MyProps) {
             </p>
           )}
           {usingFor === 'news' && (
-            <p className='text-leading-3 text-md mt-5 font-bold text-[#515151] md:text-3xl'>
+            <p className='text-leading-3 text-md mt-5 font-bold text-[#515151] md:text-3xl lg:text-7xl'>
               {bannerData?.bannerSubheading}
             </p>
           )}

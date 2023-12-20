@@ -34,7 +34,7 @@ export default function SharedBanner(props: MyProps) {
       <div className='mt-20 flex flex-col items-center justify-center md:mt-40 lg:mt-60'>
         <div className='py-16'>
           <div className='flex w-full flex-col items-center justify-center px-5 lg:px-10'>
-            <p className='w-full text-center text-lg font-bold uppercase leading-5 text-white lg:text-6xl'>
+            <p className='w-full text-center text-xl font-bold uppercase leading-5 text-white md:text-4xl lg:text-7xl'>
               {bannerData?.bannerHeading}
             </p>
             {bannerData?.bannerDescription && (
@@ -48,9 +48,9 @@ export default function SharedBanner(props: MyProps) {
           </div>
         </div>
         {topTitle && topDesc ? (
-          <div className=' container relative mx-auto mt-4 w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-40 lg:mt-[18%] '>
+          <div className=' container relative mx-auto mt-4 w-full rounded-b-xl bg-transparent px-5 py-3 text-center shadow-none md:mt-40 lg:mt-[18%] lg:w-[80%] lg:bg-white lg:shadow-md '>
             <div
-              className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
+              className='md:text-md mt-5 text-xs leading-6 text-white lg:text-lg lg:text-[#061632]'
               dangerouslySetInnerHTML={{
                 __html: topDesc,
               }}
@@ -68,7 +68,7 @@ export default function SharedBanner(props: MyProps) {
               </div>
             ) : (
               <div className=''>
-                <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+                <p className='text-md mt-2 w-full font-bold text-white md:text-xl lg:text-2xl lg:text-[#061632]'>
                   {topTitle}
                 </p>
                 <div className='mb-2 mt-4 flex items-center justify-center lg:my-2'>
@@ -85,7 +85,7 @@ export default function SharedBanner(props: MyProps) {
         ) : topTitle ? (
           <div className='container relative mx-auto mt-[40%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[20%] xl:mt-[5%] 2xl:mt-[16%]'>
             <div className=''>
-              <p className='text-md mt-2 w-full font-bold md:text-xl lg:text-2xl'>
+              <p className='text-md mt-2 w-full font-bold text-white md:text-xl lg:text-2xl lg:text-[#061632]'>
                 {topTitle}
               </p>
               <div className='mt-1 flex items-center justify-center'>
@@ -99,9 +99,9 @@ export default function SharedBanner(props: MyProps) {
             </div>
           </div>
         ) : topDesc ? (
-          <div className='container relative mx-auto md:mt-[17%] w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md '>
+          <div className='container relative mx-auto w-full rounded-b-xl bg-transparent px-5 py-3 text-center shadow-none md:mt-[17%] lg:w-[80%] lg:bg-white lg:shadow-md'>
             <div
-              className='md:text-md mt-5 text-xs font-bold font-medium leading-6 lg:text-lg'
+              className='md:text-md mt-5 text-xs font-bold font-medium leading-6 text-white lg:text-lg lg:text-[#061632]'
               dangerouslySetInnerHTML={{
                 __html: topDesc,
               }}

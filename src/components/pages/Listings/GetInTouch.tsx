@@ -9,7 +9,7 @@ export default function GetInTouch(props: MyProps) {
   return (
     <>
       <section className='mx-auto w-full '>
-        <div className='relative h-[40vh] w-full lg:h-[50vh] xl:h-[80vh]'>
+        <div className='relative h-[60vh] w-full lg:h-[80vh] xl:h-[80vh]'>
           <Image
             src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/meet-our.png'
             fill={true}

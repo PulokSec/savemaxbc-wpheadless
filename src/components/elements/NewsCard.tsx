@@ -2,7 +2,7 @@ import React from 'react';
 
 import NextImage from '@/components/NextImage';
 
-import newsImage from '@/assets/header/Save-Max-Westcoast-Realty.png';
+import newsImage from '@/assets/news/Logo.jpg';
 
 type MyProps = {
   newsData: any;

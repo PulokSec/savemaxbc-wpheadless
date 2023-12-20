@@ -8,19 +8,19 @@ type MyProps = {
 export default function FindSection(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='mt-10 lg:mx-auto lg:mt-40 2xl:mt-40'>
+    <section className='mt-10 md:mt-60 lg:mx-auto lg:mt-40 2xl:mt-40'>
       <div className='pb-10 text-center md:px-10 lg:w-full lg:pb-20'>
-        <h1 className='px-5 text-center text-lg leading-5 text-gray-800 md:text-4xl font-semibold'>
+        <h1 className='px-5 text-center text-lg font-semibold leading-5 text-gray-800 md:text-4xl'>
           {featuredData?.topHead}
         </h1>
         <div
-          className='mt-5 px-5 text-xs leading-5 md:text-lg max-w-[1400px] mx-auto text-[#515151]'
+          className='mx-auto mt-5 max-w-[1400px] px-5 text-xs leading-5 text-[#515151] md:text-lg'
           dangerouslySetInnerHTML={{
             __html: featuredData?.topDescription,
           }}
         ></div>
       </div>
-      
+
       <div className='mx-auto mt-10 flex w-full flex-col items-center justify-center gap-8 md:mt-20 md:flex-row md:gap-0 lg:mt-5'>
         <div className='hidden w-full items-start justify-start md:flex md:w-1/2 xl:w-2/5'>
           <Image
@@ -46,7 +46,7 @@ export default function FindSection(props: MyProps) {
               {featuredData?.featureTitle}
             </h2>
             <div
-              className='mt-5 text-justify text-xs md:text-lg text-[#515151]'
+              className='mt-5 text-justify text-xs text-[#515151] md:text-lg'
               dangerouslySetInnerHTML={{
                 __html: featuredData?.featureDescription,
               }}

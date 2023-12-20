@@ -34,7 +34,11 @@ export default function ContactPageLanding(props: MyProps) {
     preventDefault: () => void;
     target: { reset: () => void };
   }) => {
-    e.preventDefault();
+    if (name.length < 1 || mail.length < 5 || phone.length < 8) {
+      setAlert(true);
+      setSuccess(null);
+      return;
+    }
 
     const bodyData = JSON.stringify({
       fromEmail: 'noreply@savemaxbc.com',
@@ -67,6 +71,7 @@ export default function ContactPageLanding(props: MyProps) {
       setSelected('');
       setAlert(true);
     }
+    e.preventDefault();
   };
   useEffect(() => {
     // when the component is mounted, the alert is displayed for 3 seconds
@@ -90,13 +95,10 @@ export default function ContactPageLanding(props: MyProps) {
           backgroundImage: `url(${allData?.pages?.nodes[0]?.contactUs?.background?.sourceUrl})`,
         }}
       >
-        <div className='pb-20 pt-8 md:py-20'>
-          <h2
-            className='px-10 text-center text-2xl  md:text-3xl lg:text-5xl'
-            dangerouslySetInnerHTML={{
-              __html: allData?.pages?.nodes[0]?.contactUs?.title1,
-            }}
-          ></h2>
+        <div className=' py-20'>
+          <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+            {allData?.pages?.nodes[0]?.contactUs?.title1}
+          </h2>
           <div
             className='md:text-md mx-auto mt-5 max-w-[1400px] px-10 text-center text-xs lg:text-lg'
             dangerouslySetInnerHTML={{
@@ -111,8 +113,8 @@ export default function ContactPageLanding(props: MyProps) {
           address={allData?.pages?.nodes[0]?.contactUs?.address}
           heading={true}
         />
-        <div className='pb-10 pt-20 md:py-20'>
-          <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-5xl'>
+        <div className=' py-20'>
+          <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
             {allData?.pages?.nodes[0]?.contactUs?.title2}
           </h2>
           <div
@@ -138,6 +140,7 @@ export default function ContactPageLanding(props: MyProps) {
                   id='name'
                   className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
                   placeholder='Name'
+                  required
                 />
               </div>
               <div className='relative mb-6' data-te-input-wrapper-init>
@@ -149,6 +152,7 @@ export default function ContactPageLanding(props: MyProps) {
                   name='mail'
                   id='mail'
                   placeholder='Email address'
+                  required
                 />
               </div>
               <div className='relative mb-6' data-te-input-wrapper-init>
@@ -160,6 +164,7 @@ export default function ContactPageLanding(props: MyProps) {
                   placeholder='Phone Number'
                   name='phone'
                   id='phone'
+                  required
                 />
               </div>
               <div className='relative mb-6' data-te-input-wrapper-init>
@@ -233,6 +238,30 @@ export default function ContactPageLanding(props: MyProps) {
                 </div>
               </div>
             )}
+            {alert && !success && (
+              <div
+                className='mt-5 flex w-full items-center rounded-lg border bg-red-300 p-4 text-sm text-red-700 md:w-[600px]'
+                role='alert'
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                  fill='currentColor'
+                  className='h-5 w-5'
+                >
+                  <path
+                    fill-rule='evenodd'
+                    d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z'
+                    clip-rule='evenodd'
+                  />
+                </svg>
+                <span className='sr-only'>Info</span>
+                <div>
+                  <span className='font-medium'>Sorry! </span> Please fill all
+                  the fields.
+                </div>
+              </div>
+            )}
           </div>
           <div className='mx-auto mt-5 flex flex-col items-center md:mt-0 md:w-1/2 md:items-end'>
             <h2 className='uppercase text-gray-800'>Connect</h2>
@@ -242,13 +271,13 @@ export default function ContactPageLanding(props: MyProps) {
                 {allData?.pages?.nodes[0]?.contactUs?.phone}
               </a>
             </p>
-            <p className='md:text-md mt-[10px] text-xs hover:text-[#B48237] md:mt-5 lg:text-lg'>
+            <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
               Email:{' '}
               <a href={`mailto:${allData?.pages?.nodes[0]?.contactUs?.email}`}>
                 {allData?.pages?.nodes[0]?.contactUs?.email}
               </a>
             </p>
-            <p className='md:text-md mt-[10px] text-xs hover:text-[#B48237] md:mt-5 lg:text-lg'>
+            <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
               Address:{' '}
               <a
                 href='https://maps.app.goo.gl/YVWPgcZgGzkoat7W7'
