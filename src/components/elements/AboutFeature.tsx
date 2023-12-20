@@ -17,7 +17,7 @@ export default function AboutFeature(props: MyProps) {
                 {featureSection?.topHead}
               </span>
             </h1>
-            <h1 className='mt-2 px-2 text-xl md:text-3xl'>
+            <h1 className='mt-2 px-2 text-lg md:text-3xl'>
               {featureSection?.subHead}
             </h1>
           </div>
