@@ -68,8 +68,8 @@ export default function ContactSection(props: MyProps) {
     }, 3000);
   }, [alert]);
   return (
-    <div className='bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Contact-form-bg.png")] bg-cover bg-center bg-no-repeat'>
-      <section className='py-10'>
+    <div className=''>
+      <section className='mt-5 py-10'>
         <div className='px-5 text-center md:px-10 lg:w-full'>
           <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
             {contactData?.contactTitle}
