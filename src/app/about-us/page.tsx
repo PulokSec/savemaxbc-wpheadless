@@ -4,8 +4,8 @@ import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
+import AboutBanner from '@/components/elements/AboutBanner';
 import AboutFeature from '@/components/elements/AboutFeature';
-import SharedBanner from '@/components/elements/SharedBanner';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import Footer from '@/components/shared/Footer';
 const query = gql`
@@ -174,7 +174,7 @@ export default async function page() {
   return (
     <>
       <main>
-        <SharedBanner
+        <AboutBanner
           bannerData={data?.pages?.nodes[0]?.aboutUs?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}

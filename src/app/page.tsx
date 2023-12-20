@@ -233,12 +233,14 @@ export default async function HomePage() {
             <AboutSection
               aboutData={data?.pages?.nodes[0]?.HomePage?.aboutSection}
             />
-            <HighestLevelService
-              serviceData={data?.pages?.nodes[0]?.HomePage?.ensureSection}
-            />
-            <ContactSection
-              contactData={data?.pages?.nodes[0]?.HomePage?.contactSection}
-            />
+            <div className='bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Contact-form-bg.png")] bg-cover bg-center bg-no-repeat'>
+              <HighestLevelService
+                serviceData={data?.pages?.nodes[0]?.HomePage?.ensureSection}
+              />
+              <ContactSection
+                contactData={data?.pages?.nodes[0]?.HomePage?.contactSection}
+              />
+            </div>
             <Footer
               navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
               settingsData={
