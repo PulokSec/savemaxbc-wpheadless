@@ -13,9 +13,9 @@ const NewFeatureSection = (props: MyProps) => {
     <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
       <section>
         <div className='mx-auto py-10 lg:py-20'>
-          <h1 className='text-leading-3 text-center text-lg font-bold md:text-5xl'>
+          <h1 className='text-leading-3 text-center text-[22px] font-bold md:text-5xl'>
             {featuredTitle} <br />
-            <span className='text-leading-3 text-md mt-5 text-center text-[#585858] md:text-3xl'>
+            <span className='text-leading-3 text-lg mt-5 text-center text-[#585858] md:text-3xl'>
               {featuredSubtitle}
             </span>
           </h1>

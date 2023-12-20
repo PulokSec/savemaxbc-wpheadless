@@ -91,7 +91,11 @@ export default function ListingCarousel(props: MyProps) {
                   {post?.StreetAddress} {post?.CommunityName} {post?.PostalCode}
                 </p>
                 <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
-                  {parseFloat(post?.Price).toLocaleString('en-US')} $
+                  {parseFloat(post?.Price).toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}{' '}
+                  $
                 </p>
               </div>
 

@@ -99,7 +99,11 @@ export default function PaginationSearch(props: MyProps) {
                     {post?.PostalCode}
                   </p>
                   <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
-                    {parseFloat(post?.Price).toLocaleString('en-US')} $
+                    {parseFloat(post?.Price).toLocaleString('en-US', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{' '}
+                    $
                   </p>
                 </div>
 
@@ -126,7 +130,7 @@ export default function PaginationSearch(props: MyProps) {
             );
           })}
         </div>
-        <div className='flex items-center justify-center'>
+        <div className='mb-20 flex items-center justify-center md:mb-28'>
           <Pagination
             currentPage={currentPage}
             maxLength={6}

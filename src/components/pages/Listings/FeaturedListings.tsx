@@ -127,7 +127,7 @@ export default async function FeaturedListings(props: MyProps) {
             </a>
           </div>
         </div>
-        <div className='mt-20'>
+        <div className='mb-20 mt-20 md:mb-28'>
           <h2 className='text-center text-lg md:text-5xl'>
             {titleData?.rentalHomesTitle?.split(/ (.*)/)[0]}{' '}
             <span className='text-leading-3 font-bold text-[#515151]'>

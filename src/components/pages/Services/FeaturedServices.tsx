@@ -9,9 +9,9 @@ type MyProps = {
 export default function FeaturedServices(props: MyProps) {
   const { featuredData, featuredTitle } = props;
   return (
-    <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+    <div className='max-w-screen mb-20 overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
       <section>
-        <div className='py-10 md:py-20'>
+        <div className='py-10 md:py-20 '>
           <h1
             className='text-center text-lg md:text-5xl'
             dangerouslySetInnerHTML={{

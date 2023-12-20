@@ -202,7 +202,7 @@ export default async function CommercialSellers() {
                   ?.featureTitle
               }
             </h1>
-            <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
+            <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl mt-1 md:mt-4'>
               {
                 data?.pages?.nodes[0]?.commercialSellers?.serviceFeatureSection
                   ?.featureSubtitle
