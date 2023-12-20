@@ -10,21 +10,21 @@ export default function JoinSection(props: MyProps) {
   return (
     <section className='mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/how-to-join-background.png")] bg-cover bg-no-repeat px-5 md:px-10'>
       <div className='pb-0 pt-10 md:py-20'>
-        <div className='mx-auto w-full'>
-          <div className='container mx-auto mt-10 flex flex-col items-center justify-between gap-4 px-10 md:mt-10 md:flex-col lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row'>
-            <div className='hidden md:block'>
+        <div className='mx-auto max-w-[1400px]'>
+          <div className='container mx-auto mt-10 flex flex-col items-center justify-between gap-10 px-10 md:mt-10 md:flex-col lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:gap-4'>
+            <div className='hidden md:block lg:w-1/2 '>
               <NextImage
                 useSkeleton
-                className='w-40 md:w-[600px]'
+                className='w-64 md:w-[100%] '
                 src={featuredData?.image?.sourceUrl}
                 alt={featuredData?.image?.altText}
                 width='500'
                 height='400'
               />
             </div>
-            <div className='flex flex-col items-center justify-center md:items-end md:justify-center'>
+            <div className='flex flex-col items-center justify-center md:items-end md:justify-center lg:w-1/2'>
               <div className='text-start lg:w-full'>
-                <h2 className='w-full text-center text-xl md:text-end md:text-4xl'>
+                <h2 className='w-full text-center text-xl md:text-end md:text-4xl lg:text-[42px]'>
                   {featuredData?.featureTitle}
                 </h2>
                 <div
