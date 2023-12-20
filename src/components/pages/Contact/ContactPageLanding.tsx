@@ -90,10 +90,13 @@ export default function ContactPageLanding(props: MyProps) {
           backgroundImage: `url(${allData?.pages?.nodes[0]?.contactUs?.background?.sourceUrl})`,
         }}
       >
-        <div className=' py-20'>
-          <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
-            {allData?.pages?.nodes[0]?.contactUs?.title1}
-          </h2>
+        <div className='pb-20 pt-8 md:py-20'>
+          <h2
+            className='px-10 text-center text-2xl  md:text-3xl lg:text-5xl'
+            dangerouslySetInnerHTML={{
+              __html: allData?.pages?.nodes[0]?.contactUs?.title1,
+            }}
+          ></h2>
           <div
             className='md:text-md mx-auto mt-5 max-w-[1400px] px-10 text-center text-xs lg:text-lg'
             dangerouslySetInnerHTML={{
@@ -108,8 +111,8 @@ export default function ContactPageLanding(props: MyProps) {
           address={allData?.pages?.nodes[0]?.contactUs?.address}
           heading={true}
         />
-        <div className=' py-20'>
-          <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+        <div className='pb-10 pt-20 md:py-20'>
+          <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-5xl'>
             {allData?.pages?.nodes[0]?.contactUs?.title2}
           </h2>
           <div
@@ -239,13 +242,13 @@ export default function ContactPageLanding(props: MyProps) {
                 {allData?.pages?.nodes[0]?.contactUs?.phone}
               </a>
             </p>
-            <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
+            <p className='md:text-md mt-[10px] text-xs hover:text-[#B48237] md:mt-5 lg:text-lg'>
               Email:{' '}
               <a href={`mailto:${allData?.pages?.nodes[0]?.contactUs?.email}`}>
                 {allData?.pages?.nodes[0]?.contactUs?.email}
               </a>
             </p>
-            <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
+            <p className='md:text-md mt-[10px] text-xs hover:text-[#B48237] md:mt-5 lg:text-lg'>
               Address:{' '}
               <a
                 href='https://maps.app.goo.gl/YVWPgcZgGzkoat7W7'

@@ -49,7 +49,7 @@ export default function CareersBanner(props: MyProps) {
           ></div>
 
           {topTitle === 'Start your journey now!' ? (
-            <div className='mt-2 flex items-center justify-center md:mt-1'>
+            <div className='mt-3 flex items-center justify-center md:mt-1'>
               <a
                 href='/apply-now'
                 className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
