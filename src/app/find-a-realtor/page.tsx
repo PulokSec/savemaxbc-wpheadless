@@ -203,20 +203,12 @@ export default async function CareersPage() {
           topTitle={data?.pages?.nodes[0]?.findARealtor?.topFeatureTitle}
           topDesc={data?.pages?.nodes[0]?.findARealtor?.topFeatureDescription}
         />
-        {/* <SharedBanner
-          bannerData={data?.pages?.nodes[0]?.findARealtor?.bannerSection}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-          topTitle={data?.pages?.nodes[0]?.findARealtor?.topFeatureTitle}
-          topDesc={data?.pages?.nodes[0]?.findARealtor?.topFeatureDescription}
-        /> */}
+        
         <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/bg.png")] bg-cover bg-no-repeat'>
           <FindSection
             featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}
           />
-          {/* <PointFeature
-          featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
-        /> */}
+          
           <NewPointFeature
             featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
           />

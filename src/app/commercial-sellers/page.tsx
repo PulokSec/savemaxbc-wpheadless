@@ -181,7 +181,7 @@ export default async function CommercialSellers() {
       },
     },
   });
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <main>
