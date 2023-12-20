@@ -73,10 +73,10 @@ const ContactForm = (props: Props) => {
         <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
           Phone: <a href={`tel:${phone}`}>{phone}</a>
         </p>
-        <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
+        <p className='md:text-md mt-[10px] md:mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
           Email: <a href={`mailto:${email}`}>{email}</a>
         </p>
-        <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
+        <p className='md:text-md mt-[10px] md:mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
           Address:{' '}
           <a
             href='https://maps.app.goo.gl/YVWPgcZgGzkoat7W7'
