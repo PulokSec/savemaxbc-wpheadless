@@ -72,27 +72,31 @@ export default function AboutFeature(props: MyProps) {
                           {item?.designation}
                         </p>
                         <div
-                          className='mt-10 text-xs md:text-2xl'
+                          className={`${
+                            item?.subDesignation ? 'mt-10' : ''
+                          }  text-xs md:text-2xl`}
                           dangerouslySetInnerHTML={{
                             __html: item?.subDesignation,
                           }}
                         ></div>
+                        <div className='mt-10'>
+                          <NextImage
+                            useSkeleton
+                            className='cover w-50 md:w-[400px]'
+                            width='400'
+                            height='600'
+                            src={item?.aboutImage?.sourceUrl}
+                            alt={item?.aboutImage?.altText}
+                          />
+                        </div>
                         <div
-                          className='mb-2 mt-10 text-justify text-xs md:text-lg'
+                          className={`${
+                            item?.shortDescription ? 'mt-10' : ''
+                          } mb-2 text-justify text-xs md:text-lg`}
                           dangerouslySetInnerHTML={{
                             __html: item?.shortDescription,
                           }}
                         ></div>
-                      </div>
-                      <div className=''>
-                        <NextImage
-                          useSkeleton
-                          className='cover w-50 md:w-[400px]'
-                          width='400'
-                          height='600'
-                          src={item?.aboutImage?.sourceUrl}
-                          alt={item?.aboutImage?.altText}
-                        />
                       </div>
                     </div>
                   </div>
@@ -149,27 +153,29 @@ export default function AboutFeature(props: MyProps) {
                           {item?.designation}
                         </p>
                         <div
-                          className='mt-10 text-xs md:text-2xl'
+                          className={`${
+                            item?.subDesignation ? 'mt-10' : ''
+                          } text-xs md:text-2xl`}
                           dangerouslySetInnerHTML={{
                             __html: item?.subDesignation,
                           }}
                         ></div>
+                        <div className='mt-10 md:mt-0'>
+                          <NextImage
+                            useSkeleton
+                            className='cover w-50 md:w-[400px]'
+                            width='400'
+                            height='600'
+                            src={item?.aboutImage?.sourceUrl}
+                            alt={item?.aboutImage?.altText}
+                          />
+                        </div>
                         <div
                           className='mb-2 mt-10 text-justify text-xs md:text-lg'
                           dangerouslySetInnerHTML={{
                             __html: item?.shortDescription,
                           }}
                         ></div>
-                      </div>
-                      <div className='mt-5 md:mt-0'>
-                        <NextImage
-                          useSkeleton
-                          className='cover w-50 md:w-[400px]'
-                          width='400'
-                          height='600'
-                          src={item?.aboutImage?.sourceUrl}
-                          alt={item?.aboutImage?.altText}
-                        />
                       </div>
                     </div>
                   </div>
