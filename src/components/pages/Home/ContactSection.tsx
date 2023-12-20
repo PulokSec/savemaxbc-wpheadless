@@ -70,23 +70,23 @@ export default function ContactSection(props: MyProps) {
   return (
     <div className=''>
       <section className='mt-5 py-10'>
-        <div className='px-5 text-center md:px-10 lg:w-full'>
-          <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
+        <div className='px-5 text-center md:px-10 xl:w-full'>
+          <h2 className='text-center text-2xl md:text-3xl xl:text-4xl'>
             {contactData?.contactTitle}
           </h2>
           <div
-            className='md:text-md  mx-auto mt-5 max-w-[1400px] px-5 text-center text-xs lg:text-lg'
+            className='md:text-md  mx-auto mt-5 max-w-[1400px] px-5 text-center text-xs xl:text-xl'
             dangerouslySetInnerHTML={{
               __html: contactData?.contactDescription,
             }}
           ></div>
         </div>
-        <div className='mx-auto mt-5 grid max-w-2xl items-center justify-center gap-4 md:mt-10 md:grid-cols-6 md:gap-0 lg:mx-0 lg:max-w-none'>
-          <div className='col-span-6 col-start-1 col-end-6 ml-6 lg:col-span-3 lg:col-end-3 lg:ml-60'>
+        <div className='mx-auto mt-5 grid max-w-2xl items-center justify-center gap-4 md:mt-10 md:grid-cols-6 md:gap-0 xl:mx-0 xl:max-w-none'>
+          <div className='col-span-6 col-start-1 col-end-6 ml-6 xl:col-span-3 xl:col-end-3 xl:ml-60'>
             <div className='col-span-6 col-start-1 col-end-4 '>
               <NextImage
                 useSkeleton
-                className='w-40 md:w-[250px] lg:w-[300px]'
+                className='w-40 md:w-[250px] xl:w-[300px]'
                 src={contactData?.contactImage?.sourceUrl}
                 alt={contactData?.contactImage?.altText}
                 width='500'
@@ -94,19 +94,19 @@ export default function ContactSection(props: MyProps) {
               />
             </div>
             <div className=''>
-              <h2 className='w-full text-3xl md:w-full lg:w-[500px] lg:text-4xl'>
+              <h2 className='w-full text-3xl md:w-full xl:w-[500px] xl:text-4xl'>
                 {contactData?.heading}
               </h2>
-              <p className='md:text-md mt-5 text-xs lg:text-lg'>
+              <p className='md:text-md mt-5 text-xs xl:text-xl'>
                 Phone: {contactData?.phone}{' '}
               </p>
-              <p className='md:text-md mt-5 text-xs lg:text-lg'>
+              <p className='md:text-md mt-5 text-xs xl:text-xl'>
                 Email: {contactData?.email}
               </p>
-              <p className='md:text-md mt-5 text-xs lg:text-lg'>
+              <p className='md:text-md mt-5 text-xs xl:text-xl'>
                 {contactData?.addressOne}{' '}
               </p>
-              <p className='md:text-md mt-5 text-xs lg:text-lg'>
+              <p className='md:text-md mt-5 text-xs xl:text-xl'>
                 {contactData?.addressTwo}
               </p>
               <div className='mt-10 flex items-center justify-start gap-4'>
@@ -119,7 +119,7 @@ export default function ContactSection(props: MyProps) {
               </div>
             </div>
           </div>
-          <div className='col-span-3 col-start-1 col-end-6 mt-5 md:col-span-3 md:col-start-1 md:col-end-6 lg:col-start-4 lg:col-end-7 lg:mt-0'>
+          <div className='col-span-3 col-start-1 col-end-6 mt-5 md:col-span-3 md:col-start-1 md:col-end-6 xl:col-start-4 xl:col-end-7 xl:mt-0'>
             <form
               className=''
               onSubmit={(e: any) => sendEmail(e)}
@@ -210,7 +210,7 @@ export default function ContactSection(props: MyProps) {
             </form>
             {alert && success && (
               <div
-                className='mt-5 flex w-full items-center rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 md:w-[600px]'
+                className='mt-5 flex w-full items-center rounded-xl border border-green-300 bg-green-50 p-4 text-sm text-green-800 md:w-[600px]'
                 role='alert'
               >
                 <svg
