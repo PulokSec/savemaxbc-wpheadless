@@ -13,7 +13,7 @@ export default function WhyChooseUs(props: MyProps) {
   const { featuredData } = props;
   const [active, setActive] = useState(0);
   return (
-    <section className=' h-full bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10 lg:-mt-24'>
+    <section className='-mt-40 h-full bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10 lg:-mt-24'>
       <div className='h-64'></div>
       <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-8 lg:col-start-1 lg:px-10'>
         <h2 className='text-center text-2xl md:text-5xl'>

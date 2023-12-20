@@ -130,7 +130,7 @@ export default function PaginationSearch(props: MyProps) {
             );
           })}
         </div>
-        <div className='flex items-center justify-center'>
+        <div className='flex items-center justify-center mb-20 md:mb-28'>
           <Pagination
             currentPage={currentPage}
             maxLength={6}
