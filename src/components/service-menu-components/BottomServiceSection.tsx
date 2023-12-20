@@ -14,7 +14,7 @@ export default function BottomServiceSection(props: MyProps) {
     >
       <div className=''>
         <div
-          className='md:text-md container mx-auto mt-10 px-5 text-start text-xs text-white lg:mt-40 lg:text-lg'
+          className='md:text-md container mx-auto mt-10 md:mt-24 px-5 text-start text-xs text-white lg:mt-40 lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: bottomSection.description,
           }}
