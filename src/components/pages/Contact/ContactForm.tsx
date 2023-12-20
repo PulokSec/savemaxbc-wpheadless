@@ -109,7 +109,7 @@ const ContactForm = (props: Props) => {
               type='text'
               name='name'
               id='name'
-              className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+              className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
               placeholder='Name'
             />
           </div>
@@ -118,7 +118,7 @@ const ContactForm = (props: Props) => {
               onChange={(e) => handleChange(e, setMail)}
               value={mail}
               type='email'
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
               name='mail'
               id='mail'
               placeholder='Email address'
@@ -129,7 +129,7 @@ const ContactForm = (props: Props) => {
               onChange={(e) => handleChange(e, setNumber)}
               value={number}
               type='number'
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
               placeholder='Phone Number'
               name='phone'
               id='phone'
@@ -139,10 +139,10 @@ const ContactForm = (props: Props) => {
             <select
               onChange={(e) => handleChange(e, setSelected)}
               value={selected}
-              className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+              className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
             >
               <option
-                className=' w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+                className=' w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
                 selected
                 value=''
                 disabled
@@ -155,7 +155,7 @@ const ContactForm = (props: Props) => {
                   <option
                     key={idx}
                     value={a?.name}
-                    className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+                    className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
                   >
                     {a?.name}
                   </option>
@@ -167,7 +167,7 @@ const ContactForm = (props: Props) => {
             <textarea
               onChange={(e) => handleChange(e, setMessage)}
               value={message}
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-sky-950 focus:outline-none md:w-[600px]'
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
               name='message'
               id='message'
               rows={3}
@@ -180,7 +180,7 @@ const ContactForm = (props: Props) => {
             type='submit'
             data-te-ripple-init
             data-te-ripple-color='light'
-            className=' w-full rounded border border-gray-400 bg-sky-950  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-sky-950 focus:border md:w-[600px]'
+            className=' w-full rounded border border-gray-400 bg-[#061632]  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-[#061632] focus:border md:w-[600px]'
           >
             Send Message
           </button>

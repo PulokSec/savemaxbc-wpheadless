@@ -21,7 +21,7 @@ export default function CareersBanner(props: MyProps) {
       <Header navigation={headerData} settingsData={settingsData} />
       <div className='mx-auto py-16'>
         <div className='mx-auto mt-[25%] flex w-full flex-col items-center justify-center px-5 lg:mt-[15%] lg:items-start lg:px-10 lg:pl-[10%]'>
-          <p className='w-full text-lg font-bold uppercase leading-5 text-white lg:w-[500px] md:text-2xl lg:text-6xl'>
+          <p className='w-full text-lg font-bold uppercase leading-5 text-white md:text-2xl lg:w-[500px] lg:text-6xl'>
             {bannerData?.bannerHeading}
           </p>
           <div
@@ -43,7 +43,7 @@ export default function CareersBanner(props: MyProps) {
           <div className='mt-1 flex items-center justify-center'>
             <a
               href='/apply-now'
-              className='text-uppercase rounded-xl border border-solid bg-sky-950 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-sky-950 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950 md:px-3.5 md:py-2.5 md:text-lg'
+              className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
             >
               Start your journey now!
             </a>

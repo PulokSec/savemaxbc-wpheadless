@@ -11,7 +11,7 @@ export default function WhoWeAre(props: MyProps) {
   return (
     <section className='mt-14 lg:container md:px-10 lg:mx-auto lg:mt-60 2xl:mt-60'>
       <div className='text-center md:px-10 lg:w-full'>
-        <h1 className='px-5 text-center text-lg leading-7 text-[#525659] md:text-5xl'>
+        <h1 className='px-5 text-center text-lg leading-7 text-[#515151] md:text-5xl'>
           {featuredData?.topHead}
         </h1>
         <div

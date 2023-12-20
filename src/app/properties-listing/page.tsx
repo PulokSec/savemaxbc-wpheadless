@@ -187,35 +187,35 @@ export default async function PropertiesListing({
         {searchParams?.category === 'recent' ? (
           <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
             {searchParams?.city ? searchParams?.city : ''} Recent{' '}
-            <span className='text-leading-3 font-bold text-[#525659]'>
+            <span className='text-leading-3 font-bold text-[#515151]'>
               Listings
             </span>
           </h1>
         ) : searchParams?.category === 'house' ? (
           <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
             {searchParams?.city ? searchParams?.city : ''} Homes{' '}
-            <span className='text-leading-3 font-bold text-[#525659]'>
+            <span className='text-leading-3 font-bold text-[#515151]'>
               Listings
             </span>
           </h1>
         ) : searchParams?.category === 'townhouse' ? (
           <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
             {searchParams?.city ? searchParams?.city : ''} Townhouses{' '}
-            <span className='text-leading-3 font-bold text-[#525659]'>
+            <span className='text-leading-3 font-bold text-[#515151]'>
               Listings
             </span>
           </h1>
         ) : searchParams?.category === 'condominium' ? (
           <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
             {searchParams?.city ? searchParams?.city : ''} Condominium{' '}
-            <span className='text-leading-3 font-bold text-[#525659]'>
+            <span className='text-leading-3 font-bold text-[#515151]'>
               Listings
             </span>
           </h1>
         ) : (
           <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
             Featured{' '}
-            <span className='text-leading-3 font-bold text-[#525659]'>
+            <span className='text-leading-3 font-bold text-[#515151]'>
               Listings
             </span>
           </h1>

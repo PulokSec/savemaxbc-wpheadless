@@ -16,17 +16,17 @@ export default function ServicePointFeature(props: MyProps) {
               <li key={i} className='mb-10 list-none text-left'>
                 <div className='flex items-center justify-center'>
                   <div className='flex flex-col items-center justify-center'>
-                    <div className='relative mr-[-40px] flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white text-4xl font-semibold text-[#051532]'>
+                    <div className='relative mr-[-40px] flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white text-4xl font-semibold text-[#061632]'>
                       {item?.tabNo}
                     </div>
                   </div>
                   <div
                     className={
                       i == 0
-                        ? 'w-full rounded-tl-3xl bg-[#051532] py-10 pl-14 pr-3 text-gray-200 shadow'
+                        ? 'w-full rounded-tl-3xl bg-[#061632] py-10 pl-14 pr-3 text-gray-200 shadow'
                         : i === length - 1
-                        ? 'w-full rounded-bl-3xl bg-[#051532] py-10 pl-14 pr-3 text-gray-200 shadow'
-                        : 'w-full bg-[#051532] py-10 pl-14 pr-3 text-gray-200 shadow'
+                        ? 'w-full rounded-bl-3xl bg-[#061632] py-10 pl-14 pr-3 text-gray-200 shadow'
+                        : 'w-full bg-[#061632] py-10 pl-14 pr-3 text-gray-200 shadow'
                     }
                   >
                     <h3 className='text-lg font-semibold leading-6'>
@@ -56,7 +56,7 @@ export default function ServicePointFeature(props: MyProps) {
       </div>
 
       <div className='lg:max-w-screen mt-10 grid grid-cols-12 items-center justify-center lg:mx-0 lg:mt-20 lg:gap-5'>
-        <div className='relative cover col-span-12 mx-auto mt-5 h-72 w-11/12 md:h-[500px] md:w-3/4 lg:h-[550px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
+        <div className='cover relative col-span-12 mx-auto mt-5 h-72 w-11/12 md:h-[500px] md:w-3/4 lg:h-[550px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
           <NextImage
             useSkeleton
             src={featuredData?.featuredImageLeft?.sourceUrl}
@@ -75,10 +75,10 @@ export default function ServicePointFeature(props: MyProps) {
                       <div
                         className={
                           i == 0
-                            ? 'w-full rounded-tr-3xl bg-[#051532] py-10 pl-3 pr-14 text-gray-200 shadow'
+                            ? 'w-full rounded-tr-3xl bg-[#061632] py-10 pl-3 pr-14 text-gray-200 shadow'
                             : i === length - 1
-                            ? 'w-full rounded-br-3xl bg-[#051532] py-10 pl-3 pr-14 text-gray-200 shadow'
-                            : 'w-full bg-[#051532] py-10 pl-3 pr-14 text-gray-200 shadow'
+                            ? 'w-full rounded-br-3xl bg-[#061632] py-10 pl-3 pr-14 text-gray-200 shadow'
+                            : 'w-full bg-[#061632] py-10 pl-3 pr-14 text-gray-200 shadow'
                         }
                       >
                         <h3 className='text-end text-lg font-semibold leading-6'>
@@ -92,7 +92,7 @@ export default function ServicePointFeature(props: MyProps) {
                         ></div>
                       </div>
                       <div className='flex flex-col items-center justify-center'>
-                        <div className='relative ml-[-40px] flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white text-4xl font-semibold text-[#051532]'>
+                        <div className='relative ml-[-40px] flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white text-4xl font-semibold text-[#061632]'>
                           {item?.tabNo}
                         </div>
                       </div>

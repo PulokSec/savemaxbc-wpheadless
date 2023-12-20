@@ -24,7 +24,7 @@ export default function PointFeature(props: MyProps) {
               ></div>
               {featuredData?.featuredDivLeft?.map((item: any, i: number) => (
                 <div className='mt-5 px-2 md:px-5' key={i}>
-                  <h3 className='w-full text-xl leading-5 text-sky-950 md:w-full md:text-xl lg:w-[500px] lg:text-2xl'>
+                  <h3 className='w-full text-xl leading-5 text-[#061632] md:w-full md:text-xl lg:w-[500px] lg:text-2xl'>
                     {item?.title}
                   </h3>
                   <div
@@ -65,7 +65,7 @@ export default function PointFeature(props: MyProps) {
                   {featuredData?.featuredDivRight?.map(
                     (item: any, i: number) => (
                       <div className='container mt-5' key={i}>
-                        <h3 className='w-full text-xl leading-5 text-sky-950 lg:w-[500px] lg:text-2xl'>
+                        <h3 className='w-full text-xl leading-5 text-[#061632] lg:w-[500px] lg:text-2xl'>
                           {item?.title}
                         </h3>
                         <div
@@ -80,7 +80,7 @@ export default function PointFeature(props: MyProps) {
                   <div className='mt-2 py-10 text-start'>
                     <a
                       href='/properties-listing'
-                      className='mt-10 border border-solid px-6 py-4 text-sm font-semibold text-black shadow-sm hover:bg-sky-950 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-950'
+                      className='mt-10 border border-solid px-6 py-4 text-sm font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632]'
                     >
                       See More
                     </a>

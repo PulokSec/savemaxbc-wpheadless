@@ -17,21 +17,35 @@ export default function ServiceBanner(props: MyProps) {
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
-      <div className='relative h-[60vh] py-16 md:mx-auto md:h-[90vh]'>
-        <div className='mx-auto ml-0 flex h-full flex-col items-center justify-center px-5 text-center  '>
+      <div className='mx-auto h-[60vh] py-16 md:h-[90vh]'>
+        <div className='mx-auto ml-0 flex h-full w-full flex-col items-center justify-center text-center md:items-center'>
           {bannerData?.topBannerHeading && (
-            <p className='text-leading-3 text-center text-2xl font-black text-white md:text-3xl lg:text-5xl'>
+            <p className='text-leading-8 text-center text-lg font-bold text-white md:text-start md:text-5xl'>
               {bannerData?.topBannerHeading}
             </p>
           )}
-          <p className='text-leading-3 text-md mt-5 text-center text-2xl font-black text-white  md:text-4xl  lg:text-6xl'>
+          {usingFor === 'news' && (
+            <p className='text-leading-9 text-md mt-5 font-bold text-[#515151] md:text-3xl'>
+              {bannerData?.bannerSubheading}
+            </p>
+          )}
+          <p className='text-leading-3 mt-5 text-xl font-bold text-white md:text-6xl'>
             {bannerData?.bannerHeading}
           </p>
-        </div>
-        <div className='container absolute left-1/2 mx-auto w-[80%] -translate-x-1/2 rounded-b-xl bg-white px-5 py-3 text-center shadow-md'>
-          <div className='md:text-md py-4 text-center text-xs font-medium text-[#515151] lg:text-lg '>
-            <p className='text-md'>{bannerData?.bannerDescription}</p>
-          </div>
+          {bannerData?.bannerDescription && (
+            <div className='mx-auto mt-8 max-w-[1400px] px-3 text-center text-white md:text-start'>
+              <p className='text-md'>{bannerData?.bannerDescription}</p>
+            </div>
+          )}
+          {bannerData?.bannerButton && (
+            <div className='mt-8 text-center text-black md:text-start'>
+              <a href={bannerData?.bannerButton} className=''>
+                <button className='border-bg-[#061632] rounded-md border-[1px] bg-[#061632] px-8 py-3 text-white hover:border-[#061632] hover:bg-white hover:text-gray-800'>
+                  CONTACT US
+                </button>
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ export default function HomeBuyerSection(props: MyProps) {
                     <div
                       className={
                         active == i
-                          ? 'flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#051532] text-xl font-semibold text-white shadow'
+                          ? 'flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-[#061632] text-xl font-semibold text-white shadow'
                           : 'flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-gray-200 text-xl font-semibold'
                       }
                     >
@@ -41,7 +41,7 @@ export default function HomeBuyerSection(props: MyProps) {
                   <div
                     className={
                       active == i
-                        ? 'rounded bg-[#051532] p-5 py-10 text-white shadow'
+                        ? 'rounded bg-[#061632] p-5 py-10 text-white shadow'
                         : 'w-full rounded bg-gray-200 p-5 py-10 shadow'
                     }
                   >

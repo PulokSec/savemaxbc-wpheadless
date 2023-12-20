@@ -16,17 +16,17 @@ export default function CommercialServiceFeature(props: MyProps) {
               <li key={i} className='mb-10 list-none text-left'>
                 <div className='flex flex-col items-center justify-center md:flex-row'>
                   <div className='flex flex-col items-center justify-center'>
-                    <div className='relative hidden h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white text-4xl font-semibold text-[#051532] md:mr-[-40px] md:flex'>
+                    <div className='relative hidden h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white text-4xl font-semibold text-[#061632] md:mr-[-40px] md:flex'>
                       {item?.tabNo}
                     </div>
                   </div>
                   <div
                     className={
                       i == 0
-                        ? 'w-full bg-[#051532] py-10 pr-3 text-gray-200 shadow md:h-[200px] md:rounded-tl-3xl md:pl-14 lg:h-[300px]'
+                        ? 'w-full bg-[#061632] py-10 pr-3 text-gray-200 shadow md:h-[200px] md:rounded-tl-3xl md:pl-14 lg:h-[300px]'
                         : i === length - 1
-                        ? 'w-full bg-[#051532] py-10 pr-3 text-gray-200 shadow md:h-[200px] md:rounded-bl-3xl md:pl-14 lg:h-[300px]'
-                        : 'w-full bg-[#051532] py-10 pr-3 text-gray-200 shadow md:h-[200px] md:pl-14 lg:h-[300px]'
+                        ? 'w-full bg-[#061632] py-10 pr-3 text-gray-200 shadow md:h-[200px] md:rounded-bl-3xl md:pl-14 lg:h-[300px]'
+                        : 'w-full bg-[#061632] py-10 pr-3 text-gray-200 shadow md:h-[200px] md:pl-14 lg:h-[300px]'
                     }
                   >
                     <h3 className='text-center text-lg font-semibold leading-6 md:text-start'>
@@ -75,10 +75,10 @@ export default function CommercialServiceFeature(props: MyProps) {
                       <div
                         className={
                           i == 0
-                            ? 'w-full bg-[#051532] py-10 pl-3 text-gray-200 shadow md:h-[200px] md:rounded-tr-3xl md:pr-14 lg:h-[300px]'
+                            ? 'w-full bg-[#061632] py-10 pl-3 text-gray-200 shadow md:h-[200px] md:rounded-tr-3xl md:pr-14 lg:h-[300px]'
                             : i === length - 1
-                            ? 'w-full bg-[#051532] py-10 pl-3 text-gray-200 shadow md:h-[200px] md:rounded-br-3xl md:pr-14 lg:h-[300px]'
-                            : 'w-full bg-[#051532] py-10 pl-3 text-gray-200 shadow md:h-[200px] md:pr-14 lg:h-[300px]'
+                            ? 'w-full bg-[#061632] py-10 pl-3 text-gray-200 shadow md:h-[200px] md:rounded-br-3xl md:pr-14 lg:h-[300px]'
+                            : 'w-full bg-[#061632] py-10 pl-3 text-gray-200 shadow md:h-[200px] md:pr-14 lg:h-[300px]'
                         }
                       >
                         <h3 className='text-center text-lg font-semibold leading-6 md:text-end'>
@@ -92,7 +92,7 @@ export default function CommercialServiceFeature(props: MyProps) {
                         ></div>
                       </div>
                       <div className='hidden flex-col items-center justify-center md:flex'>
-                        <div className='relative flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white text-4xl font-semibold text-[#051532] md:ml-[-40px]'>
+                        <div className='relative flex h-20 w-20 items-center justify-center rounded-full border-4 border-white bg-white text-4xl font-semibold text-[#061632] md:ml-[-40px]'>
                           {item?.tabNo}
                         </div>
                       </div>

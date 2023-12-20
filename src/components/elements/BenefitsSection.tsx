@@ -52,7 +52,7 @@ export default function BenefitsSection(props: MyProps) {
                     <h3
                       className={
                         active == i
-                          ? 'text-sky-950'
+                          ? 'text-[#061632]'
                           : 'text-[#585858]' +
                             'w-full text-xl leading-5 md:w-full md:text-xl lg:w-[500px] lg:text-2xl'
                       }
@@ -92,7 +92,7 @@ export default function BenefitsSection(props: MyProps) {
                     <h3
                       className={
                         active == i
-                          ? 'text-sky-950'
+                          ? 'text-[#061632]'
                           : 'text-[#585858]' +
                             'w-full text-start text-xl leading-5 md:w-full md:text-xl lg:w-[500px] lg:text-2xl'
                       }

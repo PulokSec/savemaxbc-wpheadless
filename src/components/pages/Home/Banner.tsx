@@ -72,10 +72,10 @@ export default function Banner(props: MyProps) {
       <Header navigation={headerData} settingsData={settingsData} />
       <div className='mx-auto py-16'>
         <div className='mx-auto mt-[15%] flex w-full flex-col items-center justify-center px-5 text-center md:mt-[10%] md:px-10'>
-          <p className='text-leading-3 text-lg font-black font-medium text-white md:text-5xl'>
+          <p className='text-leading-3 text-lg font-black text-white md:text-5xl'>
             {bannerData?.bannerHeading}
           </p>
-          <p className='text-leading-3 text-md mt-5 text-white md:text-3xl'>
+          <p className='text-leading-3 text-md mt-5 font-semibold text-white md:text-3xl'>
             {bannerData?.bannerSubtitle}
           </p>
           <div className='mt-10 flex items-center justify-center gap-x-6'>
@@ -94,7 +94,7 @@ export default function Banner(props: MyProps) {
               <button
                 onClick={(e: any) => handleSubmit(e)}
                 type='submit'
-                className='border-bg-blue relative  right-[35px] cursor-pointer rounded-[50%] border bg-sky-950 p-3 md:right-[50px] md:p-4'
+                className='border-bg-blue relative  right-[35px] cursor-pointer rounded-[50%] border bg-[#061632] p-3 md:right-[50px] md:p-4'
               >
                 <GoSearch className=' text-white md:w-5' />
               </button>
@@ -153,7 +153,7 @@ export default function Banner(props: MyProps) {
             )}
           </div>
           <div
-            className='mt-8 text-center text-white'
+            className='mt-8 text-center font-medium text-white'
             dangerouslySetInnerHTML={{
               __html: bannerData?.bannerDescription,
             }}

@@ -74,7 +74,7 @@ export default function Header(props: MyProps) {
     <div className='top-0 z-50 w-full shadow'>
       <header className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/menu-bg.png")] bg-cover shadow-md'>
         <nav
-          className='flex items-center justify-between px-10 py-3'
+          className='flex items-center justify-between px-10 py-3 lg:px-40'
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
@@ -103,17 +103,17 @@ export default function Header(props: MyProps) {
               if (item?.parentId === null) {
                 return (
                   <div key={item.label} className='relative'>
-                    <a
-                      href={item.url}
+                    <div
+                      onClick={() => router.push(item.url)}
                       onMouseEnter={() =>
                         item?.childItems?.nodes?.length > 0
                           ? setOpen(true)
                           : setOpen(false)
                       }
-                      className={`flex items-center justify-center gap-1 text-lg font-bold leading-10  hover:text-[#B48237] ${
+                      className={`flex cursor-pointer items-center justify-center gap-1 text-lg font-bold leading-10 ${
                         item?.childItems?.nodes?.length > 0 && open
-                          ? 'text-[#B48237]'
-                          : 'text-white'
+                          ? 'from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
+                          : 'from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
                       }`}
                     >
                       {item.label}
@@ -124,7 +124,7 @@ export default function Header(props: MyProps) {
                           viewBox='0 0 24 24'
                           strokeWidth={1.5}
                           stroke='currentColor'
-                          className='h-4 w-4'
+                          className='h-4 w-4 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
                         >
                           <path
                             strokeLinecap='round'
@@ -133,7 +133,7 @@ export default function Header(props: MyProps) {
                           />
                         </svg>
                       )}
-                    </a>
+                    </div>
                     <ul
                       onMouseEnter={() => setOpen(true)}
                       onMouseLeave={() => setOpen(false)}
@@ -148,7 +148,7 @@ export default function Header(props: MyProps) {
                           <a
                             key={submenu.label}
                             href={submenu.uri}
-                            className='"flex hover:bg-gray-100" w-full items-center px-3 py-2 text-sm text-white hover:text-[#B48237]'
+                            className='flex w-full items-center from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text px-3 py-2 text-sm  text-white hover:bg-gradient-to-r hover:text-transparent'
                           >
                             {submenu.label}
                           </a>
@@ -162,15 +162,18 @@ export default function Header(props: MyProps) {
             })}
             <a
               href='mailto:admin@savemaxwestcoast.com'
-              className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
+              className='text-lg font-bold leading-10'
             >
-              <AiOutlineMail className='h-5 w-5' aria-hidden='true' />
+              <AiOutlineMail
+                className='h-5 w-5 text-white hover:text-[#ad782f]'
+                aria-hidden='true'
+              />
             </a>
-            <a
-              href='tel:778-200-5050'
-              className='text-lg font-bold leading-10 text-white hover:text-[#B48237]'
-            >
-              <BsTelephone className='h-5 w-5' aria-hidden='true' />
+            <a href='tel:778-200-5050' className='text-lg font-bold leading-10'>
+              <BsTelephone
+                className='h-5 w-5 text-white hover:text-[#ad782f]'
+                aria-hidden='true'
+              />
             </a>
           </div>
         </nav>
@@ -215,9 +218,9 @@ export default function Header(props: MyProps) {
                                 ? setOpen(true)
                                 : setOpen(false)
                             }
-                            className={`flex items-center justify-start gap-1 text-lg font-bold leading-7 text-gray-900 hover:bg-gray-50  hover:text-[#B48237] ${
+                            className={`flex items-center justify-start gap-1 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text text-lg  font-bold leading-7 text-gray-900  hover:bg-gray-50 hover:bg-gradient-to-r hover:text-transparent ${
                               item?.childItems?.nodes?.length > 0 && open
-                                ? 'text-[#B48237]'
+                                ? 'from-[#eee38f] via-[#ad782f] to-[#dbc071]  bg-clip-text hover:bg-gradient-to-r hover:text-transparent'
                                 : 'text-gray-900'
                             }`}
                           >
@@ -253,7 +256,7 @@ export default function Header(props: MyProps) {
                                 <a
                                   key={submenu.label}
                                   href={submenu.uri}
-                                  className='flex items-center justify-start gap-1 text-lg font-bold leading-7 text-gray-900 hover:bg-gray-50  hover:text-[#B48237]'
+                                  className='flex items-center justify-start gap-1 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text text-lg  font-bold leading-7 text-gray-900  hover:bg-gray-50 hover:bg-gradient-to-r hover:text-transparent'
                                 >
                                   {submenu.label}
                                 </a>
@@ -269,14 +272,14 @@ export default function Header(props: MyProps) {
                     href='mailto:admin@savemaxwestcoast.com'
                     className='hover:bg-100 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
-                    <Mail className='mr-2 h-5 w-5 font-bold text-[#B48237]' />
+                    <Mail className='mr-2 h-5 w-5 text-[#061632] hover:text-[#ad782f] ' />
                     <p className='text-[15px]'>admin@savemaxwestcoast.com</p>
                   </a>
                   <a
                     href='tel:778-200-5050'
                     className='hover:bg-100 mb-12 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
                   >
-                    <Phone className='mr-2 h-5 w-5 font-bold text-[#B48237]' />
+                    <Phone className='mr-2 h-5 w-5 font-bold text-[#061632] hover:text-[#ad782f]' />
                     <p className='mt-1 text-[15px]'>778-200-5050</p>
                   </a>
                   <form
