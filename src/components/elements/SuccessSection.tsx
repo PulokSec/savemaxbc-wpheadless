@@ -10,11 +10,11 @@ export default function SuccessSection(props: MyProps) {
   return (
     <section className='mt-0 px-5 md:px-10'>
       <div className='-mt-10 pb-10 pt-0 md:py-10'>
-        <div className='mx-auto w-full'>
-          <div className='mx-auto flex flex-col items-center justify-around gap-4 md:mt-10 md:flex-col md:px-10 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row'>
-            <div className='flex flex-col items-start justify-center'>
+        <div className='mx-auto max-w-[1400px]'>
+          <div className=' flex flex-col items-center justify-center gap-4 md:mt-10 md:px-10  lg:mx-0 lg:mt-20 lg:flex-row '>
+            <div className='flex flex-col items-start justify-center lg:w-1/2'>
               <div className='text-start lg:w-full'>
-                <h2 className='w-full text-start text-xl md:text-4xl'>
+                <h2 className='mx-auto w-full text-start text-xl md:text-4xl lg:text-[42px]'>
                   {featuredData?.featureTitle}
                 </h2>
                 <div
@@ -24,7 +24,7 @@ export default function SuccessSection(props: MyProps) {
                   }}
                 ></div>
               </div>
-              <div className='mt-5 text-start  md:mt-10'>
+              <div className='mt-5 text-start md:mt-10'>
                 <a
                   href='/apply-now'
                   className='text-uppercase rounded-bl-[20px] border border-solid px-2 py-1 text-xs  font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
@@ -33,10 +33,10 @@ export default function SuccessSection(props: MyProps) {
                 </a>
               </div>
             </div>
-            <div className=''>
+            <div className='mx-auto lg:w-1/2'>
               <NextImage
                 useSkeleton
-                className='w-40 md:w-[400px]'
+                className='flex w-64 items-end justify-end md:w-[100%] '
                 src={featuredData?.image?.sourceUrl}
                 alt={featuredData?.image?.altText}
                 width='500'
