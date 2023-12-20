@@ -31,6 +31,9 @@ const query = gql`
             bannerImage {
               sourceUrl
             }
+            bannerImagePc {
+              sourceUrl
+            }
             bannerHeading
           }
           aboutFeatureSection {
