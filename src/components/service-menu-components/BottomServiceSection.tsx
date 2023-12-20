@@ -22,7 +22,7 @@ export default function BottomServiceSection(props: MyProps) {
         <div className='mt-14 rounded-xl text-center'>
           <a
             href='/contact-us'
-            className='text-uppercase rounded-md border-[2px] bg-white px-5 py-3 text-base font-semibold text-[#061632] shadow-sm hover:border-[#061632] hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:text-lg'
+            className='text-uppercase rounded-md border-[2px]  px-5 py-3 text-base font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:text-lg'
           >
             Contact Us
           </a>
