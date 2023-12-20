@@ -42,6 +42,7 @@ const query = gql`
           aboutSection {
             topHead
             topDescription
+            description
             featureTitle
             featureDescription
             image {

@@ -32,18 +32,18 @@ export default function FindRealtorBanner(props: MyProps) {
     >
       <Header navigation={headerData} settingsData={settingsData} />
       <div className='flex h-[70vh] flex-col items-center justify-center lg:h-[100vh]'>
-        <div className='py-16'>
+        <div className='py-8 md:py-16'>
           <div
             className={`${
               bannerData?.bannerDescription ? 'md:mb-[20%]' : 'md:mb-[10%]'
-            }  flex h-[40vh] w-full flex-col items-center justify-center px-5 lg:h-[60vh] lg:px-10`}
+            }  flex h-[40vh] w-full flex-col items-center justify-center px-5 lg:h-[60vh] lg:px-10 -mt-20 md:mt-0`}
           >
-            <p className='w-full text-center text-lg font-bold uppercase leading-5 text-white lg:text-6xl'>
+            <p className='w-full text-center text-xl font-bold uppercase leading-5 text-white lg:text-6xl'>
               {bannerData?.bannerHeading}
             </p>
             {bannerData?.bannerDescription && (
               <div
-                className='mt-8 text-center text-xl font-semibold text-white lg:text-3xl'
+                className='mt-8 text-center text-lg text-white lg:text-3xl font-semibold'
                 dangerouslySetInnerHTML={{
                   __html: bannerData?.bannerDescription,
                 }}
@@ -52,7 +52,7 @@ export default function FindRealtorBanner(props: MyProps) {
           </div>
         </div>
         {topTitle && topDesc ? (
-          <div className='container relative mx-auto w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:-mt-24'>
+          <div className='container relative mx-auto w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md -mt-20 lg:-mt-24'>
             <div
               className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
               dangerouslySetInnerHTML={{
