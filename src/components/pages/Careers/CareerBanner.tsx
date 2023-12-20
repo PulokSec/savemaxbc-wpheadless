@@ -24,7 +24,7 @@ export default function CareersBanner(props: MyProps) {
           <div
             className={`${
               bannerData?.bannerDescription ? 'md:mb-[20%]' : 'md:mb-[10%]'
-            }  flex h-[40vh] w-full flex-col items-start justify-center px-5 lg:mt-[10%] lg:h-[60vh] lg:pl-[15%] 2xl:pl-[35%]`}
+            }  flex h-[40vh] w-full flex-col items-start justify-center px-5 lg:mt-[10%] lg:h-[60vh] md:pl-[10%] lg:pl-[15%] xl:pl-[35%]`}
           >
             <p
               style={{ lineHeight: '75px' }}
