@@ -171,7 +171,7 @@ export default async function SellingServices() {
       },
     },
   });
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <main className='max-w-screen mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
