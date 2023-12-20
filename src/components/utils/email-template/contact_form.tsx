@@ -66,7 +66,9 @@ const ApplyNowEmail = ({ name, mail, phone, message, field }: MyProps) => (
 
         <Section style={paragraphContent}>
           <Text style={paragraph}>Thank you,</Text>
-          <Text style={{ ...paragraph, fontSize: '20px' }}>{name}</Text>
+          <Text style={{ ...paragraph, fontSize: '20px', ...headerBlue }}>
+            {name}
+          </Text>
         </Section>
 
         <Section style={{ ...paragraphContent, paddingBottom: 30 }}>
@@ -98,7 +100,7 @@ const sectionLogo = {
 };
 
 const headerBlue = {
-  marginTop: '-1px',
+  color: '#0F2650',
 };
 
 const container = {

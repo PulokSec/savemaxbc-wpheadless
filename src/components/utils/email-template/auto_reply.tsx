@@ -79,7 +79,7 @@ const ReplyEmail = ({ name }: MyProps) => (
         </Section>
         <Section style={paragraphContent}>
           <Text style={paragraph}>Thank you,</Text>
-          <Text style={{ ...paragraph, fontSize: '20px' }}>
+          <Text style={{ ...paragraph, fontSize: '20px', ...headerBlue }}>
             Save Max Westcoast Realty Inc
           </Text>
         </Section>
@@ -148,7 +148,7 @@ const sectionLogo = {
 };
 
 const headerBlue = {
-  marginTop: '-1px',
+  color: '#0F2650',
 };
 
 const container = {
