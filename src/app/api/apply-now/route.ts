@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 
 import { sendEmail } from '@/lib/email-helper';
 
-import AutoReply from '@/components/utils/email-template/auto_reply';
+import ReplyEmail from '@/components/utils/email-template/auto_reply';
 import ApplyNowEmail from '@/components/utils/email-template/contact_form';
 
 const smtpOptions = {
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       subject: formData.get('emailSubject') as string,
       cc: formData.get('cc') as string,
       html: render(
-        AutoReply({
+        ReplyEmail({
           name: formData.get('name') as string,
         })
       ),

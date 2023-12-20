@@ -207,7 +207,11 @@ export default async function SingleProperty({
 
             <p className='mb-2'>{allDetails[0]?.PublicRemarks}</p>
             <h4 className='mb-1 text-xl text-[#B48237]'>
-              ${allDetails[0]?.Price}
+              ${' '}
+              {parseFloat(allDetails[0]?.Price).toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </h4>
           </div>
 

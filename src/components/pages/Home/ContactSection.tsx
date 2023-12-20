@@ -27,7 +27,11 @@ export default function ContactSection(props: MyProps) {
     preventDefault: () => void;
     target: { reset: () => void };
   }) => {
-    e.preventDefault();
+    if (name.length < 1 || mail.length < 5 || phone.length < 8) {
+      setAlert(true);
+      setSuccess(null);
+      return;
+    }
 
     const bodyData = JSON.stringify({
       fromEmail: 'noreply@savemaxbc.com',
@@ -60,6 +64,7 @@ export default function ContactSection(props: MyProps) {
       setSelected('');
       setAlert(true);
     }
+    e.preventDefault();
   };
   useEffect(() => {
     // when the component is mounted, the alert is displayed for 3 seconds
@@ -130,6 +135,7 @@ export default function ContactSection(props: MyProps) {
                   onChange={(e) => handleChange(e, setName)}
                   value={name}
                   type='text'
+                  required
                   name='name'
                   id='name'
                   className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
@@ -145,12 +151,14 @@ export default function ContactSection(props: MyProps) {
                   name='mail'
                   id='mail'
                   placeholder='Email address'
+                  required
                 />
               </div>
               <div className='relative mb-6' data-te-input-wrapper-init>
                 <input
                   onChange={(e) => handleChange(e, setPhone)}
                   value={phone}
+                  required
                   type='number'
                   className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
                   placeholder='Phone Number'
@@ -226,6 +234,30 @@ export default function ContactSection(props: MyProps) {
                 <div>
                   <span className='font-medium'>Success!</span> Thanks for
                   contacting us, we will get back to you.
+                </div>
+              </div>
+            )}
+            {alert && !success && (
+              <div
+                className='mt-5 flex w-full items-center rounded-lg border bg-red-300 p-4  text-sm text-red-700 md:w-[600px]'
+                role='alert'
+              >
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  viewBox='0 0 24 24'
+                  fill='currentColor'
+                  className='h-5 w-5'
+                >
+                  <path
+                    fill-rule='evenodd'
+                    d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z'
+                    clip-rule='evenodd'
+                  />
+                </svg>
+                <span className='sr-only'>Info</span>
+                <div>
+                  <span className='font-medium'>Sorry! </span> Please fill all
+                  the fields.
                 </div>
               </div>
             )}

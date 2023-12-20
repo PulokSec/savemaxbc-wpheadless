@@ -99,7 +99,11 @@ export default function PaginationSearch(props: MyProps) {
                     {post?.PostalCode}
                   </p>
                   <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
-                    {post?.Price} $
+                    {parseFloat(post?.Price).toLocaleString('en-US', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{' '}
+                    $
                   </p>
                 </div>
 
