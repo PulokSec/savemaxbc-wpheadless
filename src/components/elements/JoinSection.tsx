@@ -15,16 +15,16 @@ export default function JoinSection(props: MyProps) {
             <div className='hidden md:block lg:w-1/2 '>
               <NextImage
                 useSkeleton
-                className='w-64 md:w-[100%] '
+                className='mb-[-400px] w-64 xl:h-[1000px] xl:w-[1200px]'
                 src={featuredData?.image?.sourceUrl}
                 alt={featuredData?.image?.altText}
-                width='500'
-                height='400'
+                width='1200'
+                height='1000'
               />
             </div>
             <div className='flex flex-col items-center justify-center md:items-end md:justify-center lg:w-1/2'>
               <div className='text-start lg:w-full'>
-                <h2 className='w-full text-center text-xl md:text-end md:text-4xl lg:text-[42px]'>
+                <h2 className='w-full text-center text-xl md:text-end md:text-4xl lg:text-5xl'>
                   {featuredData?.featureTitle}
                 </h2>
                 <div
@@ -42,6 +42,16 @@ export default function JoinSection(props: MyProps) {
                   Learn More
                 </a>
               </div>
+            </div>
+            <div className='block md:hidden lg:w-1/2 '>
+              <NextImage
+                useSkeleton
+                className='ml-[-50px] w-[400px]'
+                src={featuredData?.image?.sourceUrl}
+                alt={featuredData?.image?.altText}
+                width='500'
+                height='400'
+              />
             </div>
           </div>
         </div>
