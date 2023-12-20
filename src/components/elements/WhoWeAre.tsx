@@ -8,6 +8,7 @@ type MyProps = {
 
 export default function WhoWeAre(props: MyProps) {
   const { featuredData } = props;
+
   return (
     <section className='mt-14 lg:container md:px-10 lg:mx-auto lg:mt-60 2xl:mt-60'>
       <div className='text-center md:px-10 lg:w-full'>
@@ -18,6 +19,12 @@ export default function WhoWeAre(props: MyProps) {
           className='mx-5 mt-5 text-xs leading-7 md:mx-0 md:text-lg'
           dangerouslySetInnerHTML={{
             __html: featuredData?.topDescription,
+          }}
+        ></div>
+        <div
+          className='mx-5 mt-2 text-justify text-xs md:mx-0 md:text-center md:text-lg'
+          dangerouslySetInnerHTML={{
+            __html: featuredData?.description,
           }}
         ></div>
       </div>
