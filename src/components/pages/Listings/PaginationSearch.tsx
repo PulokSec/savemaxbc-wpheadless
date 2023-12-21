@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
@@ -55,24 +56,21 @@ export default function PaginationSearch(props: MyProps) {
         <div className='mt-8 grid grid-cols-1 gap-x-4 gap-y-10 pb-10 md:grid-cols-2 lg:grid-cols-3 2xl:mt-32 2xl:grid-cols-4'>
           {posts?.map(({ post, cardImageUrl }: any) => {
             return (
-              <div
-                onClick={() =>
-                  router.push(
-                    `/listing/${post?.StreetAddress?.replaceAll(
-                      ' ',
-                      '-'
-                    ).toLowerCase()}-${post?.City?.replaceAll(
-                      ' ',
-                      '-'
-                    ).toLowerCase()}-${post?.Province?.replaceAll(
-                      ' ',
-                      '-'
-                    ).toLowerCase()}-${post?.PostalCode}-${post?.ListingID}`
-                  )
-                }
+              <Link
                 key={post?.ListingID}
+                href={`/listing/${post?.StreetAddress?.replaceAll(
+                  ' ',
+                  '-'
+                ).toLowerCase()}-${post?.City?.replaceAll(
+                  ' ',
+                  '-'
+                ).toLowerCase()}-${post?.Province?.replaceAll(
+                  ' ',
+                  '-'
+                ).toLowerCase()}-${post?.PostalCode}-${post?.ListingID}`}
                 className='card2-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white hover:shadow-2xl hover:shadow-slate-800 md:h-[500px]'
                 style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
+                target='_blank'
               >
                 <div className='flex items-end justify-end'>
                   <div
@@ -99,11 +97,11 @@ export default function PaginationSearch(props: MyProps) {
                     {post?.PostalCode}
                   </p>
                   <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
+                    ${' '}
                     {parseFloat(post?.Price).toLocaleString('en-US', {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
-                    })}{' '}
-                    $
+                    })}
                   </p>
                 </div>
 
@@ -126,7 +124,7 @@ export default function PaginationSearch(props: MyProps) {
                 <p className='mt-2 px-3 text-[11px] font-semibold tracking-wide text-gray-700'>
                   MLS&reg; Number{post?.DdfListingID}
                 </p>
-              </div>
+              </Link>
             );
           })}
         </div>

@@ -90,9 +90,9 @@ export default function CarouselComponent({
           renderDotsOutside={false}
           minimumTouchDrag={80}
           pauseOnHover
-          autoPlay={true}
+          // autoPlay={true}
           autoPlaySpeed={5000}
-          customTransition='all 15s linear'
+          // customTransition='all 15s linear'
           transitionDuration={500}
           removeArrowOnDeviceType={['tablet', 'mobile']}
           partialVisible={false}

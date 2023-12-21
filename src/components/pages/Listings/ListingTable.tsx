@@ -86,7 +86,9 @@ export default function ListingTable(props: MyProps) {
     },
     {
       type: 'Size Interior',
-      value: details?.SizeInterior || '',
+      value: details?.SizeInterior?.includes('sqft')
+        ? `${details?.SizeInterior}`
+        : `${details?.SizeInterior} sqft` || '',
     },
   ];
   return (
