@@ -192,7 +192,12 @@ export default async function SingleProperty({
               </div>
               {allDetails[0]?.SizeInterior && (
                 <div className='w-[150px] rounded-xl bg-gray-400 px-3 py-2 text-center text-lg text-white hover:bg-gray-500'>
-                  <p>{allDetails[0]?.SizeInterior}</p>
+                  <p>
+                    {allDetails[0]?.SizeInterior}{' '}
+                    {allDetails[0]?.SizeInterior?.includes('sqft')
+                      ? ''
+                      : 'sqft'}
+                  </p>
                 </div>
               )}
             </div>
@@ -201,8 +206,8 @@ export default async function SingleProperty({
               {allDetails[0]?.StreetAddress}
             </h2>
             <h3 className='mb-1 text-gray-900'>
-              {allDetails[0]?.City} {allDetails[0]?.Province}{' '}
-              {allDetails[0]?.PostalCode}
+              <span className='capitalize'>{allDetails[0]?.City}</span>{' '}
+              {allDetails[0]?.Province} {allDetails[0]?.PostalCode}
             </h3>
 
             <p className='mb-2'>{allDetails[0]?.PublicRemarks}</p>

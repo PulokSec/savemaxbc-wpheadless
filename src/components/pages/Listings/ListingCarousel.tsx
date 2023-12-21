@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
@@ -45,25 +46,22 @@ export default function ListingCarousel(props: MyProps) {
   const router = useRouter();
   return (
     <>
-      <div className='relative mt-7 py-5 md:mt-20'>
+      <div className='relative mt-7 py-5 md:mt-10'>
         <CarouselComponent>
           {postData?.map(({ post, cardImageUrl }: any) => (
-            <div
-              onClick={() =>
-                router.push(
-                  `/listing/${post?.StreetAddress?.replaceAll(
-                    ' ',
-                    '-'
-                  ).toLowerCase()}-${post?.City?.replaceAll(
-                    ' ',
-                    '-'
-                  ).toLowerCase()}-${post?.Province?.replaceAll(
-                    ' ',
-                    '-'
-                  ).toLowerCase()}-${post?.PostalCode}-${post?.ListingID}`
-                )
-              }
+            <Link
               key={post?.ListingID}
+              target='_blank'
+              href={`/listing/${post?.StreetAddress?.replaceAll(
+                ' ',
+                '-'
+              ).toLowerCase()}-${post?.City?.replaceAll(
+                ' ',
+                '-'
+              ).toLowerCase()}-${post?.Province?.replaceAll(
+                ' ',
+                '-'
+              ).toLowerCase()}-${post?.PostalCode}-${post?.ListingID}`}
               className='card-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start rounded-lg bg-white shadow hover:shadow-2xl hover:shadow-slate-800 md:h-[480px] '
               style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
             >
@@ -91,11 +89,11 @@ export default function ListingCarousel(props: MyProps) {
                   {post?.StreetAddress} {post?.CommunityName} {post?.PostalCode}
                 </p>
                 <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
+                  ${' '}
                   {parseFloat(post?.Price).toLocaleString('en-US', {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })}{' '}
-                  $
                 </p>
               </div>
 
@@ -118,7 +116,7 @@ export default function ListingCarousel(props: MyProps) {
               <p className='mt-2 px-3 text-[11px] font-semibold tracking-wide text-gray-700'>
                 MLS&reg; Number{post?.DdfListingID}
               </p>
-            </div>
+            </Link>
           ))}
         </CarouselComponent>
       </div>
