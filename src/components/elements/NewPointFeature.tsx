@@ -12,7 +12,7 @@ export default function NewPointFeature(props: MyProps) {
       <div className=''>
         <div className='mx-auto px-2 md:px-10'>
           <h2
-            className=' px-2 pt-5 text-start text-2xl md:mb-20 md:ml-52 md:text-3xl lg:text-5xl'
+            className=' px-2 pt-5 text-center text-2xl md:mb-20 md:text-3xl lg:text-5xl'
             dangerouslySetInnerHTML={{
               __html: featuredData?.featureTitle,
             }}

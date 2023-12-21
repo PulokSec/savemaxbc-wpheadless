@@ -25,25 +25,25 @@ export default function FindRealtorBanner(props: MyProps) {
   } = props;
   return (
     <div
-      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat lg:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat md:h-[80vh]'
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
-      <div className='flex h-[70vh] flex-col items-center justify-center lg:h-[100vh]'>
+      <div className='flex h-[70vh] flex-col items-center justify-center md:h-[80vh]'>
         <div className='py-8 md:py-16'>
           <div
             className={`${
               bannerData?.bannerDescription ? 'md:mb-[20%]' : 'md:mb-[10%]'
-            }  -mt-20 flex h-[40vh] w-full flex-col items-center justify-center px-5 md:mt-0 lg:h-[60vh] lg:px-10`}
+            }  -mt-20 flex h-[40vh] w-full flex-col items-center justify-center px-5 md:mt-0 md:h-[45vh] lg:px-10`}
           >
-            <p className='w-full text-center text-xl font-bold uppercase leading-5 text-white lg:text-6xl'>
+            <p className='w-full text-center text-xl md:text-4xl font-bold uppercase leading-5 text-white lg:text-6xl xl:text-[66px] tracking-wide'>
               {bannerData?.bannerHeading}
             </p>
             {bannerData?.bannerDescription && (
               <div
-                className='mt-8 text-center text-lg font-semibold text-white lg:text-3xl'
+                className='mt-8 text-center text-lg md:text-3xl font-semibold text-white lg:text-3xl tracking-wide'
                 dangerouslySetInnerHTML={{
                   __html: bannerData?.bannerDescription,
                 }}
@@ -54,14 +54,14 @@ export default function FindRealtorBanner(props: MyProps) {
         {topTitle && topDesc ? (
           <div className='container relative mx-auto -mt-20 w-[80%] rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:-mt-24'>
             <div
-              className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
+              className='md:text-md mt-3 text-xs leading-6 lg:text-lg'
               dangerouslySetInnerHTML={{
                 __html: topDesc,
               }}
             ></div>
             {topTitle === 'Contact us now!' ? (
               <div className=''>
-                <div className='mt-1 flex items-center justify-center'>
+                <div className='mt-2 lg:mt-3 flex items-center justify-center'>
                   <a
                     href='/contact-us'
                     className='text-uppercase rounded-xl border border-solid bg-[#061632] px-2 py-1 text-xs font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
