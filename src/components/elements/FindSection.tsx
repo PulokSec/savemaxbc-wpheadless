@@ -41,8 +41,8 @@ export default function FindSection(props: MyProps) {
           />
         </div>
         <div className='mx-auto flex w-full flex-col items-end md:w-1/2 xl:w-3/5'>
-          <div className='mx-auto w-3/4 xl:w-2/3'>
-            <h2 className='w-full text-start text-2xl md:text-4xl '>
+          <div className='mx-auto px-5 md:px-0 md:w-3/4 xl:w-2/3'>
+            <h2 className='w-full text-center text-2xl md:text-start md:text-4xl '>
               {featuredData?.featureTitle}
             </h2>
             <div
