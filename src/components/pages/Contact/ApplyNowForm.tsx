@@ -39,6 +39,7 @@ const ApplyNowForm = (props: Props) => {
     preventDefault: () => void;
     target: { reset: () => void };
   }) => {
+    e.preventDefault();
     if (name.length < 1 || mail.length < 5 || phone.length < 8 || !cv) {
       setAlert(true);
       setSuccess(null);
@@ -82,7 +83,6 @@ const ApplyNowForm = (props: Props) => {
       setCv(undefined);
       setAlert(true);
     }
-    e.preventDefault();
   };
   useEffect(() => {
     setTimeout(() => {

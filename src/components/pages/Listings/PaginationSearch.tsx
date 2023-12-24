@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 import '../../../styles/carousel.css';
@@ -21,7 +20,6 @@ export default function PaginationSearch(props: MyProps) {
   const totalPages = Math.ceil(totalCount / 12);
   const [currentPage, setCurrentPage] = useState<number>(currentPageID);
   const [posts, setPosts] = useState(allPosts);
-  const router = useRouter();
   const { setQueryParam } = useQueryParams();
 
   const handlePageClick = (selected: number) => {
