@@ -186,12 +186,12 @@ export default async function NewDevelopmentPreConstruction() {
           />
 
           <div className='bg-[#464646] py-20 text-white'>
-            <h1 className='mx-auto max-w-[1400px] px-5 text-center text-2xl md:text-3xl lg:text-4xl'>
+            <h2 className='mx-auto max-w-[1400px] px-5 text-center text-2xl md:text-3xl lg:text-4xl font-semibold'>
               {
                 data?.pages?.nodes[0]?.newDevelopmentPreConstruction
                   ?.topBannerTitle
               }
-            </h1>
+            </h2>
             <div
               className='md:text-md mx-auto mt-5 max-w-[1400px] px-10 text-center text-xs lg:text-lg'
               dangerouslySetInnerHTML={{

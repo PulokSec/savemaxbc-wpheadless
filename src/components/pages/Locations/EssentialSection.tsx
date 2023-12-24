@@ -7,7 +7,7 @@ type MyProps = {
 };
 export default function EssentialSection(props: MyProps) {
   const { featuredData } = props;
-  console.log(featuredData);
+  // console.log(featuredData);
   return (
     <div>
       <div className='mx-auto mt-10 max-w-[1250px] p-3 lg:mt-20'>
@@ -32,8 +32,8 @@ export default function EssentialSection(props: MyProps) {
         }}
         className={` text-white  `}
       >
-        <div className='md:pb-30 mx-auto  max-w-[1250px] md:py-20'>
-          <div className='mx-auto my-10 flex flex-wrap justify-center md:mt-36'>
+        <div className='md:pb-30 mx-auto  max-w-[1250px] md:py-10'>
+          <div className='mx-auto my-10 flex flex-wrap justify-center md:mt-10'>
             {featuredData?.featuredData?.map((item: any, index: number) => (
               <EssentialCard cardData={item} key={index} />
             ))}

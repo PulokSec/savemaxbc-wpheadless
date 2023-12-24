@@ -254,7 +254,7 @@ export default async function TownhouseSaleSouthSurrey({
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
         <div className=''>
-          <h1 className='mt-5 text-center text-lg md:text-4xl'>
+          <h1 className='mt-10 lg:mt-14 text-center text-lg md:text-4xl px-2'>
             {
               data?.pages?.nodes[0]?.townSouthSurrey?.listingSection
                 ?.recentListingsTitle
@@ -269,7 +269,7 @@ export default async function TownhouseSaleSouthSurrey({
             }}
           ></div>
           <ListingCarousel posts={townPosts?.listings} />
-          <div className='mt-5 text-center md:mt-10'>
+          <div className='mt-5 text-center md:mt-10 mb-10'>
             <a
               href='/properties-listing?city=Surrey&type=Town'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:mt-[-20px] md:px-3.5'
@@ -281,6 +281,7 @@ export default async function TownhouseSaleSouthSurrey({
         <CardSection
           cardSection={data?.pages?.nodes[0]?.townSouthSurrey?.cardSection}
         />
+        <div className='md:h-32'></div>
         <WhyChooseUs
           featuredData={data?.pages?.nodes[0]?.townSouthSurrey?.chooseUsSection}
         />

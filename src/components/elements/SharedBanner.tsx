@@ -34,7 +34,7 @@ export default function SharedBanner(props: MyProps) {
       <div className='mt-20 flex flex-col items-center justify-center md:mt-40 lg:mt-60'>
         <div className='py-16'>
           <div className='flex w-full flex-col items-center justify-center px-5 lg:px-10'>
-            <p className='w-full text-center text-xl font-bold uppercase leading-5 text-white md:text-4xl lg:text-7xl'>
+            <p className='w-full text-center text-xl font-bold uppercase leading-5 text-white md:text-4xl lg:text-6xl'>
               {bannerData?.bannerHeading}
             </p>
             {bannerData?.bannerDescription && (
