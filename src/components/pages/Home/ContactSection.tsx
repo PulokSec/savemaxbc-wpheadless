@@ -27,6 +27,7 @@ export default function ContactSection(props: MyProps) {
     preventDefault: () => void;
     target: { reset: () => void };
   }) => {
+    e.preventDefault();
     if (name.length < 1 || mail.length < 5 || phone.length < 8) {
       setAlert(true);
       setSuccess(null);
@@ -64,7 +65,6 @@ export default function ContactSection(props: MyProps) {
       setSelected('');
       setAlert(true);
     }
-    e.preventDefault();
   };
   useEffect(() => {
     // when the component is mounted, the alert is displayed for 3 seconds

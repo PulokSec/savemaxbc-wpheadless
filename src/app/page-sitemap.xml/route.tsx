@@ -27,6 +27,7 @@ export async function GET() {
     '/home/',
     null,
   ];
+  const includedItems = ['/listing/'];
   const { data } = await getClient().query({
     query,
     context: {
@@ -44,7 +45,7 @@ export async function GET() {
       priority: 0.9,
     }));
 
-  const fields = [...postsSitemaps];
+  const fields = [...postsSitemaps, ...includedItems];
   const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"

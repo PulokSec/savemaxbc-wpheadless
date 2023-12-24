@@ -30,7 +30,7 @@ const ReplyEmail = ({ name }: MyProps) => (
               style={sectionLogo}
               src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
               width='155'
-              height='31'
+              height='50'
               alt='Google Play'
             />
           </Column>
@@ -112,11 +112,21 @@ const ReplyEmail = ({ name }: MyProps) => (
               </Link>
             </Column>
           </Row>
-          <Img
-            width='540'
-            height='48'
-            src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Logo.jpg'
-          />
+        </Section>
+        <Section style={containerContact}>
+          <Row
+            align='left'
+            style={{
+              width: '84px',
+              float: 'left',
+            }}
+          >
+            <Img
+              width='380'
+              height='110'
+              src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
+            />
+          </Row>
         </Section>
 
         <Section style={{ ...paragraphContent, paddingBottom: 30 }}>
@@ -153,7 +163,7 @@ const headerBlue = {
 
 const container = {
   margin: '30px auto',
-  width: '610px',
+  width: '100%',
   backgroundColor: '#fff',
   borderRadius: 5,
   overflow: 'hidden',

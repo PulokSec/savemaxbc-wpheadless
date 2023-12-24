@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { GrLocation } from 'react-icons/gr';
 import { MdOutlineDateRange } from 'react-icons/md';
+import { RxCross2 } from 'react-icons/rx';
 
 import { getSearchQuery } from '@/lib/dataFetching';
 
@@ -19,6 +20,7 @@ const filterData = [
 
 const SearchTab = () => {
   const [filters, setFilters] = useState(filterData);
+  const [filterDataShow, setFilterDataShow] = useState(false);
   const [filtersData, setFiltersData] = useState([]);
   const [buyShow, setBuyShow] = useState(true);
   const [rentShow, setRentShow] = useState(false);
@@ -28,7 +30,9 @@ const SearchTab = () => {
   const domNode: any = useRef();
   const router = useRouter();
   const { setQueryParam } = useQueryParams();
-
+  const handleRemove = (data: string) => {
+    setFilters(filters.filter((filter) => filter.name !== data));
+  };
   const handleSelect = (data: string) => {
     setType(data);
     setQueryParam('type', data);
@@ -114,15 +118,12 @@ const SearchTab = () => {
                   <div
                     key={idx}
                     onClick={() => {
-                      handleSelect(filter.value);
+                      handleRemove(filter.name);
                     }}
-                    className={`flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] ${
-                      type === filter.value
-                        ? 'bg-[#082f49] text-white'
-                        : 'text-gray-400'
-                    }`}
+                    className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
                   >
                     <p className=''>{filter.name}</p>
+                    <RxCross2 className='ml-1 ' />
                   </div>
                 )
               )}
@@ -146,6 +147,7 @@ const SearchTab = () => {
                   className='border-none bg-gray-200 outline-none'
                   type='text'
                   placeholder='Enter business location'
+                  onChange={handleChange}
                 />
               </div>
               <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
@@ -157,13 +159,55 @@ const SearchTab = () => {
                 />
               </div>
               <div className='relative'>
-                <button
-                  onClick={(e: any) => handleSubmit(e)}
-                  type='submit'
-                  className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-white'
+                <div
+                  onClick={() => {
+                    setFilterDataShow(!filterDataShow);
+                  }}
+                  className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-center text-white'
                 >
                   <p className='text-md'>Filter Results</p>
-                </button>
+                </div>
+
+                {filterDataShow ? (
+                  <>
+                    {/* <div className="arrow  absolute h-[20px]  w-[20px] bg-black rotate-45" id="arrow"/> */}
+                    <div className='absolute left-0 z-10 mt-5 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                      <div
+                        className='divide-gray/20 max-h-[400px] divide-y overflow-y-scroll py-2'
+                        role='none'
+                      >
+                        {filterData?.map((element) => {
+                          return (
+                            <div
+                              key={element.name}
+                              className={`flex ${
+                                filters.includes({
+                                  name: element.name,
+                                  value: element.value,
+                                })
+                                  ? 'text-primary'
+                                  : 'text-[#000000]'
+                              } cursor-pointer items-center justify-between`}
+                              onClick={() => {
+                                setFilters(() => [
+                                  { name: element.name, value: element.value },
+                                ]);
+                                handleSelect(element.value);
+                                setFilterDataShow(false);
+                              }}
+                            >
+                              <p className={`  px-4  py-2 text-[14px] `}>
+                                {element.name}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  ''
+                )}
               </div>
             </form>
           </div>
@@ -178,11 +222,12 @@ const SearchTab = () => {
                   <div
                     key={idx}
                     onClick={() => {
-                      handleSelect(filter.value);
+                      handleRemove(filter.name);
                     }}
                     className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
                   >
                     <p className=''>{filter.name}</p>
+                    <RxCross2 className='ml-1 ' />
                   </div>
                 )
               )}
@@ -206,6 +251,7 @@ const SearchTab = () => {
                   className='border-none bg-gray-200 outline-none'
                   type='text'
                   placeholder='Enter business location'
+                  onChange={handleChange}
                 />
               </div>
               <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
@@ -217,13 +263,55 @@ const SearchTab = () => {
                 />
               </div>
               <div className='relative'>
-                <button
-                  onClick={(e: any) => handleSubmit(e)}
-                  type='submit'
+                <div
+                  onClick={() => {
+                    setFilterDataShow(!filterDataShow);
+                  }}
                   className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-center text-white'
                 >
                   <p className='text-md'>Filter Results</p>
-                </button>
+                </div>
+
+                {filterDataShow ? (
+                  <>
+                    {/* <div className="arrow  absolute h-[20px]  w-[20px] bg-black rotate-45" id="arrow"/> */}
+                    <div className='absolute left-0 z-10 mt-5 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                      <div
+                        className='divide-gray/20 max-h-[400px] divide-y overflow-y-scroll py-2'
+                        role='none'
+                      >
+                        {filterData?.map((element) => {
+                          return (
+                            <div
+                              key={element.name}
+                              className={`flex ${
+                                filters.includes({
+                                  name: element.name,
+                                  value: element.value,
+                                })
+                                  ? 'text-primary'
+                                  : 'text-[#000000]'
+                              } cursor-pointer items-center justify-between`}
+                              onClick={() => {
+                                setFilters((prevFilters) => [
+                                  { name: element.name, value: element.value },
+                                ]);
+                                handleSelect(element.value);
+                                setFilterDataShow(false);
+                              }}
+                            >
+                              <p className={`  px-4  py-2 text-[14px] `}>
+                                {element.name}
+                              </p>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  ''
+                )}
               </div>
             </form>
           </div>
