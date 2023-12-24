@@ -181,10 +181,10 @@ export default async function CommercialSale() {
       },
     },
   });
-  console.log(data);
+  // console.log(data);
   return (
     <>
-      <main className='max-w-screen mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
+      <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
         <SharedBanner
           bannerData={
             data?.pages?.nodes[0]?.commercialPropertySale?.bannerSection
@@ -192,9 +192,9 @@ export default async function CommercialSale() {
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mt-80 md:mt-40 lg:mt-40'>
+        <div className='mt-10 md:mt-20'>
           <div className='text-center'>
-            <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
+            <h1 className='mx-auto w-full px-2 text-center text-2xl text-[#082f49] md:text-3xl lg:max-w-[1500px] lg:text-[42px] lg:leading-[50px]'>
               {data?.pages?.nodes[0]?.commercialPropertySale?.topFeatureTitle}
             </h1>
             <div
@@ -207,9 +207,9 @@ export default async function CommercialSale() {
             ></div>
           </div>
         </div>
-        <div className='mt-80 md:mt-40 lg:mt-40'>
+        <div className='mt-10 md:mt-28'>
           <div className='text-center'>
-            <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
+            <h2 className='mx-auto w-full text-center text-2xl md:text-3xl lg:max-w-[1500px] lg:text-5xl lg:text-[42px] lg:leading-[50px] px-2'>
               {
                 data?.pages?.nodes[0]?.commercialPropertySale
                   ?.serviceFeatureSection?.featureTitle

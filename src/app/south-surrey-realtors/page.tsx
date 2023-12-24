@@ -201,7 +201,7 @@ export default async function SouthSurreyRealtors() {
             headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
             settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
-          <div className='py-20'>
+          <div className='py-10 lg:py-20'>
             <h2 className='px-5 text-center text-2xl md:text-3xl lg:text-4xl'>
               {data?.pages?.nodes[0]?.southSurreyRealtors?.topBannerTitle}
             </h2>
@@ -235,7 +235,7 @@ export default async function SouthSurreyRealtors() {
                   </div>
 
                   <div className='w-full '>
-                    <div className='mt-10 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mx-auto lg:mx-0 lg:mt-20 lg:max-w-none lg:gap-0'>
+                    <div className='mt-4 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mx-auto lg:mx-0 md:mt-20 lg:max-w-none lg:gap-0'>
                       <div className='col-span-12 ml-5 md:col-span-12 md:ml-5 lg:col-span-5 lg:col-start-1 lg:pl-10 2xl:col-start-2'>
                         <div className=''>
                           <div

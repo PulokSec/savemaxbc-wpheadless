@@ -169,7 +169,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
   });
-  console.log('data', data);
+  // console.log('data', data);
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
@@ -283,7 +283,7 @@ export default async function DuplexSaleSouthSurrey() {
             className='flex h-[350px] items-center 2xl:h-[45vh] '
           >
             <div className='mx-auto max-w-[1250px] p-3 text-center'>
-              <h2 className='text-[30px] font-semibold lg:mt-5 xl:text-[40px]'>
+              <h2 className='text-[30px] font-bold lg:mt-5 xl:text-[40px]'>
                 {
                   data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner
                     ?.bannerTitle

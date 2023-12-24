@@ -29,7 +29,7 @@ export default function SellerGuideLanding(props: MyProps) {
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
       />
-      <div className='bg-[#E6E6E6] py-20'>
+      <div className='bg-[#E6E6E6] py-14 md:py-20'>
         <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
           {allData?.pages?.nodes[0]?.sellerGuide?.topBannerTitle}
         </h2>
@@ -40,7 +40,7 @@ export default function SellerGuideLanding(props: MyProps) {
           }}
         ></div>
       </div>
-      <h2 className='px-10 py-5 text-center text-2xl md:text-3xl lg:py-8 lg:text-4xl'>
+      <h2 className='px-4 py-5 text-center text-2xl md:px-10 md:text-3xl lg:py-10 lg:text-4xl'>
         {allData?.pages?.nodes[0]?.sellerGuide?.propertySelling?.title}
       </h2>
 
@@ -63,10 +63,10 @@ export default function SellerGuideLanding(props: MyProps) {
                     ></div>
                   </div>
                 </div>
-                <div className='w-1/2'>
+                <div className='md:w-1/2'>
                   <NextImage
                     useSkeleton
-                    className='w-100 lg:w-[100%]'
+                    className='w-[300px] lg:w-[100%]'
                     src={item?.image?.sourceUrl}
                     alt={item?.image?.altText}
                     width='600'
@@ -78,8 +78,10 @@ export default function SellerGuideLanding(props: MyProps) {
           </div>
         )
       )}
-
-      <div className='bg-[#e6e6e6]'>
+      <p className='mx-auto mt-14 max-w-[1400px] px-2 text-center'>
+        {allData?.pages?.nodes[0]?.sellerGuide?.bottomText}
+      </p>
+      <div className='mt-10 bg-[#e6e6e6]'>
         <Contact data={allData?.pages?.nodes[0]?.sellerGuide?.contactSection} />
       </div>
       <ContactForm

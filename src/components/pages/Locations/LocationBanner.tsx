@@ -35,8 +35,8 @@ export default function LocationBanner(props: MyProps) {
     >
       <Header navigation={headerData} settingsData={settingsData} />
       <div className='py-16'>
-        <div className='mt-[50%] flex w-full flex-col items-center justify-center px-5 lg:mt-[20%] lg:px-10'>
-          <p className='w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
+        <div className='mt-[25%] flex w-full flex-col items-center justify-center px-5 lg:mt-[15%] lg:px-10'>
+          <p className='w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl mb-2'>
             {bannerData?.bannerSubhead}
           </p>
           <p className='w-full text-center text-xl font-bold leading-5 text-white lg:text-5xl'>

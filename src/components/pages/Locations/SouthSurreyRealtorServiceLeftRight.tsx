@@ -10,8 +10,8 @@ const SouthSurreyRealtorServiceLeftRight = (props: Props) => {
   const { data } = props;
   return (
     <div>
-      <div className='py-20'>
-        <h2 className='px-5 text-center text-2xl md:text-3xl lg:text-4xl'>
+      <div className='py-10 lg:py-20'>
+        <h2 className='px-5 text-center text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold'>
           {data?.title}
         </h2>
         <div

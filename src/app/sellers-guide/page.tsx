@@ -44,6 +44,7 @@ const query = gql`
               }
             }
           }
+          bottomText
           contactSection {
             title
             description
