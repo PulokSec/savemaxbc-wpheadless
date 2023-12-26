@@ -35,16 +35,16 @@ export default function LocationBanner(props: MyProps) {
     >
       <Header navigation={headerData} settingsData={settingsData} />
       <div className='py-16'>
-        <div className='mt-[25%] flex w-full flex-col items-center justify-center px-5 lg:mt-[15%] lg:px-10'>
-          <p className='w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl mb-2'>
+        <div className='mt-[15%] md:mt-[25%] flex w-full flex-col items-center justify-center px-5 lg:mt-[15%] lg:px-10'>
+          <p className='mb-2 w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
             {bannerData?.bannerSubhead}
           </p>
-          <p className='w-full text-center text-xl font-bold leading-5 text-white lg:text-5xl'>
+          <p className='mx-auto w-full max-w-[1200px] text-center text-xl font-bold leading-6 text-white lg:leading-[60px] lg:text-5xl'>
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (
             <div
-              className='mt-8 text-center text-xl text-white lg:text-3xl'
+              className='mx-auto mt-8 max-w-[1200px] text-center text-xl text-white lg:text-3xl'
               dangerouslySetInnerHTML={{
                 __html: bannerData?.bannerDescription,
               }}
@@ -68,9 +68,9 @@ export default function LocationBanner(props: MyProps) {
               {topTitle}
             </p>
           </div>
-          <div className='container mx-auto w-[80%] bg-white px-5 py-3 text-center shadow-md md:hidden '>
+          <div className='container mx-auto w-[87%] bg-white p-3 text-center shadow-md md:hidden '>
             <div
-              className='md:text-md mt-5 text-xs leading-6 lg:text-lg'
+              className='md:text-md mt-2 text-xs leading-6 lg:text-lg'
               dangerouslySetInnerHTML={{
                 __html: topDesc,
               }}

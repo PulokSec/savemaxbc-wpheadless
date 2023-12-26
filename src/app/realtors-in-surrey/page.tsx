@@ -49,6 +49,7 @@ const query = gql`
                 altText
               }
             }
+            bottomText
           }
 
           leftImageRightTextSection {

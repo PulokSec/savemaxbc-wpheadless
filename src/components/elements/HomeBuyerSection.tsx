@@ -9,16 +9,18 @@ export default function HomeBuyerSection(props: MyProps) {
   const { featuredData } = props;
   return (
     <section className='bg-white '>
-      <div className='col-span-12 ml-5 md:col-span-8 md:col-start-1 md:px-10 mt-10 lg:mt-20'>
-        <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
-          {featuredData?.featureTitle}
-        </h2>
-        <div
-          className='md:text-md mx-auto mt-5 max-w-[1400px] text-center text-xs lg:px-5 lg:text-lg'
-          dangerouslySetInnerHTML={{
-            __html: featuredData?.featureDescription,
-          }}
-        ></div>
+      <div className='col-span-12 mt-10 md:col-span-8 md:col-start-1 md:px-10 lg:mt-20'>
+        <div className='max-w-[1400px] mx-auto px-3'>
+          <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
+            {featuredData?.featureTitle}
+          </h2>
+          <div
+            className='md:text-md mx-auto mt-5 max-w-[1400px] text-center text-xs lg:px-5 lg:text-lg'
+            dangerouslySetInnerHTML={{
+              __html: featuredData?.featureDescription,
+            }}
+          ></div>
+        </div>
         <div className='mt-20 px-5 md:px-10'>
           <ul className=''>
             {featuredData?.featuredDiv?.map((item: any, i: number) => (

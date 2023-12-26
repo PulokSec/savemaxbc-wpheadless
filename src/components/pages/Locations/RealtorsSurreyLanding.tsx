@@ -2,8 +2,8 @@ import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
 import LeftImageRightText from '@/components/elements/LeftImageRightText';
 import RightImageLeftText from '@/components/elements/RightImageLeftText';
 import WhyChooseUs from '@/components/elements/WhyChooseUs';
-import FeatureSection from '@/components/pages/Home/FeatureSection';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
+import RealtorsInSurreyFeatureSection from '@/components/pages/Locations/RealtorsInSurreyFeatureSection';
 import Footer from '@/components/shared/Footer';
 
 type MyProps = {
@@ -20,7 +20,7 @@ export default function RealtorsSurreyLanding(props: MyProps) {
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
       />
-      <div className='mt-20'>
+      <div className='mx-auto my-14 max-w-[1500px] md:my-20'>
         <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
           {allData?.pages?.nodes[0]?.realtorsSurrey?.topFeatureTitle}
         </h1>
@@ -32,8 +32,8 @@ export default function RealtorsSurreyLanding(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='mt-32'></div>
-      <FeatureSection
+      {/* <div className='mt-20 md:mt-32'></div> */}
+      <RealtorsInSurreyFeatureSection
         featuredData={allData?.pages?.nodes[0]?.realtorsSurrey?.featureSection}
       />
 
@@ -47,22 +47,22 @@ export default function RealtorsSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.realtorsSurrey?.leftImageRightTextSection2
         }
       />
+      {/* <div className='md:h-10 lg:h-0 xl:h-10'></div> */}
+      <div className='md:mt-10 lg:-mt-48 xl:mt-10'>
+        <WhyChooseUs
+          featuredData={allData?.pages?.nodes[0]?.realtorsSurrey?.choiceSection}
+        />
+      </div>
 
-      <WhyChooseUs
-        featuredData={allData?.pages?.nodes[0]?.realtorsSurrey?.choiceSection}
-      />
+      <div className='mx-auto -mt-28 max-w-[1600px] md:mt-0 lg:-mt-36 xl:mt-0'>
+        <HomeBuyerSection
+          featuredData={
+            allData?.pages?.nodes[0]?.realtorsSurrey?.homebuyingSection
+          }
+        />
+      </div>
 
-      <HomeBuyerSection
-        featuredData={
-          allData?.pages?.nodes[0]?.realtorsSurrey?.homebuyingSection
-        }
-      />
-
-      {/* <AboutSaleSection
-        aboutData={allData?.pages?.nodes[0]?.realtorsSurrey?.aboutSection}
-      /> */}
-
-      <FeatureSection
+      <RealtorsInSurreyFeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.realtorsSurrey?.rightRealtorSection
         }
