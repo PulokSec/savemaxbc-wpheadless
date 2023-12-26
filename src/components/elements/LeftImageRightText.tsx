@@ -36,7 +36,7 @@ const LeftImageRightText = (props: Props) => {
                   height='200'
                 />
               </div>
-              <div className='flex flex-col items-end justify-end md:mb-20 lg:mb-0 lg:w-1/2'>
+              <div className='flex flex-col items-end justify-end lg:w-1/2'>
                 <div className='lg:w-full'>
                   <div
                     className='text-xs md:text-lg'

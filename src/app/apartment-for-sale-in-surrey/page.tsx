@@ -262,7 +262,7 @@ export default async function ApartmentForSaleSurrey() {
             headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
             settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
           />
-          <div className='mt-20 lg:mt-40'>
+          <div className='mx-auto mt-10 max-w-[1400px] lg:mt-20'>
             <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
               {data?.pages?.nodes[0]?.apartmentForSaleSurrey?.topFeatureTitle}
             </h1>
@@ -290,31 +290,41 @@ export default async function ApartmentForSaleSurrey() {
               data?.pages?.nodes[0]?.apartmentForSaleSurrey?.choiceFeature
             }
           />
-          <HomeBuyerSection
-            featuredData={
-              data?.pages?.nodes[0]?.apartmentForSaleSurrey?.homebuyingSection
-            }
-          />
+
+          <div className='mb-10'>
+            <HomeBuyerSection
+              featuredData={
+                data?.pages?.nodes[0]?.apartmentForSaleSurrey?.homebuyingSection
+              }
+            />
+          </div>
           <EssentialSection
             featuredData={
               data?.pages?.nodes[0]?.apartmentForSaleSurrey?.essentialSection
             }
           />
-          <HomeBuyingProcess
-            featuredData={
-              data?.pages?.nodes[0]?.apartmentForSaleSurrey?.homeprocessSection
-            }
-          />
-          <WhyChooseUs
-            featuredData={
-              data?.pages?.nodes[0]?.apartmentForSaleSurrey?.choiceSection
-            }
-          />
-          <BottomFeatureSection
-            bottomSection={
-              data?.pages?.nodes[0]?.apartmentForSaleSurrey?.bottomSection
-            }
-          />
+          <div className='-mt-96 lg:-mt-52'>
+            <HomeBuyingProcess
+              featuredData={
+                data?.pages?.nodes[0]?.apartmentForSaleSurrey
+                  ?.homeprocessSection
+              }
+            />
+          </div>
+          <div className='-mt-80 md:-mt-0 lg:-mt-80 xl:-mt-40'>
+            <WhyChooseUs
+              featuredData={
+                data?.pages?.nodes[0]?.apartmentForSaleSurrey?.choiceSection
+              }
+            />
+          </div>
+          <div className='-mt-44 md:-mt-20'>
+            <BottomFeatureSection
+              bottomSection={
+                data?.pages?.nodes[0]?.apartmentForSaleSurrey?.bottomSection
+              }
+            />
+          </div>
         </div>
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}

@@ -10,9 +10,9 @@ export default function ChoiceSection(props: MyProps) {
   const { featuredData } = props;
   return (
     <div>
-      <div className={` mt-10 pb-[20px] text-white lg:mt-20`}>
+      <div className={` mt-10 pb-5 text-white lg:mt-0`}>
         <div className='mx-auto max-w-[1250px] p-3'>
-          <div className=' my-10 md:mt-36'>
+          <div className='my-10 md:mt-0'>
             {featuredData?.map((cardData: any, index: any) => (
               <ChoiceCard cardData={cardData} index={index + 1} key={index} />
             ))}

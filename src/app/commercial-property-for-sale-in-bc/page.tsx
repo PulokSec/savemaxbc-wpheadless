@@ -7,6 +7,7 @@ import SharedBanner from '@/components/elements/SharedBanner';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import CommercialServiceFeature from '@/components/service-menu-components/ComercialServiceFeatures';
 import Footer from '@/components/shared/Footer';
+import CommercialPropertyBottomSection from '@/components/service-menu-components/CommercialPropertyBottomSection';
 
 const query = gql`
   query {
@@ -230,7 +231,7 @@ export default async function CommercialSale() {
             data?.pages?.nodes[0]?.commercialPropertySale?.serviceFeatureSection
           }
         />
-        <BottomServiceSection
+        <CommercialPropertyBottomSection
           bottomSection={
             data?.pages?.nodes[0]?.commercialPropertySale?.bottomSection
           }

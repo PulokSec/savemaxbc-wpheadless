@@ -30,7 +30,7 @@ const RightImageLeftText = (props: Props) => {
 
           
           <div className='mx-auto max-w-[1500px]'>
-            <div className=' flex flex-col items-center justify-center gap-4 px-5 md:mt-10 md:px-10  lg:mx-0 lg:mt-20 lg:flex-row '>
+            <div className=' flex flex-col items-center justify-center gap-4 px-5 md:px-10 lg:mx-0 lg:mt-20 lg:flex-row '>
               <div className='flex flex-col items-start justify-center lg:w-1/2'>
                 <div className='lg:w-full'>
                   <div

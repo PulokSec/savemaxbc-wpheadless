@@ -9,7 +9,7 @@ export default function HomeBuyerSection(props: MyProps) {
   const { featuredData } = props;
   return (
     <section className='bg-white '>
-      <div className='col-span-12 mt-10 md:col-span-8 md:col-start-1 md:px-10 lg:mt-20'>
+      <div className='col-span-12 pt-10 pb-1 md:col-span-8 md:col-start-1 md:px-10 lg:pt-20'>
         <div className='max-w-[1400px] mx-auto px-3'>
           <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
             {featuredData?.featureTitle}
