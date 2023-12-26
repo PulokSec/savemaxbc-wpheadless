@@ -17,7 +17,7 @@ export default function PointFeature(props: MyProps) {
                 {featuredData?.featureTitle}
               </h2>
               <div
-                className='md:text-md mt-5 px-2 text-start text-xs lg:text-lg'
+                className='md:text-md mt-5 px-5 text-start text-xs lg:text-lg'
                 dangerouslySetInnerHTML={{
                   __html: featuredData?.featureDescription,
                 }}
@@ -36,7 +36,7 @@ export default function PointFeature(props: MyProps) {
                 </div>
               ))}
             </div>
-            <div className='col-span-4 col-start-8 col-end-12  md:col-start-10 lg:col-span-4 lg:col-start-10'>
+            <div className='col-span-4 col-start-8 col-end-12 md:col-start-10 lg:col-span-4 lg:col-start-10'>
               <NextImage
                 useSkeleton
                 className='md:w-100 w-40 lg:w-[100%]'
@@ -48,7 +48,7 @@ export default function PointFeature(props: MyProps) {
             </div>
           </div>
 
-          <div className='mt-10 grid grid-cols-12 items-center justify-center gap-4 lg:mx-0 lg:mt-20 lg:max-w-none'>
+          <div className='mt-10 grid grid-cols-12 items-center justify-center gap-4 lg:mx-0 lg:mt-0 lg:max-w-none'>
             <div className='cols-end-12 hidden md:block lg:col-span-5 lg:col-start-1 lg:col-end-5'>
               <NextImage
                 useSkeleton
@@ -95,8 +95,8 @@ export default function PointFeature(props: MyProps) {
                 className='md:w-100 w-40 lg:w-[100%]'
                 width='600'
                 height='200'
-                src={featuredData?.imageRight?.sourceUrl}
-                alt={featuredData?.imageRight?.altText}
+                src={featuredData?.imageLeft?.sourceUrl}
+                alt={featuredData?.imageLeft?.altText}
               />
             </div>
           </div>

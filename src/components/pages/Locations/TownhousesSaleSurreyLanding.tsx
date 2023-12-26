@@ -23,12 +23,12 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
       />
-      <div className='mt-20'>
-        <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+      <div className='mx-auto mt-10 max-w-[1500px] lg:mt-20'>
+        <h1 className='px-3 text-center text-2xl md:text-3xl lg:px-10 lg:text-4xl'>
           {allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.topFeatureTitle}
         </h1>
         <div
-          className='md:text-md mt-5 px-10 text-center text-xs lg:text-lg'
+          className='md:text-md mt-5 px-3 text-center text-xs lg:px-10 lg:text-lg'
           dangerouslySetInnerHTML={{
             __html:
               allData?.pages?.nodes[0]?.townhousesForSaleSurrey
@@ -36,7 +36,7 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='pt-32'></div>
+      <div className='pt-10 lg:pt-20'></div>
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.featureSection
@@ -53,18 +53,21 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.benefitsSection2
         }
       />
+      <div className='mb-6'></div>
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.featureSection2
         }
       />
 
-      <HomeBuyerSection
-        featuredData={
-          allData?.pages?.nodes[0]?.townhousesForSaleSurrey
-            ?.homebuyingSectionCopy
-        }
-      />
+      <div className='mx-auto max-w-[1600px]'>
+        <HomeBuyerSection
+          featuredData={
+            allData?.pages?.nodes[0]?.townhousesForSaleSurrey
+              ?.homebuyingSectionCopy
+          }
+        />
+      </div>
 
       <LeftImageRightText
         featuredData={
@@ -76,15 +79,19 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.topAreasSection2
         }
       />
-
+      <div className='-mt-52 md:mt-32 lg:-mt-52 xl:-mt-20 2xl:mt-24'></div>
       <WhyChooseUs
         featuredData={
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.choiceSectionCopy
         }
       />
-      <Contact
-        data={allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.contactSection}
-      />
+      <div className='-mt-40 md:-mt-20 lg:-mt-48 xl:-mt-36 2xl:mt-0'>
+        <Contact
+          data={
+            allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.contactSection
+          }
+        />
+      </div>
 
       <Footer
         navigation={allData?.menus?.nodes[0]?.menuItems?.nodes}

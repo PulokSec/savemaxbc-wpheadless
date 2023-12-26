@@ -23,12 +23,12 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
       />
-      <div className='mt-20'>
-        <h1 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+      <div className='mt-10 lg:mt-20'>
+        <h1 className='px-3 text-center text-2xl md:text-3xl lg:px-10 lg:text-4xl'>
           {allData?.pages?.nodes[0]?.condosForSaleSurrey?.topFeatureTitle}
         </h1>
         <div
-          className='md:text-md mt-5 px-10 text-center text-xs lg:text-lg'
+          className='md:text-md mt-5 px-3 text-center text-xs lg:px-10 lg:text-lg'
           dangerouslySetInnerHTML={{
             __html:
               allData?.pages?.nodes[0]?.condosForSaleSurrey
@@ -36,7 +36,7 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='pt-32'></div>
+      <div className='pt-10 lg:pt-20'></div>
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.condosForSaleSurrey?.featureSection
@@ -54,11 +54,13 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
         }
       />
 
-      <HomeBuyerSection
-        featuredData={
-          allData?.pages?.nodes[0]?.condosForSaleSurrey?.homebuyingSectionCopy
-        }
-      />
+      <div className='mx-auto mt-10 max-w-[1600px] lg:mt-16'>
+        <HomeBuyerSection
+          featuredData={
+            allData?.pages?.nodes[0]?.condosForSaleSurrey?.homebuyingSectionCopy
+          }
+        />
+      </div>
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.condosForSaleSurrey?.featureSection2
@@ -76,14 +78,18 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
         }
       />
 
-      <WhyChooseUs
-        featuredData={
-          allData?.pages?.nodes[0]?.condosForSaleSurrey?.choiceSectionCopy
-        }
-      />
-      <Contact
-        data={allData?.pages?.nodes[0]?.condosForSaleSurrey?.contactSection}
-      />
+      <div className='md:mt-36 lg:-mt-52 xl:mt-10'>
+        <WhyChooseUs
+          featuredData={
+            allData?.pages?.nodes[0]?.condosForSaleSurrey?.choiceSectionCopy
+          }
+        />
+      </div>
+      <div className='-mt-36 md:-mt-20 lg:-mt-40 2xl:mt-0'>
+        <Contact
+          data={allData?.pages?.nodes[0]?.condosForSaleSurrey?.contactSection}
+        />
+      </div>
 
       <Footer
         navigation={allData?.menus?.nodes[0]?.menuItems?.nodes}

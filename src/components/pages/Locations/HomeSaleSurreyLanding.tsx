@@ -29,7 +29,7 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.topFeatureDescription
         }
       />
-      <div className='md:mt-32'></div>
+      <div className='h-48 md:h-32 2xl:h-20'></div>
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection
@@ -48,27 +48,31 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
         }
       />
 
-      <HomeBuyerSection
-        featuredData={
-          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.homebuyingSectionCopy
-        }
-      />
+      <div className='mx-auto max-w-[1600px] pt-10 lg:pt-20'>
+        <HomeBuyerSection
+          featuredData={
+            allData?.pages?.nodes[0]?.homeForSaleInSurrey?.homebuyingSectionCopy
+          }
+        />
+      </div>
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection2
         }
       />
-
+      <div className='lg:-mt-52 xl:-mt-20 2xl:mt-24'></div>
       <WhyChooseUs
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.choiceSectionCopy
         }
       />
-      <FeatureSection
-        featuredData={
-          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection3
-        }
-      />
+      <div className='-mt-32 md:mt-0 lg:-mt-40 xl:-mt-20 2xl:mt-0'>
+        <FeatureSection
+          featuredData={
+            allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection3
+          }
+        />
+      </div>
       <Contact
         data={allData?.pages?.nodes[0]?.homeForSaleInSurrey?.contactSection}
       />

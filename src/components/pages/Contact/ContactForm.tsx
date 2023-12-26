@@ -111,7 +111,7 @@ const ContactForm = (props: Props) => {
               type='text'
               name='name'
               id='name'
-              className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+              className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
               placeholder='Name'
               required
             />
@@ -121,7 +121,7 @@ const ContactForm = (props: Props) => {
               onChange={(e) => handleChange(e, setMail)}
               value={mail}
               type='email'
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
               name='mail'
               id='mail'
               placeholder='Email address'
@@ -133,7 +133,7 @@ const ContactForm = (props: Props) => {
               onChange={(e) => handleChange(e, setNumber)}
               value={number}
               type='number'
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
               placeholder='Phone Number'
               name='phone'
               id='phone'
@@ -144,10 +144,10 @@ const ContactForm = (props: Props) => {
             <select
               onChange={(e) => handleChange(e, setSelected)}
               value={selected}
-              className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+              className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
             >
               <option
-                className=' w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                className=' w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                 selected
                 value=''
                 disabled
@@ -160,7 +160,7 @@ const ContactForm = (props: Props) => {
                   <option
                     key={idx}
                     value={a?.name}
-                    className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                    className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                   >
                     {a?.name}
                   </option>
@@ -172,7 +172,7 @@ const ContactForm = (props: Props) => {
             <textarea
               onChange={(e) => handleChange(e, setMessage)}
               value={message}
-              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+              className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
               name='message'
               id='message'
               rows={3}
@@ -185,14 +185,14 @@ const ContactForm = (props: Props) => {
             type='submit'
             data-te-ripple-init
             data-te-ripple-color='light'
-            className=' w-full rounded border border-gray-400 bg-[#061632]  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-[#061632] focus:border md:w-[600px]'
+            className=' w-full rounded border border-gray-400 bg-[#061632]  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-[#061632] focus:border lg:w-[450px] xl:w-[600px]'
           >
             Send Message
           </button>
         </form>
         {alert && success && (
           <div
-            className='mt-5 flex w-full items-center rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 md:w-[600px]'
+            className='mt-5 flex w-full items-center rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 lg:w-[450px] xl:w-[600px]'
             role='alert'
           >
             <svg
@@ -213,7 +213,7 @@ const ContactForm = (props: Props) => {
         )}
         {alert && !success && (
           <div
-            className='mt-5 flex w-full items-center rounded-lg border bg-red-300 p-4 text-sm text-red-700 md:w-[600px]'
+            className='mt-5 flex w-full items-center rounded-lg border bg-red-300 p-4 text-sm text-red-700 lg:w-[450px] xl:w-[600px]'
             role='alert'
           >
             <svg

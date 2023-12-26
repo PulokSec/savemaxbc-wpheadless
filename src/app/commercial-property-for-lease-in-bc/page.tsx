@@ -4,8 +4,8 @@ import { Metadata } from 'next';
 import { getClient } from '@/lib/apollo';
 
 import SharedBanner from '@/components/elements/SharedBanner';
-import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import CommercialServiceFeature from '@/components/service-menu-components/ComercialServiceFeatures';
+import CommercialPropertyBottomSection from '@/components/service-menu-components/CommercialPropertyBottomSection';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
@@ -209,7 +209,7 @@ export default async function CommercialLease() {
         </div>
         <div className='mt-10 md:mt-28'>
           <div className='text-center'>
-            <h2 className='mx-auto w-full text-center text-2xl md:text-3xl lg:max-w-[1500px] lg:text-[42px] lg:leading-[50px] px-2'>
+            <h2 className='mx-auto w-full px-2 text-center text-2xl md:text-3xl lg:max-w-[1500px] lg:text-[42px] lg:leading-[50px]'>
               {
                 data?.pages?.nodes[0]?.commercialPropertyLease
                   ?.serviceFeatureSection?.featureTitle
@@ -231,7 +231,7 @@ export default async function CommercialLease() {
               ?.serviceFeatureSection
           }
         />
-        <BottomServiceSection
+        <CommercialPropertyBottomSection
           bottomSection={
             data?.pages?.nodes[0]?.commercialPropertyLease?.bottomSection
           }

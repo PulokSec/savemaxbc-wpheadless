@@ -12,15 +12,15 @@ const RightImageLeftText = (props: Props) => {
     <div className='max-w-screen overflow-x-hidden '>
       <section>
         <div
-          className={`${featuredData?.title ? 'py-10 lg:py-20' : ''} mx-auto `}
+          className={`${featuredData?.title ? 'py-10 lg:py-20' : 'lg:-mt-10'} mx-auto `}
         >
-          <div className={`mx-auto max-w-[1400px] `}>
-            <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-4xl'>
+          <div className={`mx-auto max-w-[1400px] px-3 lg:px-6 2xl:px-3 `}>
+            <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
               {featuredData?.title}
             </h2>
             {featuredData?.description && (
               <div
-                className='md:text-md mb-28 mt-5 px-10 text-center text-xs lg:text-lg'
+                className='md:text-md mb-10 mt-5 text-center text-xs lg:text-lg'
                 dangerouslySetInnerHTML={{
                   __html: featuredData?.description,
                 }}
@@ -28,22 +28,23 @@ const RightImageLeftText = (props: Props) => {
             )}
           </div>
 
-          <div className='w-full lg:-mt-56 xl:-mt-48 2xl:-mt-36'>
-            <div className='mt-10 grid max-w-2xl grid-cols-12 items-center justify-center gap-4 md:mx-auto lg:mx-0 lg:mt-20 lg:max-w-none lg:gap-0'>
-              <div className='col-span-12 ml-5 md:col-span-12 md:ml-5 lg:col-span-5 lg:col-start-1 lg:mt-20 lg:pl-10 2xl:col-start-2'>
-                <div className=''>
+          
+          <div className='mx-auto max-w-[1500px]'>
+            <div className=' flex flex-col items-center justify-center gap-4 px-5 md:px-10 lg:mx-0 lg:mt-20 lg:flex-row '>
+              <div className='flex flex-col items-start justify-center lg:w-1/2'>
+                <div className='lg:w-full'>
                   <div
-                    className='md:text-md mt-10 text-xs lg:text-lg'
+                    className='text-xs md:text-lg'
                     dangerouslySetInnerHTML={{
                       __html: featuredData?.rightText,
                     }}
                   ></div>
                 </div>
               </div>
-              <div className='col-span-4 col-start-8 col-end-12 md:col-span-3 md:col-start-11 md:col-end-12 lg:col-span-5 lg:col-start-7 2xl:col-start-8'>
+              <div className='mx-auto lg:w-1/2'>
                 <NextImage
                   useSkeleton
-                  className='md:w-100 w-40 lg:w-[100%]'
+                  className='flex w-64 items-end justify-end md:w-[100%] '
                   src={featuredData?.leftImage?.sourceUrl}
                   alt={featuredData?.leftImage?.altText}
                   width='600'

@@ -95,7 +95,7 @@ export default function ContactPageLanding(props: MyProps) {
           backgroundImage: `url(${allData?.pages?.nodes[0]?.contactUs?.background?.sourceUrl})`,
         }}
       >
-        <div className='pb-20 pt-10 md:py-20'>
+        <div className='py-10 md:py-20'>
           <h2
             className='px-10 text-center text-2xl md:text-3xl lg:text-5xl'
             dangerouslySetInnerHTML={{
@@ -116,7 +116,7 @@ export default function ContactPageLanding(props: MyProps) {
           address={allData?.pages?.nodes[0]?.contactUs?.address}
           heading={true}
         />
-        <div className=' py-20'>
+        <div className='py-10 md:py-20'>
           <h2 className='px-10 text-center text-2xl md:text-3xl lg:text-5xl'>
             {allData?.pages?.nodes[0]?.contactUs?.title2}
           </h2>
@@ -141,7 +141,7 @@ export default function ContactPageLanding(props: MyProps) {
                   type='text'
                   name='name'
                   id='name'
-                  className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                  className='w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                   placeholder='Name'
                   required
                 />
@@ -151,7 +151,7 @@ export default function ContactPageLanding(props: MyProps) {
                   onChange={(e) => handleChange(e, setMail)}
                   value={mail}
                   type='email'
-                  className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                  className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                   name='mail'
                   id='mail'
                   placeholder='Email address'
@@ -163,7 +163,7 @@ export default function ContactPageLanding(props: MyProps) {
                   onChange={(e) => handleChange(e, setPhone)}
                   value={phone}
                   type='number'
-                  className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                  className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                   placeholder='Phone Number'
                   name='phone'
                   id='phone'
@@ -174,10 +174,10 @@ export default function ContactPageLanding(props: MyProps) {
                 <select
                   onChange={(e) => handleChange(e, setSelected)}
                   value={selected}
-                  className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                  className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                 >
                   <option
-                    className=' w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                    className=' w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                     selected
                     value=''
                     disabled
@@ -190,7 +190,7 @@ export default function ContactPageLanding(props: MyProps) {
                       <option
                         key={idx}
                         value={a?.name}
-                        className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                        className='w-full rounded border border-gray-400  text-[14px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                       >
                         {a?.name}
                       </option>
@@ -202,7 +202,7 @@ export default function ContactPageLanding(props: MyProps) {
                 <textarea
                   onChange={(e) => handleChange(e, setMessage)}
                   value={message}
-                  className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none md:w-[600px]'
+                  className=' w-full rounded border border-gray-400  text-[18px] placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none lg:w-[450px] xl:w-[600px]'
                   name='message'
                   id='message'
                   rows={3}
@@ -215,14 +215,14 @@ export default function ContactPageLanding(props: MyProps) {
                 type='submit'
                 data-te-ripple-init
                 data-te-ripple-color='light'
-                className=' w-full rounded border border-gray-400 bg-[#061632]  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-[#061632] focus:border md:w-[600px]'
+                className=' w-full rounded border border-gray-400 bg-[#061632]  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-[#061632] focus:border lg:w-[450px] xl:w-[600px]'
               >
                 Send
               </button>
             </form>
             {alert && success && (
               <div
-                className='mt-5 flex w-full items-center rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 md:w-[600px]'
+                className='mt-5 flex w-full items-center rounded-lg border border-green-300 bg-green-50 p-4 text-sm text-green-800 lg:w-[450px] xl:w-[600px]'
                 role='alert'
               >
                 <svg
@@ -243,7 +243,7 @@ export default function ContactPageLanding(props: MyProps) {
             )}
             {alert && !success && (
               <div
-                className='mt-5 flex w-full items-center rounded-lg border bg-red-300 p-4 text-sm text-red-700 md:w-[600px]'
+                className='mt-5 flex w-full items-center rounded-lg border bg-red-300 p-4 text-sm text-red-700 lg:w-[450px] xl:w-[600px]'
                 role='alert'
               >
                 <svg
@@ -266,7 +266,7 @@ export default function ContactPageLanding(props: MyProps) {
               </div>
             )}
           </div>
-          <div className='mx-auto mt-5 flex flex-col items-center md:mt-0 md:w-1/2 md:items-end'>
+          <div className='mx-auto mt-7 flex flex-col items-center md:mt-0 md:w-1/2 md:items-end'>
             <h2 className='uppercase text-gray-800'>Connect</h2>
             <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
               Phone:{' '}
