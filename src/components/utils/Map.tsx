@@ -5,17 +5,18 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
-import iconUrl from '@/assets/elements/map-street.png';
-
 type MyProps = {
   location: any;
   address: any;
 };
 export const myIcon = new Leaflet.Icon({
-  iconUrl: iconUrl.src,
-  iconAnchor: [5, 55],
-  popupAnchor: [10, -44],
-  iconSize: [55, 55],
+  iconSize: [25, 41],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+  iconUrl:
+    'https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/marker-icon.png',
+  shadowUrl:
+    'https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/marker-shadow.png',
 });
 const MapComponent = (props: MyProps) => {
   const { location, address } = props;

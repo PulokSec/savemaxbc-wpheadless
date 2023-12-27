@@ -48,6 +48,7 @@ export default function PaginationSearch(props: MyProps) {
 
     fetchData();
   }, [allPosts]);
+  console.log(posts);
   return (
     <div>
       <section className='mt-20 lg:mt-40'>
@@ -75,7 +76,7 @@ export default function PaginationSearch(props: MyProps) {
                     className='absolute z-10 mb-[-50px] w-[100px] origin-top bg-yellow-500 text-end'
                     // style={{ transform: 'translateX(50%) rotate(45deg)' }}
                   >
-                    <p className='z-5 relative top-0 px-5 text-center text-lg font-semibold text-white'>
+                    <p className='z-5 relative top-0 px-5 text-center text-lg font-semibold uppercase text-white'>
                       {post?.TransactionType}
                     </p>
                   </div>
