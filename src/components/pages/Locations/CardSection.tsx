@@ -30,7 +30,7 @@ export default function CardSection(props: MyProps) {
             }}
           ></div>
 
-          <div className='mb-14 mt-28 grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-20'>
+          <div className='mb-14 mt-28 grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-5 lg:gap-8 xl:gap-20'>
             {cardSection?.cardData?.map((cardData: any, idx: any) => (
               <Card cardData={cardData} key={idx} />
             ))}

@@ -13,7 +13,7 @@ export default function BenefitsSection(props: MyProps) {
   const { featuredData } = props;
   const [active, setActive] = useState(0);
   return (
-    <section className=' bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10 pt-80 md:pt-56 lg:pt-[360px] pb-20 lg:pb-44 2xl:pb-20 2xl:pt-40'>
+    <section className=' bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat pb-20 pt-80 md:px-10 md:pt-56 lg:pb-44 lg:pt-[380px] xl:pt-[360px] 2xl:pb-20 2xl:pt-40'>
       <div className='col-span-12 mt-10 px-5 md:col-span-12 md:mt-10 md:px-5 lg:col-span-8 lg:col-start-1 lg:mt-20 lg:px-10 2xl:mt-28'>
         <h2 className='text-center text-2xl md:text-4xl'>
           {featuredData?.featureTitle}
@@ -25,7 +25,7 @@ export default function BenefitsSection(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='px-10 pb-40 pt-20 md:px-10 md:py-40 lg:py-20'>
+      <div className='px-10 pb-40 pt-20 md:px-10 md:py-40 lg:py-20 2xl:pb-40'>
         <div className='relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-slate-900 before:to-transparent lg:before:mx-auto lg:before:translate-x-0'>
           {featuredData?.featuredDiv?.map((item: any, i: number) =>
             i % 2 == 0 ? (
@@ -54,7 +54,7 @@ export default function BenefitsSection(props: MyProps) {
                         active == i
                           ? 'text-[#061632]'
                           : 'text-[#585858]' +
-                            'w-full text-xl leading-5 md:w-full md:text-xl lg:w-[500px] lg:text-2xl'
+                            'w-full text-xl leading-5 md:w-full md:text-xl lg:text-2xl'
                       }
                     >
                       {item?.title}
@@ -94,7 +94,7 @@ export default function BenefitsSection(props: MyProps) {
                         active == i
                           ? 'text-[#061632]'
                           : 'text-[#585858]' +
-                            'w-full text-start text-xl leading-5 md:w-full md:text-xl lg:w-[500px] lg:text-2xl'
+                            'w-full text-end text-xl leading-5 md:w-full md:text-xl lg:text-2xl'
                       }
                     >
                       {item?.title}
