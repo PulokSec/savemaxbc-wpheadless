@@ -3,10 +3,10 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
+import ApartmentSaleBanner from '@/components/elements/ApartmentSaleBanner';
 import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
 import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
 import PointFeature from '@/components/elements/PointFeature';
-import SharedBanner from '@/components/elements/SharedBanner';
 import WhyChooseUs from '@/components/elements/WhyChooseUs';
 import ChoiceBanner from '@/components/pages/Locations/ChoiceBanner';
 import ChoiceSection from '@/components/pages/Locations/ChoiceSection';
@@ -255,7 +255,7 @@ export default async function ApartmentForSaleSurrey() {
     <>
       <main>
         <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
-          <SharedBanner
+          <ApartmentSaleBanner
             bannerData={
               data?.pages?.nodes[0]?.apartmentForSaleSurrey?.bannerSection
             }
@@ -280,11 +280,14 @@ export default async function ApartmentForSaleSurrey() {
               data?.pages?.nodes[0]?.apartmentForSaleSurrey?.exploreSection
             }
           />
-          <ChoiceBanner
-            choiceBannerData={
-              data?.pages?.nodes[0]?.apartmentForSaleSurrey?.choiceBanner
-            }
-          />
+          <div className='pt-10 lg:mt-0'>
+            <ChoiceBanner
+              choiceBannerData={
+                data?.pages?.nodes[0]?.apartmentForSaleSurrey?.choiceBanner
+              }
+            />
+          </div>
+
           <ChoiceSection
             featuredData={
               data?.pages?.nodes[0]?.apartmentForSaleSurrey?.choiceFeature

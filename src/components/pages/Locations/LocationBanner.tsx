@@ -35,16 +35,16 @@ export default function LocationBanner(props: MyProps) {
     >
       <Header navigation={headerData} settingsData={settingsData} />
       <div className='py-16'>
-        <div className='mt-[15%] md:mt-[25%] flex w-full flex-col items-center justify-center px-5 lg:mt-[15%] lg:px-10'>
+        <div className='mt-[15%] flex w-full flex-col items-center justify-center px-5 md:mt-[25%] lg:mt-[15%] lg:px-10'>
           <p className='mb-2 w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
             {bannerData?.bannerSubhead}
           </p>
-          <p className='mx-auto w-full max-w-[1200px] text-center text-xl font-bold leading-6 text-white lg:leading-[60px] lg:text-5xl'>
+          <p className='mx-auto w-full max-w-[1200px] text-center text-xl md:text-2xl font-bold leading-6 text-white lg:text-5xl lg:leading-[60px]'>
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (
             <div
-              className='mx-auto mt-8 max-w-[1200px] text-center text-xl text-white lg:text-3xl'
+              className='mx-auto mt-8 max-w-[1200px] text-center text-lg md:text-xl font-semibold text-white lg:text-3xl'
               dangerouslySetInnerHTML={{
                 __html: bannerData?.bannerDescription,
               }}

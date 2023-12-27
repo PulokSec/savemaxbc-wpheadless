@@ -1,3 +1,4 @@
+import CondosSaleChooseSection from '@/components/elements/CondosSaleChooseSection';
 import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
 import LeftImageRightText from '@/components/elements/LeftImageRightText';
 import RightImageLeftText from '@/components/elements/RightImageLeftText';
@@ -78,8 +79,8 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
         }
       />
 
-      <div className='md:mt-36 lg:-mt-52 xl:mt-10'>
-        <WhyChooseUs
+      <div className='mt-10 md:mt-36 lg:-mt-52 xl:mt-16'>
+        <CondosSaleChooseSection
           featuredData={
             allData?.pages?.nodes[0]?.condosForSaleSurrey?.choiceSectionCopy
           }
