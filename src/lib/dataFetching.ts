@@ -18,7 +18,7 @@ export async function getAllProperties({
   return await res.json();
 }
 export async function getSearchQuery({
-  pageParam = 1,
+  pageParam = 0,
   cityParam = '',
   provinceParam = '',
   streetParam = '',

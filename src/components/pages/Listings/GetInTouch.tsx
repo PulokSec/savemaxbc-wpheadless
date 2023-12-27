@@ -9,17 +9,17 @@ export default function GetInTouch(props: MyProps) {
   return (
     <>
       <section className='mx-auto w-full '>
-        <div className='relative h-[40vh] w-full lg:h-[60vh] xl:h-[80vh]'>
+        <div className='relative h-[40vh] w-full overflow-x-hidden lg:h-[60vh] xl:h-[80vh]'>
           <Image
-            src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/meet-our.png'
+            src={bottomSection?.backgroundImage?.sourceUrl}
             fill={true}
-            alt='Get In Touch'
-            className=''
+            alt={bottomSection?.backgroundImage?.altText}
+            className='rounded-t-[100%]'
           />
-          <div className='absolute left-1/2 top-14 mx-auto w-[350px] -translate-x-1/2 px-3 md:top-2 md:w-[700px] lg:top-10'>
+          <div className='absolute h-full w-full overflow-hidden rounded-t-[100%] bg-gray-500 bg-opacity-70'>
             <div className=''>
               <h2 className='px-5 pt-7 text-center text-xl text-white md:pt-24 md:text-5xl xl:pt-32'>
-                Meet Our Exceptional Realtors
+                {bottomSection?.title}
               </h2>
               <div className='mt-7 text-center md:mt-14'>
                 <a

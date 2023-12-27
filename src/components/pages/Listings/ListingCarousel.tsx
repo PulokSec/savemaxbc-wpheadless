@@ -67,7 +67,7 @@ export default function ListingCarousel(props: MyProps) {
             >
               <div className='flex items-end justify-end'>
                 <div
-                  className='relative z-10 mb-[-50px] w-[100px] origin-top bg-yellow-500 text-end'
+                  className='relative z-10 mb-[-50px] w-[100px] origin-top bg-yellow-500 text-end uppercase'
                   // style={{ transform: 'translateX(50%) rotate(45deg)' }}
                 >
                   <p className='z-5 relative top-0 px-5 text-center text-lg font-semibold text-white'>

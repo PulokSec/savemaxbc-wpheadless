@@ -105,13 +105,21 @@ export default function Footer(props: MyProps) {
                     <li key={item?.label} className='mb-2'>
                       <a
                         href={item?.url}
-                        className='from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text uppercase  text-white hover:bg-gradient-to-r hover:text-transparent dark:text-neutral-300'
+                        className='from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text uppercase  text-white hover:bg-gradient-to-r hover:text-transparent '
                       >
                         {item?.label}
                       </a>
                     </li>
                   )
               )}
+              <li className='mb-2'>
+                <a
+                  href='/mortgage-calculator'
+                  className='from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text uppercase  text-white hover:bg-gradient-to-r hover:text-transparent'
+                >
+                  Mortgage Calculator
+                </a>
+              </li>
             </ul>
           </div>
           <div className='col-span-6 col-start-1 ml-6 md:col-span-12 md:col-start-4 lg:col-span-3 lg:col-start-10 lg:col-end-12 lg:ml-0'>
