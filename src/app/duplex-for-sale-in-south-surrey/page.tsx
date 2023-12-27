@@ -317,17 +317,21 @@ export default async function DuplexSaleSouthSurrey() {
           <SouthSurreyRealtorServiceLeftRight
             data={data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.estateServices}
           />
-          <BenefitsSection
-            featuredData={
-              data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.benefitsSection
-            }
-          />
+          <div className='-mt-60 md:-mt-28 lg:-mt-48 xl:mt-0'>
+            <BenefitsSection
+              featuredData={
+                data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.benefitsSection
+              }
+            />
+          </div>
 
-          <HomeBuyerSection
-            featuredData={
-              data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.homebuyingSection
-            }
-          />
+          <div className='-mt-40 lg:-mt-48'>
+            <HomeBuyerSection
+              featuredData={
+                data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.homebuyingSection
+              }
+            />
+          </div>
 
           <section
             className='flex h-[500px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'

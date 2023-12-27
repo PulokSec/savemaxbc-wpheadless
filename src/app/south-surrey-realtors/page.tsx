@@ -286,7 +286,7 @@ export default async function SouthSurreyRealtors() {
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection?.image?.sourceUrl})`,
             }}
           >
-            <div className='mt-10 flex h-full flex-col items-center justify-center text-center '>
+            <div className='mt-5 md:mt-10 flex h-full flex-col items-center justify-center text-center '>
               {data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection
                 ?.title && (
                 <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>

@@ -85,7 +85,7 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
           }
         />
       </div>
-      <div className='-mt-36 md:-mt-20 lg:-mt-40 2xl:mt-0'>
+      <div className='-mt-36 md:-mt-20 lg:-mt-40 xl:-mt-32 2xl:mt-0'>
         <Contact
           data={allData?.pages?.nodes[0]?.condosForSaleSurrey?.contactSection}
         />

@@ -186,7 +186,7 @@ export default async function NewDevelopmentPreConstruction() {
           />
 
           <div className='bg-[#464646] py-20 text-white'>
-            <h2 className='mx-auto max-w-[1400px] px-5 text-center text-2xl md:text-3xl lg:text-4xl font-semibold'>
+            <h2 className='mx-auto max-w-[1400px] px-5 text-center text-xl md:text-2xl lg:text-4xl font-semibold'>
               {
                 data?.pages?.nodes[0]?.newDevelopmentPreConstruction
                   ?.topBannerTitle
@@ -209,12 +209,12 @@ export default async function NewDevelopmentPreConstruction() {
           />
 
           <section
-            className='flex h-[500px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'
+            className='flex h-[400px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'
             style={{
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.newDevelopmentPreConstruction?.contactSection?.image?.sourceUrl})`,
             }}
           >
-            <div className='mt-10 flex h-full flex-col items-center justify-center text-center '>
+            <div className='mt-5 md:mt-10 flex h-full flex-col items-center justify-center text-center '>
               {data?.pages?.nodes[0]?.newDevelopmentPreConstruction
                 ?.contactSection?.title && (
                 <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
