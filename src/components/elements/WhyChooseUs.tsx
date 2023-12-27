@@ -26,7 +26,7 @@ export default function WhyChooseUs(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='px-10 pb-48 pt-20 md:px-10 md:pb-40 md:pt-20 lg:py-52 xl:py-40'>
+      <div className='px-10 pb-48 pt-20 md:px-10 md:pb-40 md:pt-20 lg:pt-20 lg:pb-52 xl:pt-20 xl:pb-40'>
         <div className='relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-slate-900 before:to-transparent lg:before:mx-auto lg:before:translate-x-0'>
           {featuredData?.featuredDiv?.map((item: any, i: number) =>
             i % 2 == 0 ? (

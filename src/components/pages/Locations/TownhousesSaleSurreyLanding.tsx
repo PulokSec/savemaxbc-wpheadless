@@ -47,12 +47,12 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.benefitsSection
         }
       />
-
       <RightImageLeftText
         featuredData={
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.benefitsSection2
         }
       />
+
       <div className='mb-6'></div>
       <FeatureSection
         featuredData={
@@ -79,6 +79,7 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.topAreasSection2
         }
       />
+
       <div className='-mt-52 md:mt-32 lg:-mt-52 xl:-mt-20 2xl:mt-24'></div>
       <WhyChooseUs
         featuredData={

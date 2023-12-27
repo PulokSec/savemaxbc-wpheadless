@@ -243,7 +243,7 @@ export default async function DuplexSaleSouthSurrey() {
                       <div className='col-span-12 ml-5 md:col-span-12 md:ml-5 lg:col-span-5 lg:col-start-1 lg:pl-10 2xl:col-start-2'>
                         <div className=''>
                           <div
-                            className='md:text-md text-xs lg:text-lg'
+                            className='md:text-md text-xs lg:text-lg px-2 md:px-0'
                             dangerouslySetInnerHTML={{
                               __html:
                                 data?.pages?.nodes[0]?.duplexSaleSouthSurrey
@@ -299,6 +299,7 @@ export default async function DuplexSaleSouthSurrey() {
               ></div>
             </div>
           </div>
+
           <div className='bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat pb-[20px] text-white'>
             <div className='mx-auto max-w-[1250px] p-3'>
               <div className=' my-10'>

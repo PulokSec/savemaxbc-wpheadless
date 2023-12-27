@@ -9,26 +9,26 @@ export default function PointFeature(props: MyProps) {
   const { featuredData } = props;
   return (
     <section className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat pt-10'>
-      <div className=''>
-        <div className='w-full'>
-          <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0'>
-            <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-8 lg:col-start-2 lg:mt-20 lg:px-10'>
-              <h2 className='px-5 text-center text-2xl md:text-3xl lg:text-start lg:text-4xl'>
+      <div className='mx-auto max-w-[1600px]'>
+        <div className='mt-10 flex flex-col items-center justify-center px-5 md:px-10 lg:mt-20'>
+          <div className=' flex flex-col items-center justify-center gap-4 lg:flex-row '>
+            <div className='lg:w-1/2'>
+              <h2 className='px-2 text-start text-2xl md:text-3xl lg:text-start lg:text-4xl'>
                 {featuredData?.featureTitle}
               </h2>
               <div
-                className='md:text-md mt-5 px-5 text-start text-xs lg:text-lg'
+                className='md:text-md mt-5 px-2 text-justify text-xs lg:text-lg'
                 dangerouslySetInnerHTML={{
                   __html: featuredData?.featureDescription,
                 }}
               ></div>
               {featuredData?.featuredDivLeft?.map((item: any, i: number) => (
-                <div className='mt-5 px-2 md:px-5' key={i}>
-                  <h3 className='w-full text-xl leading-5 text-[#061632] md:w-full md:text-xl lg:w-[500px] lg:text-2xl'>
+                <div className='mt-5 px-2' key={i}>
+                  <h3 className='w-full text-xl leading-5 text-[#061632] md:w-full md:text-xl lg:text-2xl'>
                     {item?.title}
                   </h3>
                   <div
-                    className='text-xs lg:w-[600px] lg:text-lg'
+                    className='text-justify text-xs lg:text-lg'
                     dangerouslySetInnerHTML={{
                       __html: item?.description,
                     }}
@@ -36,40 +36,40 @@ export default function PointFeature(props: MyProps) {
                 </div>
               ))}
             </div>
-            <div className='col-span-4 col-start-8 col-end-12 md:col-start-10 lg:col-span-4 lg:col-start-10'>
+            <div className='mx-auto lg:w-1/2'>
               <NextImage
                 useSkeleton
-                className='md:w-100 w-40 lg:w-[100%]'
-                width='600'
-                height='200'
+                className='flex w-64 items-end justify-end md:w-[100%] '
                 src={featuredData?.imageRight?.sourceUrl}
                 alt={featuredData?.imageRight?.altText}
+                width='600'
+                height='200'
               />
             </div>
           </div>
 
-          <div className='mt-10 grid grid-cols-12 items-center justify-center gap-4 lg:mx-0 lg:mt-0 lg:max-w-none'>
-            <div className='cols-end-12 hidden md:block lg:col-span-5 lg:col-start-1 lg:col-end-5'>
-              <NextImage
-                useSkeleton
-                className='w-100 w-40 lg:w-[100%]'
-                src={featuredData?.imageLeft?.sourceUrl}
-                alt={featuredData?.imageLeft?.altText}
-                width='500'
-                height='200'
-              />
-            </div>
-            <div className='col-span-12 ml-5 mt-5 pr-5 lg:col-span-4 lg:col-start-7'>
-              <div className='mx-auto lg:mt-20 lg:px-10'>
-                <div className='mt-5 pb-10 md:px-5'>
+          <div className='mx-auto w-full'>
+            <div className='mx-auto mt-10 flex flex-col-reverse items-center justify-center gap-4 lg:mt-20 lg:flex-row lg:gap-4'>
+              <div className='lg:w-1/2 '>
+                <NextImage
+                  useSkeleton
+                  className='w-64 md:w-[100%]'
+                  src={featuredData?.imageLeft?.sourceUrl}
+                  alt={featuredData?.imageLeft?.altText}
+                  width='600'
+                  height='200'
+                />
+              </div>
+              <div className='flex flex-col items-end justify-end md:mb-20 lg:mb-0 lg:w-1/2'>
+                <div className='lg:w-full'>
                   {featuredData?.featuredDivRight?.map(
                     (item: any, i: number) => (
                       <div className='container mt-5' key={i}>
-                        <h3 className='w-full text-xl leading-5 text-[#061632] lg:w-[500px] lg:text-2xl'>
+                        <h3 className='text-xl leading-5 text-[#061632] lg:text-2xl'>
                           {item?.title}
                         </h3>
                         <div
-                          className='md:text-md text-xs md:w-full lg:w-[500px] lg:text-lg 2xl:w-[600px]'
+                          className='md:text-md text-justify text-xs lg:text-lg'
                           dangerouslySetInnerHTML={{
                             __html: item?.description,
                           }}
@@ -87,17 +87,6 @@ export default function PointFeature(props: MyProps) {
                   </div>
                 </div>
               </div>
-            </div>
-            \
-            <div className='col-span-4 col-start-8 col-end-12 md:col-start-10  md:hidden lg:col-span-4 lg:col-start-10'>
-              <NextImage
-                useSkeleton
-                className='md:w-100 w-40 lg:w-[100%]'
-                width='600'
-                height='200'
-                src={featuredData?.imageLeft?.sourceUrl}
-                alt={featuredData?.imageLeft?.altText}
-              />
             </div>
           </div>
         </div>

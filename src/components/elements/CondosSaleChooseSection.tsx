@@ -9,13 +9,14 @@ import homeImg from '../../assets/elements/why choose home icon.png';
 type MyProps = {
   featuredData: any;
 };
-export default function BenefitsSection(props: MyProps) {
+export default function CondosSaleChooseSection(props: MyProps) {
   const { featuredData } = props;
   const [active, setActive] = useState(0);
   return (
-    <section className=' bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat pb-20 pt-80 md:px-10 md:pt-56 lg:pb-44 lg:pt-[380px] xl:pt-[360px] 2xl:pb-20 2xl:pt-40'>
-      <div className='col-span-12 mt-10 px-5 md:col-span-12 md:mt-10 md:px-5 lg:col-span-8 lg:col-start-1 lg:mt-20 lg:px-10 2xl:mt-28'>
-        <h2 className='text-center text-2xl md:text-4xl'>
+    <section className='-mt-48 h-full bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10 lg:-mt-24'>
+      <div className='h-[270px] md:h-44 lg:h-[300px] xl:h-[250px] 2xl:h-64'></div>
+      <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-8 lg:col-start-1 lg:px-10'>
+        <h2 className='text-center text-2xl md:text-5xl'>
           {featuredData?.featureTitle}
         </h2>
         <div
@@ -25,13 +26,13 @@ export default function BenefitsSection(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='px-10 pb-40 pt-20 md:px-10 md:py-40 lg:py-20 2xl:pb-40'>
+      <div className='px-10 pb-48 pt-20 md:px-10 md:pb-40 md:pt-20 lg:py-52 xl:py-40'>
         <div className='relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-slate-900 before:to-transparent lg:before:mx-auto lg:before:translate-x-0'>
           {featuredData?.featuredDiv?.map((item: any, i: number) =>
             i % 2 == 0 ? (
               <div
-                key={i}
                 className='is-active group relative flex items-center justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
+                key={i}
               >
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2'>
                   <NextImage
@@ -45,16 +46,16 @@ export default function BenefitsSection(props: MyProps) {
                 </div>
 
                 <div
-                  className='w-[calc(100%-4rem)] bg-white p-4 md:w-[calc(100%-4rem)] lg:w-[calc(50%-2.5rem)]'
+                  className='w-[calc(100%-4rem)]  p-4 md:w-[calc(100%-4rem)] lg:w-[calc(50%-2.5rem)]'
                   onClick={() => setActive(i)}
                 >
                   <div className='text-start lg:w-full'>
                     <h3
                       className={
                         active == i
-                          ? 'text-[#061632]'
-                          : 'text-[#585858]' +
-                            'w-full text-xl leading-5 md:w-full md:text-xl lg:text-2xl'
+                          ? 'text-2xl text-[#061632] lg:text-4xl'
+                          : ' text-[#585858]' +
+                            'w-full text-2xl md:w-full md:text-xl  lg:text-4xl'
                       }
                     >
                       {item?.title}
@@ -70,8 +71,8 @@ export default function BenefitsSection(props: MyProps) {
               </div>
             ) : (
               <div
-                key={i}
                 className='is-active group relative flex items-start justify-between md:justify-between lg:justify-normal lg:odd:flex-row-reverse'
+                key={i}
               >
                 <div className='flex h-10 w-10 shrink-0 items-center justify-center lg:order-1 lg:group-odd:-translate-x-1/2 lg:group-even:translate-x-1/2'>
                   <NextImage
@@ -92,15 +93,15 @@ export default function BenefitsSection(props: MyProps) {
                     <h3
                       className={
                         active == i
-                          ? 'text-[#061632]'
+                          ? 'text-2xl text-[#061632] lg:text-4xl '
                           : 'text-[#585858]' +
-                            'w-full text-end text-xl leading-5 md:w-full md:text-xl lg:text-2xl'
+                            'w-full text-2xl md:w-full md:text-xl lg:text-end lg:text-4xl'
                       }
                     >
                       {item?.title}
                     </h3>
                     <div
-                      className='md:text-md mt-5 text-xs lg:text-lg'
+                      className='md:text-md mt-5 text-xs lg:text-end lg:text-lg'
                       dangerouslySetInnerHTML={{
                         __html: item?.description,
                       }}

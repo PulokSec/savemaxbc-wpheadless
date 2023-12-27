@@ -48,13 +48,13 @@ export default function RealtorsSurreyLanding(props: MyProps) {
         }
       />
 
-      <div className='md:mt-10 lg:-mt-48 xl:mt-10'>
+      <div className='-mt-56 md:mt-10 lg:-mt-48 xl:mt-10'>
         <WhyChooseUs
           featuredData={allData?.pages?.nodes[0]?.realtorsSurrey?.choiceSection}
         />
       </div>
 
-      <div className='mx-auto -mt-28 max-w-[1600px] md:mt-0 lg:-mt-48 xl:mt-0'>
+      <div className='mx-auto -mt-36 max-w-[1600px] md:mt-0 lg:-mt-48 xl:mt-0'>
         <HomeBuyerSection
           featuredData={
             allData?.pages?.nodes[0]?.realtorsSurrey?.homebuyingSection
