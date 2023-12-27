@@ -4,8 +4,8 @@ import { Metadata } from 'next';
 import { getClient } from '@/lib/apollo';
 
 import SharedBanner from '@/components/elements/SharedBanner';
+import NextImage from '@/components/NextImage';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
-import CommercialServiceFeature from '@/components/service-menu-components/ComercialServiceFeatures';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
@@ -171,16 +171,16 @@ export default async function RealAdvice() {
       },
     },
   });
-  console.log(data);
+  // console.log(data);
   return (
     <>
-      <main className='max-w-screen mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
+      <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
         <SharedBanner
           bannerData={data?.pages?.nodes[0]?.realAdvice?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mt-20 md:mt-40 lg:mt-40'>
+        <div className='mt-20 md:mt-40 lg:mt-40 mb-20'>
           <div className='text-center'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {data?.pages?.nodes[0]?.realAdvice?.topFeatureTitle}
@@ -194,11 +194,44 @@ export default async function RealAdvice() {
             ></div>
           </div>
         </div>
-        <CommercialServiceFeature
-          featuredData={
-            data?.pages?.nodes[0]?.realAdvice?.serviceFeatureSection
-          }
-        />
+        
+        {data?.pages?.nodes[0]?.realAdvice?.serviceFeatureSection?.featuredDiv?.map(
+          (item: any, idx: number) => (
+            <div key={idx}>
+              <div className='mx-auto mt-0 max-w-[1400px] p-5 md:mt-10'>
+                <div
+                  className={`${
+                    idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  } flex flex-col items-center justify-center gap-4 lg:gap-10`}
+                >
+                  <div className='md:w-1/2 '>
+                    <div className=''>
+                      <h3 className='font-bold mb-3'>
+                        {item.title}
+                      </h3>
+                      <div
+                        className='md:text-md text-xs lg:text-lg'
+                        dangerouslySetInnerHTML={{
+                          __html: item.description,
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                  <div className='md:w-1/2'>
+                    <NextImage
+                      useSkeleton
+                      className='w-[300px] lg:w-[100%]'
+                      src={item?.image?.sourceUrl}
+                      alt={item?.image?.altText}
+                      width='600'
+                      height='200'
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        )}
         <BottomServiceSection
           bottomSection={data?.pages?.nodes[0]?.realAdvice?.bottomSection}
         />
