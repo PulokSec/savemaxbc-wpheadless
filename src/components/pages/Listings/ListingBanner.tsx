@@ -6,9 +6,10 @@ type MyProps = {
   bannerData: any;
   headerData: any;
   settingsData: any;
+  usingFor?: any;
 };
 export default function ListingBanner(props: MyProps) {
-  const { headerData, settingsData, bannerData } = props;
+  const { headerData, settingsData, bannerData, usingFor } = props;
   return (
     <div
       className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat md:h-[100vh]'
@@ -23,7 +24,9 @@ export default function ListingBanner(props: MyProps) {
             {bannerData?.bannerHeading}
           </p>
         </div>
-        <SearchTab />
+        <div className={usingFor == 'map' ? 'hidden' : 'block'}>
+          <SearchTab />
+        </div>
       </div>
     </div>
   );

@@ -1,15 +1,17 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
-import BlogBanner from '@/components/elements/BlogBanner';
+import MapSearch from '@/components/elements/MapSearch';
+import GetInTouch from '@/components/pages/Listings/GetInTouch';
+import ListingBanner from '@/components/pages/Listings/ListingBanner';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 20 }) {
+    pages(where: { id: 89327 }) {
       nodes {
         seo {
           title
@@ -23,6 +25,20 @@ const query = gql`
           }
           jsonLd {
             raw
+          }
+        }
+        map {
+          bannerSection {
+            bannerImage {
+              sourceUrl
+            }
+            bannerHeading
+          }
+          getInTouch {
+            title
+            backgroundImage {
+              sourceUrl
+            }
           }
         }
       }
@@ -108,7 +124,7 @@ export async function generateMetadata(): Promise<Metadata> {
     manifest: `/favicon/site.webmanifest`,
     openGraph: {
       url: 'https://savemaxbc.com/',
-      title: data?.pages?.nodes[0]?.seo?.title || 'Not Found',
+      title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
       images: data?.pages?.nodes[0]?.seo?.openGraph?.image?.url,
@@ -130,11 +146,10 @@ export async function generateMetadata(): Promise<Metadata> {
     ],
   };
 }
-
-export default async function SingleNews({
-  params,
+export default async function MapPage({
+  searchParams,
 }: {
-  params: { newsId: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }) {
   const { data } = await getClient().query({
     query,
@@ -144,73 +159,23 @@ export default async function SingleNews({
       },
     },
   });
-  const singleQuery = gql`
-    query {
-      post(id: "${params.newsId}", idType: URI) {
-        author {
-          node {
-            avatar {
-              url
-            }
-            name
-          }
-        }
-        content(format: RENDERED)
-        title(format: RENDERED)
-        featuredImage {
-          node {
-            altText
-            sourceUrl
-          }
-        }
-        date
-      }
-    }
-  `;
-  const singleBlog = await getClient().query({
-    query: singleQuery,
-    context: {
-      fetchOptions: {
-        next: { revalidate: 5 },
-      },
-    },
-  });
-  if (singleBlog?.data?.post?.date === undefined) {
-    notFound();
-  }
-  const timeStamp = new Date(singleBlog?.data?.post?.date);
-  const day = timeStamp.getDate();
-  const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(
-    timeStamp
-  );
-  const year = timeStamp.getFullYear();
 
-  // Create the formatted date string
-  const date = `${day} ${month} ${year}`;
+  // console.log(allPosts);
+
   return (
     <>
       <main>
-        <BlogBanner
-          bannerImage={singleBlog?.data?.post?.featuredImage?.node}
-          bannerHeading={singleBlog?.data?.post?.title}
+        <ListingBanner
+          usingFor='map'
+          bannerData={data?.pages?.nodes[0]?.map?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mx-auto mt-10 max-w-[1250px] p-3 leading-5'>
-          <h1 className='mb-5 text-4xl font-bold'>
-            {singleBlog?.data?.post?.title}
-          </h1>
-          <p className='mb-5 text-sm'>{date}</p>
-          <p className='text-md mb-5 font-bold'>
-            Author : {singleBlog?.data?.post?.author?.node?.name}
-          </p>
-          <div
-            className=''
-            dangerouslySetInnerHTML={{
-              __html: singleBlog?.data?.post?.content || '',
-            }}
-          />
-        </div>
+        <MapSearch
+          query={searchParams?.query?.toString() || ''}
+          pageParam={parseInt(searchParams?.page?.toString() || '1')}
+        />
+        <GetInTouch bottomSection={data?.pages?.nodes[0]?.map?.getInTouch} />
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}

@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
 import { getClient } from '@/lib/apollo';
@@ -97,15 +98,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const link = params.listingId;
   const listingId = link.split('-').pop();
-  const { data } = await getClient().query({
-    query,
-    context: {
-      fetchOptions: {
-        next: { revalidate: 5 },
-      },
-    },
-  });
   const images = await getPhotos({ listingId: listingId });
+  if (images[0] === undefined) {
+    notFound();
+  }
   const imageUrl = JSON.parse(
     Buffer.from(images[0].Photos.data).toString('utf8')
   )?.LargePhoto?.filename;
@@ -167,10 +163,12 @@ export default async function SingleProperty({
   });
   const images = await getPhotos({ listingId: listingId });
 
+  if (images[0] === undefined) {
+    notFound();
+  }
   const allDetails = await getSingleProperty({
     listingId: listingId,
   });
-
   return (
     <>
       <main>
@@ -206,8 +204,8 @@ export default async function SingleProperty({
               {allDetails[0]?.StreetAddress}
             </h2>
             <h3 className='mb-1 text-gray-900'>
-              <span className='capitalize'>{allDetails[0]?.City}</span>{' '}
-              {allDetails[0]?.Province} {allDetails[0]?.PostalCode}
+              <span className='capitalize'>{allDetails[0]?.City}, </span>{' '}
+              {allDetails[0]?.Province} - {allDetails[0]?.PostalCode}
             </h3>
 
             <p className='mb-2'>{allDetails[0]?.PublicRemarks}</p>

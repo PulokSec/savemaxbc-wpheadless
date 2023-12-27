@@ -19,19 +19,22 @@ const filterData = [
 ];
 
 const SearchTab = () => {
-  const [filters, setFilters] = useState(filterData);
+  const [filters, setFilters] = useState([{ name: '', value: '' }]);
   const [filterDataShow, setFilterDataShow] = useState(false);
   const [filtersData, setFiltersData] = useState([]);
   const [buyShow, setBuyShow] = useState(true);
   const [rentShow, setRentShow] = useState(false);
   const [searchShow, setSearchShow] = useState(false);
   const [searchField, setSearchField] = useState('');
+  const [mapField, setMapField] = useState('');
   const [type, setType] = useState('');
   const domNode: any = useRef();
   const router = useRouter();
   const { setQueryParam } = useQueryParams();
   const handleRemove = (data: string) => {
-    setFilters(filters.filter((filter) => filter.name !== data));
+    setFilters(
+      filters.filter((filter: { name: string }) => filter.name !== data)
+    );
   };
   const handleSelect = (data: string) => {
     setType(data);
@@ -39,8 +42,11 @@ const SearchTab = () => {
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (searchField?.length > 0) {
+    if (searchField?.length > 0 && searchField?.length > mapField?.length) {
       router.push(`/listing?query=${searchField}`);
+    }
+    if (mapField?.length > 0 && mapField?.length > searchField?.length) {
+      router.push(`/map?query=${mapField}`);
     }
   };
 
@@ -62,6 +68,12 @@ const SearchTab = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchField(e.target.value);
+    if (e.target.value.length > 0) {
+      setSearchShow(true);
+    }
+  };
+  const handleMapChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMapField(e.target.value);
     if (e.target.value.length > 0) {
       setSearchShow(true);
     }
@@ -113,19 +125,23 @@ const SearchTab = () => {
         {buyShow ? (
           <div>
             <div className='my-2 flex gap-2'>
-              {filters.map(
-                (filter: { name: string; value: string }, idx: number) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      handleRemove(filter.name);
-                    }}
-                    className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
-                  >
-                    <p className=''>{filter.name}</p>
-                    <RxCross2 className='ml-1 ' />
-                  </div>
-                )
+              {filters?.map(
+                (filter: { name: string; value: string }, idx: number) => {
+                  return (
+                    filter?.name?.length > 0 && (
+                      <div
+                        key={idx}
+                        onClick={() => {
+                          handleRemove(filter.name);
+                        }}
+                        className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
+                      >
+                        <p className=''>{filter.name}</p>
+                        <RxCross2 className='ml-1 ' />
+                      </div>
+                    )
+                  );
+                }
               )}
             </div>
             <form
@@ -147,7 +163,7 @@ const SearchTab = () => {
                   className='border-none bg-gray-200 outline-none'
                   type='text'
                   placeholder='Enter business location'
-                  onChange={handleChange}
+                  onChange={handleMapChange}
                 />
               </div>
               <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
@@ -217,19 +233,21 @@ const SearchTab = () => {
         {rentShow ? (
           <div>
             <div className='my-2 flex gap-2'>
-              {filters.map(
-                (filter: { name: string; value: string }, idx: number) => (
-                  <div
-                    key={idx}
-                    onClick={() => {
-                      handleRemove(filter.name);
-                    }}
-                    className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
-                  >
-                    <p className=''>{filter.name}</p>
-                    <RxCross2 className='ml-1 ' />
-                  </div>
-                )
+              {filters?.map(
+                (filter: { name: string; value: string }, idx: number) => {
+                  return filter?.name?.length > 0 ? (
+                    <div
+                      key={idx}
+                      onClick={() => {
+                        handleRemove(filter.name);
+                      }}
+                      className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
+                    >
+                      <p className=''>{filter.name}</p>
+                      <RxCross2 className='ml-1 ' />
+                    </div>
+                  ) : null;
+                }
               )}
             </div>
             <form
@@ -251,7 +269,7 @@ const SearchTab = () => {
                   className='border-none bg-gray-200 outline-none'
                   type='text'
                   placeholder='Enter business location'
-                  onChange={handleChange}
+                  onChange={handleMapChange}
                 />
               </div>
               <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
@@ -293,7 +311,7 @@ const SearchTab = () => {
                                   : 'text-[#000000]'
                               } cursor-pointer items-center justify-between`}
                               onClick={() => {
-                                setFilters((prevFilters) => [
+                                setFilters(() => [
                                   { name: element.name, value: element.value },
                                 ]);
                                 handleSelect(element.value);
