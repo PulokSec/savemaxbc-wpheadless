@@ -60,7 +60,7 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection2
         }
       />
-      <div className='lg:-mt-52 xl:-mt-20 2xl:mt-24'></div>
+      <div className='md:mt-32 lg:-mt-52 xl:-mt-20 2xl:mt-24'></div>
       <WhyChooseUs
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.choiceSectionCopy
