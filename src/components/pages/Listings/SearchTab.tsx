@@ -149,7 +149,7 @@ const SearchTab = () => {
             </div>
             <div
               onClick={() => router.push('/map')}
-              className='search flex cursor-pointer items-center rounded border-2 bg-gray-200 px-3 py-1'
+              className='search flex cursor-pointer items-center justify-center rounded border-2 bg-gray-200 px-3 py-1'
             >
               <MapPin className='text-gray-400 hover:text-gray-600 ' />
             </div>
