@@ -58,6 +58,14 @@ const query = gql`
                 altText
               }
             }
+            featuredRightImage {
+              sourceUrl
+              altText
+            }
+            featuredLeftImage {
+              sourceUrl
+              altText
+            }
           }
           bottomSection {
             backgroundImage {

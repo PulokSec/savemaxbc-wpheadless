@@ -9,8 +9,6 @@ type Props = {
   transactionFields: any;
 };
 
-
-
 const propertyOptions = [
   { value: 'Choose Property Type', label: 'Choose Property Type' },
   { value: 'Agriculture', label: 'Agriculture' },
@@ -82,8 +80,6 @@ const transactionOptions = [
   { value: 'For Sale Or Rent', label: 'For Sale Or Rent' },
 ];
 
-
-
 const FilterModal = (props: Props) => {
   const { modalOpen, setModalOpen, transactionFields } = props;
   const [city, setCity] = useState('');
@@ -93,7 +89,6 @@ const FilterModal = (props: Props) => {
   const [buildingField, setBuildingField] = useState<string | any>();
   const [bedroom, setBedroom] = useState<number>(3);
   const [price, setPrice] = useState<number>(450000);
-
 
   const handleSelectField = (event: any, setFunction: (arg0: any) => void) => {
     setFunction(event.target.value);
@@ -189,7 +184,7 @@ const FilterModal = (props: Props) => {
         </div>
         <div className='mx-auto flex w-11/12 items-center gap-4 px-2 md:px-10'>
           <input
-            className='w-full'
+            className='w-full '
             type='range'
             name='bedroom'
             id='bedroom'
@@ -200,7 +195,7 @@ const FilterModal = (props: Props) => {
             onChange={(e) => handleRangeChange(e, setBedroom)}
           />
           <input
-            className='w-full'
+            className='w-full '
             type='range'
             name='price'
             id='price'
@@ -221,7 +216,7 @@ const FilterModal = (props: Props) => {
           </div>
           <div
             onClick={handleSearch}
-            className='flex cursor-pointer items-center gap-2 rounded-lg bg-yellow-600 px-6 py-3 text-white hover:bg-yellow-500'
+            className='flex cursor-pointer items-center gap-2 rounded-lg  bg-gradient-to-r from-[#eee38f] via-[#ad782f] to-[#dbc071] px-6 py-3 text-center text-white duration-500 ease-in-out hover:from-[#dbc071] hover:via-[#ad782f] hover:to-[#eee38f] hover:transition-all'
           >
             <SearchCheck className='h-5 w-5' />
             <p>Search</p>
