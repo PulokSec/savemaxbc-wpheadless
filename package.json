@@ -47,6 +47,7 @@
     "react-multi-carousel": "^2.8.4",
     "react-paginate": "^8.2.0",
     "react-responsive-carousel": "^3.2.23",
+    "react-select": "^5.8.0",
     "tailwind-merge": "^1.13.2"
   },
   "devDependencies": {

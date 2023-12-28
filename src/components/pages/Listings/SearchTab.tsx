@@ -1,14 +1,13 @@
 'use client';
+import { Home, MapPin } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
-import { GrLocation } from 'react-icons/gr';
-import { MdOutlineDateRange } from 'react-icons/md';
-import { RxCross2 } from 'react-icons/rx';
 
 import { getSearchQuery } from '@/lib/dataFetching';
 
 import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
+import FilterModal from '@/components/shared/FilterModal';
 import Scroll from '@/components/utils/Scroll';
 import useQueryParams from '@/components/utils/useQueryParams';
 
@@ -16,6 +15,14 @@ const filterData = [
   { name: 'House', value: 'House' },
   { name: 'Townhouse', value: 'Town' },
   { name: 'Condominium', value: 'Condo' },
+];
+
+const transactionFields = [
+  { name: 'Choose Transaction Type' },
+  { name: 'For Lease' },
+  { name: 'For Rent' },
+  { name: 'For Sale' },
+  { name: 'For Sale Or Rent' },
 ];
 
 const SearchTab = () => {
@@ -28,9 +35,17 @@ const SearchTab = () => {
   const [searchField, setSearchField] = useState('');
   const [mapField, setMapField] = useState('');
   const [type, setType] = useState('');
+  const [transactionField, setTransactionField] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
   const domNode: any = useRef();
   const router = useRouter();
   const { setQueryParam } = useQueryParams();
+  const handleTransactionField = (
+    event: any,
+    setFunction: (arg0: any) => void
+  ) => {
+    setFunction(event.target.value);
+  };
   const handleRemove = (data: string) => {
     setFilters(
       filters.filter((filter: { name: string }) => filter.name !== data)
@@ -94,148 +109,16 @@ const SearchTab = () => {
 
   return (
     <div className='mt-[10%] min-h-[500px] w-full px-5 md:max-w-[1400px] md:pb-10'>
-      <div className='flex gap-2'>
-        <div
-          onClick={() => {
-            setBuyShow(true);
-            setRentShow(false);
-          }}
-          className={`${
-            buyShow ? 'bg-white' : 'bg-gray-400 text-white'
-          } cursor-pointer rounded-t px-3 py-2`}
-        >
-          <p>Buy</p>
-        </div>
-        <div
-          onClick={() => {
-            setBuyShow(false);
-            setRentShow(true);
-          }}
-          className={`${
-            rentShow ? 'bg-white' : 'bg-gray-400 text-white'
-          } cursor-pointer rounded-t px-3 py-2`}
-        >
-          <p>Rent</p>
-        </div>
-      </div>
       <div
         className='rounded-bl-[10px] rounded-br-[10px] rounded-tr-[10px] bg-white  p-5  shadow'
         ref={domNode}
       >
-        {buyShow ? (
-          <div>
-            <div className='my-2 flex gap-2'>
-              {filters?.map(
-                (filter: { name: string; value: string }, idx: number) => {
-                  return (
-                    filter?.name?.length > 0 && (
-                      <div
-                        key={idx}
-                        onClick={() => {
-                          handleRemove(filter.name);
-                        }}
-                        className='flex cursor-pointer items-center rounded border-2 px-2 py-0.5 text-[14px] text-gray-400'
-                      >
-                        <p className=''>{filter.name}</p>
-                        <RxCross2 className='ml-1 ' />
-                      </div>
-                    )
-                  );
-                }
-              )}
-            </div>
-            <form
-              onSubmit={(e: any) => handleSubmit(e)}
-              className='flex flex-col justify-around gap-2 md:flex-row'
-            >
-              <div className='search flex w-full items-center rounded border-2 bg-gray-200 px-3 py-1 md:w-[450px]'>
-                <BsSearch className='mr-1 text-gray-400 ' />
-                <input
-                  className='w-full border-none bg-gray-200 outline-none'
-                  type='text'
-                  placeholder='Search Street City, Province, RP number'
-                  onChange={handleChange}
-                />
-              </div>
-              <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
-                <GrLocation className='mr-1 text-gray-400 ' />
-                <input
-                  className='border-none bg-gray-200 outline-none'
-                  type='text'
-                  placeholder='Enter business location'
-                  onChange={handleMapChange}
-                />
-              </div>
-              <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
-                <MdOutlineDateRange className='mr-1 text-gray-400 ' />
-                <input
-                  className='border-none bg-gray-200 outline-none'
-                  type='text'
-                  placeholder='Date oldest to newest'
-                />
-              </div>
-              <div className='relative'>
-                <div
-                  onClick={() => {
-                    setFilterDataShow(!filterDataShow);
-                  }}
-                  className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-center text-white'
-                >
-                  <p className='text-md'>Filter Results</p>
-                </div>
-
-                {filterDataShow ? (
-                  <>
-                    {/* <div className="arrow  absolute h-[20px]  w-[20px] bg-black rotate-45" id="arrow"/> */}
-                    <div className='absolute left-0 z-10 mt-5 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                      <div
-                        className='divide-gray/20 max-h-[400px] divide-y overflow-y-scroll py-2'
-                        role='none'
-                      >
-                        {filterData?.map((element) => {
-                          return (
-                            <div
-                              key={element.name}
-                              className={`flex ${
-                                filters.includes({
-                                  name: element.name,
-                                  value: element.value,
-                                })
-                                  ? 'text-primary'
-                                  : 'text-[#000000]'
-                              } cursor-pointer items-center justify-between`}
-                              onClick={() => {
-                                setFilters(() => [
-                                  { name: element.name, value: element.value },
-                                ]);
-                                handleSelect(element.value);
-                                setFilterDataShow(false);
-                              }}
-                            >
-                              <p className={`  px-4  py-2 text-[14px] `}>
-                                {element.name}
-                              </p>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  ''
-                )}
-              </div>
-            </form>
-          </div>
-        ) : (
-          ''
-        )}
-        {rentShow ? (
-          <div>
-            <div className='my-2 flex gap-2'>
-              {filters?.map(
-                (filter: { name: string; value: string }, idx: number) => {
-                  return filter?.name?.length > 0 ? (
+        <div>
+          {/* <div className='my-2 flex gap-2'>
+            {filters?.map(
+              (filter: { name: string; value: string }, idx: number) => {
+                return (
+                  filter?.name?.length > 0 && (
                     <div
                       key={idx}
                       onClick={() => {
@@ -246,96 +129,117 @@ const SearchTab = () => {
                       <p className=''>{filter.name}</p>
                       <RxCross2 className='ml-1 ' />
                     </div>
-                  ) : null;
-                }
+                  )
+                );
+              }
+            )}
+          </div> */}
+          <form
+            onSubmit={(e: any) => handleSubmit(e)}
+            className='flex flex-col justify-around gap-2 md:flex-row'
+          >
+            <div className='search flex w-full items-center rounded border-2 bg-gray-200 px-3 py-1 md:w-[450px]'>
+              <BsSearch className='mr-1 text-gray-400 ' />
+              <input
+                className='w-full border-none bg-gray-200 outline-none'
+                type='text'
+                placeholder='Search Street City, Province, RP number'
+                onChange={handleChange}
+              />
+            </div>
+            <div
+              onClick={() => router.push('/map')}
+              className='search flex cursor-pointer items-center rounded border-2 bg-gray-200 px-3 py-1'
+            >
+              <MapPin className='text-gray-400 hover:text-gray-600 ' />
+            </div>
+            <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
+              <Home className='mr-1 text-gray-400 ' />
+
+              <select
+                onChange={(e) => handleTransactionField(e, setTransactionField)}
+                value={transactionField}
+                className='mt-1 border-none bg-gray-200 text-gray-500  placeholder:text-[15px] focus:border focus:border-[#061632] focus:outline-none'
+              >
+                <option
+                  className='rounded text-[14px] focus:border focus:border-[#061632] focus:outline-none'
+                  selected
+                  value=''
+                  disabled
+                  hidden
+                >
+                  Choose Transaction Type
+                </option>
+                {transactionFields?.map((a: any, idx: number) => {
+                  return (
+                    <option
+                      key={idx}
+                      value={a?.name}
+                      className='rounded text-[14px] text-black placeholder:text-[14px] focus:border focus:border-[#061632] focus:outline-none '
+                    >
+                      {a?.name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className='relative'>
+              <div
+                onClick={() => setModalOpen(true)}
+                className='search hover:bg mx-auto flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-3.5 text-center text-white'
+              >
+                <p className='w-full text-center text-[15px]'>Filter Results</p>
+              </div>
+
+              {/* {filterDataShow ? (
+                <>
+                  <div className='absolute left-0 z-10 mt-5 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                    <div
+                      className='divide-gray/20 max-h-[400px] divide-y overflow-y-scroll py-2'
+                      role='none'
+                    >
+                      {filterData?.map((element) => {
+                        return (
+                          <div
+                            key={element.name}
+                            className={`flex ${
+                              filters.includes({
+                                name: element.name,
+                                value: element.value,
+                              })
+                                ? 'text-primary'
+                                : 'text-[#000000]'
+                            } cursor-pointer items-center justify-between`}
+                            onClick={() => {
+                              setFilters(() => [
+                                { name: element.name, value: element.value },
+                              ]);
+                              handleSelect(element.value);
+                              setFilterDataShow(false);
+                            }}
+                          >
+                            <p className={`  px-4  py-2 text-[14px] `}>
+                              {element.name}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ''
+              )} */}
+              {modalOpen && (
+                <FilterModal
+                  setModalOpen={setModalOpen}
+                  modalOpen={modalOpen}
+                  transactionFields={transactionFields}
+                />
               )}
             </div>
-            <form
-              onSubmit={(e: any) => handleSubmit(e)}
-              className='flex flex-col justify-around gap-2 md:flex-row'
-            >
-              <div className='search flex w-full items-center rounded border-2 bg-gray-200 px-3 py-1 md:w-[450px]'>
-                <BsSearch className='mr-1 text-gray-400 ' />
-                <input
-                  className='w-full border-none bg-gray-200 outline-none'
-                  type='text'
-                  placeholder='Search Street City, Province, RP number'
-                  onChange={handleChange}
-                />
-              </div>
-              <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
-                <GrLocation className='mr-1 text-gray-400 ' />
-                <input
-                  className='border-none bg-gray-200 outline-none'
-                  type='text'
-                  placeholder='Enter business location'
-                  onChange={handleMapChange}
-                />
-              </div>
-              <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
-                <MdOutlineDateRange className='mr-1 text-gray-400 ' />
-                <input
-                  className='border-none bg-gray-200 outline-none'
-                  type='text'
-                  placeholder='Date oldest to newest'
-                />
-              </div>
-              <div className='relative'>
-                <div
-                  onClick={() => {
-                    setFilterDataShow(!filterDataShow);
-                  }}
-                  className='search flex w-[130px] cursor-pointer items-center rounded-[5px] border-2 bg-gray-900 px-3 py-1 text-center text-white'
-                >
-                  <p className='text-md'>Filter Results</p>
-                </div>
-
-                {filterDataShow ? (
-                  <>
-                    {/* <div className="arrow  absolute h-[20px]  w-[20px] bg-black rotate-45" id="arrow"/> */}
-                    <div className='absolute left-0 z-10 mt-5 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-                      <div
-                        className='divide-gray/20 max-h-[400px] divide-y overflow-y-scroll py-2'
-                        role='none'
-                      >
-                        {filterData?.map((element) => {
-                          return (
-                            <div
-                              key={element.name}
-                              className={`flex ${
-                                filters.includes({
-                                  name: element.name,
-                                  value: element.value,
-                                })
-                                  ? 'text-primary'
-                                  : 'text-[#000000]'
-                              } cursor-pointer items-center justify-between`}
-                              onClick={() => {
-                                setFilters(() => [
-                                  { name: element.name, value: element.value },
-                                ]);
-                                handleSelect(element.value);
-                                setFilterDataShow(false);
-                              }}
-                            >
-                              <p className={`  px-4  py-2 text-[14px] `}>
-                                {element.name}
-                              </p>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  ''
-                )}
-              </div>
-            </form>
-          </div>
-        ) : (
-          ''
-        )}
+          </form>
+        </div>
       </div>
       <div className='relative z-50 mt-[-20px] w-full overflow-hidden rounded-b-xl bg-white shadow'>
         {searchShow ? (
