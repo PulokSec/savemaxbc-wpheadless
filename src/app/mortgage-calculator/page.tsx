@@ -174,9 +174,9 @@ export default async function MortgageCalculator() {
         ></div>
       </div>
       <MortgageContact
-        phone='778-863-4080'
-        address='11925 80 Avenue, Delta, BC V4C 1Y1'
-        email='info@kazhassan.com'
+        phone='+1 778-200-5050'
+        address='Unit 288, 12899 76 Avenue Surrey. BC. V3W1E6'
+        email='admin@savemaxwestcoast.com'
       />
       <Footer
         navigation={data?.menus?.nodes[0]?.menuItems?.nodes}

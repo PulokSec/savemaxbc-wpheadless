@@ -33,7 +33,7 @@ const MortgageContact = (props: Props) => {
     }
     const bodyData = JSON.stringify({
       fromEmail: 'noreply@savemaxbc.com',
-      toEmail: 'info@kazhassan.com',
+      toEmail: 'admin@savemaxwestcoast.com',
       cc: 'keegan@cansoft.com, pulok@cansoft.com, huzaifa@cansoft.com',
       emailSubject: 'New Submission From' + '- ' + name,
       name: name || '',
@@ -103,15 +103,7 @@ const MortgageContact = (props: Props) => {
             <Image
               width='320'
               height='75'
-              src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/logo-1.png'
-              alt='awards'
-            />
-          </div>
-          <div className='mt-10'>
-            <Image
-              width='220'
-              height='75'
-              src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/awards.png'
+              src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
               alt='awards'
             />
           </div>
@@ -228,13 +220,13 @@ const MortgageContact = (props: Props) => {
       <div className='mx-auto flex flex-col items-center md:w-1/2 md:items-end'>
         <h2 className='uppercase text-gray-800'>Office</h2>
         <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
-          RE/MAX Performance Realty
+          Save Max Westcoast Realty Inc
         </p>
         <p className='md:text-md mt-[10px] text-xs hover:text-[#B48237] md:mt-5 lg:text-lg'>
-          11925 80 Avenue, Delta, BC V4C 1Y1
+          Unit 288, 12899 76 Avenue Surrey. BC. V3W1E6
         </p>
         <p className='md:text-md mt-[10px] text-xs hover:text-[#B48237] md:mt-5 lg:text-lg'>
-          Office: 604-590-4888
+          Office: +1 778-200-5050
         </p>
 
         <div className='mt-5 flex items-center justify-start gap-4'>
