@@ -151,7 +151,7 @@ export default async function SignUp() {
           <div className='h-screen'>
             <div className='mx-auto my-20 xl:my-28 border border-gray-300 flex w-11/12 flex-col items-center justify-center bg-white px-5 py-14 drop-shadow-xl md:w-[500px] md:px-10'>
               <div className='flex flex-col items-start justify-start'>
-                <h3 className='mb-3 text-2xl font-semibold md:text-3xl'>
+                <h3 className='mb-3 text-2xl font-bold md:text-3xl'>
                   Sign Up
                 </h3>
                 <p className='font-medium'>

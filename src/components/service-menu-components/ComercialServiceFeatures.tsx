@@ -146,23 +146,23 @@ export default function CommercialServiceFeature(props: MyProps) {
               )
             )}
           </div>
-          <div className='cover relative col-span-12 mx-auto mt-5 h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[600px] xl:col-span-6 xl:col-start-7 xl:h-[85%] xl:w-full 2xl:col-span-4'>
+          <div className='cover relative col-span-12 mx-auto mt-5 h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[850px] xl:col-span-6 xl:col-start-7 xl:h-[90%] xl:w-full 2xl:col-span-4'>
             <NextImage
               useSkeleton
               className='cover'
               layout='fill'
-              src={featuredData?.featuredDivLeft[0]?.image?.sourceUrl}
-              alt={featuredData?.featuredDivLeft[0]?.image?.altText}
+              src={featuredData?.featuredRightImage?.sourceUrl}
+              alt={featuredData?.featuredRightImage?.altText}
             />
           </div>
         </div>
 
         <div className='lg:max-w-screen mt-10 grid grid-cols-12 items-center justify-center lg:mx-0 lg:mt-20 lg:gap-5'>
-          <div className='cover relative col-span-12 mx-auto mt-5 hidden h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[600px] xl:col-span-6 xl:col-end-7 xl:block xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
+          <div className='cover relative col-span-12 mx-auto mt-5 hidden h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[600px] xl:col-span-6 xl:col-end-7 xl:block xl:h-[90%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
             <NextImage
               useSkeleton
-              src={featuredData?.featuredDivRight[1]?.image?.sourceUrl}
-              alt={featuredData?.featuredDivRight[1]?.image?.altText}
+              src={featuredData?.featuredLeftImage?.sourceUrl}
+              alt={featuredData?.featuredLeftImage?.altText}
               className='cover'
               layout='fill'
             />
@@ -205,11 +205,11 @@ export default function CommercialServiceFeature(props: MyProps) {
               </div>
             </div>
           </div>
-          <div className='cover relative col-span-12 mx-auto mt-5 block h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[550px] xl:col-span-6 xl:col-end-7 xl:hidden xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
+          <div className='cover relative col-span-12 mx-auto mt-5 block h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[850px] xl:col-span-6 xl:col-end-7 xl:hidden xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
             <NextImage
               useSkeleton
-              src={featuredData?.featuredDivRight[1]?.image?.sourceUrl}
-              alt={featuredData?.featuredDivRight[1]?.image?.altText}
+              src={featuredData?.featuredLeftImage?.sourceUrl}
+              alt={featuredData?.featuredLeftImage?.altText}
               className='cover'
               layout='fill'
             />
