@@ -9,6 +9,7 @@ import { getPhotos } from '@/lib/dataFetching';
 
 import CarouselComponent from '@/components/carousel/CarouselComponent';
 import NextImage from '@/components/NextImage';
+import ListingSkeleton from '@/components/pages/Listings/ListingSkeleton';
 
 type MyProps = {
   posts: Array<any>;
@@ -17,10 +18,39 @@ interface PostData {
   post: any;
   cardImageUrl: any;
 }
+interface ResponsiveConfig {
+  max: number;
+  min: number;
+  items: number;
+}
 export default function ListingCarousel(props: MyProps) {
   const { posts } = props;
   const [postData, setPostData] = useState<PostData[]>([]);
-  // console.log(posts);
+  const getRepeatCount = () => {
+    if (typeof window === 'undefined') {
+      return ;
+    }
+    const responsive: Record<string, ResponsiveConfig> = {
+      superLargeDesktop: { max: 4000, min: 3000, items: 5 },
+      desktop: { max: 3000, min: 1800, items: 4 },
+      laptop: { max: 1799, min: 1200, items: 3 },
+      tablet: { max: 1199, min: 676, items: 2 },
+      mobile: { max: 675, min: 0, items: 1 },
+    };
+
+    const screenWidth = window.innerWidth;
+
+    for (const breakpoint in responsive) {
+      const { min, max, items } = responsive[breakpoint];
+      if (screenWidth >= min && screenWidth <= max) {
+        return items;
+      }
+    }
+    return 1;
+  };
+
+  const repeatCount = postData?.length === 0 ? getRepeatCount() : 0;
+
   useEffect(() => {
     async function fetchData() {
       const data = await Promise.all(
@@ -47,6 +77,13 @@ export default function ListingCarousel(props: MyProps) {
   return (
     <>
       <div className='relative mt-7 py-5 md:mt-10'>
+        {postData?.length === 0 && (
+          <div className='flex items-center justify-center gap-5 2xl:gap-10'>
+            {[...Array(repeatCount)].map((_, index) => (
+              <ListingSkeleton key={index} />
+            ))}
+          </div>
+        )}
         <CarouselComponent>
           {postData?.map(({ post, cardImageUrl }: any) => (
             <Link
