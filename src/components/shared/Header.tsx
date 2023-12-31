@@ -8,12 +8,15 @@ import { AiOutlineMail } from 'react-icons/ai';
 import { BsTelephone } from 'react-icons/bs';
 import { HiMenu } from 'react-icons/hi';
 import { RxCross2 } from 'react-icons/rx';
+import { CiUser } from 'react-icons/ci';
 
 import { getSearchQuery } from '@/lib/dataFetching';
 
 import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
 import SearchModal from '@/components/shared/SearchModal';
 import Scroll from '@/components/utils/Scroll';
+import { FaRegUser, FaUser, FaUserAlt } from 'react-icons/fa';
+import Link from 'next/link';
 
 type MyProps = {
   navigation: any;
@@ -80,7 +83,7 @@ export default function Header(props: MyProps) {
       <div className='top-0 z-50 w-full shadow'>
         <header className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/menu-bg.png")] bg-cover shadow-md'>
           <nav
-            className='flex items-center justify-between px-10 py-3 md:px-5 xl:px-40'
+            className='flex items-center justify-between px-10 py-3 md:px-5 xl:px-28 2xl:px-40'
             aria-label='Global'
           >
             <div className='flex lg:flex-1'>
@@ -190,6 +193,10 @@ export default function Header(props: MyProps) {
               >
                 <Search className='h-5 w-5 text-white hover:text-[#ad782f]' />
               </div>
+
+              <Link href='/my-profile' className='cursor-pointer'>
+                <FaUser className='h-5 w-5 text-white hover:text-[#ad782f]' />
+              </Link>
             </div>
           </nav>
           <Dialog
@@ -283,9 +290,16 @@ export default function Header(props: MyProps) {
                       }
                       return null;
                     })}
+                    <Link
+                      href='/my-profile'
+                      className='hover:bg-100 ml-[2px] h-10 w-auto rounded-xl'
+                      style={{ marginTop: '-100px!important' }}
+                    >
+                      <FaRegUser className='mr-2 h-5 w-5 text-[#061632] hover:text-[#ad782f]' />
+                    </Link>
                     <a
                       href='mailto:admin@savemaxwestcoast.com'
-                      className='hover:bg-100 ml-[2px] flex h-10 w-auto items-center justify-start rounded-xl'
+                      className='hover:bg-100 ml-[2px] mt-2 flex h-10 w-auto items-center justify-start rounded-xl'
                     >
                       <Mail className='mr-2 h-5 w-5 text-[#061632] hover:text-[#ad782f] ' />
                       <p className='text-[15px]'>admin@savemaxwestcoast.com</p>
@@ -297,6 +311,7 @@ export default function Header(props: MyProps) {
                       <Phone className='mr-2 h-5 w-5 font-bold text-[#061632] hover:text-[#ad782f]' />
                       <p className='mt-1 text-[15px]'>778-200-5050</p>
                     </a>
+
                     <form
                       action=''
                       className='relative w-max rounded-full bg-gray-100'
