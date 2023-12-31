@@ -48,7 +48,7 @@ export default function PaginationSearch(props: MyProps) {
 
     fetchData();
   }, [allPosts]);
-  console.log(posts);
+  
   return (
     <div>
       <section className='mt-20 lg:mt-40'>
