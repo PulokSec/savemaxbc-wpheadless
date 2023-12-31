@@ -10,7 +10,7 @@ import ResetPassword from '@/components/authContents/ResetPassword';
 
 const query = gql`
   query {
-    pages(where: { id: 89371 }) {
+    pages(where: { id: 89390 }) {
       nodes {
         seo {
           title
