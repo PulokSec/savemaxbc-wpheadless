@@ -1,12 +1,20 @@
+import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import NewsSection from '@/components/elements/NewsSection';
+const NewsSection = dynamic(() => import('@/components/elements/NewsSection'), {
+  ssr: false,
+});
+const NewsBottom = dynamic(() => import('@/components/pages/News/NewsBottom'), {
+  ssr: false,
+});
+const Footer = dynamic(() => import('@/components/shared/Footer'), {
+  ssr: false,
+});
+
 import NewsBanner from '@/components/pages/News/NewsBanner';
-import NewsBottom from '@/components/pages/News/NewsBottom';
-import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {

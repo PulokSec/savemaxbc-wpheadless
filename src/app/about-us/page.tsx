@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 import React from 'react';
@@ -5,9 +6,18 @@ import React from 'react';
 import { getClient } from '@/lib/apollo';
 
 import AboutBanner from '@/components/elements/AboutBanner';
-import AboutFeature from '@/components/elements/AboutFeature';
-import GetInTouch from '@/components/pages/Listings/GetInTouch';
-import Footer from '@/components/shared/Footer';
+const AboutFeature = dynamic(
+  () => import('@/components/elements/AboutFeature'),
+  { ssr: false }
+);
+const GetInTouch = dynamic(
+  () => import('@/components/pages/Listings/GetInTouch'),
+  { ssr: false }
+);
+const Footer = dynamic(() => import('@/components/shared/Footer'), {
+  ssr: false,
+});
+
 const query = gql`
   query {
     pages(where: { id: 12 }) {
