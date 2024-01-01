@@ -1,15 +1,31 @@
+import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
-import JoinSection from '@/components/elements/JoinSection';
-import SuccessSection from '@/components/elements/SuccessSection';
-import WhoWeAre from '@/components/elements/WhoWeAre';
-import WhyChooseUs from '@/components/elements/WhyChooseUs';
+const BottomFeatureSection = dynamic(
+  () => import('@/components/elements/BottomFeatureSection'),
+  { ssr: false }
+);
+const JoinSection = dynamic(() => import('@/components/elements/JoinSection'), {
+  ssr: false,
+});
+const SuccessSection = dynamic(
+  () => import('@/components/elements/SuccessSection'),
+  { ssr: false }
+);
+const WhoWeAre = dynamic(() => import('@/components/elements/WhoWeAre'), {
+  ssr: false,
+});
+const WhyChooseUs = dynamic(() => import('@/components/elements/WhyChooseUs'), {
+  ssr: false,
+});
+const Footer = dynamic(() => import('@/components/shared/Footer'), {
+  ssr: false,
+});
+
 import CareersBanner from '@/components/pages/Careers/CareerBanner';
-import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {

@@ -1,12 +1,22 @@
+import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
+const BottomServiceSection = dynamic(
+  () => import('@/components/service-menu-components/BottomServiceSection'),
+  { ssr: false }
+);
+const ServicePointFeature = dynamic(
+  () => import('@/components/service-menu-components/ServicePointFeature'),
+  { ssr: false }
+);
+const Footer = dynamic(() => import('@/components/shared/Footer'), {
+  ssr: false,
+});
+
 import SharedBanner from '@/components/elements/SharedBanner';
-import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
-import ServicePointFeature from '@/components/service-menu-components/ServicePointFeature';
-import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
