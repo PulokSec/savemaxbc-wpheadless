@@ -1,13 +1,13 @@
 'use client';
 import { gql, useMutation } from '@apollo/client';
+import { LogOut } from 'lucide-react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
-import useAuth, { User } from '@/components/custom-hooks/useAuth';
+import useAuth, { GET_USER, User } from '@/components/custom-hooks/useAuth';
 
 import userImage from '../../../assets/elements/user profile.png';
-import { LogOut } from 'lucide-react';
-import Link from 'next/link';
 
 const UPDATE_PROFILE = gql`
   mutation updateProfile(
@@ -30,12 +30,32 @@ const UPDATE_PROFILE = gql`
     }
   }
 `;
+const LOG_OUT = gql`
+  mutation logOut {
+    logout(input: {}) {
+      status
+    }
+  }
+`;
 
 const Profile = () => {
   const { user } = useAuth();
   const { id, firstName, lastName, email, avatar } = user as User;
   const [updateProfile, { data, loading, error }] = useMutation(UPDATE_PROFILE);
   const wasProfileUpdated = Boolean(data?.updateUser?.user?.databaseId);
+  const router = useRouter();
+  const [logOut, { called }] = useMutation(LOG_OUT, {
+    refetchQueries: [{ query: GET_USER }],
+  });
+  function handleLogOut() {
+    try {
+      logOut();
+      router.push('/log-in');
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -46,6 +66,7 @@ const Profile = () => {
       console.error(error);
     });
   }
+
   return (
     <div>
       <div className='mx-auto max-w-[1300px] bg-white px-5 py-10 md:px-10 md:py-16'>
@@ -61,14 +82,14 @@ const Profile = () => {
             <p className='text-lg font-bold tracking-wide text-gray-800'>
               {firstName} {lastName}
             </p>
-            <p className='text-sm text-gray-800 '>{email}</p>
-            <Link
-              href='/logout'
-              className='mt-4 flex items-center gap-x-2 rounded bg-gray-900 px-4 py-1 text-white hover:bg-gray-800'
+            <p className='my-3 text-sm text-gray-800'>{email}</p>
+            <div
+              onClick={handleLogOut}
+              className='mt-10 flex cursor-pointer items-center gap-x-2 rounded bg-gray-900 px-4 py-1 text-white hover:bg-gray-800'
             >
               <p>Logout</p>
               <LogOut className='h-5 w-5' />
-            </Link>
+            </div>
           </div>
           <div className='ml-28 hidden lg:block'>
             <div className='h-[475px] border-l-[1px] border-l-gray-300 drop-shadow-2xl '></div>
