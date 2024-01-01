@@ -1,13 +1,27 @@
 'use client';
+import { gql, useMutation, useQuery } from '@apollo/client';
+import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
 import { Dot, KeyRound, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
+import { GET_USER } from '@/components/custom-hooks/useAuth';
 import Header from '@/components/shared/Header';
 
+if (process.env.NODE_ENV !== 'production') {
+  loadErrorMessages();
+  loadDevMessages();
+}
+const LOG_IN = gql`
+  mutation logIn($login: String!, $password: String!) {
+    loginWithCookies(input: { login: $login, password: $password }) {
+      status
+    }
+  }
+`;
 type MyProps = {
   navigation: any;
   allImages: any;
@@ -15,14 +29,57 @@ type MyProps = {
   settingsData: any;
 };
 export default function SingleListingBanner(props: MyProps) {
+  const [loggedIn, setLoggedIn] = useState(false);
   const { allImages, headerData, settingsData } = props;
   const [loginModal, setLoginModal] = useState(false);
+  const [logIn, { loading, error }] = useMutation(LOG_IN, {
+    refetchQueries: [{ query: GET_USER }],
+  });
+
+  const { data } = useQuery(GET_USER);
+  const user = data?.viewer;
+
+  const errorMessage = error?.message || '';
   const firstbufferOriginal = Buffer.from(allImages[0].Photos.data);
   const firstImageUrl = JSON.parse(firstbufferOriginal.toString('utf8'))
     ?.LargePhoto?.filename;
   const secondbufferOriginal = Buffer.from(allImages[1].Photos.data);
   const secondImageUrl = JSON.parse(secondbufferOriginal.toString('utf8'))
     ?.LargePhoto?.filename;
+
+  const isEmailValid =
+    !errorMessage.includes('empty_email') &&
+    !errorMessage.includes('empty_username') &&
+    !errorMessage.includes('invalid_email') &&
+    !errorMessage.includes('invalid_username');
+  const isPasswordValid =
+    !errorMessage.includes('empty_password') &&
+    !errorMessage.includes('incorrect_password');
+
+  useEffect(() => {
+    if (user) setLoggedIn(true);
+  }, [user]);
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const { email, password } = Object.fromEntries(data);
+    try {
+      const response = await logIn({
+        variables: {
+          login: email,
+          password,
+        },
+      });
+      console.log(response);
+      if (response.data.loginWithCookies.status === 'SUCCESS') {
+        setLoginModal(false);
+        setLoggedIn(true);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <div className='relative'>
       <Header settingsData={settingsData} navigation={headerData} />
@@ -93,31 +150,49 @@ export default function SingleListingBanner(props: MyProps) {
               <p className='mb-4 text-white'>
                 Join millions of Canadians searching for homes
               </p>
-              <div className='flex flex-col items-center justify-center'>
+              <form
+                method='post'
+                onSubmit={handleSubmit}
+                className='flex flex-col items-center justify-center'
+              >
                 <input
                   className='mb-3 h-10 w-[300px] rounded-lg border border-gray-200 bg-white bg-opacity-80 text-[15px] focus:outline-none md:h-12 md:w-[400px] md:text-base'
+                  placeholder='Email'
                   type='email'
                   name='email'
+                  autoComplete='username'
+                  required
                   id='email'
-                  placeholder='Email Address'
                 />
                 <input
                   className='mb-3 h-10 w-[300px] rounded-lg border border-gray-200 bg-white bg-opacity-80 text-[15px] focus:outline-none md:h-12 md:w-[400px] md:text-base'
+                  placeholder='Password'
                   type='password'
                   name='password'
+                  autoComplete='current-password'
+                  required
                   id='password'
-                  placeholder='Password'
                 />
+                {!isEmailValid ? (
+                  <p className='my-3 text-[#FF0000]'>
+                    Invalid email. Please try again.
+                  </p>
+                ) : null}
+                {!isPasswordValid ? (
+                  <p className='my-3 text-[#FF0000]'>
+                    Invalid password. Please try again.
+                  </p>
+                ) : null}
                 <button
                   className='h-10 w-[300px] rounded-lg bg-sky-700 font-medium tracking-wide text-white hover:bg-opacity-70 hover:text-gray-200 md:h-12 md:w-[400px] lg:text-lg'
                   type='submit'
                 >
-                  Login
+                  {loading ? 'Logging in...' : 'Log in'}
                 </button>
-              </div>
+              </form>
               <div className='mt-4 flex items-center text-sm text-gray-200'>
                 <p className='mr-1'>Don't have an account?</p>
-                <Link href='/sign-up' className='hover:text-white underline'>
+                <Link href='/sign-up' className='underline hover:text-white'>
                   Sign Up
                 </Link>
               </div>
@@ -125,7 +200,6 @@ export default function SingleListingBanner(props: MyProps) {
           </div>
         </>
       )}
-      
     </div>
   );
 }

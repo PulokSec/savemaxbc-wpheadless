@@ -10,6 +10,7 @@ export const { getClient } = registerApolloClient(() => {
     cache: new NextSSRInMemoryCache(),
     link: new HttpLink({
       uri: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
+      credentials: "include",
     }),
   });
 });

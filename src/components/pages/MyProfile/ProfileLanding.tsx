@@ -1,15 +1,14 @@
 'use client';
-import Favourites from '@/components/pages/MyProfile/Favourites';
-import Profile from '@/components/pages/MyProfile/Profile';
 import React, { useState } from 'react';
 
-type Props = {};
+import Favourites from '@/components/pages/MyProfile/Favourites';
+import Profile from '@/components/pages/MyProfile/Profile';
 
-const ProfileLanding = (props: Props) => {
+const ProfileLanding = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   return (
     <div className=''>
-      <div className='mx-auto max-w-[1300px] bg-white px-5 py-6 lg:pb-8 lg:pt-16 md:px-10'>
+      <div className='mx-auto max-w-[1300px] bg-white px-5 py-6 md:px-10 lg:pb-8 lg:pt-16'>
         <div className='flex items-start justify-start gap-x-3'>
           <div
             onClick={() => setSelectedTab(0)}

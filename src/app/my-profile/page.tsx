@@ -3,30 +3,14 @@ import { Metadata } from 'next';
 import React from 'react';
 
 import { getClient } from '@/lib/apollo';
-import Header from '@/components/shared/Header';
-import Footer from '@/components/shared/Footer';
+
+import AuthContent from '@/components/authContents/AuthContent';
 import ProfileLanding from '@/components/pages/MyProfile/ProfileLanding';
+import Footer from '@/components/shared/Footer';
+import Header from '@/components/shared/Header';
 
 const query = gql`
   query {
-    pages(where: { id: 89388 }) {
-      nodes {
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-          openGraph {
-            image {
-              url
-            }
-          }
-          jsonLd {
-            raw
-          }
-        }
-      }
-    }
     settingsOptions {
       savemaxOptions {
         headerSettings {
@@ -96,8 +80,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   });
   return {
-    title: data?.pages?.nodes[0]?.seo?.title,
-    description: data?.pages?.nodes[0]?.seo?.description,
+    title: 'My Profile - Savemax',
+    description: 'My Profile - Savemax',
     robots: { index: false, follow: false },
 
     // icons: {
@@ -108,8 +92,8 @@ export async function generateMetadata(): Promise<Metadata> {
     manifest: `/favicon/site.webmanifest`,
     openGraph: {
       url: 'https://savemaxbc.com/',
-      title: data?.pages?.nodes[0]?.seo?.title,
-      description: data?.pages?.nodes[0]?.seo?.description,
+      title: 'My Profile - Savemax',
+      description: 'My Profile - Savemax',
       siteName: 'https://savemaxbc.com/',
       images: data?.pages?.nodes[0]?.seo?.openGraph?.image?.url,
       type: 'website',
@@ -117,8 +101,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: data?.pages?.nodes[0]?.seo?.title,
-      description: data?.pages?.nodes[0]?.seo?.description,
+      title: 'My Profile - Savemax',
+      description: 'My Profile - Savemax',
       // images: [`${siteConfig.url}/images/og.jpg`],
       creator: '@PulokSec',
     },
@@ -142,20 +126,26 @@ export default async function SignUp() {
   });
 
   return (
-    <main>
-      <section className='bg-white'>
-        <div>
-          <Header
-            navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-            settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-          />
-          <ProfileLanding />
-          <Footer
-            navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-            settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
-          />
-        </div>
-      </section>
-    </main>
+    <AuthContent>
+      <main>
+        <section className='bg-white'>
+          <div>
+            <Header
+              navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
+              settingsData={
+                data?.settingsOptions?.savemaxOptions?.headerSettings
+              }
+            />
+            <ProfileLanding />
+            <Footer
+              navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
+              settingsData={
+                data?.settingsOptions?.savemaxOptions?.footerSettings
+              }
+            />
+          </div>
+        </section>
+      </main>
+    </AuthContent>
   );
 }

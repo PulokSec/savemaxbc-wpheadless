@@ -11,24 +11,6 @@ import Header from '@/components/shared/Header';
 
 const query = gql`
   query {
-    pages(where: { id: 89371 }) {
-      nodes {
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-          openGraph {
-            image {
-              url
-            }
-          }
-          jsonLd {
-            raw
-          }
-        }
-      }
-    }
     settingsOptions {
       savemaxOptions {
         headerSettings {
@@ -98,20 +80,14 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   });
   return {
-    title: data?.pages?.nodes[0]?.seo?.title,
-    description: data?.pages?.nodes[0]?.seo?.description,
+    title: 'Sign Up - SaveMax',
+    description: 'Sign Up - SaveMax',
     robots: { index: false, follow: false },
-
-    // icons: {
-    //   icon: '/favicon/favicon.ico',
-    //   shortcut: '/favicon/favicon-16x16.png',
-    //   apple: '/favicon/apple-touch-icon.png',
-    // },
     manifest: `/favicon/site.webmanifest`,
     openGraph: {
       url: 'https://savemaxbc.com/',
-      title: data?.pages?.nodes[0]?.seo?.title,
-      description: data?.pages?.nodes[0]?.seo?.description,
+      title: 'Sign Up - SaveMax',
+      description: 'Sign Up - SaveMax',
       siteName: 'https://savemaxbc.com/',
       images: data?.pages?.nodes[0]?.seo?.openGraph?.image?.url,
       type: 'website',
@@ -119,8 +95,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: data?.pages?.nodes[0]?.seo?.title,
-      description: data?.pages?.nodes[0]?.seo?.description,
+      title: 'Sign Up - SaveMax',
+      description: 'Sign Up - SaveMax',
       // images: [`${siteConfig.url}/images/og.jpg`],
       creator: '@PulokSec',
     },

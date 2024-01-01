@@ -2,6 +2,8 @@
 import { gql, useMutation } from '@apollo/client';
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 import { GET_USER } from '@/components/custom-hooks/useAuth';
 
@@ -16,13 +18,12 @@ const LOG_IN = gql`
     }
   }
 `;
-import React from 'react';
 
 export default function SignIn() {
   const [logIn, { loading, error }] = useMutation(LOG_IN, {
     refetchQueries: [{ query: GET_USER }],
   });
-
+  const router = useRouter();
   const errorMessage = error?.message || '';
   const isEmailValid =
     !errorMessage.includes('empty_email') &&
@@ -33,18 +34,24 @@ export default function SignIn() {
     !errorMessage.includes('empty_password') &&
     !errorMessage.includes('incorrect_password');
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const { email, password } = Object.fromEntries(data);
-    logIn({
-      variables: {
-        login: email,
-        password,
-      },
-    }).catch((error) => {
+    try {
+      const response = await logIn({
+        variables: {
+          login: email,
+          password,
+        },
+      });
+      console.log(response);
+      if (response.data.loginWithCookies.status === 'SUCCESS') {
+        router.push('/my-profile');
+      }
+    } catch (error) {
       console.error(error);
-    });
+    }
   }
   return (
     <form
@@ -70,7 +77,7 @@ export default function SignIn() {
         required
         id='password'
       />
-      <Link href='/forgot-password'>
+      <Link href='/forget-password'>
         <span className='my-3 text-[#FF0000]'>Forgot password?</span>
       </Link>
       {!isEmailValid ? (
