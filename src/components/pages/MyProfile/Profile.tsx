@@ -1,28 +1,67 @@
+'use client';
+import { gql, useMutation } from '@apollo/client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
+
+import useAuth, { User } from '@/components/custom-hooks/useAuth';
+
 import userImage from '../../../assets/elements/user profile.png';
 import { LogOut } from 'lucide-react';
 import Link from 'next/link';
 
-type Props = {};
+const UPDATE_PROFILE = gql`
+  mutation updateProfile(
+    $id: ID!
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+  ) {
+    updateUser(
+      input: {
+        id: $id
+        firstName: $firstName
+        lastName: $lastName
+        email: $email
+      }
+    ) {
+      user {
+        databaseId
+      }
+    }
+  }
+`;
 
-const Profile = (props: Props) => {
+const Profile = () => {
+  const { user } = useAuth();
+  const { id, firstName, lastName, email, avatar } = user as User;
+  const [updateProfile, { data, loading, error }] = useMutation(UPDATE_PROFILE);
+  const wasProfileUpdated = Boolean(data?.updateUser?.user?.databaseId);
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const values = Object.fromEntries(data);
+    updateProfile({
+      variables: { id, ...values },
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
   return (
     <div>
       <div className='mx-auto max-w-[1300px] bg-white px-5 py-10 md:px-10 md:py-16'>
         <div className='flex flex-col items-center justify-center gap-x-3 gap-y-16 md:flex-row md:items-start md:justify-center md:gap-y-0'>
           <div className='flex flex-col items-center'>
             <Image
-              src={userImage}
+              src={avatar?.url || userImage}
               width={150}
               height={150}
               alt='user image'
-              className='mb-4'
+              className='mb-4  rounded-[50%] border shadow-xl'
             />
             <p className='text-lg font-bold tracking-wide text-gray-800'>
-              Hank Williams
+              {firstName} {lastName}
             </p>
-            <p className='text-sm text-gray-800 '>highhank@gmail.com</p>
+            <p className='text-sm text-gray-800 '>{email}</p>
             <Link
               href='/logout'
               className='mt-4 flex items-center gap-x-2 rounded bg-gray-900 px-4 py-1 text-white hover:bg-gray-800'
@@ -40,6 +79,7 @@ const Profile = (props: Props) => {
                 Profile Settings
               </h3>
               <form
+                onSubmit={handleSubmit}
                 action=''
                 className='mx-auto flex w-[320px] flex-col items-start justify-start space-y-4 md:w-[400px]'
               >
@@ -48,10 +88,11 @@ const Profile = (props: Props) => {
                   <input
                     className='h-12 w-full rounded border-none bg-gray-100 pl-3 text-[15px] shadow-inner focus:outline-1'
                     placeholder='Hank'
+                    id='profile-first-name'
                     type='text'
-                    name='first-name'
-                    id='first-name'
-                    required
+                    name='firstName'
+                    defaultValue={firstName || ''}
+                    autoComplete='given-name'
                   />
                 </div>
                 <div className='w-full'>
@@ -59,10 +100,11 @@ const Profile = (props: Props) => {
                   <input
                     className='h-12 w-full rounded border-none bg-gray-100 pl-3 text-[15px] shadow-inner focus:outline-1'
                     placeholder='Williams'
+                    id='profile-last-name'
                     type='text'
-                    name='last-name'
-                    id='last-name'
-                    required
+                    name='lastName'
+                    defaultValue={lastName || ''}
+                    autoComplete='family-name'
                   />
                 </div>
                 <div className='w-full'>
@@ -70,31 +112,28 @@ const Profile = (props: Props) => {
                   <input
                     className='h-12 w-full rounded border-none bg-gray-100 pl-3 text-[15px] shadow-inner focus:outline-1'
                     placeholder='highhank@gmail.com'
+                    id='profile-email'
                     type='email'
                     name='email'
-                    id='email'
-                    required
+                    defaultValue={email || ''}
+                    autoComplete='email'
                   />
                 </div>
-                <div className='w-full'>
-                  <p className='mb-1 text-sm text-gray-800'>Password</p>
-                  <input
-                    className='h-12 w-full rounded border-none bg-gray-100 pl-3 text-[15px] shadow-inner focus:outline-1'
-                    placeholder='Password'
-                    type='password'
-                    name='password'
-                    id='password'
-                    required
-                  />
-                </div>
-
+                {error ? (
+                  <p className='my-3 text-[#FF0000]'>{error.message}</p>
+                ) : null}
                 <button
                   type='submit'
                   className='w-full rounded bg-gradient-to-r from-[#eee38f] via-[#ad782f] to-[#dbc071] py-3 text-lg font-semibold tracking-wide text-white duration-500 ease-in-out hover:from-[#dbc071] hover:via-[#ad782f] hover:to-[#eee38f] hover:tracking-wider hover:transition-all '
                 >
-                  Save
+                  {loading ? 'Saving...' : 'Save'}
                 </button>
               </form>
+              {wasProfileUpdated ? (
+                <p className='my-3 text-[#16C60C]'>
+                  Profile details have been updated.
+                </p>
+              ) : null}
             </div>
           </div>
         </div>

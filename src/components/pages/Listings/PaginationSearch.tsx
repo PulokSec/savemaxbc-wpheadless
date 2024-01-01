@@ -48,7 +48,7 @@ export default function PaginationSearch(props: MyProps) {
 
     fetchData();
   }, [allPosts]);
-  
+
   return (
     <div>
       <section className='mt-20 lg:mt-40'>
@@ -83,7 +83,6 @@ export default function PaginationSearch(props: MyProps) {
                 </div>
                 <div className='relative'>
                   <NextImage
-                    useSkeleton
                     className='relative h-[275px] w-full rounded-lg'
                     src={cardImageUrl}
                     layout='fill'

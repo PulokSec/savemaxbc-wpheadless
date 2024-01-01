@@ -8,6 +8,7 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
+  avatar: { url: string };
   capabilities: string[];
 }
 
@@ -30,6 +31,9 @@ const AuthContext = createContext(DEFAULT_STATE);
 export const GET_USER = gql`
   query getUser {
     viewer {
+      avatar {
+        url
+      }
       id
       databaseId
       firstName

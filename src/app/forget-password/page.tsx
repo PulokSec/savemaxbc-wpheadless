@@ -4,7 +4,7 @@ import React from 'react';
 
 import { getClient } from '@/lib/apollo';
 
-import ResetPassword from '@/components/authContents/ResetPassword';
+import ForgetPassword from '@/components/authContents/ForgetPassword';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 
@@ -79,9 +79,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
   });
   return {
-    title: 'Reset Password - Savemax',
-    description: 'Reset Password - Savemax',
+    title: 'Forget Password - Savemax',
+    description: 'Forget Password - Savemax',
     robots: { index: false, follow: false },
+    manifest: `/favicon/site.webmanifest`,
     twitter: {
       card: 'summary_large_image',
       title: data?.pages?.nodes[0]?.seo?.title,
@@ -98,14 +99,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Page({
-  searchParams,
-}: {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
-  const resetKey = String(searchParams?.key || '');
-  const login = String(searchParams?.login || '');
-  console.log(resetKey, login);
+export default async function Page() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -125,10 +119,10 @@ export default async function Page({
           <div className='mx-auto my-20 flex w-11/12 flex-col items-center justify-center border border-gray-300 bg-white px-5 py-14 drop-shadow-xl md:w-[450px] md:px-10 lg:w-[500px] xl:my-28'>
             <div className='flex w-full flex-col items-start justify-start'>
               <h3 className='mb-3 text-xl font-bold md:text-2xl'>
-                Reset Password
+                Forget Password ?
               </h3>
             </div>
-            <ResetPassword resetKey={resetKey} login={login} />
+            <ForgetPassword />
           </div>
 
           <Footer

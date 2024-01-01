@@ -80,29 +80,13 @@ export async function generateMetadata(): Promise<Metadata> {
   });
   return {
     title: 'Log In - Save Max',
-    description: data?.pages?.nodes[0]?.seo?.description,
+    description: 'Log In - Save Max',
     robots: { index: false, follow: false },
-
-    // icons: {
-    //   icon: '/favicon/favicon.ico',
-    //   shortcut: '/favicon/favicon-16x16.png',
-    //   apple: '/favicon/apple-touch-icon.png',
-    // },
     manifest: `/favicon/site.webmanifest`,
-    openGraph: {
-      url: 'https://savemaxbc.com/',
-      title: 'Log In - Save Max',
-      description: data?.pages?.nodes[0]?.seo?.description,
-      siteName: 'https://savemaxbc.com/',
-      images: data?.pages?.nodes[0]?.seo?.openGraph?.image?.url,
-      type: 'website',
-      locale: 'en_US',
-    },
     twitter: {
       card: 'summary_large_image',
-      title: data?.pages?.nodes[0]?.seo?.title,
-      description: data?.pages?.nodes[0]?.seo?.description,
-      // images: [`${siteConfig.url}/images/og.jpg`],
+      title: 'Log In - Save Max',
+      description: 'Log In - Save Max',
       creator: '@PulokSec',
     },
     authors: [
