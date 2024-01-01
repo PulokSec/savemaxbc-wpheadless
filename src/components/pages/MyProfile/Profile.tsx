@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import userImage from '../../../assets/elements/user profile.png';
+import { LogOut } from 'lucide-react';
+import Link from 'next/link';
 
 type Props = {};
 
@@ -8,7 +10,7 @@ const Profile = (props: Props) => {
   return (
     <div>
       <div className='mx-auto max-w-[1300px] bg-white px-5 py-10 md:px-10 md:py-16'>
-        <div className='flex flex-col items-center justify-center gap-x-3 gap-y-16 md:flex-row md:items-start md:justify-start md:gap-y-0'>
+        <div className='flex flex-col items-center justify-center gap-x-3 gap-y-16 md:flex-row md:items-start md:justify-center md:gap-y-0'>
           <div className='flex flex-col items-center'>
             <Image
               src={userImage}
@@ -21,6 +23,13 @@ const Profile = (props: Props) => {
               Hank Williams
             </p>
             <p className='text-sm text-gray-800 '>highhank@gmail.com</p>
+            <Link
+              href='/logout'
+              className='mt-4 flex items-center gap-x-2 rounded bg-gray-900 px-4 py-1 text-white hover:bg-gray-800'
+            >
+              <p>Logout</p>
+              <LogOut className='h-5 w-5' />
+            </Link>
           </div>
           <div className='ml-28 hidden lg:block'>
             <div className='h-[475px] border-l-[1px] border-l-gray-300 drop-shadow-2xl '></div>
