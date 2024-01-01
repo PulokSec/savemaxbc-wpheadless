@@ -1,5 +1,5 @@
 'use client';
-import { gql, useMutation } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -23,6 +23,9 @@ export default function SignIn() {
   const [logIn, { loading, error }] = useMutation(LOG_IN, {
     refetchQueries: [{ query: GET_USER }],
   });
+  const { data } = useQuery(GET_USER);
+  const user = data?.viewer;
+
   const router = useRouter();
   const errorMessage = error?.message || '';
   const isEmailValid =
@@ -52,6 +55,16 @@ export default function SignIn() {
     } catch (error) {
       console.error(error);
     }
+  }
+  if (user) {
+    return (
+      <p className='my-5'>
+        You're already logged In! Check available listings{' '}
+        <Link className='' href='/listing'>
+          <span className='text-[#ad782f] underline'>Listing</span>
+        </Link>
+      </p>
+    );
   }
   return (
     <form

@@ -1,7 +1,9 @@
 'use client';
-import { gql, useMutation } from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
 import Link from 'next/link';
+
+import { GET_USER } from '@/components/custom-hooks/useAuth';
 
 if (process.env.NODE_ENV !== 'production') {
   loadErrorMessages();
@@ -32,6 +34,8 @@ import React from 'react';
 export default function SignUp() {
   const [registerUser, { loading, error, data }] = useMutation(REGISTER_USER);
   const wasSignUpSuccessful = Boolean(data?.registerUser?.user?.databaseId);
+  const userData = useQuery(GET_USER);
+  const user = userData?.data?.viewer;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -48,6 +52,15 @@ export default function SignUp() {
       <p>
         Thanks! Check your email – an account confirmation link has been sent to
         you.
+      </p>
+    );
+  } else if (user) {
+    return (
+      <p>
+        You're already logged In! Check available listings{' '}
+        <Link className='' href='/listing'>
+          <span className='text-[#ad782f] underline'>Listing</span>
+        </Link>
       </p>
     );
   }
