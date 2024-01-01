@@ -1,12 +1,21 @@
+import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
+const BottomServiceSection = dynamic(
+  () => import('@/components/service-menu-components/BottomServiceSection'),
+  { ssr: false }
+);
+const ServicePointFeature = dynamic(
+  () => import('@/components/service-menu-components/ServicePointFeature'),
+  { ssr: false }
+);
+const Footer = dynamic(() => import('@/components/shared/Footer'), {
+  ssr: false,
+});
 
 import SharedBanner from '@/components/elements/SharedBanner';
-import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
-import ServicePointFeature from '@/components/service-menu-components/ServicePointFeature';
-import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
@@ -202,7 +211,7 @@ export default async function CommercialBuyers() {
                   ?.featureTitle
               }
             </h1>
-            <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl mt-1 md:mt-4'>
+            <h2 className='mt-1 w-full text-center text-2xl md:mt-4 md:text-3xl lg:text-5xl'>
               {
                 data?.pages?.nodes[0]?.commercialBuyers?.serviceFeatureSection
                   ?.featureSubtitle

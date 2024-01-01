@@ -1,12 +1,19 @@
+import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 import Head from 'next/head';
 import React from 'react';
 
 import { getClient } from '@/lib/apollo';
+const ServicesBottomBanner = dynamic(
+  () => import('@/components/pages/Services/ServicesBottomBanner'),
+  { ssr: false }
+);
+const FeaturedServices = dynamic(
+  () => import('@/components/pages/Services/FeaturedServices'),
+  { ssr: false }
+);
 
-import GetInTouch from '@/components/pages/Listings/GetInTouch';
-import FeaturedServices from '@/components/pages/Services/FeaturedServices';
 import ServiceBanner from '@/components/pages/Services/ServiceBanner';
 import Footer from '@/components/shared/Footer';
 
@@ -181,10 +188,8 @@ export default async function ServicePage() {
           featuredTitle={data?.pages?.nodes[0]?.services?.featuredServiceTitle}
         />
       </section>
-      {/* <BottomFeature
-        bottomSection={data?.pages?.nodes[0]?.services?.bottomSection}
-      /> */}
-      <GetInTouch
+
+      <ServicesBottomBanner
         bottomSection={data?.pages?.nodes[0]?.services?.bottomSection}
       />
       <Footer

@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 import Head from 'next/head';
@@ -5,12 +6,23 @@ import { Suspense } from 'react';
 
 import { getClient } from '@/lib/apollo';
 import { getAllProperties, getSearchQuery } from '@/lib/dataFetching';
+const FeaturedListings = dynamic(
+  () => import('@/components/pages/Listings/FeaturedListings'),
+  { ssr: false }
+);
+const GetInTouch = dynamic(
+  () => import('@/components/pages/Listings/GetInTouch'),
+  { ssr: false }
+);
+const PaginationSearch = dynamic(
+  () => import('@/components/pages/Listings/PaginationSearch'),
+  { ssr: false }
+);
+const Footer = dynamic(() => import('@/components/shared/Footer'), {
+  ssr: false,
+});
 
-import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
-import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import ListingBanner from '@/components/pages/Listings/ListingBanner';
-import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
-import Footer from '@/components/shared/Footer';
 import Skeleton from '@/components/Skeleton';
 
 const query = gql`
