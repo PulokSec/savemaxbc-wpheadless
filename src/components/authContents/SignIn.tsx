@@ -3,7 +3,7 @@ import { gql, useMutation, useQuery } from '@apollo/client';
 import { loadDevMessages, loadErrorMessages } from '@apollo/client/dev';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { GET_USER } from '@/components/custom-hooks/useAuth';
 
@@ -56,16 +56,23 @@ export default function SignIn() {
       console.error(error);
     }
   }
-  if (user) {
-    return (
-      <p className='my-5'>
-        You're already logged In! Check available listings{' '}
-        <Link className='' href='/listing'>
-          <span className='text-[#ad782f] underline'>Listing</span>
-        </Link>
-      </p>
-    );
-  }
+  useEffect(() => {
+    // Check if the user is already logged in
+    if (user) {
+      router.push('/my-profile');
+    }
+  }, [user]);
+
+  // if (user) {
+  //   return (
+  //     <p className='my-5'>
+  //       You're already logged In! Check available listings{' '}
+  //       <Link className='' href='/listing'>
+  //         <span className='text-[#ad782f] underline'>Listing</span>
+  //       </Link>
+  //     </p>
+  //   );
+  // }
   return (
     <form
       method='post'

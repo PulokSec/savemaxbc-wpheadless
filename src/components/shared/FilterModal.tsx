@@ -1,3 +1,4 @@
+'use client';
 import { RotateCcw, SearchCheck, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -52,24 +53,25 @@ const businessOptions = [
 
 const buildingOptions = [
   { value: 'Choose Building Type', label: 'Choose Building Type' },
-  { value: 'Apartment', label: 'Apartment' },
-  { value: 'Commercial Mix', label: 'Commercial Mix' },
-  { value: 'Duplex', label: 'Duplex' },
-  { value: 'Floathome', label: 'Floathome' },
-  { value: 'Flourplex', label: 'Flourplex' },
+  // { value: 'Apartment', label: 'Apartment' },
+  // { value: 'Commercial Mix', label: 'Commercial Mix' },
+  // { value: 'Duplex', label: 'Duplex' },
+  // { value: 'Floathome', label: 'Floathome' },
+  // { value: 'Flourplex', label: 'Flourplex' },
   { value: 'House', label: 'House' },
-  { value: 'Manufactured Home', label: 'Manufactured Home' },
-  { value: 'Manufactured Home/Mobile', label: 'Manufactured Home/Mobile' },
-  { value: 'Mobile Family', label: 'Mobile Family' },
-  { value: 'Multi Tenant Industrial', label: 'Multi Tenant Industrial' },
-  { value: 'Offices', label: 'Offices' },
-  { value: 'Recreational', label: 'Recreational' },
-  { value: 'Residential Commercial Mix', label: 'Residential Commercial Mix' },
-  { value: 'Retail', label: 'Retail' },
+  { value: 'Condo', label: 'Condominium' },
+  // { value: 'Manufactured Home', label: 'Manufactured Home' },
+  // { value: 'Manufactured Home/Mobile', label: 'Manufactured Home/Mobile' },
+  // { value: 'Mobile Family', label: 'Mobile Family' },
+  // { value: 'Multi Tenant Industrial', label: 'Multi Tenant Industrial' },
+  // { value: 'Offices', label: 'Offices' },
+  // { value: 'Recreational', label: 'Recreational' },
+  // { value: 'Residential Commercial Mix', label: 'Residential Commercial Mix' },
+  // { value: 'Retail', label: 'Retail' },
   { value: 'Row / Townhouse', label: 'Row / Townhouse' },
-  { value: 'Triplex', label: 'Triplex' },
-  { value: 'Warehouse', label: 'Warehouse' },
-  { value: 'Other', label: 'Other' },
+  //   { value: 'Triplex', label: 'Triplex' },
+  //   { value: 'Warehouse', label: 'Warehouse' },
+  //   { value: 'Other', label: 'Other' },
 ];
 
 const transactionOptions = [
@@ -87,12 +89,11 @@ const FilterModal = (props: Props) => {
   const [propertyField, setPropertyField] = useState<string | any>();
   const [businessField, setBusinessField] = useState<string | any>();
   const [buildingField, setBuildingField] = useState<string | any>();
-  const [bedroom, setBedroom] = useState<number>(3);
-  const [price, setPrice] = useState<number>(450000);
+  const [bedroom, setBedroom] = useState<number>(0);
+  const [bathroom, setBathroom] = useState<number>(0);
+  const [price, setPrice] = useState<number>(0);
 
-  const handleSelectField = (event: any, setFunction: (arg0: any) => void) => {
-    setFunction(event.target.value);
-  };
+  const router = useRouter();
 
   const handleRangeChange = (event: any, setFunction: (arg0: any) => void) => {
     setFunction(event.target.value);
@@ -100,7 +101,8 @@ const FilterModal = (props: Props) => {
 
   const handleReset = () => {
     setBedroom(3);
-    setPrice(450000);
+    setBathroom(0);
+    setPrice(0);
     setTransactionField(transactionOptions[0].value);
     setPropertyField(propertyOptions[0].value);
     setBusinessField(businessOptions[0].value);
@@ -108,9 +110,11 @@ const FilterModal = (props: Props) => {
     setCity('');
   };
   const handleSearch = () => {
-    // search func
+    // search function
+    router.push(
+      `/our-listings?city=${city}&streetAddress=${city}&province=${city}&transactionType=${transactionField?.value?.toString()}&businessType=${businessField?.value?.toString()}&propertyType=${propertyField?.value?.toString()}&type=${buildingField?.value?.toString()}&bedroom=${bedroom?.toString()}&bathroom=${bathroom?.toString()}&price=${price?.toString()}`
+    );
   };
-
   return (
     <>
       <div
@@ -180,7 +184,7 @@ const FilterModal = (props: Props) => {
         </div>
         <div className='mx-auto my-2 flex w-11/12 items-center gap-4 px-2 md:px-10'>
           <p className='w-1/2'>Bedrooms: {bedroom}</p>
-          <p className='w-1/2'>Price: ${price}</p>
+          <p className='w-1/2'>Bathrooms: {bathroom}</p>
         </div>
         <div className='mx-auto flex w-11/12 items-center gap-4 px-2 md:px-10'>
           <input
@@ -194,6 +198,22 @@ const FilterModal = (props: Props) => {
             value={bedroom}
             onChange={(e) => handleRangeChange(e, setBedroom)}
           />
+          <input
+            className='w-full '
+            type='range'
+            name='bathroom'
+            id='bathroom'
+            min='1'
+            max='10'
+            step='1'
+            value={bathroom}
+            onChange={(e) => handleRangeChange(e, setBathroom)}
+          />
+        </div>
+        <div className='mx-auto my-3 flex w-11/12 items-center gap-4 px-2 md:px-10'>
+          <p className='w-1/2'>Price: ${price}</p>
+        </div>
+        <div className='flex w-11/12 items-center gap-4 px-2 md:px-10'>
           <input
             className='w-full '
             type='range'

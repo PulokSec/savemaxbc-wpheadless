@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
-import { getAllProperties } from '@/lib/dataFetching';
+import { getFilterQuery } from '@/lib/dataFetching';
 
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import ListingBanner from '@/components/pages/Listings/ListingBanner';
@@ -160,10 +160,18 @@ export default async function OurListings({
       },
     },
   });
-  const allPosts = await getAllProperties({
+  const allPosts = await getFilterQuery({
     pageParam: parseInt(searchParams?.page?.toString() || '1'),
-    typeParam: searchParams?.type?.toString() || '',
+    type: searchParams?.type?.toString() || '',
     cityParam: searchParams?.city?.toString() || '',
+    provinceParam: searchParams?.province?.toString() || '',
+    price: parseInt(searchParams?.price?.toString() || '0'),
+    streetParam: searchParams?.streetAddress?.toString() || '',
+    transactionType: searchParams?.transactionType?.toString() || '',
+    propertyType: searchParams?.propertyType?.toString() || '',
+    bedroom: parseInt(searchParams?.bedroom?.toString() || '0'),
+    bathroom: parseInt(searchParams?.bathroom?.toString() || '0'),
+    businessType: searchParams?.businessType?.toString() || '',
   });
   // console.log(allPosts);
 
