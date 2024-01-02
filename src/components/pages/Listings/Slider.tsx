@@ -27,6 +27,8 @@ const Slider = (props: Props) => {
         showPlayButton={false}
         showFullscreenButton={false}
         showIndex={true}
+        autoPlay={true}
+        slideInterval={2000}
       />
     </div>
   );
