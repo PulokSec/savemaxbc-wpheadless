@@ -11,6 +11,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { GET_USER } from '@/components/custom-hooks/useAuth';
 import Header from '@/components/shared/Header';
 import { Carousel } from 'react-responsive-carousel';
+import SingleListingLoader from '@/components/pages/Listings/SingleListingLoader';
+import SingleListingCarousel from '@/components/pages/Listings/SingleListingCarousel';
 
 if (process.env.NODE_ENV !== 'production') {
   loadErrorMessages();
@@ -37,7 +39,7 @@ export default function SingleListingBanner(props: MyProps) {
     refetchQueries: [{ query: GET_USER }],
   });
 
-  const { data } = useQuery(GET_USER);
+  const { data, loading: userLoading } = useQuery(GET_USER);
   const user = data?.viewer;
 
   const errorMessage = error?.message || '';
@@ -85,36 +87,10 @@ export default function SingleListingBanner(props: MyProps) {
     <div className='relative'>
       <Header settingsData={settingsData} navigation={headerData} />
 
-      {loggedIn ? (
-        <Carousel
-          className='mx-auto h-[350px] w-full md:h-[500px] lg:h-[700px] '
-          showArrows={true}
-          showThumbs={false}
-          infiniteLoop={true}
-          autoPlay={true}
-          interval={3000}
-          showIndicators={false}
-        >
-          {allImages?.map((img: any, idx: number) => {
-            const bufferOriginal = Buffer.from(img.Photos.data);
-            const imageUrl = JSON.parse(bufferOriginal.toString('utf8'))
-              ?.LargePhoto?.filename;
-            return (
-              <div
-                key={idx}
-                className='mx-auto h-[350px] w-[350px] md:h-[500px] md:w-[500px] lg:h-[700px] lg:w-[500px] '
-              >
-                <Image
-                  src={imageUrl}
-                  fill={true}
-                  alt={img?.altName}
-                  className='object-cover'
-                  priority={true}
-                />
-              </div>
-            );
-          })}
-        </Carousel>
+      {userLoading ? (
+        <SingleListingLoader firstImageUrl={firstImageUrl} />
+      ) : user ? (
+        <SingleListingCarousel allImages={allImages} />
       ) : (
         <>
           <div className='mx-auto flex w-full flex-col items-center justify-center gap-2 p-5 md:flex-row md:p-3 lg:p-5 '>
