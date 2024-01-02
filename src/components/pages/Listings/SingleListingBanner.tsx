@@ -13,6 +13,7 @@ import Header from '@/components/shared/Header';
 import { Carousel } from 'react-responsive-carousel';
 import SingleListingLoader from '@/components/pages/Listings/SingleListingLoader';
 import SingleListingCarousel from '@/components/pages/Listings/SingleListingCarousel';
+import Slider from '@/components/pages/Listings/Slider';
 
 if (process.env.NODE_ENV !== 'production') {
   loadErrorMessages();
@@ -90,7 +91,7 @@ export default function SingleListingBanner(props: MyProps) {
       {userLoading ? (
         <SingleListingLoader firstImageUrl={firstImageUrl} />
       ) : user ? (
-        <SingleListingCarousel allImages={allImages} />
+        <Slider images={allImages} />
       ) : (
         <>
           <div className='mx-auto flex w-full flex-col items-center justify-center gap-2 p-5 md:flex-row md:p-3 lg:p-5 '>

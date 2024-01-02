@@ -6,18 +6,20 @@ import { Suspense } from 'react';
 
 import { getClient } from '@/lib/apollo';
 import { getAllProperties, getSearchQuery } from '@/lib/dataFetching';
-const FeaturedListings = dynamic(
-  () => import('@/components/pages/Listings/FeaturedListings'),
-  { ssr: false }
-);
+// const FeaturedListings = dynamic(
+//   () => import('@/components/pages/Listings/FeaturedListings'),
+//   { ssr: false }
+// );
+import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 const GetInTouch = dynamic(
   () => import('@/components/pages/Listings/GetInTouch'),
   { ssr: false }
 );
-const PaginationSearch = dynamic(
-  () => import('@/components/pages/Listings/PaginationSearch'),
-  { ssr: false }
-);
+// const PaginationSearch = dynamic(
+//   () => import('@/components/pages/Listings/PaginationSearch'),
+//   { ssr: false }
+// );
+import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
 const Footer = dynamic(() => import('@/components/shared/Footer'), {
   ssr: false,
 });

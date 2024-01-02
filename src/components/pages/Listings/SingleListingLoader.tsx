@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 type Props = {
   firstImageUrl: any;
@@ -8,7 +8,7 @@ const SingleListingLoader = (props: Props) => {
   const { firstImageUrl } = props;
   return (
     <div
-      className='relative mx-auto flex h-[350px] w-full items-center justify-center lg:h-[350px] xl:h-[500px] '
+      className='relative mx-auto flex h-[350px] w-full items-center justify-center bg-cover bg-center bg-no-repeat lg:h-[350px] xl:h-[500px]'
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(${firstImageUrl})`,
       }}
@@ -31,6 +31,6 @@ const SingleListingLoader = (props: Props) => {
       </div>
     </div>
   );
-}
+};
 
-export default SingleListingLoader
+export default SingleListingLoader;
