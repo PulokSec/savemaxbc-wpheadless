@@ -17,6 +17,7 @@ export async function getAllProperties({
   }
   return await res.json();
 }
+
 export async function getSearchQuery({
   pageParam = 0,
   cityParam = '',
@@ -31,6 +32,48 @@ export async function getSearchQuery({
   const res = await fetch(
     process.env.NEXT_PUBLIC_BASEURL +
       `/api/search-query?city=${cityParam}&streetAddress=${streetParam}&province=${provinceParam}&page=${pageParam}`,
+    { method: 'GET', cache: 'no-cache' }
+  );
+  if (res?.status !== 200) {
+    throw new Error('failed to fetch properties');
+  }
+  return await res.json();
+}
+
+export async function getFilterQuery({
+  pageParam = 0,
+  cityParam = '',
+  provinceParam = '',
+  streetParam = '',
+  transactionType = '',
+  businessType = '',
+  propertyType = '',
+  type = '',
+  bedroom = 0,
+  bedroomMax = 10,
+  bathroom = 0,
+  bathroomMax = 10,
+  price = 0,
+  priceMax = 1000000,
+}: {
+  pageParam?: number;
+  cityParam?: string;
+  provinceParam?: string;
+  streetParam?: string;
+  transactionType?: string;
+  businessType?: string;
+  propertyType?: string;
+  type?: string;
+  bedroom?: number;
+  bedroomMax?: number;
+  bathroom?: number;
+  bathroomMax?: number;
+  price?: number;
+  priceMax?: number;
+} = {}): Promise<any> {
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_BASEURL +
+      `/api/filter-search?city=${cityParam}&streetAddress=${streetParam}&province=${provinceParam}&transactionType=${transactionType}&businessType=${businessType}&propertyType=${propertyType}&type=${type}&bedroom=${bedroom}&bedroomMax=${bedroomMax}&bathroom=${bathroom}&bathroomMax=${bathroomMax}&price=${price}&priceMax=${priceMax}&page=${pageParam}`,
     { method: 'GET', cache: 'no-cache' }
   );
   if (res?.status !== 200) {

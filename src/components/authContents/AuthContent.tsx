@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
 
 import useAuth from '@/components/custom-hooks/useAuth';
+import Loader from '@/components/utils/Loader';
 
 export default function AuthContent({ children }: { children: ReactNode }) {
   const { loggedIn, loading } = useAuth();
@@ -19,5 +20,5 @@ export default function AuthContent({ children }: { children: ReactNode }) {
     return <>{children}</>;
   }
 
-  return <p>Loading...</p>;
+  return <Loader />;
 }
