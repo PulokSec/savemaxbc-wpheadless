@@ -1,0 +1,50 @@
+.custom-button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #051125;
+  /* background-color: black; */
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); */
+  filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+}
+
+.custom-button::before,
+.custom-button::after {
+  content: '';
+  position: absolute;
+  /* border: 1px solid #e9a950; */
+  box-shadow: 0 0 0 0.6px #e9a950;
+  transition: transform 0.3s ease;
+}
+
+.custom-button::before {
+  width: 106%;
+  bottom: -6px;
+  left: 8px;
+  transform-origin: left bottom;
+}
+
+.custom-button::after {
+  height: 110%;
+  top: 8px;
+  right: -6px;
+  transform-origin: right top;
+}
+
+.custom-button:hover {
+  background-color: #cc9344;
+  color: white;
+}
+
+.custom-button:hover::before {
+  transform: scaleX(0);
+}
+
+.custom-button:hover::after {
+  transform: scaleY(0);
+}

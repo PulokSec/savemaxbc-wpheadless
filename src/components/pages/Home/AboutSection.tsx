@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import '../../../styles/button.css';
 
 type MyProps = {
   aboutData: any;
@@ -55,10 +56,7 @@ export default function AboutSection(props: MyProps) {
                 }}
               ></div>
               <div className='mt-2 py-10 text-start'>
-                <a
-                  href='/about-us'
-                  className='border border-solid px-6 py-4 text-sm font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632]'
-                >
+                <a href='/about-us' className='custom-button'>
                   See More
                 </a>
               </div>

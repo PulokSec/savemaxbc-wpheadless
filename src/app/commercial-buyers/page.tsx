@@ -203,7 +203,7 @@ export default async function CommercialBuyers() {
             data?.pages?.nodes[0]?.commercialBuyers?.topFeatureDescription
           }
         />
-        <div className='mt-24 md:mt-24 lg:mt-60'>
+        <div className='mt-[75px] md:mt-16 lg:mt-60'>
           <div className='text-center'>
             <h1 className='w-full text-center text-xl text-[#585858] md:text-2xl lg:text-3xl'>
               {

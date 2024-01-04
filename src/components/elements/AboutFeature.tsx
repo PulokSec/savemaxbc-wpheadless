@@ -26,7 +26,7 @@ export default function AboutFeature(props: MyProps) {
             {featureSection?.featuredData?.map((item: any, i: number) =>
               i % 2 == 0 ? (
                 <div
-                  className='mt-20 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/grey-bg.png")] bg-cover bg-no-repeat px-5 md:mt-60 md:px-20'
+                  className='mt-20 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/grey-bg.png")] bg-cover bg-no-repeat px-5 md:mt-20 md:px-10 lg:mt-60 lg:px-20'
                   key={i}
                 >
                   <div className='hidden md:block'>
@@ -40,7 +40,7 @@ export default function AboutFeature(props: MyProps) {
                         >
                           <NextImage
                             useSkeleton
-                            className='cover w-50 md:w-[400px]'
+                            className='cover w-50 md:w-[300px] lg:w-[400px]'
                             width='400'
                             height='600'
                             src={item?.aboutImage?.sourceUrl}
@@ -48,28 +48,28 @@ export default function AboutFeature(props: MyProps) {
                           />
                         </Fade>
                       </div>
-                      <div className='mt-5 flex flex-col items-end md:mt-0 md:pr-5'>
+                      <div className='mt-5 flex flex-col items-end md:mt-0 lg:pr-5'>
                         <Fade
                           cascade
                           damping={0.2}
                           direction='right'
                           triggerOnce
                         >
-                          <h2 className='w-full text-end text-2xl font-bold leading-5 text-[#515151]  md:text-5xl '>
+                          <h2 className='w-full text-end text-2xl font-bold leading-5 text-[#515151] md:text-4xl lg:text-5xl '>
                             {item?.name}
                           </h2>
-                          <p className='mt-5 text-end text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
+                          <p className='mt-5 text-end text-xl font-bold text-[#061632] md:text-2xl lg:w-[500px] lg:text-3xl'>
                             {item?.designation}
                           </p>
                           <div
-                            className='mt-10 text-xs md:text-2xl'
+                            className='mt-10 text-xs md:text-xl lg:text-2xl'
                             dangerouslySetInnerHTML={{
                               __html: item?.subDesignation,
                             }}
                           ></div>
 
                           <div
-                            className='mt-10 text-justify text-xs md:ml-10 md:text-lg xl:ml-20'
+                            className='mt-10 text-justify text-xs md:hidden md:text-lg lg:ml-10 lg:block xl:ml-20'
                             dangerouslySetInnerHTML={{
                               __html: item?.shortDescription,
                             }}
@@ -134,6 +134,12 @@ export default function AboutFeature(props: MyProps) {
                   </div>
                   <Fade delay={500} triggerOnce>
                     <div
+                      className='mt-10 hidden text-justify text-xs md:block md:text-lg lg:ml-10 lg:hidden xl:ml-20'
+                      dangerouslySetInnerHTML={{
+                        __html: item?.shortDescription,
+                      }}
+                    ></div>
+                    <div
                       className='mt-10 pb-20 text-justify text-xs md:text-lg'
                       dangerouslySetInnerHTML={{
                         __html: item?.description,
@@ -142,9 +148,12 @@ export default function AboutFeature(props: MyProps) {
                   </Fade>
                 </div>
               ) : (
-                <div className='mt-10 md:mt-20 md:px-10 md:py-10' key={i}>
+                <div
+                  className='mt-10 md:mt-0 md:px-10 md:py-10 lg:mt-20'
+                  key={i}
+                >
                   <div className='hidden md:block'>
-                    <div className='mx-auto flex flex-col items-center justify-between gap-4 px-5 md:flex-row md:px-10 lg:mx-0 lg:max-w-none'>
+                    <div className='mx-auto flex flex-col items-center justify-between gap-4 px-5 md:flex-row md:px-0 lg:px-10 lg:mx-0 lg:max-w-none'>
                       <div className='flex flex-col items-start'>
                         <Fade
                           cascade
@@ -152,20 +161,20 @@ export default function AboutFeature(props: MyProps) {
                           direction='left'
                           triggerOnce
                         >
-                          <h2 className='w-full text-2xl font-bold leading-5  text-[#515151] md:text-5xl'>
+                          <h2 className='w-full text-2xl font-bold leading-5 text-[#515151] md:text-4xl lg:text-5xl'>
                             {item?.name}
                           </h2>
-                          <p className='mt-5 text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
+                          <p className='mt-5 text-xl font-bold text-[#061632] md:text-2xl lg:w-[500px] lg:text-3xl'>
                             {item?.designation}
                           </p>
                           <div
-                            className='mt-10 text-xs md:text-2xl'
+                            className='mt-10 text-xs md:text-xl lg:text-2xl'
                             dangerouslySetInnerHTML={{
                               __html: item?.subDesignation,
                             }}
                           ></div>
                           <div
-                            className='mt-10 text-justify text-xs md:mr-10 md:text-lg xl:mr-20'
+                            className='mt-10 text-justify text-xs md:hidden md:text-lg lg:mr-10 lg:block xl:mr-20'
                             dangerouslySetInnerHTML={{
                               __html: item?.shortDescription,
                             }}
@@ -181,7 +190,7 @@ export default function AboutFeature(props: MyProps) {
                         >
                           <NextImage
                             useSkeleton
-                            className='cover w-50 md:w-[400px]'
+                            className='cover w-50 w-[300px] lg:w-[400px]'
                             width='400'
                             height='600'
                             src={item?.aboutImage?.sourceUrl}
@@ -245,7 +254,13 @@ export default function AboutFeature(props: MyProps) {
                   </div>
                   <Fade delay={500} triggerOnce>
                     <div
-                      className='mt-10 px-5 text-justify text-xs md:px-10 md:text-lg'
+                      className='mt-10 hidden text-justify text-xs md:block md:text-lg lg:mr-10 lg:hidden xl:mr-20'
+                      dangerouslySetInnerHTML={{
+                        __html: item?.shortDescription,
+                      }}
+                    ></div>
+                    <div
+                      className='mt-10 px-5 text-justify text-xs md:px-0 md:text-lg lg:px-10'
                       dangerouslySetInnerHTML={{
                         __html: item?.description,
                       }}

@@ -8,6 +8,7 @@ const BottomFeatureSection = dynamic(
   () => import('@/components/elements/BottomFeatureSection'),
   { ssr: false }
 );
+
 const JoinSection = dynamic(() => import('@/components/elements/JoinSection'), {
   ssr: false,
 });
@@ -18,9 +19,12 @@ const SuccessSection = dynamic(
 const WhoWeAre = dynamic(() => import('@/components/elements/WhoWeAre'), {
   ssr: false,
 });
-const WhyChooseUs = dynamic(() => import('@/components/elements/WhyChooseUs'), {
-  ssr: false,
-});
+const WhyChooseCareersPage = dynamic(
+  () => import('@/components/elements/WhyChooseCareersPage'),
+  {
+    ssr: false,
+  }
+);
 const Footer = dynamic(() => import('@/components/shared/Footer'), {
   ssr: false,
 });
@@ -228,7 +232,7 @@ export default async function CareersPage() {
           topDesc={data?.pages?.nodes[0]?.careers?.topFeatureDescription}
         />
         <WhoWeAre featuredData={data?.pages?.nodes[0]?.careers?.aboutSection} />
-        <WhyChooseUs
+        <WhyChooseCareersPage
           featuredData={data?.pages?.nodes[0]?.careers?.choiceSection}
         />
         <SuccessSection

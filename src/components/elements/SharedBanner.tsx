@@ -48,7 +48,7 @@ export default function SharedBanner(props: MyProps) {
           </div>
         </div>
         {topTitle && topDesc ? (
-          <div className=' container relative mx-auto mt-4 w-full rounded-b-xl bg-transparent px-5 py-3 text-center shadow-none md:mt-40 lg:mt-[18%] lg:w-[80%] lg:bg-white lg:shadow-md '>
+          <div className='container relative mx-auto -mt-10 w-full rounded-b-xl bg-transparent px-5 py-3 text-center shadow-none md:mt-40 lg:mt-[18%] lg:w-[80%] lg:bg-white lg:shadow-md '>
             <div
               className='md:text-md mt-5 text-xs leading-6 text-white lg:text-lg lg:text-[#061632]'
               dangerouslySetInnerHTML={{

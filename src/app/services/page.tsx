@@ -175,7 +175,7 @@ export default async function ServicePage() {
   return (
     <main>
       <Head>
-        <title>Hi</title>
+        <title>Our Services</title>
       </Head>
       <section className='bg-white'>
         <ServiceBanner

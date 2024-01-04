@@ -9,9 +9,9 @@ export default function SuccessSection(props: MyProps) {
   const { featuredData } = props;
   return (
     <section className='mt-0 px-5 md:px-10'>
-      <div className='-mt-10 pb-10 pt-0 md:py-10'>
+      <div className='-mt-20 pb-5 pt-0 md:-mt-10 lg:-mt-20 xl:-mt-10 md:py-10 md:pb-10'>
         <div className='mx-auto max-w-[1400px]'>
-          <div className=' flex flex-col items-center justify-center gap-4 md:mt-10 md:px-10  lg:mx-0 lg:mt-20 lg:flex-row '>
+          <div className='flex flex-col items-center justify-center gap-4 md:mt-10 md:px-10 lg:mx-0 lg:flex-row xl:mt-20'>
             <div className='flex flex-col items-start justify-center lg:w-1/2'>
               <div className='text-start lg:w-full'>
                 <h2 className='mx-auto w-full text-start text-xl md:text-4xl lg:text-[42px]'>

@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { Fade, Slide } from 'react-awesome-reveal';
+import '../../../styles/button.css';
 
 type MyProps = {
   featuredData: any;
@@ -43,7 +44,7 @@ const NewFeatureSection = (props: MyProps) => {
                         <div className=' mt-2  py-10 text-start'>
                           <a
                             href='/properties-listing'
-                            className='mt-10 border border-solid px-6 py-4 text-sm font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632]'
+                            className='custom-button'
                           >
                             See More
                           </a>
@@ -118,7 +119,7 @@ const NewFeatureSection = (props: MyProps) => {
                         <div className=' mt-2  py-10 text-start'>
                           <a
                             href='/properties-listing'
-                            className='mt-10 border border-solid px-6 py-4 text-sm font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632]'
+                            className='custom-button'
                           >
                             See More
                           </a>
