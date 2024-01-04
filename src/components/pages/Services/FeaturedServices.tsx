@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import '../../../styles/button.css';
 
 type MyProps = {
   featuredData: any;
@@ -49,10 +50,7 @@ export default function FeaturedServices(props: MyProps) {
                         }}
                       ></div>
                       <div className='mt-10 text-start'>
-                        <a
-                          href='/properties-listing'
-                          className='mt-10 border border-solid px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632]'
-                        >
+                        <a href='/properties-listing' className='custom-button'>
                           See More
                         </a>
                       </div>
@@ -88,10 +86,7 @@ export default function FeaturedServices(props: MyProps) {
                         }}
                       ></div>
                       <div className='mt-10 text-start'>
-                        <a
-                          href='/properties-listing'
-                          className='mt-10 border border-solid px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632]'
-                        >
+                        <a href='/properties-listing' className='custom-button'>
                           See More
                         </a>
                       </div>

@@ -23,16 +23,16 @@
 }
 
 .custom-button::before {
-  width: 106%;
-  bottom: -6px;
-  left: 8px;
+  width: 100%;
+  top: -6px;
+  left: -12px;
   transform-origin: left bottom;
 }
 
 .custom-button::after {
-  height: 110%;
-  top: 8px;
-  right: -6px;
+  height: 108%;
+  top: -12px;
+  left: -6px;
   transform-origin: right top;
 }
 
