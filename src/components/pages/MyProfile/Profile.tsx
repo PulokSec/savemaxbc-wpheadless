@@ -85,14 +85,14 @@ const Profile = () => {
             <p className='my-3 text-sm text-gray-800'>{email}</p>
             <div
               onClick={handleLogOut}
-              className='mt-10 flex cursor-pointer items-center gap-x-2 rounded bg-gray-900 px-4 py-1 text-white hover:bg-gray-800'
+              className='mt-0 flex cursor-pointer items-center gap-x-2 rounded bg-gray-900 px-4 py-1 text-white hover:bg-gray-800 md:mt-10'
             >
               <p>Logout</p>
               <LogOut className='h-5 w-5' />
             </div>
           </div>
           <div className='ml-28 hidden lg:block'>
-            <div className='h-[475px] border-l-[1px] border-l-gray-300 drop-shadow-2xl '></div>
+            <div className='h-[400px] border-l-[1px] border-l-gray-300 drop-shadow-2xl '></div>
           </div>
           <div className='md:ml-28'>
             <div className='flex flex-col items-center justify-center md:items-start md:justify-start'>
