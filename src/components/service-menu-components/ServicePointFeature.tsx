@@ -44,7 +44,7 @@ export default function ServicePointFeature(props: MyProps) {
             )
           )}
         </div>
-        <div className='cover relative col-span-12 mx-auto mt-5 h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[600px] xl:col-span-6 xl:col-start-7 xl:h-[85%] xl:w-full 2xl:col-span-4'>
+        <div className='cover relative col-span-12 mx-auto mt-5 h-[400px] w-11/12 md:h-[700px] md:w-3/4 lg:h-[800px] xl:col-span-6 xl:col-start-7 xl:h-[85%] xl:w-full 2xl:col-span-4'>
           <NextImage
             useSkeleton
             className='cover'
@@ -103,7 +103,7 @@ export default function ServicePointFeature(props: MyProps) {
             </div>
           </div>
         </div>
-        <div className='cover relative col-span-12 mx-auto mt-5 block h-[400px] w-11/12 md:h-[500px] md:w-3/4 xl:hidden lg:h-[600px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
+        <div className='cover relative col-span-12 mx-auto mt-5 block h-[400px] w-11/12 md:h-[700px] md:w-3/4 xl:hidden lg:h-[800px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
           <NextImage
             useSkeleton
             src={featuredData?.featuredImageLeft?.sourceUrl}

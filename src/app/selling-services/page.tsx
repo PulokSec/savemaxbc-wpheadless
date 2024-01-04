@@ -174,7 +174,7 @@ export default async function SellingServices() {
   // console.log(data);
   return (
     <>
-      <main className='max-w-screen mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
+      <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
         <SharedBanner
           bannerData={data?.pages?.nodes[0]?.sellingServices?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

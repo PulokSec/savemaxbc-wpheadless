@@ -9,26 +9,26 @@ export default function JoinSection(props: MyProps) {
   const { featuredData } = props;
   return (
     <section className='mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/how-to-join-background.png")] bg-cover bg-no-repeat px-5 md:px-10'>
-      <div className='pb-0 pt-10 md:py-20'>
+      <div className='pb-0 pt-3 md:py-20'>
         <div className='mx-auto max-w-[1400px]'>
-          <div className='container mx-auto mt-10 flex flex-col items-center justify-between gap-10 px-10 md:mt-10 md:flex-col lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:gap-4'>
-            <div className='hidden md:block lg:w-1/2 '>
+          <div className='container mx-auto mt-10 flex flex-col items-center justify-between gap-10 px-10 md:px-10 md:mt-10 md:flex-col lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:gap-4'>
+            <div className='hidden lg:block lg:w-1/2'>
               <NextImage
                 useSkeleton
-                className='mb-[-400px] w-64 xl:h-[1000px] xl:w-[1200px]'
+                className='mb-[-400px] lg:h-[600px] lg:w-[700px] xl:w-[1200px] xl:h-[1000px]'
                 src={featuredData?.image?.sourceUrl}
                 alt={featuredData?.image?.altText}
                 width='1200'
                 height='1000'
               />
             </div>
-            <div className='flex flex-col items-center justify-center md:items-end md:justify-center lg:w-1/2'>
+            <div className='flex flex-col items-end justify-end md:items-end md:justify-center lg:w-1/2'>
               <div className='text-start lg:w-full'>
-                <h2 className='w-full text-center text-xl md:text-end md:text-4xl lg:text-5xl'>
+                <h2 className='w-full text-end text-xl md:text-end md:text-4xl lg:text-5xl'>
                   {featuredData?.featureTitle}
                 </h2>
                 <div
-                  className='mt-5 text-center text-xs md:text-end md:text-lg'
+                  className='mt-5 text-end text-xs md:text-end md:text-lg pl-5 lg:pl-0'
                   dangerouslySetInnerHTML={{
                     __html: featuredData?.featureDescription,
                   }}
@@ -43,10 +43,10 @@ export default function JoinSection(props: MyProps) {
                 </a>
               </div>
             </div>
-            <div className='block md:hidden lg:w-1/2 '>
+            <div className='block md:pt-10 lg:hidden lg:w-1/2 '>
               <NextImage
                 useSkeleton
-                className='ml-[-50px] w-[400px]'
+                className='ml-[-50px] w-[400px] md:w-full'
                 src={featuredData?.image?.sourceUrl}
                 alt={featuredData?.image?.altText}
                 width='500'

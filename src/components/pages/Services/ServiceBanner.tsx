@@ -33,7 +33,7 @@ export default function ServiceBanner(props: MyProps) {
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (
-            <div className='mx-auto mt-8 max-w-[1400px] px-3 text-center text-white md:text-start'>
+            <div className='mx-auto mt-8 max-w-[1400px] px-3 text-center text-white '>
               <p className='text-md'>{bannerData?.bannerDescription}</p>
             </div>
           )}

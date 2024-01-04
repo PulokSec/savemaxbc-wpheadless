@@ -36,14 +36,14 @@ export default function FeaturedServices(props: MyProps) {
                   </div>
                   <div className='mx-auto flex w-full flex-col items-end md:w-1/2 xl:w-3/5'>
                     <div className='mx-auto w-3/4 xl:w-2/3'>
-                      <h2 className='w-full text-2xl leading-8 text-sky-950  md:text-5xl'>
+                      <h2 className='w-full text-2xl leading-8 text-sky-950 md:text-5xl'>
                         <span className='text-[#525659]'>
                           {item?.title?.split(/ (.*)/)[0]}
                         </span>{' '}
                         {item?.title?.split(/ (.*)/)[1]}
                       </h2>
                       <div
-                        className='mt-5 text-xs md:w-[600px] md:text-lg'
+                        className='mt-5 text-justify text-xs md:text-lg'
                         dangerouslySetInnerHTML={{
                           __html: item?.description,
                         }}
@@ -82,7 +82,7 @@ export default function FeaturedServices(props: MyProps) {
                         {item?.title?.split(/ (.*)/)[1]}
                       </h2>
                       <div
-                        className='mt-5 text-xs md:w-[600px] md:text-lg'
+                        className='mt-5 text-justify text-xs md:text-lg'
                         dangerouslySetInnerHTML={{
                           __html: item?.description,
                         }}

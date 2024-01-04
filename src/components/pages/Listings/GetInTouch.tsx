@@ -18,7 +18,7 @@ export default function GetInTouch(props: MyProps) {
           />
           <div className='absolute h-full w-full overflow-hidden rounded-t-[100%] bg-gray-500 bg-opacity-70'>
             <div className=''>
-              <h2 className='px-5 pt-16 text-center text-xl text-white md:pt-24 md:text-5xl xl:pt-32'>
+              <h2 className='px-5 pt-16 text-center text-xl text-white md:pt-32 md:text-5xl lg:pt-36 xl:pt-32'>
                 {bottomSection?.title}
               </h2>
               <div className='mt-7 text-center md:mt-14'>
