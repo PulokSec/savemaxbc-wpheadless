@@ -1,5 +1,6 @@
+'use client';
 import React from 'react';
-
+import { Fade, Slide } from 'react-awesome-reveal';
 import NextImage from '@/components/NextImage';
 
 type MyProps = {
@@ -31,136 +32,153 @@ export default function AboutFeature(props: MyProps) {
                   <div className='hidden md:block'>
                     <div className='mx-auto flex flex-col items-center justify-between md:flex-row lg:mx-0 lg:max-w-none'>
                       <div className='mt-[-15%] md:mt-[-8%]'>
-                        <NextImage
-                          useSkeleton
-                          className='cover w-50 md:w-[400px]'
-                          width='400'
-                          height='600'
-                          src={item?.aboutImage?.sourceUrl}
-                          alt={item?.aboutImage?.altText}
-                        />
+                        <Fade
+                          direction='left'
+                          delay={0.5}
+                          fraction={0.5}
+                          triggerOnce
+                        >
+                          <NextImage
+                            useSkeleton
+                            className='cover w-50 md:w-[400px]'
+                            width='400'
+                            height='600'
+                            src={item?.aboutImage?.sourceUrl}
+                            alt={item?.aboutImage?.altText}
+                          />
+                        </Fade>
                       </div>
                       <div className='mt-5 flex flex-col items-end md:mt-0 md:pr-5'>
-                        <h2 className='w-full text-end text-2xl font-bold leading-5 text-[#515151]  md:text-5xl '>
-                          {item?.name}
-                        </h2>
-                        <p className='mt-5 text-end text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
-                          {item?.designation}
-                        </p>
-                        <div
-                          className='mt-10 text-xs md:text-2xl'
-                          dangerouslySetInnerHTML={{
-                            __html: item?.subDesignation,
-                          }}
-                        ></div>
-                        <div
-                          className='mt-10 text-justify text-xs md:ml-10 md:text-lg xl:ml-20'
-                          dangerouslySetInnerHTML={{
-                            __html: item?.shortDescription,
-                          }}
-                        ></div>
+                        <Fade
+                          cascade
+                          damping={0.2}
+                          direction='right'
+                          triggerOnce
+                        >
+                          <h2 className='w-full text-end text-2xl font-bold leading-5 text-[#515151]  md:text-5xl '>
+                            {item?.name}
+                          </h2>
+                          <p className='mt-5 text-end text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
+                            {item?.designation}
+                          </p>
+                          <div
+                            className='mt-10 text-xs md:text-2xl'
+                            dangerouslySetInnerHTML={{
+                              __html: item?.subDesignation,
+                            }}
+                          ></div>
+
+                          <div
+                            className='mt-10 text-justify text-xs md:ml-10 md:text-lg xl:ml-20'
+                            dangerouslySetInnerHTML={{
+                              __html: item?.shortDescription,
+                            }}
+                          ></div>
+                        </Fade>
                       </div>
                     </div>
                   </div>
                   <div className='md:hidden'>
                     <div className='mx-auto flex flex-col items-center justify-between md:flex-row lg:mx-0 lg:max-w-none'>
                       <div className='mt-5 flex flex-col items-end md:mt-0 md:pr-5'>
-                        <h2 className='w-full text-end text-2xl font-bold leading-5 text-[#515151]  md:text-5xl '>
-                          {item?.name}
-                        </h2>
-                        <p className='mt-5 text-end text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
-                          {item?.designation}
-                        </p>
-                        <div
-                          className={`${
-                            item?.subDesignation ? 'mt-10' : ''
-                          }  text-xs md:text-2xl`}
-                          dangerouslySetInnerHTML={{
-                            __html: item?.subDesignation,
-                          }}
-                        ></div>
+                        <Fade
+                          cascade
+                          damping={0.2}
+                          direction='right'
+                          triggerOnce
+                        >
+                          <h2 className='w-full text-end text-2xl font-bold leading-5 text-[#515151]  md:text-5xl '>
+                            {item?.name}
+                          </h2>
+                          <p className='mt-5 text-end text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
+                            {item?.designation}
+                          </p>
+                          <div
+                            className={`${
+                              item?.subDesignation ? 'mt-10' : ''
+                            }  text-xs md:text-2xl`}
+                            dangerouslySetInnerHTML={{
+                              __html: item?.subDesignation,
+                            }}
+                          ></div>
+                        </Fade>
                         <div className='mt-10'>
-                          <NextImage
-                            useSkeleton
-                            className='cover w-50 md:w-[400px]'
-                            width='400'
-                            height='600'
-                            src={item?.aboutImage?.sourceUrl}
-                            alt={item?.aboutImage?.altText}
-                          />
+                          <Fade
+                            direction='left'
+                            delay={0.5}
+                            fraction={0.5}
+                            triggerOnce
+                          >
+                            <NextImage
+                              useSkeleton
+                              className='cover w-50 md:w-[400px]'
+                              width='400'
+                              height='600'
+                              src={item?.aboutImage?.sourceUrl}
+                              alt={item?.aboutImage?.altText}
+                            />
+                          </Fade>
                         </div>
-                        <div
-                          className={`${
-                            item?.shortDescription ? 'mt-10' : ''
-                          } mb-2 text-justify text-xs md:text-lg`}
-                          dangerouslySetInnerHTML={{
-                            __html: item?.shortDescription,
-                          }}
-                        ></div>
+                        <Fade delay={500} triggerOnce>
+                          <div
+                            className={`${
+                              item?.shortDescription ? 'mt-10' : ''
+                            } mb-2 text-justify text-xs md:text-lg`}
+                            dangerouslySetInnerHTML={{
+                              __html: item?.shortDescription,
+                            }}
+                          ></div>
+                        </Fade>
                       </div>
                     </div>
                   </div>
-                  <div
-                    className='mt-10 pb-20 text-justify text-xs md:text-lg'
-                    dangerouslySetInnerHTML={{
-                      __html: item?.description,
-                    }}
-                  ></div>
+                  <Fade delay={500} triggerOnce>
+                    <div
+                      className='mt-10 pb-20 text-justify text-xs md:text-lg'
+                      dangerouslySetInnerHTML={{
+                        __html: item?.description,
+                      }}
+                    ></div>
+                  </Fade>
                 </div>
               ) : (
                 <div className='mt-10 md:mt-20 md:px-10 md:py-10' key={i}>
                   <div className='hidden md:block'>
                     <div className='mx-auto flex flex-col items-center justify-between gap-4 px-5 md:flex-row md:px-10 lg:mx-0 lg:max-w-none'>
                       <div className='flex flex-col items-start'>
-                        <h2 className='w-full text-2xl font-bold leading-5  text-[#515151] md:text-5xl'>
-                          {item?.name}
-                        </h2>
-                        <p className='mt-5 text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
-                          {item?.designation}
-                        </p>
-                        <div
-                          className='mt-10 text-xs md:text-2xl'
-                          dangerouslySetInnerHTML={{
-                            __html: item?.subDesignation,
-                          }}
-                        ></div>
-                        <div
-                          className='mt-10 text-justify text-xs md:mr-10 md:text-lg xl:mr-20'
-                          dangerouslySetInnerHTML={{
-                            __html: item?.shortDescription,
-                          }}
-                        ></div>
+                        <Fade
+                          cascade
+                          damping={0.2}
+                          direction='left'
+                          triggerOnce
+                        >
+                          <h2 className='w-full text-2xl font-bold leading-5  text-[#515151] md:text-5xl'>
+                            {item?.name}
+                          </h2>
+                          <p className='mt-5 text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
+                            {item?.designation}
+                          </p>
+                          <div
+                            className='mt-10 text-xs md:text-2xl'
+                            dangerouslySetInnerHTML={{
+                              __html: item?.subDesignation,
+                            }}
+                          ></div>
+                          <div
+                            className='mt-10 text-justify text-xs md:mr-10 md:text-lg xl:mr-20'
+                            dangerouslySetInnerHTML={{
+                              __html: item?.shortDescription,
+                            }}
+                          ></div>
+                        </Fade>
                       </div>
                       <div className='mt-5 md:mt-0'>
-                        <NextImage
-                          useSkeleton
-                          className='cover w-50 md:w-[400px]'
-                          width='400'
-                          height='600'
-                          src={item?.aboutImage?.sourceUrl}
-                          alt={item?.aboutImage?.altText}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className='md:hidden'>
-                    <div className='mx-auto flex flex-col items-center justify-between gap-4 px-5 md:flex-row md:px-10 lg:mx-0 lg:max-w-none'>
-                      <div className='flex flex-col items-start'>
-                        <h2 className='w-full text-2xl font-bold leading-5  text-[#515151] md:text-5xl'>
-                          {item?.name}
-                        </h2>
-                        <p className='mt-5 text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
-                          {item?.designation}
-                        </p>
-                        <div
-                          className={`${
-                            item?.subDesignation ? 'mt-10' : ''
-                          } text-xs md:text-2xl`}
-                          dangerouslySetInnerHTML={{
-                            __html: item?.subDesignation,
-                          }}
-                        ></div>
-                        <div className='mt-10 md:mt-0'>
+                        <Slide
+                          direction='right'
+                          delay={0.5}
+                          fraction={0.5}
+                          triggerOnce
+                        >
                           <NextImage
                             useSkeleton
                             className='cover w-50 md:w-[400px]'
@@ -169,22 +187,70 @@ export default function AboutFeature(props: MyProps) {
                             src={item?.aboutImage?.sourceUrl}
                             alt={item?.aboutImage?.altText}
                           />
-                        </div>
-                        <div
-                          className='mb-2 mt-10 text-justify text-xs md:text-lg'
-                          dangerouslySetInnerHTML={{
-                            __html: item?.shortDescription,
-                          }}
-                        ></div>
+                        </Slide>
                       </div>
                     </div>
                   </div>
-                  <div
-                    className='mt-10 px-5 text-justify text-xs md:px-10 md:text-lg'
-                    dangerouslySetInnerHTML={{
-                      __html: item?.description,
-                    }}
-                  ></div>
+                  <div className='md:hidden'>
+                    <div className='mx-auto flex flex-col items-center justify-between gap-4 px-5 md:flex-row md:px-10 lg:mx-0 lg:max-w-none'>
+                      <div className='flex flex-col items-start'>
+                        <Fade
+                          cascade
+                          damping={0.2}
+                          direction='left'
+                          triggerOnce
+                        >
+                          <h2 className='w-full text-2xl font-bold leading-5  text-[#515151] md:text-5xl'>
+                            {item?.name}
+                          </h2>
+                          <p className='mt-5 text-xl font-bold text-[#061632] md:w-[500px] md:text-3xl'>
+                            {item?.designation}
+                          </p>
+                          <div
+                            className={`${
+                              item?.subDesignation ? 'mt-10' : ''
+                            } text-xs md:text-2xl`}
+                            dangerouslySetInnerHTML={{
+                              __html: item?.subDesignation,
+                            }}
+                          ></div>
+                        </Fade>
+                        <div className='mt-10 md:mt-0'>
+                          <Slide
+                            direction='right'
+                            delay={0.5}
+                            fraction={0.5}
+                            triggerOnce
+                          >
+                            <NextImage
+                              useSkeleton
+                              className='cover w-50 md:w-[400px]'
+                              width='400'
+                              height='600'
+                              src={item?.aboutImage?.sourceUrl}
+                              alt={item?.aboutImage?.altText}
+                            />
+                          </Slide>
+                        </div>
+                        <Fade delay={500} triggerOnce>
+                          <div
+                            className='mb-2 mt-10 text-justify text-xs md:text-lg'
+                            dangerouslySetInnerHTML={{
+                              __html: item?.shortDescription,
+                            }}
+                          ></div>
+                        </Fade>
+                      </div>
+                    </div>
+                  </div>
+                  <Fade delay={500} triggerOnce>
+                    <div
+                      className='mt-10 px-5 text-justify text-xs md:px-10 md:text-lg'
+                      dangerouslySetInnerHTML={{
+                        __html: item?.description,
+                      }}
+                    ></div>
+                  </Fade>
                 </div>
               )
             )}
