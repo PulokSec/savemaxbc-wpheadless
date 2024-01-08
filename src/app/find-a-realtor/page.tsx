@@ -20,6 +20,8 @@ const Footer = dynamic(() => import('@/components/shared/Footer'), {
 });
 
 import FindRealtorBanner from '@/components/elements/FindRealtorBanner';
+import Image from 'next/image';
+import AllRealtorsSection from '@/components/elements/AllRealtorsSection';
 
 const query = gql`
   query {
@@ -85,6 +87,19 @@ const query = gql`
             backgroundImage {
               sourceUrl
               altText
+            }
+          }
+          allRealtors {
+            title
+            description
+            realtorCard {
+              name
+              phone
+              email
+              image {
+                sourceUrl
+                altText
+              }
             }
           }
         }
@@ -220,9 +235,14 @@ export default async function CareersPage() {
             featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}
           />
 
+          <AllRealtorsSection
+            allRealtors={data?.pages?.nodes[0]?.findARealtor?.allRealtors}
+          />
+
           <NewPointFeature
             featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
           />
+
           <GetInTouch
             bottomSection={
               data?.pages?.nodes[0]?.findARealtor?.bottomFeatureSection

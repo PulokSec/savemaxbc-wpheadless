@@ -22,18 +22,18 @@
   transition: transform 0.3s ease;
 }
 
-.custom-button::before {
+.custom-button:hover::before {
   width: 100%;
   top: -6px;
   left: -12px;
-  transform-origin: left bottom;
+  /* transform-origin: left bottom; */
 }
 
-.custom-button::after {
+.custom-button:hover::after {
   height: 108%;
   top: -12px;
   left: -6px;
-  transform-origin: right top;
+  /* transform-origin: right top; */
 }
 
 .custom-button:hover {
@@ -41,10 +41,18 @@
   color: white;
 }
 
-.custom-button:hover::before {
+.custom-button::before {
   transform: scaleX(0);
 }
 
-.custom-button:hover::after {
+.custom-button::after {
   transform: scaleY(0);
+}
+
+.custom-button:hover::before {
+  transform: scaleX(1);
+}
+
+.custom-button:hover::after {
+  transform: scaleY(1);
 }
