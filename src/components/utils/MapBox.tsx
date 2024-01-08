@@ -65,7 +65,7 @@ const MapBox = (props: MyProps) => {
             initialViewState={{
               latitude: lat,
               longitude: lng,
-              zoom: 4,
+              zoom: 7,
               bearing: 0,
               pitch: 0,
             }}
@@ -85,7 +85,7 @@ const MapBox = (props: MyProps) => {
                 longitude={popupInfo?.location?.lng}
                 latitude={popupInfo?.location?.lat}
                 onClose={() => setPopupInfo(null)}
-                className='mx-auto flex h-[450px] w-[250px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white md:h-[320px]'
+                className='mx-auto flex h-[300px] w-[100%] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white'
               >
                 <Link
                   href={`/listing/${popupInfo?.post?.StreetAddress?.replaceAll(
