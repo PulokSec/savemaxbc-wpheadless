@@ -107,10 +107,22 @@ export async function getFilterQuery({
 export async function getSingleProperty({
   listingId = '',
 }: { listingId?: string } = {}): Promise<any> {
-  console.log(listingId);
   const res = await fetch(
     process.env.NEXT_PUBLIC_BASEURL +
       `/api/single-property?listingId=${listingId}`,
+    { method: 'GET', cache: 'no-cache' }
+  );
+  if (res?.status !== 200) {
+    throw new Error('failed to fetch properties');
+  }
+  return await res.json();
+}
+
+export async function getMapProperties({
+  searchQuery = '',
+}: { searchQuery?: string } = {}): Promise<any> {
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_BASEURL + `/api/map-filter?query=${searchQuery}`,
     { method: 'GET', cache: 'no-cache' }
   );
   if (res?.status !== 200) {

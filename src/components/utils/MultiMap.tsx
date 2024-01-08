@@ -21,8 +21,8 @@ const MultiMapComponent = (props: MyProps) => {
   const { allPosts, totalCount, latitude, longitude } = props;
   console.log(latitude, longitude);
   const center = {
-    lat: parseFloat(latitude || allPosts[0]?.post?.Longitude || '49.189991'),
-    lng: parseFloat(longitude || allPosts[0]?.post?.Latitude || '-122.8503342'),
+    lat: latitude,
+    lng: longitude,
   };
   const createClusterCustomIcon = function (cluster: MarkerCluster) {
     return L.divIcon({
