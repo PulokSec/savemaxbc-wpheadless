@@ -2,21 +2,20 @@
 import { Dialog } from '@headlessui/react';
 import { Mail, Phone, Search } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsTelephone } from 'react-icons/bs';
+import { FaRegUser, FaUser } from 'react-icons/fa';
 import { HiMenu } from 'react-icons/hi';
 import { RxCross2 } from 'react-icons/rx';
-import { CiUser } from 'react-icons/ci';
 
 import { getSearchQuery } from '@/lib/dataFetching';
 
 import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
 import SearchModal from '@/components/shared/SearchModal';
 import Scroll from '@/components/utils/Scroll';
-import { FaRegUser, FaUser, FaUserAlt } from 'react-icons/fa';
-import Link from 'next/link';
 
 type MyProps = {
   navigation: any;
@@ -24,6 +23,8 @@ type MyProps = {
 };
 export default function Header(props: MyProps) {
   const [open, setOpen] = useState(false);
+  const [listingOpen, setListingOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const { navigation, settingsData } = props;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [filtersData, setFiltersData] = useState([]);
@@ -75,6 +76,16 @@ export default function Header(props: MyProps) {
     setSearchShow(false);
   });
 
+  console.log('nasdfsgs ', navigation);
+
+  const handleMouseEnter = (label: any) => {
+    if (label === 'Listings') {
+      setListingOpen(true);
+    } else if (label === 'Services') {
+      setServicesOpen(true);
+    }
+  };
+
   return (
     <>
       {modalOpen && (
@@ -114,11 +125,11 @@ export default function Header(props: MyProps) {
                     <div key={item.label} className='relative'>
                       <div
                         onClick={() => router.push(item.url)}
-                        onMouseEnter={() =>
-                          item?.childItems?.nodes?.length > 0
-                            ? setOpen(true)
-                            : setOpen(false)
-                        }
+                        onMouseEnter={() => handleMouseEnter(item?.label)}
+                        onMouseLeave={() => {
+                          setListingOpen(false);
+                          setServicesOpen(false);
+                        }}
                         className={`flex cursor-pointer items-center justify-center gap-1 text-lg font-bold leading-10 ${
                           item?.childItems?.nodes?.length > 0 && open
                             ? 'from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
@@ -143,27 +154,52 @@ export default function Header(props: MyProps) {
                           </svg>
                         )}
                       </div>
-                      <ul
-                        onMouseEnter={() => setOpen(true)}
-                        onMouseLeave={() => setOpen(false)}
-                        className={`absolute right-0 z-10 mt-2 flex w-40 flex-col rounded-lg bg-[#0D1524] py-2 shadow-xl ${
-                          item?.childItems?.nodes?.length > 0 && open
-                            ? 'block'
-                            : 'hidden'
-                        }`}
-                      >
-                        {item.childItems.nodes.map((submenu: any) => {
-                          return (
-                            <a
-                              key={submenu.label}
-                              href={submenu.uri}
-                              className='flex w-full items-center from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text px-3 py-2 text-sm  text-white hover:bg-gradient-to-r hover:text-transparent'
-                            >
-                              {submenu.label}
-                            </a>
-                          );
-                        })}
-                      </ul>
+                      {item?.label === 'Listings' && (
+                        <ul
+                          onMouseEnter={() => setListingOpen(true)}
+                          onMouseLeave={() => setListingOpen(false)}
+                          className={`absolute right-0 z-10 mt-0 flex w-40 flex-col rounded-lg bg-[#0D1524] py-2 shadow-xl ${
+                            item?.childItems?.nodes?.length > 0 && listingOpen
+                              ? 'block'
+                              : 'hidden'
+                          }`}
+                        >
+                          {item.childItems.nodes.map((submenu: any) => {
+                            return (
+                              <a
+                                key={submenu.label}
+                                href={submenu.uri}
+                                className='flex w-full items-center from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text px-3 py-2 text-sm  text-white hover:bg-gradient-to-r hover:text-transparent'
+                              >
+                                {submenu.label}
+                              </a>
+                            );
+                          })}
+                        </ul>
+                      )}
+                      {item?.label === 'Services' && (
+                        <ul
+                          onMouseEnter={() => setServicesOpen(true)}
+                          onMouseLeave={() => setServicesOpen(false)}
+                          className={`absolute right-0 z-10 mt-0 flex w-40 flex-col rounded-lg bg-[#0D1524] py-2 shadow-xl ${
+                            item?.childItems?.nodes?.length > 0 && servicesOpen
+                              ? 'block'
+                              : 'hidden'
+                          }`}
+                        >
+                          {item.childItems.nodes.map((submenu: any) => {
+                            return (
+                              <a
+                                key={submenu.label}
+                                href={submenu.uri}
+                                className='flex w-full items-center from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text px-3 py-2 text-sm  text-white hover:bg-gradient-to-r hover:text-transparent'
+                              >
+                                {submenu.label}
+                              </a>
+                            );
+                          })}
+                        </ul>
+                      )}
                     </div>
                   );
                 }
@@ -235,11 +271,11 @@ export default function Header(props: MyProps) {
                           <div key={item.label} className='relative'>
                             <a
                               href={item.url}
-                              onMouseEnter={() =>
-                                item?.childItems?.nodes?.length > 0
-                                  ? setOpen(true)
-                                  : setOpen(false)
-                              }
+                              onMouseEnter={() => handleMouseEnter(item?.label)}
+                              onMouseLeave={() => {
+                                setListingOpen(false);
+                                setServicesOpen(false);
+                              }}
                               className={`flex items-center justify-start gap-1 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text text-lg  font-bold leading-7 text-gray-900  hover:bg-gray-50 hover:bg-gradient-to-r hover:text-transparent ${
                                 item?.childItems?.nodes?.length > 0 && open
                                   ? 'from-[#eee38f] via-[#ad782f] to-[#dbc071]  bg-clip-text hover:bg-gradient-to-r hover:text-transparent'
@@ -264,27 +300,54 @@ export default function Header(props: MyProps) {
                                 </svg>
                               )}
                             </a>
-                            <div
-                              onMouseEnter={() => setOpen(true)}
-                              onMouseLeave={() => setOpen(false)}
-                              className={`relative ${
-                                item?.childItems?.nodes?.length > 0 && open
-                                  ? 'block'
-                                  : 'hidden'
-                              }`}
-                            >
-                              {item.childItems.nodes.map((submenu: any) => {
-                                return (
-                                  <a
-                                    key={submenu.label}
-                                    href={submenu.uri}
-                                    className='flex items-center justify-start gap-1 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text text-lg  font-bold leading-7 text-gray-900  hover:bg-gray-50 hover:bg-gradient-to-r hover:text-transparent'
-                                  >
-                                    {submenu.label}
-                                  </a>
-                                );
-                              })}
-                            </div>
+                            {item?.label === 'Listings' && (
+                              <div
+                                onMouseEnter={() => setListingOpen(true)}
+                                onMouseLeave={() => setListingOpen(false)}
+                                className={`relative ${
+                                  item?.childItems?.nodes?.length > 0 &&
+                                  listingOpen
+                                    ? 'block'
+                                    : 'hidden'
+                                }`}
+                              >
+                                {item.childItems.nodes.map((submenu: any) => {
+                                  return (
+                                    <a
+                                      key={submenu.label}
+                                      href={submenu.uri}
+                                      className='flex items-center justify-start gap-1 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text text-lg  font-bold leading-7 text-gray-900  hover:bg-gray-50 hover:bg-gradient-to-r hover:text-transparent'
+                                    >
+                                      {submenu.label}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            )}
+                            {item?.label === 'Services' && (
+                              <div
+                                onMouseEnter={() => setServicesOpen(true)}
+                                onMouseLeave={() => setServicesOpen(false)}
+                                className={`relative ${
+                                  item?.childItems?.nodes?.length > 0 &&
+                                  servicesOpen
+                                    ? 'block'
+                                    : 'hidden'
+                                }`}
+                              >
+                                {item.childItems.nodes.map((submenu: any) => {
+                                  return (
+                                    <a
+                                      key={submenu.label}
+                                      href={submenu.uri}
+                                      className='flex items-center justify-start gap-1 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text text-lg  font-bold leading-7 text-gray-900  hover:bg-gray-50 hover:bg-gradient-to-r hover:text-transparent'
+                                    >
+                                      {submenu.label}
+                                    </a>
+                                  );
+                                })}
+                              </div>
+                            )}
                           </div>
                         );
                       }
