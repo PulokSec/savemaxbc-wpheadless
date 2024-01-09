@@ -76,7 +76,7 @@ export default function Header(props: MyProps) {
     setSearchShow(false);
   });
 
-  console.log('nasdfsgs ', navigation);
+  // console.log('nasdfsgs ', navigation);
 
   const handleMouseEnter = (label: any) => {
     if (label === 'Listings') {
