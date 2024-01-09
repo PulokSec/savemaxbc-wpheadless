@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 
 import { getClient } from '@/lib/apollo';
 
@@ -20,8 +20,7 @@ const Footer = dynamic(() => import('@/components/shared/Footer'), {
 });
 
 import FindRealtorBanner from '@/components/elements/FindRealtorBanner';
-import Image from 'next/image';
-import AllRealtorsSection from '@/components/elements/AllRealtorsSection';
+import RealtorSearchResult from '@/components/elements/RealtorSearchResult';
 
 const query = gql`
   query {
@@ -49,38 +48,7 @@ const query = gql`
             bannerHeading
             bannerDescription
           }
-          topFeatureDescription
-          topFeatureTitle
-          aboutSection {
-            topHead
-            topDescription
-            featureTitle
-            featureDescription
-            image {
-              sourceUrl
-              altText
-            }
-          }
-          exploreSection {
-            featureTitle
-            featureDescription
-            imageRight {
-              sourceUrl
-              altText
-            }
-            featuredDivLeft {
-              title
-              description
-            }
-            featuredDivRight {
-              title
-              description
-            }
-            imageLeft {
-              sourceUrl
-              altText
-            }
-          }
+
           bottomFeatureSection {
             title
             featureDescription
@@ -209,7 +177,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function FindARealtor() {
+export default async function Realtors({ searchParams }: any) {
   const { data } = await getClient().query({
     query,
     context: {
@@ -219,6 +187,16 @@ export default async function FindARealtor() {
     },
   });
   // console.log(data);
+  const allRealtors =
+    data?.pages?.nodes[0]?.findARealtor?.allRealtors?.realtorCard;
+  const name = searchParams.name || '';
+  const number = searchParams.number || '';
+  const filteredRealtors = allRealtors.filter(
+    (realtor: any) =>
+      realtor.name.toLowerCase().includes(name.toLowerCase()) &&
+      realtor.phone.includes(number)
+  );
+
   return (
     <>
       <main>
@@ -231,23 +209,9 @@ export default async function FindARealtor() {
         />
 
         <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/bg.png")] bg-cover bg-no-repeat'>
-          <FindSection
-            featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}
-          />
-
-          <AllRealtorsSection
-            allRealtors={data?.pages?.nodes[0]?.findARealtor?.allRealtors}
-          />
-
-          <NewPointFeature
-            featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
-          />
-
-          <GetInTouch
-            bottomSection={
-              data?.pages?.nodes[0]?.findARealtor?.bottomFeatureSection
-            }
-          />
+          <div className='mt-10'>
+            <RealtorSearchResult allRealtors={filteredRealtors} />
+          </div>
         </div>
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
