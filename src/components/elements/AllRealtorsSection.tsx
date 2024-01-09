@@ -1,8 +1,8 @@
 'use client';
-import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 
 import RealtorCard from '@/components/elements/RealtorCard';
+import SearchByNameRealtorModal from '@/components/elements/SearchByNameRealtorModal';
 
 type Props = {
   allRealtors: any;
@@ -11,12 +11,12 @@ type Props = {
 const AllRealtorsSection = (props: Props) => {
   const { allRealtors } = props;
   const firstDivRef = useRef<HTMLDivElement | null>(null);
-
+  const [nameSearchModal, setNameSearchModal] = useState(false);
   const [part, setPart] = useState(1);
   const [realtors, setRealtors] = useState<any>(
     allRealtors?.realtorCard?.slice(0, 8)
   );
-  const router = useRouter();
+
   useEffect(() => {
     const begin = (part - 1) * 9;
     const end = part * 9;
@@ -32,16 +32,12 @@ const AllRealtorsSection = (props: Props) => {
   const handleButtonClick = (index: number) => {
     setPart(index + 1);
     scrollToFirstDiv();
-    // router.push(`/find-a-realtor?page=${index + 1}`);
-    // router.push(`/find-a-realtor?page=${index + 1}`).then(() => {
-    //   scrollToFirstDiv(); // Scroll after route change
-    // });
   };
 
   return (
     <div className='mt-40' ref={firstDivRef}>
       <h2
-        className=' px-2 pt-5 text-center text-2xl text-gray-800 md:mb-20 md:text-3xl lg:text-5xl'
+        className=' mb-5 px-2 pt-5 text-center text-2xl text-gray-800 md:text-3xl lg:text-5xl'
         dangerouslySetInnerHTML={{
           __html: allRealtors?.title,
         }}
@@ -52,6 +48,19 @@ const AllRealtorsSection = (props: Props) => {
           __html: allRealtors?.description,
         }}
       ></div>
+      <div className='mx-auto mb-10 max-w-[1400px] px-3 md:mb-16'>
+        <div className='flex items-center justify-center'>
+          <p
+            className='cursor-pointer rounded bg-black px-3 py-1 text-white hover:bg-gray-800'
+            onClick={() => setNameSearchModal(true)}
+          >
+            Search by Name
+          </p>
+        </div>
+      </div>
+      {nameSearchModal && (
+        <SearchByNameRealtorModal setNameSearchModal={setNameSearchModal} />
+      )}
       <div className='mx-auto max-w-[1400px] px-3'>
         <div className='mb-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-5 md:gap-y-14'>
           {realtors?.map(
@@ -65,7 +74,11 @@ const AllRealtorsSection = (props: Props) => {
           {[...Array(4)].map((_, index) => (
             <button
               key={index}
-              className='rounded-full bg-sky-950 px-3 py-1 text-white hover:bg-sky-900 focus:bg-sky-900'
+              className={`${
+                part === index + 1
+                  ? 'bg-sky-800'
+                  : 'bg-sky-950 hover:bg-sky-900'
+              } rounded-full px-3 py-1 text-white `}
               onClick={() => handleButtonClick(index)}
             >
               <p className='mt-1'>{index + 1}</p>
