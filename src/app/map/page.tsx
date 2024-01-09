@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 import { getClient } from '@/lib/apollo';
+import { getMapProperties } from '@/lib/dataFetching';
 
 import MapSearch from '@/components/elements/MapSearch';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
@@ -161,7 +162,10 @@ export default async function MapPage({
   });
 
   // console.log(allPosts);
-
+  const listings = await getMapProperties({
+    searchQuery: searchParams?.query?.toString() || '',
+  });
+  console.log(listings);
   return (
     <>
       <main>
@@ -172,8 +176,10 @@ export default async function MapPage({
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
         <MapSearch
-          query={searchParams?.query?.toString() || ''}
-          pageParam={parseInt(searchParams?.page?.toString() || '1')}
+          posts={listings?.listings}
+          totalCount={listings?.totalCount}
+          latitude={listings?.listings[0]?.location?.lat}
+          longitude={listings?.listings[0]?.location?.lng}
         />
         <GetInTouch bottomSection={data?.pages?.nodes[0]?.map?.getInTouch} />
         <Footer
