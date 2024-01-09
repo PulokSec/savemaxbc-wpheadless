@@ -158,7 +158,7 @@ export default function Header(props: MyProps) {
                         <ul
                           onMouseEnter={() => setListingOpen(true)}
                           onMouseLeave={() => setListingOpen(false)}
-                          className={`absolute right-0 z-10 mt-0 flex w-40 flex-col rounded-lg bg-[#0D1524] py-2 shadow-xl ${
+                          className={`absolute right-0 z-10 mt-0 flex w-32 flex-col rounded-lg bg-[#0D1524] py-2 shadow-xl ${
                             item?.childItems?.nodes?.length > 0 && listingOpen
                               ? 'block'
                               : 'hidden'

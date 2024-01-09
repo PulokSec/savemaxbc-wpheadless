@@ -30,8 +30,8 @@ const AllRealtorsSection = (props: Props) => {
   };
 
   const handleButtonClick = (index: number) => {
-    setPart(index + 1);
     scrollToFirstDiv();
+    setPart(index + 1);
   };
 
   return (
@@ -59,7 +59,10 @@ const AllRealtorsSection = (props: Props) => {
         </div>
       </div>
       {nameSearchModal && (
-        <SearchByNameRealtorModal setNameSearchModal={setNameSearchModal} />
+        <SearchByNameRealtorModal
+          setNameSearchModal={setNameSearchModal}
+          allRealtors={allRealtors?.realtorCard}
+        />
       )}
       <div className='mx-auto max-w-[1400px] px-3'>
         <div className='mb-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-5 md:gap-y-14'>

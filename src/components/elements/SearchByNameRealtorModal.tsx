@@ -1,18 +1,33 @@
 import { RotateCcw, SearchCheck, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 type Props = {
   setNameSearchModal: any;
+  allRealtors: any;
 };
 
 const SearchByNameRealtorModal = (props: Props) => {
-  const { setNameSearchModal } = props;
-  const [name, setName] = useState<string | any>();
-  const [number, setNumber] = useState<string | any>();
+  const { setNameSearchModal, allRealtors } = props;
+  const [name, setName] = useState<string | any>('');
+  const [number, setNumber] = useState<string | any>('');
+  const [filteredRealtors, setFilteredRealtors] = useState();
+  const router = useRouter();
+
+  // console.log('realtors', filteredRealtors);
 
   const handleReset = () => {
     setName('');
     setNumber('');
+  };
+  const handleSearch = () => {
+    // const filtered = allRealtors.filter(
+    //   (realtor: any) =>
+    //     realtor.name.toLowerCase().includes(name.toLowerCase()) &&
+    //     realtor.phone.includes(number)
+    // );
+    // setFilteredRealtors(filtered);
+    router.push(`realtors?name=${name}&number=${number}`);
   };
   return (
     <>
@@ -40,6 +55,7 @@ const SearchByNameRealtorModal = (props: Props) => {
             placeholder='Name'
             onChange={(e) => setName(e.target.value)}
             value={name}
+            required
           />
         </div>
         <div className='mx-auto mb-5 w-11/12 px-2 md:px-10'>
@@ -50,6 +66,7 @@ const SearchByNameRealtorModal = (props: Props) => {
             placeholder='Number'
             onChange={(e) => setNumber(e.target.value)}
             value={number}
+            required
           />
         </div>
 
@@ -61,7 +78,10 @@ const SearchByNameRealtorModal = (props: Props) => {
             <RotateCcw className='h-5 w-5' />
             <p>Reset</p>
           </div>
-          <div className='flex cursor-pointer items-center gap-2 rounded-lg  bg-gradient-to-r from-[#eee38f] via-[#ad782f] to-[#dbc071] px-6 py-3 text-center text-white duration-500 ease-in-out hover:from-[#dbc071] hover:via-[#ad782f] hover:to-[#eee38f] hover:transition-all'>
+          <div
+            className='flex cursor-pointer items-center gap-2 rounded-lg  bg-gradient-to-r from-[#eee38f] via-[#ad782f] to-[#dbc071] px-6 py-3 text-center text-white duration-500 ease-in-out hover:from-[#dbc071] hover:via-[#ad782f] hover:to-[#eee38f] hover:transition-all'
+            onClick={handleSearch}
+          >
             <SearchCheck className='h-5 w-5' />
             <p>Search</p>
           </div>
