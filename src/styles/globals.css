@@ -28,6 +28,10 @@
   /* #endregion  /**======== Primary Color =========== */
 }
 
+  .leaflet-container {
+    width: 100%;
+    height: 100vh;
+  }
 @layer base {
   /* Alamia */
 @font-face {

@@ -10,6 +10,18 @@ export async function GET(req: Request) {
   });
 
   const data = JSON.stringify(photos);
+  // const allData = await Promise.all(
+  //   JSON.parse(data)?.map(async (item: any) => {
+  //     const bufferOriginal = Buffer.from(item?.data);
+  //     const cardImageUrl = JSON.parse(bufferOriginal.toString('utf8'))
+  //       ?.LargePhoto?.filename;
+
+  //     return {
+  //       cardImageUrl,
+  //     };
+  //   })
+  // );
+  // console.log(allData);
   return new Response(data, {
     status: 200,
   });

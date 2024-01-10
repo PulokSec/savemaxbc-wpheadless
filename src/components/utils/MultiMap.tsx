@@ -111,7 +111,7 @@ const MultiMapComponent = (props: MyProps) => {
                         style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
                         target='_blank'
                       >
-                        <div className='flex items-end justify-end'>
+                        {/* <div className='flex items-end justify-end'>
                           <div
                             className='absolute z-10 mb-[-50px] w-[50px] origin-top bg-yellow-500 text-end'
                             // style={{ transform: 'translateX(50%) rotate(45deg)' }}
@@ -120,7 +120,7 @@ const MultiMapComponent = (props: MyProps) => {
                               {post?.TransactionType}
                             </p>
                           </div>
-                        </div>
+                        </div> */}
                         {/* <div className='relative'>
                         <NextImage
                           useSkeleton
