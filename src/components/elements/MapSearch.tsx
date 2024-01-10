@@ -185,18 +185,18 @@ const MapSearch = (props: MyProps) => {
         </div>
       </div>
       <div className=''>
-        <MapBox
+        {/* <MapBox
           allPosts={posts}
           totalCount={totalCount}
           lng={longitude}
           lat={latitude}
-        />
-        {/* <MultiMapComponent
+        /> */}
+        <MultiMapComponent
           allPosts={posts}
           totalCount={totalCount}
           latitude={longitude}
           longitude={latitude}
-        /> */}
+        />
       </div>
     </section>
   );

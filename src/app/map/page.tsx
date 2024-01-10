@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import React from 'react';
 
 import { getClient } from '@/lib/apollo';
-import { getMapProperties } from '@/lib/dataFetching';
+import { getMapSearchQuery } from '@/lib/dataFetching';
 
 import MapSearch from '@/components/elements/MapSearch';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
@@ -162,10 +162,32 @@ export default async function MapPage({
   });
 
   // console.log(allPosts);
-  const listings = await getMapProperties({
+  const listings = await getMapSearchQuery({
     searchQuery: searchParams?.query?.toString() || '',
   });
-  console.log(listings);
+
+  // const geoJsonData = {
+  //   type: 'FeatureCollection',
+  //   features: listings?.map((item: any) => ({
+  //     type: 'Feature',
+  //     properties: {
+  //       // Add any additional properties here
+  //       // cardImageUrl: item?.cardImageUrl,
+  //       post: item,
+  //     },
+  //     geometry: {
+  //       type: 'Point',
+  //       coordinates: [item?.location?.lng, item?.location?.lat],
+  //     },
+  //   })),
+  // };
+
+  // // Write GeoJSON data to a file
+  // const geoJsonFilePath = '../../../assets/geoData.geojson'; // Replace with the desired path
+  // fs.writeFileSync(geoJsonFilePath, JSON.stringify(geoJsonData, null, 2));
+
+  // console.log(`GeoJSON file generated successfully at: ${geoJsonFilePath}`);
+
   return (
     <>
       <main>
@@ -178,8 +200,8 @@ export default async function MapPage({
         <MapSearch
           posts={listings?.listings}
           totalCount={listings?.totalCount}
-          latitude={listings?.listings[0]?.location?.lat}
-          longitude={listings?.listings[0]?.location?.lng}
+          latitude={parseFloat(listings?.listings[0]?.Latitude)}
+          longitude={parseFloat(listings?.listings[0]?.Longitude)}
         />
         <GetInTouch bottomSection={data?.pages?.nodes[0]?.map?.getInTouch} />
         <Footer

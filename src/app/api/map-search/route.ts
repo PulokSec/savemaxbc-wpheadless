@@ -4,31 +4,17 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
 
   // Get search terms from query parameters
-  const searchCity = searchParams.get('city') || '';
-  const searchStreetAddress = searchParams.get('streetAddress') || '';
-  const searchProvince = searchParams.get('province') || '';
+  const searchQuery = searchParams.get('query') || '';
 
   // Build the SQL query with search parameters
   const sqlQuery = `
   SELECT City, Province, Price, CommunityName, BedroomsTotal, PostalCode, TransactionType, Type, StreetAddress, Latitude, Longitude
   FROM 3d_rps_property
   WHERE 
-    (City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%'))
-    AND (StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%'))
-    AND (Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%')) AND Type IS NOT NULL
+    (City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%')) AND Type IS NOT NULL
 `;
 
-  const values = [
-    searchCity,
-    searchCity,
-    searchCity,
-    searchStreetAddress,
-    searchStreetAddress,
-    searchStreetAddress,
-    searchProvince,
-    searchProvince,
-    searchProvince,
-  ];
+  const values = [searchQuery, searchQuery, searchQuery];
 
   const listings = await query({
     query: sqlQuery,
@@ -40,21 +26,9 @@ export async function GET(req: Request) {
   FROM 3d_rps_property
   WHERE 
     (City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%'))
-    AND (StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%'))
-    AND (Province LIKE CONCAT('%', ?, '%') OR City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%'))
 `;
 
-  const totalValues = [
-    searchCity,
-    searchCity,
-    searchCity,
-    searchStreetAddress,
-    searchStreetAddress,
-    searchStreetAddress,
-    searchProvince,
-    searchProvince,
-    searchProvince,
-  ];
+  const totalValues = [searchQuery, searchQuery, searchQuery];
 
   const totalRows = (await query({
     query: totalQuery,
