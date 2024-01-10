@@ -9,7 +9,7 @@ export default function GetInTouch(props: MyProps) {
   return (
     <>
       <section className='mx-auto w-full '>
-        <div className='relative h-[40vh] w-full overflow-x-hidden lg:h-[60vh] xl:h-[80vh]'>
+        <div className='relative h-[40vh] w-full overflow-x-hidden lg:h-[60vh] xl:h-[100vh]'>
           <Image
             src={bottomSection?.backgroundImage?.sourceUrl}
             fill={true}
@@ -18,7 +18,7 @@ export default function GetInTouch(props: MyProps) {
           />
           <div className='absolute h-full w-full overflow-hidden rounded-t-[100%] bg-gray-500 bg-opacity-70'>
             <div className=''>
-              <h2 className='px-5 pt-16 text-center text-xl text-white md:pt-32 md:text-5xl lg:pt-36 xl:pt-32'>
+              <h2 className='px-5 pt-16 text-center text-xl text-white md:pt-32 md:text-5xl lg:pt-36 xl:pt-44'>
                 {bottomSection?.title}
               </h2>
               <div className='mt-7 text-center md:mt-14'>

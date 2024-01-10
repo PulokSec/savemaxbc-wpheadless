@@ -8,7 +8,7 @@ type MyProps = {
 export default function FindSection(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='mt-10 md:mt-60 lg:mx-auto lg:mt-40 2xl:mt-48'>
+    <section className='mt-16 md:mt-20 lg:mx-auto xl:mt-32'>
       <div className='pb-10 text-center md:px-10 lg:w-full lg:pb-20'>
         <h1 className='px-5 text-center text-lg font-semibold leading-5 text-gray-800 md:text-4xl'>
           {featuredData?.topHead}

@@ -9,6 +9,7 @@ import MapSearch from '@/components/elements/MapSearch';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
 import ListingBanner from '@/components/pages/Listings/ListingBanner';
 import Footer from '@/components/shared/Footer';
+import NewListingBanner from '@/components/pages/Listings/NewListingBanner';
 
 const query = gql`
   query {
@@ -165,11 +166,11 @@ export default async function MapPage({
   const listings = await getMapProperties({
     searchQuery: searchParams?.query?.toString() || '',
   });
-  console.log(listings);
+  // console.log(listings);
   return (
     <>
       <main>
-        <ListingBanner
+        <NewListingBanner
           usingFor='map'
           bannerData={data?.pages?.nodes[0]?.map?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
@@ -181,7 +182,9 @@ export default async function MapPage({
           latitude={listings?.listings[0]?.location?.lat}
           longitude={listings?.listings[0]?.location?.lng}
         />
-        <GetInTouch bottomSection={data?.pages?.nodes[0]?.map?.getInTouch} />
+        <div className='mt-10'>
+          <GetInTouch bottomSection={data?.pages?.nodes[0]?.map?.getInTouch} />
+        </div>
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
