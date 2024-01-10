@@ -1,8 +1,8 @@
 import React from 'react';
 
+import MapSearchTab from '@/components/pages/Listings/MapSearchTab';
 import SearchTab from '@/components/pages/Listings/SearchTab';
 import Header from '@/components/shared/Header';
-import MapSearchTab from '@/components/pages/Listings/MapSearchTab';
 type MyProps = {
   bannerData: any;
   headerData: any;

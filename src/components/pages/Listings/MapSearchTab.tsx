@@ -32,7 +32,7 @@ const MapSearchTab = () => {
             <div className='search flex w-[300px] items-center rounded border-2 bg-gray-200 px-3 py-1 md:w-[450px]'>
               <GrLocation className='mr-1 text-gray-400 ' />
               <input
-                className='border-none bg-gray-200 outline-none w-full'
+                className='w-full border-none bg-gray-200 outline-none'
                 type='text'
                 placeholder='Enter business location'
                 onChange={handleMapChange}
