@@ -52,8 +52,8 @@ export default function PaginationSearch(props: MyProps) {
   return (
     <div>
       {posts && posts.length > 0 ? (
-        <section className='mt-20 lg:mt-40'>
-          <div className='mt-8 grid grid-cols-1 gap-x-4 gap-y-10 pb-10 md:grid-cols-2 lg:grid-cols-3 2xl:mt-32 2xl:grid-cols-4'>
+        <section className='mt-14 '>
+          <div className='mt-8 grid grid-cols-1 gap-x-4 gap-y-10 px-2 pb-10 md:grid-cols-2 lg:grid-cols-3 lg:px-4 2xl:px-6 2xl:mt-28 2xl:grid-cols-4'>
             {posts?.map(({ post, cardImageUrl }: any) => {
               return (
                 <Link

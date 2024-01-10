@@ -5,7 +5,7 @@ import { getClient } from '@/lib/apollo';
 import { getFilterQuery } from '@/lib/dataFetching';
 
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
-import ListingBanner from '@/components/pages/Listings/ListingBanner';
+import NewListingBanner from '@/components/pages/Listings/NewListingBanner';
 import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
 import Footer from '@/components/shared/Footer';
 
@@ -178,12 +178,12 @@ export default async function OurListings({
   return (
     <>
       <main>
-        <ListingBanner
+        <NewListingBanner
           bannerData={data?.pages?.nodes[0]?.ourListings?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
+        <h1 className='mt-14 text-center text-xl md:text-5xl lg:mt-20'>
           {data?.pages?.nodes[0]?.ourListings?.listingTitle?.split(' ')[0]}{' '}
           <span className='text-leading-3 font-bold text-[#515151]'>
             {data?.pages?.nodes[0]?.ourListings?.listingTitle?.split(' ')[1]}

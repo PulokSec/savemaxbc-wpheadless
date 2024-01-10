@@ -108,9 +108,9 @@ const SearchTab = () => {
   });
 
   return (
-    <div className='mt-[10%] min-h-[500px] w-full px-5 md:max-w-[1400px] md:pb-10'>
+    <div className='mt-[10%] min-h-[500px] w-full px-5 md:pb-10 lg:max-w-[1400px]'>
       <div
-        className='rounded-bl-[10px] rounded-br-[10px] rounded-tr-[10px] bg-white  p-5  shadow'
+        className='rounded-bl-[10px] rounded-br-[10px] rounded-tr-[10px] bg-white p-5 shadow'
         ref={domNode}
       >
         <div>
@@ -136,9 +136,9 @@ const SearchTab = () => {
           </div> */}
           <form
             onSubmit={(e: any) => handleSubmit(e)}
-            className='flex flex-col justify-around gap-2 md:flex-row'
+            className='flex flex-col justify-around gap-2 lg:flex-row'
           >
-            <div className='search flex w-full items-center rounded border-2 bg-gray-200 px-3 py-1 md:w-[450px]'>
+            <div className='search flex w-full items-center rounded border-2 bg-gray-200 px-3 py-1 md:w-[450px] lg:w-[400px] xl:w-[450px]'>
               <BsSearch className='mr-1 text-gray-400 ' />
               <input
                 className='w-full border-none bg-gray-200 outline-none'

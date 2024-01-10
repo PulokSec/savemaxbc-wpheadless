@@ -205,7 +205,7 @@ export default async function SingleNews({
             Author : {singleBlog?.data?.post?.author?.node?.name}
           </p>
           <div
-            className='space-y-5 leading-7'
+            className='space-y-4 leading-6'
             dangerouslySetInnerHTML={{
               __html: singleBlog?.data?.post?.content || '',
             }}

@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 
 import { getClient } from '@/lib/apollo';
 
@@ -19,9 +19,8 @@ const Footer = dynamic(() => import('@/components/shared/Footer'), {
   ssr: false,
 });
 
-import FindRealtorBanner from '@/components/elements/FindRealtorBanner';
-import Image from 'next/image';
 import AllRealtorsSection from '@/components/elements/AllRealtorsSection';
+import FindRealtorBanner from '@/components/elements/FindRealtorBanner';
 
 const query = gql`
   query {
@@ -231,14 +230,12 @@ export default async function FindARealtor() {
         />
 
         <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/bg.png")] bg-cover bg-no-repeat'>
-          <FindSection
-            featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}
-          />
-
           <AllRealtorsSection
             allRealtors={data?.pages?.nodes[0]?.findARealtor?.allRealtors}
           />
-
+          <FindSection
+            featuredData={data?.pages?.nodes[0]?.findARealtor?.aboutSection}
+          />
           <NewPointFeature
             featuredData={data?.pages?.nodes[0]?.findARealtor?.exploreSection}
           />
