@@ -123,7 +123,7 @@ export async function getMapProperties({
 }: { searchQuery?: string } = {}): Promise<any> {
   const res = await fetch(
     process.env.NEXT_PUBLIC_BASEURL + `/api/map-filter?query=${searchQuery}`,
-    { method: 'GET', cache: 'no-cache' }
+    { method: 'GET', cache: 'force-cache' }
   );
   if (res?.status !== 200) {
     throw new Error('failed to fetch properties');
