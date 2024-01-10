@@ -34,7 +34,7 @@ const MapSearchTab = () => {
               <input
                 className='w-full border-none bg-gray-200 outline-none'
                 type='text'
-                placeholder='Enter business location'
+                placeholder='Enter search location'
                 onChange={handleMapChange}
               />
             </div>
