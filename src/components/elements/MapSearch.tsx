@@ -24,11 +24,13 @@ type MyProps = {
 
 const MapSearch = (props: MyProps) => {
   const { posts, totalCount, latitude, longitude } = props;
-
+  // const [mapField, setMapField] = useState('');
   // const [type, setType] = useState('');
   // const [count, setCount] = useState(0);
   // const [latitude, setLatitude] = useState('');
   // const [longitude, setLongitude] = useState('');
+  // const domNode: any = useRef();
+  // const { setQueryParam } = useQueryParams();
 
   // console.log(posts);
 
@@ -41,7 +43,13 @@ const MapSearch = (props: MyProps) => {
   //   setType(data);
   //   setQueryParam('query', data);
   // };
+  // const handleSubmit = (e: any) => {
+  //   e.preventDefault();
 
+  //   if (mapField?.length > 0) {
+  //     setQueryParam('query', mapField);
+  //   }
+  // };
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -78,21 +86,25 @@ const MapSearch = (props: MyProps) => {
   //   fetchData();
   // }, [query]);
 
+  // const handleMapChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setMapField(e.target.value);
+  // };
+
   return (
     <section>
-      <div className='mt-10'>
-        <MapBox
+      <div className=''>
+        {/* <MapBox
           allPosts={posts}
           totalCount={totalCount}
           lng={longitude}
           lat={latitude}
-        />
-        {/* <MultiMapComponent
+        /> */}
+        <MultiMapComponent
           allPosts={posts}
           totalCount={totalCount}
           latitude={longitude}
           longitude={latitude}
-        /> */}
+        />
       </div>
     </section>
   );

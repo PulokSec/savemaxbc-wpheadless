@@ -236,7 +236,7 @@ const FilterModal = (props: Props) => {
           </div>
           <div
             onClick={handleSearch}
-            className='flex cursor-pointer items-center gap-2 rounded-lg  bg-gradient-to-r from-[#eee38f] via-[#ad782f] to-[#dbc071] px-6 py-3 text-center text-white duration-500 ease-in-out hover:from-[#dbc071] hover:via-[#ad782f] hover:to-[#eee38f] hover:transition-all'
+            className='flex cursor-pointer items-center gap-2 rounded-lg bg-sky-950 px-6 py-3 text-center text-white duration-500 ease-in-out hover:bg-[#061632] hover:transition-all'
           >
             <SearchCheck className='h-5 w-5' />
             <p>Search</p>

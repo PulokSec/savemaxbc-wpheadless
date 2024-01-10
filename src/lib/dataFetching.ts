@@ -41,20 +41,11 @@ export async function getSearchQuery({
 }
 
 export async function getMapSearchQuery({
-  pageParam = 0,
-  cityParam = '',
-  provinceParam = '',
-  streetParam = '',
-}: {
-  pageParam?: number;
-  cityParam?: string;
-  provinceParam?: string;
-  streetParam?: string;
-} = {}): Promise<any> {
+  searchQuery = '',
+}: { searchQuery?: string } = {}): Promise<any> {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_BASEURL +
-      `/api/map-search?city=${cityParam}&streetAddress=${streetParam}&province=${provinceParam}`,
-    { method: 'GET', cache: 'no-cache' }
+    process.env.NEXT_PUBLIC_BASEURL + `/api/map-search?query=${searchQuery}`,
+    { method: 'GET', cache: 'force-cache' }
   );
   if (res?.status !== 200) {
     throw new Error('failed to fetch properties');
