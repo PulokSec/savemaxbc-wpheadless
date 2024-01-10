@@ -1,5 +1,5 @@
 'use client';
-import { Home, MapPin } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
@@ -147,12 +147,12 @@ const SearchTab = () => {
                 onChange={handleChange}
               />
             </div>
-            <div
-              onClick={() => router.push('/map')}
-              className='search flex cursor-pointer items-center justify-center rounded border-2 bg-gray-200 px-3 py-1'
+            <button
+              type='submit'
+              className='search flex cursor-pointer items-center justify-center rounded border-2 bg-gray-200 px-3 py-1 focus:bg-gray-300'
             >
-              <MapPin className='text-gray-400 hover:text-gray-600 ' />
-            </div>
+              <Search className='text-gray-600 hover:text-gray-400 ' />
+            </button>
             {/* <div className='search flex items-center rounded border-2 bg-gray-200 px-3 py-1'>
               <Home className='mr-1 text-gray-400 ' />
 
