@@ -7,9 +7,8 @@ import { getMapSearchQuery } from '@/lib/dataFetching';
 
 import MapSearch from '@/components/elements/MapSearch';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
-import ListingBanner from '@/components/pages/Listings/ListingBanner';
-import Footer from '@/components/shared/Footer';
 import NewListingBanner from '@/components/pages/Listings/NewListingBanner';
+import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
