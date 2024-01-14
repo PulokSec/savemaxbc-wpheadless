@@ -85,7 +85,7 @@ const HomeBuyingProcess = (props: MyProps) => {
           </div>
 
           <div className='mt-5 lg:relative'>
-            <div className='right-[380px] xl:right-[580px] top-[600px] mt-3 lg:absolute lg:mt-0'>
+            <div className='right-[380px] top-[600px] mt-3 lg:absolute lg:mt-0 xl:right-[580px]'>
               <div className='relative z-10  h-[80px] w-[80px] rounded-full bg-white text-black'>
                 <p className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-[30px] font-bold'>
                   4
@@ -93,7 +93,7 @@ const HomeBuyingProcess = (props: MyProps) => {
               </div>
             </div>
 
-            <div className='lg:right-[100px] xl:right-[380px] top-[400px] mt-3 lg:absolute lg:mt-0'>
+            <div className='top-[400px] mt-3 lg:absolute lg:right-[100px] lg:mt-0 xl:right-[380px]'>
               <h3 className='text-[18px] font-semibold'>
                 {featuredData?.featuredDiv[3]?.title}
               </h3>
@@ -174,7 +174,7 @@ const HomeBuyingProcess = (props: MyProps) => {
                         </h3>
 
                         <div
-                          className='text-[12px] text-black mb-2'
+                          className='mb-2 text-[12px] text-black'
                           dangerouslySetInnerHTML={{
                             __html: item?.description,
                           }}

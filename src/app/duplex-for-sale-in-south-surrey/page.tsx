@@ -243,7 +243,7 @@ export default async function DuplexSaleSouthSurrey() {
                       <div className='col-span-12 ml-5 md:col-span-12 md:ml-5 lg:col-span-5 lg:col-start-1 lg:pl-10 2xl:col-start-2'>
                         <div className=''>
                           <div
-                            className='md:text-md text-xs lg:text-lg px-2 md:px-0'
+                            className='md:text-md px-2 text-xs md:px-0 lg:text-lg'
                             dangerouslySetInnerHTML={{
                               __html:
                                 data?.pages?.nodes[0]?.duplexSaleSouthSurrey
@@ -280,10 +280,10 @@ export default async function DuplexSaleSouthSurrey() {
               background: `url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner?.bannerImage?.sourceUrl}) no-repeat center center`,
               backgroundSize: '100% 100%',
             }}
-            className='flex h-[350px] items-center 2xl:h-[45vh] '
+            className='flex h-[300px] items-center lg:h-[500px] 2xl:h-[500px] '
           >
             <div className='mx-auto max-w-[1250px] p-3 text-center'>
-              <h2 className='text-[30px] font-bold lg:mt-5 xl:text-[40px]'>
+              <h2 className='pt-10 text-[30px] font-bold md:pt-10 lg:mt-5 xl:text-[40px]'>
                 {
                   data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner
                     ?.bannerTitle
@@ -354,7 +354,7 @@ export default async function DuplexSaleSouthSurrey() {
               {data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.contactSection
                 ?.description && (
                 <div
-                  className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-justify text-xs md:pb-12 lg:text-lg'
+                  className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-justify text-xs md:pb-12 lg:px-10 lg:text-lg'
                   dangerouslySetInnerHTML={{
                     __html:
                       data?.pages?.nodes[0]?.duplexSaleSouthSurrey

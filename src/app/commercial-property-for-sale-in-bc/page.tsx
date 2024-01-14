@@ -203,7 +203,7 @@ export default async function CommercialSale() {
         />
         <div className='mt-10 md:mt-20'>
           <div className='text-center'>
-            <h1 className='mx-auto w-full px-2 text-center text-2xl text-[#082f49] md:text-3xl lg:max-w-[1500px] lg:text-[42px] lg:leading-[50px]'>
+            <h1 className='mx-auto w-full px-2 text-center text-xl text-[#082f49] md:text-3xl lg:max-w-[1500px] lg:text-4xl lg:leading-[44px]'>
               {data?.pages?.nodes[0]?.commercialPropertySale?.topFeatureTitle}
             </h1>
             <div

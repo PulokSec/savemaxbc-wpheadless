@@ -33,7 +33,7 @@ export default function BottomFeatureSection(props: MyProps) {
 
         {bottomSection?.description && (
           <div
-            className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-xs md:pb-0 lg:text-lg'
+            className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-justify text-xs md:pb-0 lg:px-10 lg:text-lg'
             dangerouslySetInnerHTML={{
               __html: bottomSection?.description,
             }}

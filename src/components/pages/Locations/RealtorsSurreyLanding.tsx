@@ -79,6 +79,14 @@ export default function RealtorsSurreyLanding(props: MyProps) {
                 ?.description,
           }}
         ></p>
+        <div className='mt-7 flex items-center justify-center'>
+          <a
+            href='/contact-us'
+            className='text-uppercase rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 text-xs font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+          >
+            Contact Us
+          </a>
+        </div>
       </div>
 
       <Footer

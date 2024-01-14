@@ -2,10 +2,8 @@ import CondosSaleChooseSection from '@/components/elements/CondosSaleChooseSecti
 import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
 import LeftImageRightText from '@/components/elements/LeftImageRightText';
 import RightImageLeftText from '@/components/elements/RightImageLeftText';
-import WhyChooseUs from '@/components/elements/WhyChooseUs';
 import FeatureSection from '@/components/pages/Home/FeatureSection';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
-import Contact from '@/components/shared/Contact';
 import Footer from '@/components/shared/Footer';
 
 type MyProps = {
@@ -87,9 +85,29 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
         />
       </div>
       <div className='-mt-36 md:-mt-20 lg:-mt-40 xl:-mt-32 2xl:mt-0'>
-        <Contact
-          data={allData?.pages?.nodes[0]?.condosForSaleSurrey?.contactSection}
-        />
+        <div className='mx-auto max-w-[1400px] px-5 py-20 text-center '>
+          <h2 className='mb-5'>
+            {
+              allData?.pages?.nodes[0]?.condosForSaleSurrey?.contactSection
+                ?.title
+            }
+          </h2>
+          <p
+            dangerouslySetInnerHTML={{
+              __html:
+                allData?.pages?.nodes[0]?.condosForSaleSurrey?.contactSection
+                  ?.description,
+            }}
+          ></p>
+          <div className='mt-7 flex items-center justify-center'>
+            <a
+              href='/contact-us'
+              className='text-uppercase rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 text-xs font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+            >
+              Contact Us
+            </a>
+          </div>
+        </div>
       </div>
 
       <Footer

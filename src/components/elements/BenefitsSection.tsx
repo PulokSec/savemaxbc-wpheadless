@@ -45,7 +45,7 @@ export default function BenefitsSection(props: MyProps) {
                 </div>
 
                 <div
-                  className='w-[calc(100%-4rem)] bg-white p-4 md:w-[calc(100%-4rem)] lg:w-[calc(50%-2.5rem)]'
+                  className='w-[calc(100%-4rem)] p-4 md:w-[calc(100%-4rem)] lg:w-[calc(50%-2.5rem)]'
                   onClick={() => setActive(i)}
                 >
                   <div className='text-start lg:w-full'>
@@ -54,7 +54,7 @@ export default function BenefitsSection(props: MyProps) {
                         active == i
                           ? 'text-[#061632]'
                           : 'text-[#585858]' +
-                            'w-full text-xl leading-5 md:w-full md:text-xl lg:text-2xl'
+                            'w-full text-xl leading-7 md:w-full md:text-xl lg:text-2xl'
                       }
                     >
                       {item?.title}
@@ -85,7 +85,7 @@ export default function BenefitsSection(props: MyProps) {
                 </div>
 
                 <div
-                  className='w-[calc(100%-4rem)] bg-white p-4 md:w-[calc(100%-4rem)] lg:w-[calc(50%-2.5rem)]'
+                  className='w-[calc(100%-4rem)] p-4 md:w-[calc(100%-4rem)] lg:w-[calc(50%-2.5rem)]'
                   onClick={() => setActive(i)}
                 >
                   <div className='flex flex-col items-start md:items-start lg:w-full lg:items-end'>
@@ -94,13 +94,13 @@ export default function BenefitsSection(props: MyProps) {
                         active == i
                           ? 'text-[#061632]'
                           : 'text-[#585858]' +
-                            'w-full text-end text-xl leading-5 md:w-full md:text-xl lg:text-2xl'
+                            'w-full text-start text-xl leading-7 md:w-full md:text-xl lg:text-end lg:text-2xl'
                       }
                     >
                       {item?.title}
                     </h3>
                     <div
-                      className='md:text-md mt-5 text-xs lg:text-lg'
+                      className='md:text-md mt-5 text-xs lg:text-end lg:text-lg'
                       dangerouslySetInnerHTML={{
                         __html: item?.description,
                       }}
