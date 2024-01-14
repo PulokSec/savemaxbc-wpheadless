@@ -86,7 +86,7 @@ export default function CondosSaleChooseSection(props: MyProps) {
                 </div>
 
                 <div
-                  className='w-[calc(100%-4rem)] bg-white p-4 md:w-[calc(100%-4rem)] lg:w-[calc(50%-2.5rem)]'
+                  className='w-[calc(100%-4rem)] p-4 md:w-[calc(100%-4rem)] lg:w-[calc(50%-2.5rem)]'
                   onClick={() => setActive(i)}
                 >
                   <div className='flex flex-col items-start md:items-start lg:w-full lg:items-end'>

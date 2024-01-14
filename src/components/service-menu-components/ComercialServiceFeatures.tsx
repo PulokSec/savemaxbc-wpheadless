@@ -39,7 +39,7 @@ export default function CommercialServiceFeature(props: MyProps) {
                       }}
                     ></div>
                   </div>
-                  <div className='cover relative col-span-12 mx-auto h-[200px] w-full md:w-2/4 lg:h-[300px] xl:w-full'>
+                  <div className='cover relative col-span-12 mx-auto h-[250px] w-full md:h-[200px] md:w-2/4 lg:h-[300px] xl:w-full'>
                     <NextImage
                       useSkeleton
                       className='cover'
@@ -94,7 +94,7 @@ export default function CommercialServiceFeature(props: MyProps) {
                         {item?.tabNo}
                       </div>
                     </div>
-                    <div className='cover relative col-span-12 mx-auto h-[200px] w-full md:hidden md:w-2/4 lg:h-[300px] xl:w-full'>
+                    <div className='cover relative col-span-12 mx-auto h-[250px] w-full md:hidden md:w-2/4 lg:h-[300px] xl:w-full'>
                       <NextImage
                         useSkeleton
                         src={item?.image?.sourceUrl}

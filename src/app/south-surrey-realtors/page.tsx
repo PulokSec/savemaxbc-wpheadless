@@ -143,7 +143,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
   });
-  console.log('data', data);
+  // console.log('data', data);
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
@@ -300,7 +300,7 @@ export default async function SouthSurreyRealtors() {
               {data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection
                 ?.description && (
                 <div
-                  className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-justify text-xs md:pb-12 lg:text-lg'
+                  className='text-leading-5 md:text-md container mx-auto mt-10 px-5 lg:px-10 pb-10 text-justify text-xs md:pb-12 lg:text-lg'
                   dangerouslySetInnerHTML={{
                     __html:
                       data?.pages?.nodes[0]?.southSurreyRealtors?.contactSection

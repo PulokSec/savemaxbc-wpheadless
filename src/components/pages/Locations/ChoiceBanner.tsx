@@ -13,9 +13,9 @@ export default function ChoiceBanner(props: MyProps) {
           background: `url(${choiceBannerData?.bannerImage?.sourceUrl}) no-repeat center center`,
           backgroundSize: '100% 100%',
         }}
-        className='mb-10 mt-10 h-[45vh] lg:mt-20'
+        className='mb-10 mt-10 h-[300px] md:h-[400px] lg:h-[500px] lg:mt-20'
       >
-        <div className='mx-auto max-w-[1250px] px-2 pt-28 md:py-36 text-center '>
+        <div className='mx-auto max-w-[1250px] px-2 pt-20 lg:py-36 text-center '>
           <h2 className='md:mt-5 text-[30px] font-semibold xl:text-[40px]'>
             {choiceBannerData?.bannerTitle} <br />
             <span className='mt-5 text-[20px] font-semibold xl:text-[30px]'>
