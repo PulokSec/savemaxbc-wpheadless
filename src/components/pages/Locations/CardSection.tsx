@@ -17,14 +17,14 @@ export default function CardSection(props: MyProps) {
         }}
         className={` hidden bg-no-repeat  text-white md:block md:pt-[50px]`}
       >
-        <div className='mx-auto mt-10 max-w-[1250px] p-3'>
-          <h2 className='text-[30px] font-semibold'>
+        <div className='mx-auto mt-10 max-w-[1250px] p-3 xl:mt-[40%]'>
+          <h2 className='text-[30px] font-semibold xl:text-[50px]'>
             {cardSection?.cardTitle} <br />
             {cardSection?.cardSubtitle}
           </h2>
 
           <div
-            className='md:w-2/4'
+            className='mt-5 md:w-2/4'
             dangerouslySetInnerHTML={{
               __html: cardSection?.cardDescription,
             }}
