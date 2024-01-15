@@ -3,8 +3,10 @@ import LeftImageRightText from '@/components/elements/LeftImageRightText';
 import RightImageLeftText from '@/components/elements/RightImageLeftText';
 import WhyChooseUs from '@/components/elements/WhyChooseUs';
 import FeatureSection from '@/components/pages/Home/FeatureSection';
+import HomeSurreyTopText from '@/components/pages/Locations/HomeSurreyTopText';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import Footer from '@/components/shared/Footer';
+import Header from '@/components/shared/Header';
 
 type MyProps = {
   allData: any;
@@ -15,20 +17,74 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
 
   return (
     <main>
-      <LocationBanner
-        bannerData={
-          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection
-        }
-        headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
-        settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
-        topTitle={
-          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.topFeatureTitle
-        }
-        topDesc={
-          allData?.pages?.nodes[0]?.homeForSaleInSurrey?.topFeatureDescription
-        }
-      />
-      <div className='h-48 md:h-32 2xl:h-20'></div>
+      <div className='hidden md:block'>
+        <LocationBanner
+          bannerData={
+            allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection
+          }
+          headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
+          settingsData={
+            allData?.settingsOptions?.savemaxOptions?.headerSettings
+          }
+          topTitle={
+            allData?.pages?.nodes[0]?.homeForSaleInSurrey?.topFeatureTitle
+          }
+          topDesc={
+            allData?.pages?.nodes[0]?.homeForSaleInSurrey?.topFeatureDescription
+          }
+        />
+      </div>
+      <div className='md:hidden'>
+        <div
+          className='relative h-[80vh] w-full bg-cover bg-fixed bg-[center_center] bg-no-repeat lg:h-[100vh]'
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection?.bannerImage?.sourceUrl})`,
+          }}
+        >
+          <Header
+            navigation={allData?.menus?.nodes[0]?.menuItems?.nodes}
+            settingsData={
+              allData?.settingsOptions?.savemaxOptions?.headerSettings
+            }
+          />
+          <div className='py-16'>
+            <div className='mt-[15%] flex w-full flex-col items-center justify-center px-5 md:mt-[25%] lg:mt-[15%] lg:px-10'>
+              <p className='mb-2 w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
+                {
+                  allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection
+                    ?.bannerSubhead
+                }
+              </p>
+              <p className='mx-auto w-full max-w-[1200px] text-center text-xl font-bold leading-6 text-white md:text-2xl lg:text-5xl lg:leading-[60px]'>
+                {
+                  allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection
+                    ?.bannerHeading
+                }
+              </p>
+              {allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection
+                ?.bannerDescription && (
+                <div
+                  className='mx-auto mt-8 max-w-[1200px] text-center text-lg font-semibold text-white md:text-xl lg:text-3xl'
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      allData?.pages?.nodes[0]?.homeForSaleInSurrey
+                        ?.bannerSection?.bannerDescription,
+                  }}
+                ></div>
+              )}
+            </div>
+          </div>
+        </div>
+        <HomeSurreyTopText
+          topTitle={
+            allData?.pages?.nodes[0]?.homeForSaleInSurrey?.topFeatureTitle
+          }
+          topDesc={
+            allData?.pages?.nodes[0]?.homeForSaleInSurrey?.topFeatureDescription
+          }
+        />
+      </div>
+      <div className='md:h-32 2xl:h-20'></div>
       <FeatureSection
         featuredData={
           allData?.pages?.nodes[0]?.homeForSaleInSurrey?.featureSection
@@ -92,7 +148,6 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
           </a>
         </div>
       </div>
-      
 
       <Footer
         navigation={allData?.menus?.nodes[0]?.menuItems?.nodes}

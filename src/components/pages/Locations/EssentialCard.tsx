@@ -11,7 +11,7 @@ const EssentialCard = (props: MyProps) => {
     <div className='m-5 border  bg-white text-center md:w-[350px]'>
       <NextImage
         layout='fill'
-        className='relative mx-auto h-[150px] w-[200px]'
+        className='relative mx-auto h-[250px] w-full'
         src={cardData?.image?.sourceUrl}
         alt={cardData?.image?.altText}
       />

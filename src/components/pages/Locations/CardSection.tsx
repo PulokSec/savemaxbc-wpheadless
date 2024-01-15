@@ -15,22 +15,27 @@ export default function CardSection(props: MyProps) {
           background: `url('${cardSection?.backgroundImage?.sourceUrl}') center center`,
           backgroundSize: '100% 100%',
         }}
-        className={` hidden bg-no-repeat  text-white md:block md:pt-[50px]`}
+        className={` hidden bg-no-repeat text-white md:pt-[50px] lg:block 2xl:-mt-28`}
       >
-        <div className='mx-auto mt-10 max-w-[1250px] p-3 xl:mt-[40%]'>
-          <h2 className='text-[30px] font-semibold xl:text-[50px]'>
+        <div className='mx-auto mt-10 max-w-[1250px] p-6 xl:mt-[45%] xl:p-3 2xl:mt-[30%]'>
+          <h2 className='text-center text-[30px] font-semibold lg:pt-[300px] xl:pt-0 xl:text-start xl:text-[50px] 2xl:pt-6'>
             {cardSection?.cardTitle} <br />
             {cardSection?.cardSubtitle}
           </h2>
 
           <div
-            className='mt-5 md:w-2/4'
+            className='mx-auto mt-5 max-w-[1250px] text-center md:w-2/4 xl:hidden'
             dangerouslySetInnerHTML={{
               __html: cardSection?.cardDescription,
             }}
           ></div>
-
-          <div className='mb-14 mt-28 grid grid-cols-1 gap-2 md:grid-cols-3 md:gap-5 lg:gap-8 xl:gap-20'>
+          <div
+            className='mt-5 md:w-2/4 lg:hidden xl:block'
+            dangerouslySetInnerHTML={{
+              __html: cardSection?.cardDescription,
+            }}
+          ></div>
+          <div className='mb-14 flex flex-wrap items-start justify-center lg:mt-16 lg:gap-8 xl:mt-28 2xl:mt-20 xl:gap-20'>
             {cardSection?.cardData?.map((cardData: any, idx: any) => (
               <Card cardData={cardData} key={idx} />
             ))}
@@ -38,13 +43,7 @@ export default function CardSection(props: MyProps) {
         </div>
       </div>
 
-      <div
-        style={{
-          background: `url('${cardSection?.backgroundImage?.sourceUrl}') top center no-repeat`,
-          backgroundSize: '100% 100%',
-        }}
-        className={` block bg-no-repeat pt-[50px] text-white md:hidden`}
-      >
+      <div className={` block bg-no-repeat pt-[50px] text-black lg:hidden`}>
         <div className='mx-auto max-w-[1250px] p-3 '>
           <h2 className='text-[30px] font-semibold leading-[36px]'>
             {cardSection?.cardTitle} <br />
@@ -58,7 +57,7 @@ export default function CardSection(props: MyProps) {
             }}
           ></div>
 
-          <div className='mt-14 grid grid-cols-1 gap-10 md:my-10 md:mt-36 md:grid-cols-3 md:gap-20'>
+          <div className='mt-14 grid grid-cols-1 gap-10 md:my-10 md:mt-20 md:grid-cols-2 md:gap-10'>
             {cardSection?.cardData?.map((cardData: any, idx: any) => (
               <Card cardData={cardData} key={idx} />
             ))}
@@ -66,7 +65,7 @@ export default function CardSection(props: MyProps) {
         </div>
       </div>
 
-      <div className='mx-auto max-w-[1250px] p-3'>
+      <div className='mx-auto max-w-[1250px] p-3 lg:px-10 xl:p-5'>
         <div
           className='text-center text-black '
           dangerouslySetInnerHTML={{
