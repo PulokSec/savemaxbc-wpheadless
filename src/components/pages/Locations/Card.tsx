@@ -8,7 +8,7 @@ type MyProps = {
 const Card = (props: MyProps) => {
   const { cardData } = props;
   return (
-    <div className='border-2  bg-white'>
+    <div className='border-2 bg-white lg:h-[580px] lg:w-[350px]'>
       <NextImage
         layout='fill'
         className='relative h-[250px] w-full'

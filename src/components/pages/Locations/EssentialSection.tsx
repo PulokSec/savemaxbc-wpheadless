@@ -33,9 +33,18 @@ export default function EssentialSection(props: MyProps) {
           background: `url(${featuredData?.backgroundImage?.sourceUrl}) no-repeat `,
           backgroundSize: '100% 100%',
         }}
-        className={` text-white  `}
+        className={` hidden text-white lg:block `}
       >
-        <div className='mx-auto  max-w-[1250px] md:py-10'>
+        <div className='mx-auto max-w-[1250px] md:py-10'>
+          <div className='mx-auto my-10 flex flex-wrap justify-center md:mt-10'>
+            {featuredData?.featuredData?.map((item: any, index: number) => (
+              <EssentialCard cardData={item} key={index} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className={` text-white lg:hidden `}>
+        <div className='mx-auto max-w-[1250px] md:py-10'>
           <div className='mx-auto my-10 flex flex-wrap justify-center md:mt-10'>
             {featuredData?.featuredData?.map((item: any, index: number) => (
               <EssentialCard cardData={item} key={index} />

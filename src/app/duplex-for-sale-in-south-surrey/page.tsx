@@ -354,7 +354,7 @@ export default async function DuplexSaleSouthSurrey() {
               {data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.contactSection
                 ?.description && (
                 <div
-                  className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-justify text-xs md:pb-12 lg:px-10 lg:text-lg'
+                  className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-justify text-xs md:pb-12 lg:px-16 lg:text-lg'
                   dangerouslySetInnerHTML={{
                     __html:
                       data?.pages?.nodes[0]?.duplexSaleSouthSurrey

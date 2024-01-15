@@ -14,7 +14,7 @@ export default function CommercialPropertyBottomSection(props: MyProps) {
     >
       <div className='lg:mt-0'>
         <div
-          className='md:text-md container mx-auto mt-10 px-5 lg:px-10 text-start text-xs text-white md:mt-24 lg:mt-40 lg:text-lg'
+          className='md:text-md container mx-auto mt-10 px-5 lg:px-16 text-start text-xs text-white md:mt-24 lg:mt-40 lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: bottomSection.description,
           }}
