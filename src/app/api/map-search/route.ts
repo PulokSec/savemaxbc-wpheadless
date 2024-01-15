@@ -8,7 +8,7 @@ export async function GET(req: Request) {
 
   // Build the SQL query with search parameters
   const sqlQuery = `
-  SELECT City, Province, Price, CommunityName, BathroomTotal, BedroomsTotal, PostalCode, TransactionType, Type, StreetAddress, Latitude, Longitude
+  SELECT City, Province, Price, CommunityName, BathroomTotal, BedroomsTotal, PostalCode, ListingID, TransactionType, Type, StreetAddress, Latitude, Longitude
   FROM 3d_rps_property
   WHERE 
     (City LIKE CONCAT('%', ?, '%') OR StreetAddress LIKE CONCAT('%', ?, '%') OR Province LIKE CONCAT('%', ?, '%')) AND Type IS NOT NULL
