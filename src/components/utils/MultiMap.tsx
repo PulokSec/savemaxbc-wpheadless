@@ -9,6 +9,7 @@ import 'leaflet/dist/leaflet.css';
 
 import { getPhotos } from '@/lib/dataFetching';
 
+import NextImage from '@/components/NextImage';
 import Loader from '@/components/utils/Loader';
 import { myIcon } from '@/components/utils/Map';
 
@@ -22,22 +23,28 @@ type MyProps = {
 const MultiMapComponent = (props: MyProps) => {
   const { allPosts, totalCount, latitude, longitude } = props;
   const [loading, setLoading] = useState(true);
+  const [imageLoading, setImageLoading] = useState(true);
   const [cardImageUrl, setCardImageUrl] = useState('');
 
   async function fetchImage(id: any) {
+    setImageLoading(true);
     const image = await getPhotos({ listingId: id });
-    const bufferOriginal = Buffer.from(image[0].Photos.data);
+    const bufferOriginal = Buffer.from(image[0]?.Photos.data);
     const cardImageUrl = JSON.parse(bufferOriginal.toString('utf8'))?.LargePhoto
       ?.filename;
     setCardImageUrl(cardImageUrl);
   }
   const handleClick = (id: any) => {
     fetchImage(id);
+    if (cardImageUrl.length > 0) {
+      setImageLoading(false);
+    }
   };
   const center = {
     lat: latitude,
     lng: longitude,
   };
+  console.log(center);
   const createClusterCustomIcon = function (cluster: MarkerCluster) {
     return L.divIcon({
       html: `<span>${cluster.getChildCount()}</span>`,
@@ -54,7 +61,7 @@ const MultiMapComponent = (props: MyProps) => {
 
   return (
     <>
-      <div className='container relative mx-auto mt-10 rounded shadow'>
+      <div className='container relative mx-auto mt-10 w-full rounded px-5 shadow md:px-0'>
         {loading ? (
           <Loader />
         ) : (
@@ -91,6 +98,9 @@ const MultiMapComponent = (props: MyProps) => {
                       parseFloat(post?.Longitude),
                     ]}
                     icon={myIcon}
+                    eventHandlers={{
+                      click: () => handleClick(post?.ListingID),
+                    }}
                     // onClick={() => handleClick(post?.ListingID)}
                   >
                     <Popup>
@@ -121,15 +131,15 @@ const MultiMapComponent = (props: MyProps) => {
                             </p>
                           </div>
                         </div> */}
-                        {/* <div className='relative'>
-                        <NextImage
-                          useSkeleton
-                          className='relative h-[105px] w-full rounded-lg'
-                          src={cardImageUrl}
-                          layout='fill'
-                          alt='Icon'
-                        />
-                      </div> */}
+                        <div className='relative'>
+                          <NextImage
+                            useSkeleton={imageLoading ? true : false}
+                            className='relative h-[105px] w-full rounded-lg'
+                            src={cardImageUrl}
+                            layout='fill'
+                            alt='Icon'
+                          />
+                        </div>
                         <div className='px-3 text-start text-black'>
                           <p className='text-[14px] font-semibold text-black'>
                             {post?.StreetAddress} {post?.CommunityName}{' '}
