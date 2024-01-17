@@ -19,8 +19,10 @@ export default function OfferBanner(props: MyProps) {
       >
         <div className='pb-30 mx-auto max-w-[1250px] p-3 py-20'>
           <h2 className='text-[30px] font-semibold'>
-            {offerBannerData?.offerTitle} <br />
-            <span className='mt-5 text-[40px]'>
+            {offerBannerData?.offerTitle}
+          </h2>
+          <h2 className='mt-3'>
+            <span className='text-[40px]'>
               {offerBannerData?.offerSubtitle}
             </span>
           </h2>

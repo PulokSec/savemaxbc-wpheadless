@@ -196,7 +196,7 @@ export default async function SingleNews({
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mx-auto mt-10 max-w-[1250px] p-3 leading-5'>
+        <div className='mx-auto mb-10 mt-10 max-w-[1250px] p-3 leading-5'>
           <h1 className='mb-5 text-4xl font-bold'>
             {singleBlog?.data?.post?.title}
           </h1>
@@ -205,7 +205,7 @@ export default async function SingleNews({
             Author : {singleBlog?.data?.post?.author?.node?.name}
           </p>
           <div
-            className='space-y-4 leading-6'
+            className='space-y-4 text-[17px] leading-6 lg:text-lg'
             dangerouslySetInnerHTML={{
               __html: singleBlog?.data?.post?.content || '',
             }}

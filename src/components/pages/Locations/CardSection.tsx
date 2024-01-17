@@ -19,7 +19,7 @@ export default function CardSection(props: MyProps) {
       >
         <div className='mx-auto mt-10 max-w-[1250px] p-6 xl:mt-[45%] xl:p-3 2xl:mt-[30%]'>
           <h2 className='text-center text-[30px] font-semibold lg:pt-[300px] xl:pt-0 xl:text-start xl:text-[50px] 2xl:pt-6'>
-            {cardSection?.cardTitle} <br />
+            {cardSection?.cardTitle} <br /> <br/>
             {cardSection?.cardSubtitle}
           </h2>
 
