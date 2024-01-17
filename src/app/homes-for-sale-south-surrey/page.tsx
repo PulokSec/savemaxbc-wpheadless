@@ -15,6 +15,7 @@ import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import OfferBanner from '@/components/pages/Locations/OfferBanner';
 import OfferSection from '@/components/pages/Locations/OfferSection';
 import Footer from '@/components/shared/Footer';
+import HomeBuyingProcessSouthSurrey from '@/components/pages/Locations/HomeBuyingProcessSouthSurrey';
 
 const query = gql`
   query {
@@ -285,10 +286,10 @@ export default async function HomeSouthSurrey({
         />
         <div className=''>
           <div className=''>
-            <p className='text-md mt-5 w-full text-center font-bold text-[#515151] md:text-xl lg:text-2xl'>
+            <p className='text-md mt-5 w-full text-center font-bold text-[#515151] md:text-xl lg:text-2xl hidden md:block'>
               {data?.pages?.nodes[0]?.southSurrey?.listingSection?.topHead}
             </p>
-            <h1 className='mt-36 text-center text-lg md:text-4xl'>
+            <h1 className='mt-8 md:mt-36 text-center text-lg md:text-4xl'>
               {
                 data?.pages?.nodes[0]?.southSurrey?.listingSection
                   ?.recentListingsTitle
@@ -331,7 +332,7 @@ export default async function HomeSouthSurrey({
         <ChoiceSection
           featuredData={data?.pages?.nodes[0]?.southSurrey?.choiceSection}
         />
-        <HomeBuyingProcess
+        <HomeBuyingProcessSouthSurrey
           featuredData={data?.pages?.nodes[0]?.southSurrey?.homebuyingSection}
         />
         <EssentialSection

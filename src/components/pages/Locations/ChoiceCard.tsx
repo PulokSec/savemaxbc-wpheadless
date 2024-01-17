@@ -24,7 +24,7 @@ const ChoiceCard = (props: MyProps) => {
           alt={cardData?.image?.altText}
         />
 
-        <h3 className='mx-2 text-[20px] text-black md:mx-5 font-bold'>
+        <h3 className='mx-2 text-[20px] text-black md:mx-5 font-bold w-3/4 md:w-auto'>
           {cardData?.title}
         </h3>
       </div>

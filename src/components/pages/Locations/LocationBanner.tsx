@@ -39,7 +39,7 @@ export default function LocationBanner(props: MyProps) {
           <p className='mb-2 w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
             {bannerData?.bannerSubhead}
           </p>
-          <p className='mx-auto w-full max-w-[1200px] text-center text-xl md:text-2xl font-bold leading-6 text-white lg:text-5xl lg:leading-[60px]'>
+          <p className='mx-auto w-full max-w-[1200px] text-center text-xl md:text-4xl font-bold leading-6 text-white lg:text-6xl lg:leading-[60px]'>
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (
