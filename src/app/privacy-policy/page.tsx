@@ -1,17 +1,14 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
-import { Fade } from 'react-awesome-reveal';
 
 import { getClient } from '@/lib/apollo';
 
-import NextImage from '@/components/NextImage';
 import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
-import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 89512 }) {
+    pages(where: { id: 89542 }) {
       nodes {
         seo {
           title
@@ -27,7 +24,7 @@ const query = gql`
             raw
           }
         }
-        virtualTour {
+        privacyPolicy {
           bannerSection {
             bannerImage {
               sourceUrl
@@ -35,27 +32,7 @@ const query = gql`
             bannerHeading
             bannerButton
           }
-          topFeatureDescription
-          topFeatureTitle
-          serviceFeatureSection {
-            featureTitle
-            featureDescription
-            featuredDiv {
-              title
-              description
-              image {
-                sourceUrl
-                altText
-              }
-            }
-          }
-          bottomSection {
-            backgroundImage {
-              sourceUrl
-              altText
-            }
-            description
-          }
+          privacyDescription
         }
       }
     }
@@ -163,7 +140,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function VirtualTour() {
+export default async function PrivacyPolicy() {
   const { data } = await getClient().query({
     query,
     context: {
@@ -177,70 +154,18 @@ export default async function VirtualTour() {
     <>
       <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
         <BannerWithButton
-          bannerData={data?.pages?.nodes[0]?.virtualTour?.bannerSection}
+          bannerData={data?.pages?.nodes[0]?.privacyPolicy?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mb-20 mt-20 md:mt-40 lg:mt-40'>
-          <div className='text-center'>
-            <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
-              {data?.pages?.nodes[0]?.virtualTour?.topFeatureTitle}
-            </h1>
-            <div
-              className='md:text-md mt-5 px-5 text-center text-xs leading-6 lg:px-20 lg:text-lg'
-              dangerouslySetInnerHTML={{
-                __html:
-                  data?.pages?.nodes[0]?.virtualTour?.topFeatureDescription,
-              }}
-            ></div>
-          </div>
+        <div className='container mx-auto mb-20 mt-20'>
+          <div
+            className='mt-5 space-y-4 px-5'
+            dangerouslySetInnerHTML={{
+              __html: data?.pages?.nodes[0]?.privacyPolicy?.privacyDescription,
+            }}
+          ></div>
         </div>
-
-        {data?.pages?.nodes[0]?.virtualTour?.serviceFeatureSection?.featuredDiv?.map(
-          (item: any, idx: number) => (
-            <div key={idx}>
-              <div className='mx-auto mt-0 max-w-[1400px] p-5 md:mt-10'>
-                <div
-                  className={`${
-                    idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  } flex flex-col items-center justify-center gap-4 lg:gap-10`}
-                >
-                  <div className='md:w-1/2 '>
-                    <div className=''>
-                      <h3 className='mb-3 font-bold'>{item.title}</h3>
-                      <div
-                        className='md:text-md text-xs lg:text-lg'
-                        dangerouslySetInnerHTML={{
-                          __html: item.description,
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-                  <div className='md:w-1/2'>
-                    <Fade
-                      direction={`${idx % 2 === 0 ? 'right' : 'left'}`}
-                      delay={0.5}
-                      fraction={0.2}
-                      triggerOnce
-                    >
-                      <NextImage
-                        useSkeleton
-                        className='w-[300px] lg:w-[100%]'
-                        src={item?.image?.sourceUrl}
-                        alt={item?.image?.altText}
-                        width='600'
-                        height='200'
-                      />
-                    </Fade>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )
-        )}
-        <BottomServiceSection
-          bottomSection={data?.pages?.nodes[0]?.virtualTour?.bottomSection}
-        />
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}

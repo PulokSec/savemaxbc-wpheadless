@@ -289,7 +289,7 @@ export default async function HomeSouthSurrey({
             <p className='text-md mt-5 w-full text-center font-bold text-[#515151] md:text-xl lg:text-2xl hidden md:block'>
               {data?.pages?.nodes[0]?.southSurrey?.listingSection?.topHead}
             </p>
-            <h1 className='mt-8 md:mt-36 text-center text-xl md:text-4xl lg:text-[42px]'>
+            <h1 className='mt-8 md:mt-36 text-center text-lg md:text-4xl'>
               {
                 data?.pages?.nodes[0]?.southSurrey?.listingSection
                   ?.recentListingsTitle
