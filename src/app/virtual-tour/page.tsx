@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
-import { Fade } from 'react-awesome-reveal';
 
 import { getClient } from '@/lib/apollo';
 
@@ -217,21 +216,21 @@ export default async function VirtualTour() {
                     </div>
                   </div>
                   <div className='md:w-1/2'>
-                    <Fade
+                    {/* <Fade
                       direction={`${idx % 2 === 0 ? 'right' : 'left'}`}
                       delay={0.5}
                       fraction={0.2}
                       triggerOnce
-                    >
-                      <NextImage
-                        useSkeleton
-                        className='w-[300px] lg:w-[100%]'
-                        src={item?.image?.sourceUrl}
-                        alt={item?.image?.altText}
-                        width='600'
-                        height='200'
-                      />
-                    </Fade>
+                    > */}
+                    <NextImage
+                      useSkeleton
+                      className='w-[300px] lg:w-[100%]'
+                      src={item?.image?.sourceUrl}
+                      alt={item?.image?.altText}
+                      width='600'
+                      height='200'
+                    />
+                    {/* </Fade> */}
                   </div>
                 </div>
               </div>
