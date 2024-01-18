@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { Fade } from 'react-awesome-reveal';
 
 import NextImage from '@/components/NextImage';
 import ContactForm from '@/components/pages/Contact/ContactForm';
@@ -46,8 +47,8 @@ export default function SellingPropertiesLanding(props: MyProps) {
 
       {allData?.pages?.nodes[0]?.sellingProperties?.propertySelling?.sellingDiv?.map(
         (item: any, idx: number) => (
-          <div key={idx}>
-            <div className='mx-auto mt-0 max-w-[1400px] p-5 md:mt-10'>
+          <div className='container mx-auto' key={idx}>
+            <div className='container mx-auto mt-0 max-w-[1400px] p-5 md:mt-10'>
               <div
                 className={`${
                   idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
@@ -64,14 +65,21 @@ export default function SellingPropertiesLanding(props: MyProps) {
                   </div>
                 </div>
                 <div className='md:w-1/2'>
-                  <NextImage
-                    useSkeleton
-                    className='w-[300px] lg:w-[100%]'
-                    src={item?.image?.sourceUrl}
-                    alt={item?.image?.altText}
-                    width='400'
-                    height='200'
-                  />
+                  <Fade
+                    direction={`${idx % 2 === 0 ? 'right' : 'left'}`}
+                    delay={0.5}
+                    fraction={0.2}
+                    triggerOnce
+                  >
+                    <NextImage
+                      useSkeleton
+                      className='mx-10 w-[300px] lg:w-[100%]'
+                      src={item?.image?.sourceUrl}
+                      alt={item?.image?.altText}
+                      width='400'
+                      height='200'
+                    />
+                  </Fade>
                 </div>
               </div>
             </div>
