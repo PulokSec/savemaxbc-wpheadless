@@ -1,4 +1,7 @@
 'use client';
+import { MoveLeft } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
 
 import RealtorCard from '@/components/elements/RealtorCard';
@@ -10,6 +13,8 @@ const RealtorSearchResult = (props: Props) => {
   const firstDivRef = useRef<HTMLDivElement | null>(null);
   const [part, setPart] = useState(1);
   const [realtors, setRealtors] = useState<any>(allRealtors?.slice(0, 8));
+
+  const router = useRouter();
 
   useEffect(() => {
     const begin = (part - 1) * 8;
@@ -31,9 +36,15 @@ const RealtorSearchResult = (props: Props) => {
   return (
     <div>
       <div className='mx-auto max-w-[1400px] px-3' ref={firstDivRef}>
-        <h2 className=' mb-5 px-2 pt-5 text-center text-2xl text-gray-800 md:text-3xl lg:text-5xl'>
+        <h2 className='mb-3 px-2 pt-5 text-center text-2xl text-gray-800 md:text-3xl lg:text-5xl'>
           Search Result
         </h2>
+        <Link
+          href='/find-a-realtor'
+          className='mb-8 flex cursor-pointer items-center justify-center space-x-2 bg-gray-500 hover:bg-gray-600 px-3 py-1 rounded text-white w-32 mx-auto'
+        >
+          <p className='mt-1'>Go Back</p> <MoveLeft />
+        </Link>
         <div className='mb-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-5 md:gap-y-14'>
           {realtors.length === 0 && (
             <p className='mb-6 px-2 text-lg font-medium text-red-500 md:text-xl'>
