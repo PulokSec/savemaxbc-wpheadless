@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import { Fade, Slide } from 'react-awesome-reveal';
+
 import NextImage from '@/components/NextImage';
 
 type MyProps = {
@@ -18,9 +19,9 @@ export default function AboutFeature(props: MyProps) {
                 {featureSection?.topHead}
               </span>
             </h1>
-            <h1 className='mt-2 px-2 text-lg md:text-3xl'>
+            <h2 className='mt-2 px-2 text-lg md:text-3xl'>
               {featureSection?.subHead}
-            </h1>
+            </h2>
           </div>
           <div className='mx-auto -mt-10 w-full md:mt-40 lg:mt-0'>
             {featureSection?.featuredData?.map((item: any, i: number) =>
@@ -153,7 +154,7 @@ export default function AboutFeature(props: MyProps) {
                   key={i}
                 >
                   <div className='hidden md:block'>
-                    <div className='mx-auto flex flex-col items-center justify-between gap-4 px-5 md:flex-row md:px-0 lg:px-10 lg:mx-0 lg:max-w-none'>
+                    <div className='mx-auto flex flex-col items-center justify-between gap-4 px-5 md:flex-row md:px-0 lg:mx-0 lg:max-w-none lg:px-10'>
                       <div className='flex flex-col items-start'>
                         <Fade
                           cascade

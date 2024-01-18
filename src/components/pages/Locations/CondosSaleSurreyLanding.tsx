@@ -22,7 +22,7 @@ export default function CondosSaleSurreyLanding(props: MyProps) {
         headerData={allData?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={allData?.settingsOptions?.savemaxOptions?.headerSettings}
       />
-      <div className='mt-10 lg:mt-20'>
+      <div className='mt-10 lg:mt-20 max-w-[1450px] mx-auto'>
         <h1 className='px-3 text-center text-2xl md:text-3xl lg:px-10 lg:text-4xl'>
           {allData?.pages?.nodes[0]?.condosForSaleSurrey?.topFeatureTitle}
         </h1>

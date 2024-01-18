@@ -280,7 +280,7 @@ export default async function DuplexSaleSouthSurrey() {
               background: `url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner?.bannerImage?.sourceUrl}) no-repeat center center`,
               backgroundSize: '100% 100%',
             }}
-            className='flex h-[300px] items-center lg:h-[500px] 2xl:h-[500px] '
+            className='flex h-[300px] md:h-[400px] items-center justify-center lg:h-[500px] 2xl:h-[700px] '
           >
             <div className='mx-auto max-w-[1250px] p-3 text-center'>
               <h2 className='pt-10 text-[30px] font-bold md:pt-10 lg:mt-5 xl:text-[40px]'>

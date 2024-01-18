@@ -3,6 +3,7 @@ import LeftImageRightText from '@/components/elements/LeftImageRightText';
 import RightImageLeftText from '@/components/elements/RightImageLeftText';
 import WhyChooseUs from '@/components/elements/WhyChooseUs';
 import FeatureSection from '@/components/pages/Home/FeatureSection';
+import HomeSaleSurreyBanner from '@/components/pages/Locations/HomeSaleSurreyBanner';
 import HomeSurreyTopText from '@/components/pages/Locations/HomeSurreyTopText';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import Footer from '@/components/shared/Footer';
@@ -18,7 +19,7 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
   return (
     <main>
       <div className='hidden md:block'>
-        <LocationBanner
+        <HomeSaleSurreyBanner
           bannerData={
             allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection
           }

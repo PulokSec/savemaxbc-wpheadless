@@ -31,7 +31,7 @@ export default function FindSection(props: MyProps) {
             alt={featuredData?.image?.altText}
           />
         </div>
-        <div className='flex w-full items-center justify-center md:hidden md:w-1/2 xl:w-2/5'>
+        <div className='flex w-full items-start justify-start md:hidden md:w-1/2 xl:w-2/5'>
           <Image
             className=''
             src={featuredData?.image?.sourceUrl}
