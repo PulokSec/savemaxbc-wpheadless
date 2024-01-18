@@ -13,7 +13,7 @@ export default function ChoiceBanner(props: MyProps) {
           background: `url(${choiceBannerData?.bannerImage?.sourceUrl}) no-repeat center center`,
           backgroundSize: '100% 100%',
         }}
-        className='mb-10 mt-10 flex h-[300px] flex-col items-center justify-center md:h-[400px] lg:mt-20 lg:h-[500px] 2xl:h-[600px]'
+        className='mb-10 mt-10 flex h-[300px] flex-col items-center justify-center md:h-[400px] lg:mt-20 lg:h-[500px] 2xl:h-[700px]'
       >
         <div className='mx-auto max-w-[1250px] px-2 pt-20 text-center lg:py-36 '>
           <h2 className='text-[30px] font-semibold md:mt-5 xl:text-[40px]'>
