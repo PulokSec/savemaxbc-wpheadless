@@ -9,7 +9,7 @@ export default function BottomServiceSection(props: MyProps) {
     <section
       className='mt-10 flex h-[50vh] w-full flex-col items-center justify-start bg-cover bg-center md:mt-20 lg:h-[100vh] xl:h-[120vh]'
       style={{
-        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),url(${bottomSection?.backgroundImage?.sourceUrl})`,
       }}
     >
       <div className='lg:mt-0'>

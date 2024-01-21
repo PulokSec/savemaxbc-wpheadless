@@ -94,7 +94,7 @@ export default function Header(props: MyProps) {
       <div className='top-0 z-50 w-full shadow'>
         <header className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/menu-bg.png")] bg-cover shadow-md'>
           <nav
-            className='flex items-center justify-between px-10 py-3 md:px-5 xl:px-28 2xl:px-40'
+            className='container mx-auto flex items-center justify-between py-3'
             aria-label='Global'
           >
             <div className='flex lg:flex-1'>
