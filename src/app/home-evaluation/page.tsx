@@ -162,9 +162,9 @@ export default async function HomeEvaluation() {
         />
         <div className='mb-20 mt-20'>
           <div className='text-center'>
-            <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
+            <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {data?.pages?.nodes[0]?.homeEvaluation?.topFeatureTitle}
-            </h1>
+            </h2>
             <div
               className='md:text-md mt-5 px-5 text-center text-xs leading-6 lg:px-20 lg:text-lg'
               dangerouslySetInnerHTML={{
