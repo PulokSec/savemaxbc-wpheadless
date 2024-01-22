@@ -1,5 +1,6 @@
-import Header from '@/components/shared/Header';
 import React from 'react';
+
+import Header from '@/components/shared/Header';
 
 type MyProps = {
   bannerData: any;
@@ -11,7 +12,7 @@ type MyProps = {
   featureSubtitle?: any;
   usingFor?: string;
 };
-export default function BannerWithButton(props: MyProps) {
+export default function DuplexSouthSurreyBanner(props: MyProps) {
   const { bannerData, headerData, settingsData } = props;
   return (
     <div
@@ -26,9 +27,9 @@ export default function BannerWithButton(props: MyProps) {
           <p className='w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
             {bannerData?.bannerSubhead}
           </p>
-          <h1 className='w-[350px] text-center text-xl font-bold tracking-wide text-white md:w-[600px] md:text-3xl lg:w-[900px] lg:text-5xl lg:leading-[60px] xl:w-[700px] xl:text-6xl xl:leading-[66px]'>
+          <p className='w-[350px] text-center text-xl font-bold tracking-wide text-white md:w-[600px] md:text-3xl lg:w-[900px] lg:text-5xl lg:leading-[60px] xl:w-[700px] xl:text-6xl xl:leading-[66px]'>
             {bannerData?.bannerHeading}
-          </h1>
+          </p>
           {bannerData?.bannerDescription && (
             <div
               className='mt-8 text-center text-xl text-white lg:text-3xl'

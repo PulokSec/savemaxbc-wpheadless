@@ -73,7 +73,7 @@ export default function SellingPropertiesLanding(props: MyProps) {
                   >
                     <NextImage
                       useSkeleton
-                      className='mx-10 w-[300px] lg:w-[100%]'
+                      className='w-[300px] lg:mx-10 lg:w-[100%]'
                       src={item?.image?.sourceUrl}
                       alt={item?.image?.altText}
                       width='400'

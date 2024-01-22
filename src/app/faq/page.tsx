@@ -6,6 +6,7 @@ import { getClient } from '@/lib/apollo';
 import SharedBanner from '@/components/elements/SharedBanner';
 import FaqSection from '@/components/pages/Faq/FaqSection';
 import Footer from '@/components/shared/Footer';
+import FaqBanner from '@/components/elements/FaqBanner';
 
 const query = gql`
   query {
@@ -164,7 +165,7 @@ export default async function FaqPage() {
   return (
     <>
       <main>
-        <SharedBanner
+        <FaqBanner
           bannerData={data?.pages?.nodes[0]?.faqPage?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}

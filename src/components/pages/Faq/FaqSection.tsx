@@ -37,11 +37,11 @@ export default function FaqSection(props: MyProps) {
         objectFit: 'contain',
       }}
     >
-      <div className='col-span-12 ml-5 py-20 md:col-span-8 md:col-start-1 md:px-10'>
+      <div className='col-span-12 py-20 md:col-span-8 md:col-start-1 md:px-10'>
         <h1 className='text-center text-2xl md:text-4xl'>
           {faqData?.faqTitle}
         </h1>
-        <div className='container mx-auto mt-20 flex flex-col items-center rounded shadow-xl'>
+        <div className='w-11/12 md:container mx-auto mt-20 flex flex-col items-center rounded shadow-xl'>
           <ul className='w-full'>
             {faqDataDiv?.map((item: any, i: number) => (
               <li
@@ -55,9 +55,9 @@ export default function FaqSection(props: MyProps) {
                       faqDataDiv?.length - 1 === i ? 'pt-5' : 'py-5'
                     } w-full  text-[#061632]`}
                   >
-                    <h3 className='rounded-t-xl border-2 px-5 py-5 text-lg font-bold leading-6 shadow-xl '>
+                    <h2 className='rounded-t-xl border-2 px-5 py-5 text-lg font-bold leading-6 shadow-xl pr-6 md:pr-5'>
                       {item?.title}
-                    </h3>
+                    </h2>
                     {show.index === i && show.open === true && (
                       <div
                         className={`${

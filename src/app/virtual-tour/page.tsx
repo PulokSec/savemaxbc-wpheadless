@@ -180,11 +180,11 @@ export default async function VirtualTour() {
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='container mx-auto mb-20 mt-20 md:mt-40 lg:mt-40'>
+        <div className='container mx-auto mb-20 mt-20 md:mt-20'>
           <div className='text-center'>
-            <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
+            <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {data?.pages?.nodes[0]?.virtualTour?.topFeatureTitle}
-            </h1>
+            </h2>
             <div
               className='md:text-md mt-5 px-5 text-center text-xs leading-6 lg:px-20 lg:text-lg'
               dangerouslySetInnerHTML={{
