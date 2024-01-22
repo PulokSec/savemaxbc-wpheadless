@@ -1,6 +1,7 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import React from 'react';
 
 import { getClient } from '@/lib/apollo';
@@ -10,10 +11,7 @@ const AboutFeature = dynamic(
   () => import('@/components/elements/AboutFeature'),
   { ssr: false }
 );
-const GetInTouch = dynamic(
-  () => import('@/components/pages/Listings/GetInTouch'),
-  { ssr: false }
-);
+
 const Footer = dynamic(() => import('@/components/shared/Footer'), {
   ssr: false,
 });
@@ -195,9 +193,38 @@ export default async function page() {
         <AboutFeature
           featureSection={data?.pages?.nodes[0]?.aboutUs?.aboutFeatureSection}
         />
-        <GetInTouch
-          bottomSection={data?.pages?.nodes[0]?.aboutUs?.bottomFeatureSection}
-        />
+        <section className='mx-auto w-full '>
+          <div className='relative h-[40vh] w-full overflow-x-hidden lg:h-[60vh] xl:h-[100vh]'>
+            <Image
+              src={
+                data?.pages?.nodes[0]?.aboutUs?.bottomFeatureSection
+                  ?.backgroundImage?.sourceUrl
+              }
+              fill={true}
+              alt={
+                data?.pages?.nodes[0]?.aboutUs?.bottomFeatureSection
+                  ?.backgroundImage?.altText
+              }
+              className='rounded-t-[100%]'
+            />
+            <div className='absolute h-full w-full overflow-hidden rounded-t-[100%] bg-gray-500 bg-opacity-70'>
+              <div className=''>
+                <p className='px-5 pt-16 text-center text-xl font-bold text-white md:pt-32 md:text-5xl lg:pt-36 xl:pt-44'>
+                  {data?.pages?.nodes[0]?.aboutUs?.bottomFeatureSection?.title}
+                </p>
+                <div className='mt-7 text-center md:mt-14'>
+                  <a
+                    href='/contact-us'
+                    className='text-uppercase rounded-md border-[2px] border-solid px-5 py-3 text-base font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:text-lg'
+                  >
+                    Connect
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}

@@ -14,14 +14,14 @@ export default function AboutFeature(props: MyProps) {
       <section>
         <div className='py-10 md:py-20'>
           <div className=' flex w-full flex-col items-center justify-center text-center md:px-10'>
-            <h2 className='w-full text-center lg:w-[1000px]'>
+            <p className='w-full text-center font-bold lg:w-[1000px]'>
               <span className='text-2xl leading-5 text-[#515151] md:text-5xl'>
                 {featureSection?.topHead}
               </span>
-            </h2>
-            <h2 className='mt-2 px-2 text-lg md:text-3xl'>
+            </p>
+            <p className='mt-2 px-2 text-lg font-bold md:text-3xl'>
               {featureSection?.subHead}
-            </h2>
+            </p>
           </div>
           <div className='mx-auto -mt-10 w-full md:mt-40 lg:mt-0'>
             {featureSection?.featuredData?.map((item: any, i: number) =>

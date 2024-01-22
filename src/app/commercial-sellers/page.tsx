@@ -17,6 +17,7 @@ const Footer = dynamic(() => import('@/components/shared/Footer'), {
 });
 
 import SharedBanner from '@/components/elements/SharedBanner';
+import SubServicesBottomSection from '@/components/service-menu-components/SubServicesBottomSection';
 
 const query = gql`
   query {
@@ -204,7 +205,7 @@ export default async function CommercialSellers() {
             data?.pages?.nodes[0]?.commercialSellers?.topFeatureDescription
           }
         />
-        <div className='mt-[75px] md:mt-16 lg:mt-60'>
+        <div className='mt-[75px] md:mt-16 lg:mt-60 xl:mt-[300px]'>
           <div className='text-center'>
             <h1 className='w-full text-center text-xl text-[#585858] md:text-2xl lg:text-3xl'>
               {
@@ -225,7 +226,7 @@ export default async function CommercialSellers() {
             data?.pages?.nodes[0]?.commercialSellers?.serviceFeatureSection
           }
         />
-        <BottomServiceSection
+        <SubServicesBottomSection
           bottomSection={
             data?.pages?.nodes[0]?.commercialSellers?.bottomSection
           }

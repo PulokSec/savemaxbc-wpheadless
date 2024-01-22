@@ -17,6 +17,7 @@ const Footer = dynamic(() => import('@/components/shared/Footer'), {
 });
 
 import SharedBanner from '@/components/elements/SharedBanner';
+import SubServicesBottomSection from '@/components/service-menu-components/SubServicesBottomSection';
 
 const query = gql`
   query {
@@ -225,7 +226,7 @@ export default async function FirstTimeBuyers() {
             data?.pages?.nodes[0]?.FirstTimeBuyers?.serviceFeatureSection
           }
         />
-        <BottomServiceSection
+        <SubServicesBottomSection
           bottomSection={data?.pages?.nodes[0]?.FirstTimeBuyers?.bottomSection}
         />
         <Footer
