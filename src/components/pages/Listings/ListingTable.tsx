@@ -116,9 +116,15 @@ export default function ListingTable(props: MyProps) {
               idx % 2 === 0
                 ? 'border-b-gray-100 bg-gray-100 '
                 : 'border-b-gray-50 bg-gray-50 '
-            } flex h-10 items-center justify-between overflow-auto border-2 px-1 hover:border-b-gray-200 hover:bg-gray-200`}
+            } ${
+              item.type === 'Appliances' ? 'h-20 md:h-10' : 'h-10'
+            } flex items-center justify-between overflow-auto border-2 px-1 hover:border-b-gray-200 hover:bg-gray-200`}
           >
-            <p className='text-[15px] font-semibold text-gray-700'>
+            <p
+              className={`${
+                item.type === 'Appliances' ? 'mr-2 md:mr-0' : ''
+              } text-[15px] font-semibold text-gray-700`}
+            >
               {item.type}
             </p>
             <p className='text-[15px]'>{item.value}</p>

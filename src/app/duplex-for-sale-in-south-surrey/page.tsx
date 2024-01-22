@@ -11,6 +11,7 @@ import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
 import ChoiceCard from '@/components/pages/Locations/ChoiceCard';
 import SouthSurreyRealtorServiceLeftRight from '@/components/pages/Locations/SouthSurreyRealtorServiceLeftRight';
 import Footer from '@/components/shared/Footer';
+import DuplexSouthSurreyBanner from '@/components/pages/Locations/DuplexSouthSurreyBanner';
 
 const query = gql`
   query {
@@ -220,7 +221,7 @@ export default async function DuplexSaleSouthSurrey() {
     <main>
       <section className='bg-white'>
         <div>
-          <BannerWithButton
+          <DuplexSouthSurreyBanner
             bannerData={
               data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.bannerSection
             }
@@ -280,7 +281,7 @@ export default async function DuplexSaleSouthSurrey() {
               background: `url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner?.bannerImage?.sourceUrl}) no-repeat center center`,
               backgroundSize: '100% 100%',
             }}
-            className='flex h-[300px] md:h-[400px] items-center justify-center lg:h-[500px] 2xl:h-[700px] '
+            className='flex h-[300px] items-center justify-center md:h-[400px] lg:h-[500px] 2xl:h-[700px] '
           >
             <div className='mx-auto max-w-[1250px] p-3 text-center'>
               <h2 className='pt-10 text-[30px] font-bold md:pt-10 lg:mt-5 xl:text-[40px]'>

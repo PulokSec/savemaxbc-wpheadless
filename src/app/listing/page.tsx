@@ -1,30 +1,20 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { Suspense } from 'react';
 
 import { getClient } from '@/lib/apollo';
 import { getAllProperties, getSearchQuery } from '@/lib/dataFetching';
-// const FeaturedListings = dynamic(
-//   () => import('@/components/pages/Listings/FeaturedListings'),
-//   { ssr: false }
-// );
-import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
-const GetInTouch = dynamic(
-  () => import('@/components/pages/Listings/GetInTouch'),
-  { ssr: false }
-);
-// const PaginationSearch = dynamic(
-//   () => import('@/components/pages/Listings/PaginationSearch'),
-//   { ssr: false }
-// );
-import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
+
 const Footer = dynamic(() => import('@/components/shared/Footer'), {
   ssr: false,
 });
 
+import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
 import ListingBanner from '@/components/pages/Listings/ListingBanner';
+import ListingGetInTouch from '@/components/pages/Listings/ListingGetInTouch';
+import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
 import Skeleton from '@/components/Skeleton';
 
 const query = gql`
@@ -239,7 +229,7 @@ export default async function Listing({
               usingFor='listings'
             />
           )}
-          <GetInTouch
+          <ListingGetInTouch
             bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}
           />
           <Footer

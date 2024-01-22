@@ -14,11 +14,11 @@ export default function AboutFeature(props: MyProps) {
       <section>
         <div className='py-10 md:py-20'>
           <div className=' flex w-full flex-col items-center justify-center text-center md:px-10'>
-            <h1 className='w-full text-center lg:w-[1000px]'>
+            <h2 className='w-full text-center lg:w-[1000px]'>
               <span className='text-2xl leading-5 text-[#515151] md:text-5xl'>
                 {featureSection?.topHead}
               </span>
-            </h1>
+            </h2>
             <h2 className='mt-2 px-2 text-lg md:text-3xl'>
               {featureSection?.subHead}
             </h2>
