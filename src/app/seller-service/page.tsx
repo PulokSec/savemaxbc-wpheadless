@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 
 import { getClient } from '@/lib/apollo';
 
@@ -17,6 +17,7 @@ const Footer = dynamic(() => import('@/components/shared/Footer'), {
 });
 
 import SharedBanner from '@/components/elements/SharedBanner';
+import SubServicesBottomSection from '@/components/service-menu-components/SubServicesBottomSection';
 
 const query = gql`
   query {
@@ -217,7 +218,7 @@ export default async function SellerService() {
             data?.pages?.nodes[0]?.SellerService?.serviceFeatureSection
           }
         />
-        <BottomServiceSection
+        <SubServicesBottomSection
           bottomSection={data?.pages?.nodes[0]?.SellerService?.bottomSection}
         />
         <Footer
