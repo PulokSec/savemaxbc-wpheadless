@@ -3,9 +3,10 @@ import React from 'react';
 
 type MyProps = {
   bottomSection: any;
+  usingFor?: any;
 };
 export default function GetInTouch(props: MyProps) {
-  const { bottomSection } = props;
+  const { bottomSection, usingFor } = props;
   return (
     <>
       <section className='mx-auto w-full '>
@@ -18,9 +19,16 @@ export default function GetInTouch(props: MyProps) {
           />
           <div className='absolute h-full w-full overflow-hidden rounded-t-[100%] bg-gray-500 bg-opacity-70'>
             <div className=''>
-              <h2 className='px-5 pt-16 text-center text-xl text-white md:pt-32 md:text-5xl lg:pt-36 xl:pt-44'>
-                {bottomSection?.title}
-              </h2>
+              {usingFor === 'find-a-realtor' ? (
+                <p className='px-5 pt-16 text-center text-xl font-bold text-white md:pt-32 md:text-5xl lg:pt-36 xl:pt-44'>
+                  {bottomSection?.title}
+                </p>
+              ) : (
+                <h2 className='px-5 pt-16 text-center text-xl text-white md:pt-32 md:text-5xl lg:pt-36 xl:pt-44'>
+                  {bottomSection?.title}
+                </h2>
+              )}
+
               <div className='mt-7 text-center md:mt-14'>
                 <a
                   href='/contact-us'

@@ -36,9 +36,9 @@ const RealtorCard = (props: Props) => {
           } absolute left-0 top-0 h-full w-full rounded bg-black transition-all duration-500 ease-in-out`}
         ></div>
 
-        <h3 className='absolute bottom-6 left-4 rounded bg-sky-950 px-2 py-1 text-lg font-medium tracking-wide text-gray-100 lg:text-[22px]'>
+        <p className='absolute bottom-6 left-4 rounded bg-sky-950 px-2 py-1 text-lg font-medium tracking-wide text-gray-100 lg:text-[22px]'>
           {item?.name}
-        </h3>
+        </p>
       </div>
       <div className='flex w-[300px] flex-col items-start justify-start xl:w-[325px]'>
         <a

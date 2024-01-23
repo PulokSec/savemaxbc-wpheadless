@@ -36,12 +36,12 @@ const AllRealtorsSection = (props: Props) => {
 
   return (
     <div className='mt-10 md:mt-24 lg:mt-20 xl:mt-40' ref={firstDivRef}>
-      <h2
+      <h1
         className=' mb-5 px-2 pt-5 text-center text-2xl text-gray-800 md:text-3xl lg:text-5xl'
         dangerouslySetInnerHTML={{
           __html: allRealtors?.title,
         }}
-      ></h2>
+      ></h1>
       <div
         className='mx-auto mt-5 max-w-[1400px] px-5 text-xs leading-5 text-[#515151] md:text-lg'
         dangerouslySetInnerHTML={{
