@@ -4,9 +4,9 @@ import { Metadata } from 'next';
 import { getClient } from '@/lib/apollo';
 
 import NextImage from '@/components/NextImage';
-import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import Footer from '@/components/shared/Footer';
+import Header from '@/components/shared/Header';
 
 const query = gql`
   query {
@@ -175,11 +175,52 @@ export default async function VirtualTour() {
   return (
     <>
       <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
-        <BannerWithButton
-          bannerData={data?.pages?.nodes[0]?.virtualTour?.bannerSection}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-        />
+        <div
+          className='relative h-[70vh] w-full bg-cover bg-fixed bg-[center_center] bg-no-repeat lg:h-[70vh]'
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${data?.pages?.nodes[0]?.virtualTour?.bannerSection?.bannerImage?.sourceUrl})`,
+          }}
+        >
+          <Header
+            navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
+            settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
+          />
+          <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+            <div className='mx-auto w-full lg:px-10'>
+              <h1 className='w-[350px] text-center text-xl font-bold capitalize tracking-wide text-white md:w-[600px] md:text-3xl lg:w-[900px] lg:text-5xl lg:leading-[60px] xl:w-[700px] xl:text-6xl xl:leading-[66px]'>
+                {
+                  data?.pages?.nodes[0]?.virtualTour?.bannerSection
+                    ?.bannerHeading
+                }
+              </h1>
+              {data?.pages?.nodes[0]?.virtualTour?.bannerSection
+                ?.bannerDescription && (
+                <div
+                  className='mt-8 text-center text-xl text-white lg:text-3xl'
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      data?.pages?.nodes[0]?.virtualTour?.bannerSection
+                        ?.bannerDescription,
+                  }}
+                ></div>
+              )}
+              {data?.pages?.nodes[0]?.virtualTour?.bannerSection
+                ?.bannerButton === 'Contact Us' && (
+                <div className='flex items-center justify-center'>
+                  <a
+                    href='/contact-us'
+                    className='text-uppercase mt-5 rounded-md border-2 px-3 py-2 text-base font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:text-lg lg:px-5 lg:py-3'
+                  >
+                    {
+                      data?.pages?.nodes[0]?.virtualTour?.bannerSection
+                        ?.bannerButton
+                    }
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
         <div className='container mx-auto mb-20 mt-20 md:mt-20'>
           <div className='text-center'>
             <h2 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
