@@ -28,7 +28,8 @@ export default function AboutBanner(props: MyProps) {
       <div
         className='relative h-[70vh] w-full bg-[length:100%_70vh] bg-center bg-no-repeat md:hidden md:bg-[length:100%_100vh] lg:h-[100vh]'
         style={{
-          backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)),url(${bannerData?.bannerImage?.sourceUrl})`,
+          backgroundSize: 'cover',
         }}
       >
         <Header navigation={headerData} settingsData={settingsData} />
@@ -53,11 +54,12 @@ export default function AboutBanner(props: MyProps) {
       <div
         className='relative hidden h-[50vh] w-full bg-center bg-no-repeat md:block md:bg-[length:100%_50vh] xl:h-[100vh] xl:bg-[length:100%_100vh]'
         style={{
-          backgroundImage: `url(${bannerData?.bannerImagePc?.sourceUrl})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)),url(${bannerData?.bannerImagePc?.sourceUrl})`,
+          backgroundSize: 'cover',
         }}
       >
         <Header navigation={headerData} settingsData={settingsData} />
-        <div className='mt-40 flex flex-col items-center justify-center lg:mt-60 2xl:mt-[350px]'>
+        <div className='mt-40 flex flex-col items-center justify-center lg:mt-60 2xl:mt-[300px]'>
           <div className='py-0 lg:py-10'>
             <div className='flex w-full flex-col items-center justify-center px-5 lg:px-10'>
               <h1 className='w-full text-center text-3xl font-bold uppercase leading-5 text-white md:text-3xl lg:text-7xl'>
