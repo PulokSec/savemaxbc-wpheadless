@@ -38,7 +38,7 @@ export default function FindRealtorBanner(props: MyProps) {
               bannerData?.bannerDescription ? 'md:mb-[20%]' : 'md:mb-[10%]'
             }  -mt-20 flex h-[40vh] w-full flex-col items-center justify-center px-5 md:mt-0 md:h-[45vh] lg:px-10`}
           >
-            <p className='w-full text-center text-xl font-bold leading-5 tracking-wide text-white md:text-4xl lg:text-6xl xl:text-[66px]'>
+            <p className='w-full text-center text-xl font-bold leading-5 tracking-wide text-white md:text-4xl lg:text-6xl xl:text-[66px] uppercase'>
               {bannerData?.bannerHeading}
             </p>
             {bannerData?.bannerDescription && (
