@@ -187,7 +187,7 @@ export default async function VirtualTour() {
           />
           <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
             <div className='mx-auto w-full lg:px-10'>
-              <h1 className='w-[350px] text-center text-xl font-bold capitalize tracking-wide text-white md:w-[600px] md:text-3xl lg:w-[900px] lg:text-5xl lg:leading-[60px] xl:w-[700px] xl:text-6xl xl:leading-[66px]'>
+              <h1 className='w-[350px] text-center text-xl font-bold uppercase tracking-wide text-white md:w-[600px] md:text-3xl lg:w-[900px] lg:text-5xl lg:leading-[60px] xl:w-[700px] xl:text-6xl xl:leading-[66px]'>
                 {
                   data?.pages?.nodes[0]?.virtualTour?.bannerSection
                     ?.bannerHeading
