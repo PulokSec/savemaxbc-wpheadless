@@ -4,10 +4,6 @@ import dynamic from 'next/dynamic';
 
 import { getClient } from '@/lib/apollo';
 
-const BottomServiceSection = dynamic(
-  () => import('@/components/service-menu-components/BottomServiceSection'),
-  { ssr: false }
-);
 const ServicePointFeature = dynamic(
   () => import('@/components/service-menu-components/ServicePointFeature'),
   { ssr: false }
@@ -192,7 +188,7 @@ export default async function SellerService() {
       },
     },
   });
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <main>
@@ -217,6 +213,7 @@ export default async function SellerService() {
           featuredData={
             data?.pages?.nodes[0]?.SellerService?.serviceFeatureSection
           }
+          usingFor='seller'
         />
         <SubServicesBottomSection
           bottomSection={data?.pages?.nodes[0]?.SellerService?.bottomSection}

@@ -1,12 +1,9 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 
 import { getClient } from '@/lib/apollo';
-const BottomServiceSection = dynamic(
-  () => import('@/components/service-menu-components/BottomServiceSection'),
-  { ssr: false }
-);
+
 const ServicePointFeature = dynamic(
   () => import('@/components/service-menu-components/ServicePointFeature'),
   { ssr: false }
@@ -203,15 +200,16 @@ export default async function CommercialBuyers() {
           topDesc={
             data?.pages?.nodes[0]?.commercialBuyers?.topFeatureDescription
           }
+          usingFor='commercial-buyer'
         />
         <div className='mt-[75px] md:mt-16 lg:mt-60 xl:mt-[300px]'>
           <div className='text-center'>
-            <h1 className='w-full text-center text-xl text-[#585858] md:text-2xl lg:text-3xl'>
+            <p className='w-full text-center text-xl font-bold text-[#585858] md:text-2xl lg:text-3xl'>
               {
                 data?.pages?.nodes[0]?.commercialBuyers?.serviceFeatureSection
                   ?.featureTitle
               }
-            </h1>
+            </p>
             <h2 className='mt-1 w-full text-center text-2xl md:mt-4 md:text-3xl lg:text-5xl'>
               {
                 data?.pages?.nodes[0]?.commercialBuyers?.serviceFeatureSection
