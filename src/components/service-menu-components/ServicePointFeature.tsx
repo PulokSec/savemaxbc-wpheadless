@@ -4,9 +4,10 @@ import NextImage from '@/components/NextImage';
 
 type MyProps = {
   featuredData: any;
+  usingFor?: any;
 };
 export default function ServicePointFeature(props: MyProps) {
-  const { featuredData } = props;
+  const { featuredData, usingFor } = props;
   return (
     <section className='max-w-screen mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
       <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0 xl:gap-5 2xl:gap-0'>
@@ -29,9 +30,16 @@ export default function ServicePointFeature(props: MyProps) {
                         : 'w-full bg-[#061632] py-10 pl-14 pr-3 text-gray-200 shadow'
                     }
                   >
-                    <h3 className='text-lg font-semibold leading-6'>
-                      {item?.title}
-                    </h3>
+                    {usingFor === 'seller' ? (
+                      <h2 className='text-lg font-semibold leading-6'>
+                        {item?.title}
+                      </h2>
+                    ) : (
+                      <h3 className='text-lg font-semibold leading-6'>
+                        {item?.title}
+                      </h3>
+                    )}
+
                     <div
                       className='md:text-md mt-5 text-start text-xs lg:text-lg'
                       dangerouslySetInnerHTML={{
@@ -56,7 +64,7 @@ export default function ServicePointFeature(props: MyProps) {
       </div>
 
       <div className='lg:max-w-screen mt-10 grid grid-cols-12 items-center justify-center lg:mx-0 lg:mt-20 lg:gap-5'>
-        <div className='cover relative col-span-12 mx-auto mt-5 hidden h-[400px] w-11/12 md:h-[500px] md:w-3/4 xl:block lg:h-[600px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
+        <div className='cover relative col-span-12 mx-auto mt-5 hidden h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[600px] xl:col-span-6 xl:col-end-7 xl:block xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
           <NextImage
             useSkeleton
             src={featuredData?.featuredImageLeft?.sourceUrl}
@@ -81,9 +89,15 @@ export default function ServicePointFeature(props: MyProps) {
                             : 'w-full bg-[#061632] py-10 pl-3 pr-14 text-gray-200 shadow'
                         }
                       >
-                        <h3 className='text-end text-lg font-semibold leading-6'>
-                          {item?.title}
-                        </h3>
+                        {usingFor === 'seller' ? (
+                          <h2 className='text-end text-lg font-semibold leading-6'>
+                            {item?.title}
+                          </h2>
+                        ) : (
+                          <h3 className='text-end text-lg font-semibold leading-6'>
+                            {item?.title}
+                          </h3>
+                        )}
                         <div
                           className='md:text-md mt-5 text-end text-xs lg:text-lg'
                           dangerouslySetInnerHTML={{
@@ -103,7 +117,7 @@ export default function ServicePointFeature(props: MyProps) {
             </div>
           </div>
         </div>
-        <div className='cover relative col-span-12 mx-auto mt-5 block h-[400px] w-11/12 md:h-[700px] md:w-3/4 xl:hidden lg:h-[800px] xl:col-span-6 xl:col-end-7 xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
+        <div className='cover relative col-span-12 mx-auto mt-5 block h-[400px] w-11/12 md:h-[700px] md:w-3/4 lg:h-[800px] xl:col-span-6 xl:col-end-7 xl:hidden xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
           <NextImage
             useSkeleton
             src={featuredData?.featuredImageLeft?.sourceUrl}
