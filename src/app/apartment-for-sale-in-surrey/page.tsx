@@ -292,6 +292,7 @@ export default async function ApartmentForSaleSurrey() {
             featuredData={
               data?.pages?.nodes[0]?.apartmentForSaleSurrey?.choiceFeature
             }
+            usingFor='apartment'
           />
 
           <div className='mb-10'>
@@ -306,6 +307,7 @@ export default async function ApartmentForSaleSurrey() {
               data?.pages?.nodes[0]?.apartmentForSaleSurrey?.essentialSection
             }
           />
+
           <div className='-mt-96 lg:-mt-52'>
             <HomeBuyingProcess
               featuredData={

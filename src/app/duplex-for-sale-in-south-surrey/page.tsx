@@ -7,11 +7,10 @@ import { getClient } from '@/lib/apollo';
 import BenefitsSection from '@/components/elements/BenefitsSection';
 import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
 import NextImage from '@/components/NextImage';
-import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
 import ChoiceCard from '@/components/pages/Locations/ChoiceCard';
+import DuplexSouthSurreyBanner from '@/components/pages/Locations/DuplexSouthSurreyBanner';
 import SouthSurreyRealtorServiceLeftRight from '@/components/pages/Locations/SouthSurreyRealtorServiceLeftRight';
 import Footer from '@/components/shared/Footer';
-import DuplexSouthSurreyBanner from '@/components/pages/Locations/DuplexSouthSurreyBanner';
 
 const query = gql`
   query {
@@ -319,6 +318,14 @@ export default async function DuplexSaleSouthSurrey() {
           <SouthSurreyRealtorServiceLeftRight
             data={data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.estateServices}
           />
+          <div className='mt-10 flex items-center justify-center'>
+            <a
+              href='/contact-us'
+              className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+            >
+              Contact Us
+            </a>
+          </div>
           <div className='-mt-60 md:-mt-28 lg:-mt-48 xl:mt-0'>
             <BenefitsSection
               featuredData={
@@ -334,7 +341,6 @@ export default async function DuplexSaleSouthSurrey() {
               }
             />
           </div>
-
           <section
             className='flex h-[500px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'
             style={{
