@@ -3,11 +3,10 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import SharedBanner from '@/components/elements/SharedBanner';
+import CommercialBanner from '@/components/elements/CommercialBanner';
 import CommercialServiceFeature from '@/components/service-menu-components/ComercialServiceFeatures';
 import CommercialPropertyBottomSection from '@/components/service-menu-components/CommercialPropertyBottomSection';
 import Footer from '@/components/shared/Footer';
-import CommercialBanner from '@/components/elements/CommercialBanner';
 
 const query = gql`
   query {

@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 
 import { getClient } from '@/lib/apollo';
 

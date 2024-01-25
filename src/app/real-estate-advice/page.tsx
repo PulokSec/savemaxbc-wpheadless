@@ -3,11 +3,10 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import SharedBanner from '@/components/elements/SharedBanner';
+import CommercialBanner from '@/components/elements/CommercialBanner';
 import NextImage from '@/components/NextImage';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import Footer from '@/components/shared/Footer';
-import CommercialBanner from '@/components/elements/CommercialBanner';
 
 const query = gql`
   query {
@@ -181,7 +180,7 @@ export default async function RealAdvice() {
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mt-20 md:mt-40 lg:mt-40 mb-20'>
+        <div className='mb-20 mt-20 md:mt-40 lg:mt-40'>
           <div className='text-center'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {data?.pages?.nodes[0]?.realAdvice?.topFeatureTitle}
@@ -195,7 +194,7 @@ export default async function RealAdvice() {
             ></div>
           </div>
         </div>
-        
+
         {data?.pages?.nodes[0]?.realAdvice?.serviceFeatureSection?.featuredDiv?.map(
           (item: any, idx: number) => (
             <div key={idx}>
@@ -207,9 +206,7 @@ export default async function RealAdvice() {
                 >
                   <div className='md:w-1/2 '>
                     <div className=''>
-                      <h3 className='font-bold mb-3'>
-                        {item.title}
-                      </h3>
+                      <h3 className='mb-3 font-bold'>{item.title}</h3>
                       <div
                         className='md:text-md text-xs lg:text-lg'
                         dangerouslySetInnerHTML={{
