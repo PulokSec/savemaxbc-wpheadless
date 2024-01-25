@@ -137,24 +137,25 @@ export default function Header(props: MyProps) {
                         }`}
                       >
                         {item.label}
-                        {item?.childItems?.nodes?.length > 0 && (
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            fill='none'
-                            viewBox='0 0 24 24'
-                            strokeWidth={1.5}
-                            stroke='currentColor'
-                            className='h-4 w-4 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
-                          >
-                            <path
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                              d='M19.5 8.25l-7.5 7.5-7.5-7.5'
-                            />
-                          </svg>
-                        )}
+                        {item?.childItems?.nodes?.length > 0 &&
+                          item?.label !== 'Listings' && (
+                            <svg
+                              xmlns='http://www.w3.org/2000/svg'
+                              fill='none'
+                              viewBox='0 0 24 24'
+                              strokeWidth={1.5}
+                              stroke='currentColor'
+                              className='h-4 w-4 from-[#eee38f] via-[#ad782f] to-[#dbc071] bg-clip-text  text-white hover:bg-gradient-to-r hover:text-transparent'
+                            >
+                              <path
+                                strokeLinecap='round'
+                                strokeLinejoin='round'
+                                d='M19.5 8.25l-7.5 7.5-7.5-7.5'
+                              />
+                            </svg>
+                          )}
                       </div>
-                      {item?.label === 'Listings' && (
+                      {/* {item?.label === 'Listings' && (
                         <ul
                           onMouseEnter={() => setListingOpen(true)}
                           onMouseLeave={() => setListingOpen(false)}
@@ -176,7 +177,7 @@ export default function Header(props: MyProps) {
                             );
                           })}
                         </ul>
-                      )}
+                      )} */}
                       {item?.label === 'Services' && (
                         <ul
                           onMouseEnter={() => setServicesOpen(true)}
@@ -283,24 +284,25 @@ export default function Header(props: MyProps) {
                               }`}
                             >
                               {item.label}
-                              {item?.childItems?.nodes?.length > 0 && (
-                                <svg
-                                  xmlns='http://www.w3.org/2000/svg'
-                                  fill='none'
-                                  viewBox='0 0 24 24'
-                                  strokeWidth={1.5}
-                                  stroke='currentColor'
-                                  className='h-4 w-4'
-                                >
-                                  <path
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                    d='M19.5 8.25l-7.5 7.5-7.5-7.5'
-                                  />
-                                </svg>
-                              )}
+                              {item?.childItems?.nodes?.length > 0 &&
+                                item?.label !== 'Listings' && (
+                                  <svg
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='none'
+                                    viewBox='0 0 24 24'
+                                    strokeWidth={1.5}
+                                    stroke='currentColor'
+                                    className='h-4 w-4'
+                                  >
+                                    <path
+                                      strokeLinecap='round'
+                                      strokeLinejoin='round'
+                                      d='M19.5 8.25l-7.5 7.5-7.5-7.5'
+                                    />
+                                  </svg>
+                                )}
                             </a>
-                            {item?.label === 'Listings' && (
+                            {/* {item?.label === 'Listings' && (
                               <div
                                 onMouseEnter={() => setListingOpen(true)}
                                 onMouseLeave={() => setListingOpen(false)}
@@ -323,7 +325,7 @@ export default function Header(props: MyProps) {
                                   );
                                 })}
                               </div>
-                            )}
+                            )} */}
                             {item?.label === 'Services' && (
                               <div
                                 onMouseEnter={() => setServicesOpen(true)}

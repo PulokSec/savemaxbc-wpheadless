@@ -11,13 +11,13 @@ export default function NewsBanner(props: MyProps) {
   const { headerData, settingsData, bannerData, usingFor } = props;
   return (
     <div
-      className='relative h-[70vh] w-full bg-cover bg-center bg-no-repeat bg-blend-screen md:h-[100vh]'
+      className='relative h-[70vh] w-full bg-cover bg-center bg-no-repeat bg-blend-screen md:h-[80vh]'
       style={{
         backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
-      <div className='mx-auto h-[60vh] py-16 md:h-[90vh]'>
+      <div className='mx-auto h-[60vh] py-16 md:h-[70vh]'>
         <div className='mx-auto ml-0 flex h-full w-full flex-col items-center justify-center text-center md:items-center'>
           {bannerData?.topBannerHeading && (
             <p className='text-leading-3 text-center text-lg font-bold text-[#515151] md:text-start md:text-5xl'>
@@ -25,11 +25,11 @@ export default function NewsBanner(props: MyProps) {
             </p>
           )}
           {usingFor === 'news' && (
-            <p className='text-leading-3 text-md mt-5 font-bold text-[#515151] md:text-3xl lg:text-7xl'>
+            <p className='text-leading-3 mt-5 text-xl font-bold text-[#515151] md:text-4xl lg:text-7xl'>
               {bannerData?.bannerSubheading}
             </p>
           )}
-          <p className='text-leading-3 mt-5 text-xl font-bold text-[#061632] md:text-6xl'>
+          <p className='text-leading-3 mt-5 text-lg font-bold text-[#061632] md:text-3xl lg:text-6xl'>
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (

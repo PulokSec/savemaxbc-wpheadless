@@ -3,10 +3,9 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import SharedBanner from '@/components/elements/SharedBanner';
+import FaqBanner from '@/components/elements/FaqBanner';
 import FaqSection from '@/components/pages/Faq/FaqSection';
 import Footer from '@/components/shared/Footer';
-import FaqBanner from '@/components/elements/FaqBanner';
 
 const query = gql`
   query {

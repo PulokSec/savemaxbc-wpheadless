@@ -12,7 +12,7 @@ type MyProps = {
   featureSubtitle?: any;
   usingFor?: string;
 };
-export default function SharedBanner(props: MyProps) {
+export default function CommercialBanner(props: MyProps) {
   const {
     bannerData,
     headerData,
@@ -25,20 +25,20 @@ export default function SharedBanner(props: MyProps) {
   } = props;
   return (
     <div
-      className='relative h-[100vh] w-full bg-cover bg-center bg-no-repeat md:h-[80vh]'
+      className='relative h-[60vh] w-full bg-cover bg-center bg-no-repeat lg:h-[100vh]'
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
-      <div className='mt-20 flex flex-col items-center justify-center md:mt-40 lg:mt-40'>
+      <div className='mt-20 flex flex-col items-center justify-center md:mt-40 lg:mt-60'>
         <div className='py-16'>
           <div className='flex max-w-[1200px] flex-col items-center justify-center px-5 lg:px-10'>
             {usingFor === 'commercial-buyer' ||
             usingFor === 'commercial-seller' ||
             usingFor === 'fthb' ||
             usingFor === 'investment-buyer' ? (
-              <h1 className='w-full text-center text-xl font-bold uppercase leading-5 text-white md:text-3xl lg:text-6xl lg:leading-[66px]'>
+              <h1 className='w-full text-center text-xl font-bold uppercase leading-5 text-white md:text-4xl lg:text-6xl'>
                 {bannerData?.bannerHeading}
               </h1>
             ) : (
@@ -58,7 +58,7 @@ export default function SharedBanner(props: MyProps) {
           </div>
         </div>
         {topTitle && topDesc ? (
-          <div className='container relative mx-auto -mt-10 w-full rounded-b-xl bg-transparent px-5 py-3 text-center shadow-none md:mt-0 lg:mt-[10%] lg:w-[80%] lg:bg-white lg:shadow-md '>
+          <div className='container relative mx-auto -mt-10 w-full rounded-b-xl bg-transparent px-5 py-3 text-center shadow-none md:mt-40 lg:mt-[18%] lg:w-[80%] lg:bg-white lg:shadow-md '>
             <div
               className='md:text-md mt-5 text-xs leading-6 text-white lg:text-lg lg:text-[#061632]'
               dangerouslySetInnerHTML={{
@@ -109,7 +109,7 @@ export default function SharedBanner(props: MyProps) {
             </div>
           </div>
         ) : topDesc ? (
-          <div className='container relative mx-auto w-full rounded-b-xl bg-transparent px-5 py-3 text-center shadow-none lg:mt-[10%] lg:w-[80%] lg:bg-white lg:shadow-md 2xl:mt-[12%]'>
+          <div className='container relative mx-auto w-full rounded-b-xl bg-transparent px-5 py-3 text-center shadow-none md:mt-[17%] lg:w-[80%] lg:bg-white lg:shadow-md'>
             <div
               className='md:text-md mt-5 text-xs font-bold font-medium leading-6 text-white lg:text-lg lg:text-[#061632]'
               dangerouslySetInnerHTML={{
@@ -132,7 +132,7 @@ export default function SharedBanner(props: MyProps) {
           </div>
         ) : null}
         {usingFor === 'seller' && (
-          <div className='container relative mx-auto mt-[20%] flex w-[80%] flex-col items-center justify-center rounded-b-xl bg-white px-5 py-3 text-center shadow-md lg:mt-[12%] lg:py-10 xl:mt-[10%] 2xl:mt-[12%]'>
+          <div className='container relative mx-auto mt-[20%] flex w-[80%] flex-col items-center justify-center rounded-b-xl bg-white px-5 py-3 text-center shadow-md md:mt-[40%] lg:mt-[18%] lg:py-10'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               <span className='text-[#585858]'>{featureTitle}</span>{' '}
               {featureSubtitle}

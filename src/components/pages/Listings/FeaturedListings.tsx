@@ -36,7 +36,7 @@ export default async function FeaturedListings(props: MyProps) {
 
   return (
     <div>
-      <section className='mt-20 lg:mt-60'>
+      <section className='mt-10 lg:mt-10'>
         <div className='mt-20 2xl:mt-32'>
           {usingFor === 'listings' && (
             <h1 className='text-center text-lg md:text-5xl'>

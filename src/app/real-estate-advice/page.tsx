@@ -7,6 +7,7 @@ import SharedBanner from '@/components/elements/SharedBanner';
 import NextImage from '@/components/NextImage';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import Footer from '@/components/shared/Footer';
+import CommercialBanner from '@/components/elements/CommercialBanner';
 
 const query = gql`
   query {
@@ -175,7 +176,7 @@ export default async function RealAdvice() {
   return (
     <>
       <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
-        <SharedBanner
+        <CommercialBanner
           bannerData={data?.pages?.nodes[0]?.realAdvice?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
