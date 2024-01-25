@@ -202,7 +202,7 @@ export default async function FirstTimeBuyers() {
           }
           usingFor='fthb'
         />
-        <div className='mt-10 md:mt-16 lg:mt-60'>
+        <div className='mt-10 md:mt-16 lg:mt-40 xl:mt-60'>
           <div className='text-center'>
             <h2 className='w-full text-center text-xl text-[#585858] md:text-2xl lg:text-3xl'>
               {

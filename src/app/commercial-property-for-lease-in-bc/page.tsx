@@ -7,6 +7,7 @@ import SharedBanner from '@/components/elements/SharedBanner';
 import CommercialServiceFeature from '@/components/service-menu-components/ComercialServiceFeatures';
 import CommercialPropertyBottomSection from '@/components/service-menu-components/CommercialPropertyBottomSection';
 import Footer from '@/components/shared/Footer';
+import CommercialBanner from '@/components/elements/CommercialBanner';
 
 const query = gql`
   query {
@@ -193,7 +194,7 @@ export default async function CommercialLease() {
   return (
     <>
       <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
-        <SharedBanner
+        <CommercialBanner
           bannerData={
             data?.pages?.nodes[0]?.commercialPropertyLease?.bannerSection
           }

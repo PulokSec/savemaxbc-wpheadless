@@ -18,8 +18,8 @@ const AllRealtorsSection = (props: Props) => {
   );
 
   useEffect(() => {
-    const begin = (part - 1) * 9;
-    const end = part * 9;
+    const begin = (part - 1) * 8;
+    const end = part * 8;
     setRealtors(allRealtors?.realtorCard?.slice(begin, end));
   }, [part, allRealtors?.realtorCard]);
 

@@ -11,13 +11,13 @@ export default function ServiceBanner(props: MyProps) {
   const { headerData, settingsData, bannerData, usingFor } = props;
   return (
     <div
-      className='relative h-[70vh] w-full bg-cover bg-center bg-no-repeat bg-blend-screen md:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat bg-blend-screen md:h-[80vh]'
       style={{
         backgroundImage: `url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
-      <div className='mx-auto h-[60vh] py-16 md:h-[90vh]'>
+      <div className='mx-auto h-[70vh] py-16 md:h-[70vh]'>
         <div className='mx-auto ml-0 flex h-full w-full flex-col items-center justify-center text-center md:items-center'>
           {bannerData?.topBannerHeading && (
             <p className='text-leading-8 text-center text-lg font-bold text-white md:text-start md:text-5xl'>
@@ -33,7 +33,7 @@ export default function ServiceBanner(props: MyProps) {
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (
-            <div className='mx-auto mt-8 max-w-[1400px] px-3 text-center text-white '>
+            <div className='mx-auto mt-8 max-w-[1400px] px-3 text-center text-white md:px-10 '>
               <p className='text-md'>{bannerData?.bannerDescription}</p>
             </div>
           )}

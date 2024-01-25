@@ -7,6 +7,7 @@ import SharedBanner from '@/components/elements/SharedBanner';
 import AdviceServiceFeature from '@/components/service-menu-components/AdviceServiceFeature';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import Footer from '@/components/shared/Footer';
+import CommercialBanner from '@/components/elements/CommercialBanner';
 
 const query = gql`
   query {
@@ -175,12 +176,12 @@ export default async function SellingServices() {
   return (
     <>
       <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
-        <SharedBanner
+        <CommercialBanner
           bannerData={data?.pages?.nodes[0]?.sellingServices?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mt-80 px-5 md:mt-40 lg:mt-40'>
+        <div className='mt-20 px-5 md:mt-40 lg:mt-40'>
           <div className='text-center'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {data?.pages?.nodes[0]?.sellingServices?.topFeatureTitle}

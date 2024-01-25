@@ -13,18 +13,18 @@ export default function CareersBanner(props: MyProps) {
   const { bannerData, headerData, settingsData, topDesc, topTitle } = props;
   return (
     <div
-      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat lg:h-[100vh]'
+      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat lg:h-[80vh]'
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),url(${bannerData?.bannerImage?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
-      <div className='flex h-[70vh] flex-col items-start justify-start lg:h-[100vh]'>
+      <div className='flex h-[70vh] flex-col items-start justify-start lg:h-[80vh]'>
         <div className='py-8 md:py-16'>
           <div
             className={`${
               bannerData?.bannerDescription ? 'md:mb-[20%]' : 'md:mb-[10%]'
-            }  flex h-[40vh] w-full flex-col items-start justify-center px-5 md:pl-[10%] lg:mt-[10%] lg:h-[60vh] lg:pl-[15%] xl:pl-[35%]`}
+            }  flex h-[40vh] w-full flex-col items-start justify-center px-5 md:pl-[10%] lg:mt-[10%] lg:h-[40vh] xl:h-[30vh] 2xl:h-[40vh] lg:pl-[15%] xl:pl-[35%]`}
           >
             <p
               style={{ lineHeight: '75px' }}
