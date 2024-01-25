@@ -10,12 +10,11 @@ import CardSection from '@/components/pages/Locations/CardSection';
 import ChoiceBanner from '@/components/pages/Locations/ChoiceBanner';
 import ChoiceSection from '@/components/pages/Locations/ChoiceSection';
 import EssentialSection from '@/components/pages/Locations/EssentialSection';
-import HomeBuyingProcess from '@/components/pages/Locations/HomebuyingProcess';
+import HomeBuyingProcessSouthSurrey from '@/components/pages/Locations/HomeBuyingProcessSouthSurrey';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import OfferBanner from '@/components/pages/Locations/OfferBanner';
 import OfferSection from '@/components/pages/Locations/OfferSection';
 import Footer from '@/components/shared/Footer';
-import HomeBuyingProcessSouthSurrey from '@/components/pages/Locations/HomeBuyingProcessSouthSurrey';
 
 const query = gql`
   query {
@@ -286,10 +285,10 @@ export default async function HomeSouthSurrey({
         />
         <div className=''>
           <div className=''>
-            <p className='text-md mt-5 w-full text-center font-bold text-[#515151] md:text-xl lg:text-2xl hidden md:block'>
+            <p className='text-md mt-5 hidden w-full text-center font-bold text-[#515151] md:block md:text-xl lg:text-2xl'>
               {data?.pages?.nodes[0]?.southSurrey?.listingSection?.topHead}
             </p>
-            <h1 className='mt-8 md:mt-36 text-center text-lg md:text-4xl'>
+            <h1 className='mt-8 text-center text-lg md:mt-36 md:text-4xl'>
               {
                 data?.pages?.nodes[0]?.southSurrey?.listingSection
                   ?.recentListingsTitle
@@ -319,6 +318,14 @@ export default async function HomeSouthSurrey({
         <CardSection
           cardSection={data?.pages?.nodes[0]?.southSurrey?.cardSection}
         />
+        <div className='mt-5 flex items-center justify-center'>
+          <a
+            href='/contact-us'
+            className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+          >
+            Contact Us
+          </a>
+        </div>
         <OfferBanner
           offerBannerData={data?.pages?.nodes[0]?.southSurrey?.offerBanner}
           featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
@@ -326,12 +333,21 @@ export default async function HomeSouthSurrey({
         <OfferSection
           featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
         />
+        <div className='mb-20 flex items-center justify-center md:mb-0'>
+          <a
+            href='/listing'
+            className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+          >
+            See Listings
+          </a>
+        </div>
         <ChoiceBanner
           choiceBannerData={data?.pages?.nodes[0]?.southSurrey?.choiceBanner}
         />
         <ChoiceSection
           featuredData={data?.pages?.nodes[0]?.southSurrey?.choiceSection}
         />
+
         <HomeBuyingProcessSouthSurrey
           featuredData={data?.pages?.nodes[0]?.southSurrey?.homebuyingSection}
         />

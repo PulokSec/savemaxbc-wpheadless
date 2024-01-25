@@ -30,6 +30,7 @@ const query = gql`
               sourceUrl
             }
             bannerHeading
+            bannerDescription
             bannerButton
           }
           topBannerDescription

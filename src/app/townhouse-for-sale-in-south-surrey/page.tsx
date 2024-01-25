@@ -281,6 +281,14 @@ export default async function TownhouseSaleSouthSurrey({
         <CardSection
           cardSection={data?.pages?.nodes[0]?.townSouthSurrey?.cardSection}
         />
+        <div className='mt-5 flex items-center justify-center'>
+          <a
+            href='/contact-us'
+            className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+          >
+            Contact Us
+          </a>
+        </div>
         <div className='md:h-32 lg:h-0 xl:h-32'></div>
         <div className='lg:-mt-52 2xl:mt-0'>
           <WhyChooseUs
