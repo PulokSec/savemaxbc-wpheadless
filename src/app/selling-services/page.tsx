@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 
 import { getClient } from '@/lib/apollo';
 
-import SharedBanner from '@/components/elements/SharedBanner';
 import AdviceServiceFeature from '@/components/service-menu-components/AdviceServiceFeature';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import Footer from '@/components/shared/Footer';
