@@ -9,11 +9,10 @@ import React, { useEffect, useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import { GET_USER } from '@/components/custom-hooks/useAuth';
-import Header from '@/components/shared/Header';
-import { Carousel } from 'react-responsive-carousel';
 import SingleListingLoader from '@/components/pages/Listings/SingleListingLoader';
-import SingleListingCarousel from '@/components/pages/Listings/SingleListingCarousel';
 import Slider from '@/components/pages/Listings/Slider';
+import Header from '@/components/shared/Header';
+import { constructPhotoUrl } from '@/components/utils/utils';
 
 if (process.env.NODE_ENV !== 'production') {
   loadErrorMessages();
@@ -31,10 +30,11 @@ type MyProps = {
   allImages: any;
   headerData: any;
   settingsData: any;
+  listingId: any;
 };
 export default function SingleListingBanner(props: MyProps) {
   const [loggedIn, setLoggedIn] = useState(false);
-  const { allImages, headerData, settingsData } = props;
+  const { allImages, headerData, settingsData, listingId } = props;
   const [loginModal, setLoginModal] = useState(false);
   const [logIn, { loading, error }] = useMutation(LOG_IN, {
     refetchQueries: [{ query: GET_USER }],
@@ -44,12 +44,12 @@ export default function SingleListingBanner(props: MyProps) {
   const user = data?.viewer;
 
   const errorMessage = error?.message || '';
-  const firstbufferOriginal = Buffer.from(allImages[0].Photos.data);
-  const firstImageUrl = JSON.parse(firstbufferOriginal.toString('utf8'))
-    ?.LargePhoto?.filename;
-  const secondbufferOriginal = Buffer.from(allImages[1].Photos.data);
-  const secondImageUrl = JSON.parse(secondbufferOriginal.toString('utf8'))
-    ?.LargePhoto?.filename;
+  // const firstbufferOriginal = Buffer.from(allImages[0].Photos.data);
+  // const firstImageUrl = JSON.parse(firstbufferOriginal.toString('utf8'))
+  //   ?.LargePhoto?.filename;
+  // const secondbufferOriginal = Buffer.from(allImages[1].Photos.data);
+  // const secondImageUrl = JSON.parse(secondbufferOriginal.toString('utf8'))
+  //   ?.LargePhoto?.filename;
 
   const isEmailValid =
     !errorMessage.includes('empty_email') &&
@@ -84,6 +84,7 @@ export default function SingleListingBanner(props: MyProps) {
       console.error(error);
     }
   }
+  const firstImageUrl = constructPhotoUrl(listingId, allImages[0]);
   return (
     <div className='relative'>
       <Header settingsData={settingsData} navigation={headerData} />
@@ -91,7 +92,7 @@ export default function SingleListingBanner(props: MyProps) {
       {userLoading ? (
         <SingleListingLoader firstImageUrl={firstImageUrl} />
       ) : user ? (
-        <Slider images={allImages} />
+        <Slider images={allImages} listingId={listingId} />
       ) : (
         <>
           <div className='mx-auto flex w-full flex-col items-center justify-center gap-2 p-5 md:flex-row md:p-3 lg:p-5 '>
@@ -107,7 +108,7 @@ export default function SingleListingBanner(props: MyProps) {
             <div
               className='flex h-[350px] w-full items-center justify-center rounded-xl bg-cover bg-fixed bg-[center_center] bg-no-repeat md:w-1/2 lg:h-[350px] xl:h-[500px]'
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(${secondImageUrl})`,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(${allImages[1]})`,
               }}
             >
               <div className='mx-auto flex h-[90%] w-[95%] flex-col items-start justify-center rounded-xl bg-white pl-8'>

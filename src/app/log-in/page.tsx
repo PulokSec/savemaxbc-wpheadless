@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import React from 'react';
-
-import { getClient } from '@/lib/apollo';
 
 import SignIn from '@/components/authContents/SignIn';
 import Footer from '@/components/shared/Footer';
@@ -14,8 +13,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -37,14 +38,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -70,19 +73,23 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
   return {
     title: 'Log In - Save Max',
     description: 'Log In - Save Max',
+    alternates: {
+      canonical: 'https://savemaxbc.com/log-in/',
+    },
     robots: { index: false, follow: false },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     twitter: {
       card: 'summary_large_image',
       title: 'Log In - Save Max',
@@ -99,11 +106,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function LogIn() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });

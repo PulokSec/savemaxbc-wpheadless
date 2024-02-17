@@ -67,8 +67,8 @@ export default function BuyersGuideLanding(props: MyProps) {
                   <NextImage
                     useSkeleton
                     className='w-[300px] lg:w-[100%]'
-                    src={item?.image?.sourceUrl}
-                    alt={item?.image?.altText}
+                    src={item?.image?.node?.sourceUrl}
+                    alt={item?.image?.node?.altText}
                     width='600'
                     height='200'
                   />
@@ -81,7 +81,7 @@ export default function BuyersGuideLanding(props: MyProps) {
 
       <p className='mx-auto mt-14 max-w-[1400px] px-2 text-center'>
         {allData?.pages?.nodes[0]?.buyerGuide?.bottomText}
-      </p>  
+      </p>
 
       <div className='mt-10 bg-[#e6e6e6]'>
         <Contact data={allData?.pages?.nodes[0]?.buyerGuide?.contactSection} />

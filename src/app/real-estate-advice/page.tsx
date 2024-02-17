@@ -1,9 +1,8 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 
-import { getClient } from '@/lib/apollo';
-
-import SharedBanner from '@/components/elements/SharedBanner';
+import CommercialBanner from '@/components/elements/CommercialBanner';
 import NextImage from '@/components/NextImage';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import Footer from '@/components/shared/Footer';
@@ -29,7 +28,9 @@ const query = gql`
         realAdvice {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
             bannerDescription
@@ -43,15 +44,19 @@ const query = gql`
               title
               description
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
           bottomSection {
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             description
           }
@@ -62,8 +67,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -85,14 +92,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -118,27 +127,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -163,24 +178,25 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RealAdvice() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
   // console.log(data);
   return (
     <>
-      <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
-        <SharedBanner
+      <main className='max-w-screen bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
+        <CommercialBanner
           bannerData={data?.pages?.nodes[0]?.realAdvice?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
-        <div className='mt-20 md:mt-40 lg:mt-40 mb-20'>
+        <div className='mb-20 mt-20 md:mt-40 lg:mt-40'>
           <div className='text-center'>
             <h1 className='w-full text-center text-2xl md:text-3xl lg:text-5xl'>
               {data?.pages?.nodes[0]?.realAdvice?.topFeatureTitle}
@@ -194,7 +210,7 @@ export default async function RealAdvice() {
             ></div>
           </div>
         </div>
-        
+
         {data?.pages?.nodes[0]?.realAdvice?.serviceFeatureSection?.featuredDiv?.map(
           (item: any, idx: number) => (
             <div key={idx}>
@@ -206,9 +222,7 @@ export default async function RealAdvice() {
                 >
                   <div className='md:w-1/2 '>
                     <div className=''>
-                      <h3 className='font-bold mb-3'>
-                        {item.title}
-                      </h3>
+                      <h3 className='mb-3 font-bold'>{item.title}</h3>
                       <div
                         className='md:text-md text-xs lg:text-lg'
                         dangerouslySetInnerHTML={{
@@ -221,8 +235,8 @@ export default async function RealAdvice() {
                     <NextImage
                       useSkeleton
                       className='w-[300px] lg:w-[100%]'
-                      src={item?.image?.sourceUrl}
-                      alt={item?.image?.altText}
+                      src={item?.image?.node?.sourceUrl}
+                      alt={item?.image?.node?.altText}
                       width='600'
                       height='200'
                     />

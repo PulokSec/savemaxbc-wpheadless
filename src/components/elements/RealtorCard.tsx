@@ -5,12 +5,12 @@ import React, { useState } from 'react';
 
 type Props = {
   item: any;
-  index: number
+  index: number;
 };
 
 const RealtorCard = (props: Props) => {
   const { item, index } = props;
-    const [hovered, setHovered] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
   return (
     <div
       key={index}
@@ -22,9 +22,9 @@ const RealtorCard = (props: Props) => {
         onMouseLeave={() => setHovered(null)}
       >
         <Image
-          src={item?.image?.sourceUrl}
+          src={item?.image?.node?.sourceUrl}
           fill={true}
-          alt={item?.image?.altText}
+          alt={item?.image?.node?.altText}
           className={`${
             hovered === index ? ' scale-[98%] opacity-70' : ''
           } h-[400px] w-[300px] rounded object-cover transition-all duration-500 ease-in-out xl:w-[325px]`}

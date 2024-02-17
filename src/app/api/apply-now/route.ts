@@ -43,6 +43,7 @@ export async function POST(request: NextRequest) {
           mail: formData.get('mail') as string,
           phone: formData.get('phone') as string,
           message: formData.get('message') as string,
+          emailSubject: formData.get('emailSubject') as string,
         })
       ),
       attachments: attachments,

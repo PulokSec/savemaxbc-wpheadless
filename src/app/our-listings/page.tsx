@@ -1,13 +1,8 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 
-import { getClient } from '@/lib/apollo';
-import { getFilterQuery } from '@/lib/dataFetching';
-
-import GetInTouch from '@/components/pages/Listings/GetInTouch';
-import NewListingBanner from '@/components/pages/Listings/NewListingBanner';
-import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
-import Footer from '@/components/shared/Footer';
+import OurListingComponent from '@/components/pages/Listings/OurListingComponent';
 
 const query = gql`
   query {
@@ -30,7 +25,9 @@ const query = gql`
         ourListings {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
           }
@@ -38,7 +35,9 @@ const query = gql`
           getInTouch {
             title
             backgroundImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
           }
         }
@@ -48,8 +47,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -71,14 +72,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -104,17 +107,23 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
+    alternates: {
+      canonical: canonical_url,
+    },
     robots: { index: false, follow: false },
 
     // icons: {
@@ -122,9 +131,9 @@ export async function generateMetadata(): Promise<Metadata> {
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -152,56 +161,20 @@ export default async function OurListings({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
     },
   });
-  const allPosts = await getFilterQuery({
-    pageParam: parseInt(searchParams?.page?.toString() || '1'),
-    type: searchParams?.type?.toString() || '',
-    cityParam: searchParams?.city?.toString() || '',
-    provinceParam: searchParams?.province?.toString() || '',
-    price: parseInt(searchParams?.price?.toString() || '0'),
-    streetParam: searchParams?.streetAddress?.toString() || '',
-    transactionType: searchParams?.transactionType?.toString() || '',
-    propertyType: searchParams?.propertyType?.toString() || '',
-    bedroom: parseInt(searchParams?.bedroom?.toString() || '0'),
-    bathroom: parseInt(searchParams?.bathroom?.toString() || '0'),
-    businessType: searchParams?.businessType?.toString() || '',
-  });
-  // console.log(allPosts);
 
+  
   return (
     <>
-      <main>
-        <NewListingBanner
-          bannerData={data?.pages?.nodes[0]?.ourListings?.bannerSection}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-        />
-        <h1 className='mt-14 text-center text-xl md:text-5xl lg:mt-20'>
-          {data?.pages?.nodes[0]?.ourListings?.listingTitle?.split(' ')[0]}{' '}
-          <span className='text-leading-3 font-bold text-[#515151]'>
-            {data?.pages?.nodes[0]?.ourListings?.listingTitle?.split(' ')[1]}
-          </span>
-        </h1>
-        <PaginationSearch
-          allPosts={allPosts?.listings}
-          totalCount={allPosts?.totalCount}
-          currentPageID={parseInt(searchParams?.page?.toString() || '1')}
-        />
-        <GetInTouch
-          bottomSection={data?.pages?.nodes[0]?.ourListings?.getInTouch}
-        />
-        <Footer
-          navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
-        />
-      </main>
+      <OurListingComponent data={data} searchParams={searchParams}/>
     </>
   );
 }

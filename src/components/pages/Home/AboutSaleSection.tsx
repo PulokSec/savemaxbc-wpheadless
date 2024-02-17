@@ -43,10 +43,10 @@ export default function AboutSaleSection(props: MyProps) {
           <NextImage
             useSkeleton
             className='md:w-100 w-40 lg:mt-[400px] lg:h-[100%] lg:w-[100%] 2xl:mt-[200px]'
-            src={aboutData?.aboutImage?.sourceUrl}
+            src={aboutData?.aboutImage?.node?.sourceUrl}
             width='500'
             height='400'
-            alt={aboutData?.aboutImage?.altText}
+            alt={aboutData?.aboutImage?.node?.altText}
           />
         </div>
       </div>

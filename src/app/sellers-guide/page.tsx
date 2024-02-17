@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import React from 'react';
-
-import { getClient } from '@/lib/apollo';
 
 import SellerGuideLanding from '@/components/pages/Services/SellerGuideLanding';
 
@@ -27,7 +26,9 @@ const query = gql`
         sellerGuide {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
             bannerButton
@@ -39,8 +40,10 @@ const query = gql`
             sellingDiv {
               description
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
@@ -59,8 +62,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -82,14 +87,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -115,27 +122,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -160,11 +173,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SellersGuide() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });

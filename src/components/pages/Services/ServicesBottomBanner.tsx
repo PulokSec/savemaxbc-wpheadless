@@ -11,9 +11,9 @@ export default function ServicesBottomBanner(props: MyProps) {
       <section className='mx-auto w-full '>
         <div className='relative h-[60vh] w-full overflow-x-hidden lg:h-[60vh] xl:h-[80vh]'>
           <Image
-            src={bottomSection?.backgroundImage?.sourceUrl}
+            src={bottomSection?.backgroundImage?.node?.sourceUrl}
             fill={true}
-            alt={bottomSection?.backgroundImage?.altText}
+            alt={bottomSection?.backgroundImage?.node?.altText}
             className='rounded-t-[100%]'
           />
           <div className='absolute flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-t-[100%] bg-gray-500 bg-opacity-70 md:items-center md:justify-start'>

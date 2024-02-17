@@ -30,7 +30,7 @@ export default function LocationBanner(props: MyProps) {
     <div
       className='relative h-[80vh] w-full bg-cover bg-fixed bg-[center_center] bg-no-repeat lg:h-[100vh]'
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${bannerData?.bannerImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${bannerData?.bannerImage?.node?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
@@ -39,12 +39,12 @@ export default function LocationBanner(props: MyProps) {
           <p className='mb-2 w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
             {bannerData?.bannerSubhead}
           </p>
-          <p className='mx-auto w-full max-w-[1200px] text-center text-xl md:text-4xl font-bold leading-6 text-white lg:text-6xl lg:leading-[60px]'>
+          <p className='mx-auto w-full max-w-[1200px] text-center text-xl font-bold leading-6 text-white md:text-4xl lg:text-6xl lg:leading-[60px]'>
             {bannerData?.bannerHeading}
           </p>
           {bannerData?.bannerDescription && (
             <div
-              className='mx-auto mt-8 max-w-[1200px] text-center text-lg md:text-xl font-semibold text-white lg:text-3xl'
+              className='mx-auto mt-8 max-w-[1200px] text-center text-lg font-semibold text-white md:text-xl lg:text-3xl'
               dangerouslySetInnerHTML={{
                 __html: bannerData?.bannerDescription,
               }}

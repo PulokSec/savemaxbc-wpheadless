@@ -1,4 +1,5 @@
-import React from 'react';
+
+import Image from 'next/image';
 
 import Header from '@/components/shared/Header';
 
@@ -25,54 +26,74 @@ export default function AboutBanner(props: MyProps) {
   } = props;
   return (
     <>
-      <div
-        className='relative h-[70vh] w-full bg-[length:100%_70vh] bg-center bg-no-repeat md:hidden md:bg-[length:100%_100vh] lg:h-[100vh]'
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)),url(${bannerData?.bannerImage?.sourceUrl})`,
-          backgroundSize: 'cover',
-        }}
-      >
-        <Header navigation={headerData} settingsData={settingsData} />
-        <div className='mt-24 flex flex-col items-center justify-center lg:mt-60'>
-          <div className='py-0 lg:py-10'>
-            <div className='flex w-full flex-col items-center justify-center px-5 lg:px-10'>
-              <h1 className='w-full text-center text-3xl font-bold uppercase leading-5 text-white md:text-3xl lg:text-7xl'>
-                {bannerData?.bannerHeading}
-              </h1>
-              {bannerData?.bannerDescription && (
+      {/* Mobile Screen */}
+      <div className='relative h-[80vh] w-full md:hidden'>
+        <Image src={bannerData?.bannerImage?.node?.sourceUrl} 
+              alt={bannerData?.bannerImage?.node?.altText} 
+              layout='fill' 
+              priority={true} 
+              className='object-cover object-center z-0' 
+        />
+        <div style={{backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30))'}} className="absolute inset-0 z-1"></div>
+
+        <div className='relative z-2'>
+            <Header navigation={headerData} settingsData={settingsData} />
+            <div className='flex h-[60vh] flex-col items-center justify-center md:h-[80vh]'>
+              <div className='py-8 md:py-16'>
                 <div
-                  className='mt-8 text-center text-xl text-white lg:text-3xl'
-                  dangerouslySetInnerHTML={{
-                    __html: bannerData?.bannerDescription,
-                  }}
-                ></div>
-              )}
+                  className={`${
+                    bannerData?.bannerDescription ? 'md:mb-[20%]' : 'md:mb-[10%]'
+                  }  -mt-20 flex h-[40vh] w-full flex-col items-center justify-center px-5 md:mt-0 md:h-[45vh] lg:px-10`}
+                >
+                  <h1 className='w-full text-center text-3xl font-bold uppercase leading-5 tracking-wide text-white md:text-4xl lg:text-6xl xl:text-[66px]'>
+                    {bannerData?.bannerHeading}
+                  </h1>
+                  {bannerData?.bannerDescription && (
+                    <div
+                      className='mt-8 text-center text-lg font-semibold tracking-wide text-white md:text-3xl lg:text-3xl'
+                      dangerouslySetInnerHTML={{
+                        __html: bannerData?.bannerDescription,
+                      }}
+                    ></div>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
         </div>
       </div>
-      <div
-        className='relative hidden h-[50vh] w-full bg-center bg-no-repeat md:block md:bg-[length:100%_50vh] xl:h-[100vh] xl:bg-[length:100%_100vh]'
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)),url(${bannerData?.bannerImagePc?.sourceUrl})`,
-          backgroundSize: 'cover',
-        }}
-      >
-        <Header navigation={headerData} settingsData={settingsData} />
-        <div className='mt-40 flex flex-col items-center justify-center lg:mt-60 2xl:mt-[300px]'>
-          <div className='py-0 lg:py-10'>
-            <div className='flex w-full flex-col items-center justify-center px-5 lg:px-10'>
-              <h1 className='w-full text-center text-3xl font-bold uppercase leading-5 text-white md:text-3xl lg:text-7xl'>
-                {bannerData?.bannerHeading}
-              </h1>
-              {bannerData?.bannerDescription && (
-                <div
-                  className='mt-8 text-center text-xl text-white lg:text-3xl'
-                  dangerouslySetInnerHTML={{
-                    __html: bannerData?.bannerDescription,
-                  }}
-                ></div>
-              )}
+
+
+      {/* Upper Mobile screen */}
+      <div className='relative hidden h-[80vh] w-full md:block md:h-[80vh]'>
+        <Image src={bannerData?.bannerImagePc?.node?.sourceUrl} 
+              alt={bannerData?.bannerImagePc?.node?.altText} 
+              layout='fill' 
+              priority={true} 
+              className='object-cover object-center z-0' 
+        />
+        <div style={{backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30))'}} className="absolute inset-0 z-1"></div>
+
+        <div className='relative z-2'>
+          <Header navigation={headerData} settingsData={settingsData} />
+          <div className='flex h-[70vh] flex-col items-center justify-center md:h-[60vh]'>
+            <div className='py-8 md:py-16'>
+              <div
+                className={`${
+                  bannerData?.bannerDescription ? 'md:mb-[20%]' : 'md:mb-[10%]'
+                }  -mt-20 flex h-[40vh] w-full flex-col items-center justify-center px-5 md:mt-0 md:h-[45vh] lg:px-10`}
+              >
+                <h1 className='w-full text-center text-xl font-bold uppercase leading-5 tracking-wide text-white md:text-4xl lg:text-6xl xl:text-[66px]'>
+                  {bannerData?.bannerHeading}
+                </h1>
+                {bannerData?.bannerDescription && (
+                  <div
+                    className='mt-8 text-center text-lg font-semibold tracking-wide text-white md:text-3xl lg:text-3xl'
+                    dangerouslySetInnerHTML={{
+                      __html: bannerData?.bannerDescription,
+                    }}
+                  ></div>
+                )}
+              </div>
             </div>
           </div>
         </div>

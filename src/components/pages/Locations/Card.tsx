@@ -12,8 +12,8 @@ const Card = (props: MyProps) => {
       <NextImage
         layout='fill'
         className='relative h-[250px] w-full'
-        src={cardData?.cardImage?.sourceUrl}
-        alt={cardData?.cardImage?.altText}
+        src={cardData?.cardImage?.node?.sourceUrl}
+        alt={cardData?.cardImage?.node?.altText}
       />
 
       <div className='desc p-3 text-center text-black'>

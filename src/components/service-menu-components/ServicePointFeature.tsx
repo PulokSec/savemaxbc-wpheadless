@@ -9,7 +9,7 @@ type MyProps = {
 export default function ServicePointFeature(props: MyProps) {
   const { featuredData, usingFor } = props;
   return (
-    <section className='max-w-screen mt-10 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
+    <section className='max-w-screen mt-10 bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
       <div className='grid grid-cols-12 items-center justify-center gap-4 md:gap-4 lg:mx-0 lg:max-w-none lg:gap-0 xl:gap-5 2xl:gap-0'>
         <div className='xl:col-start-0 col-span-12 px-5 md:col-span-12 md:px-5 lg:mt-20 lg:px-2 xl:col-span-6 xl:px-0 2xl:col-span-7 2xl:col-start-2 2xl:px-10'>
           {featuredData?.featuredDivLeft?.map(
@@ -57,8 +57,8 @@ export default function ServicePointFeature(props: MyProps) {
             useSkeleton
             className='cover'
             layout='fill'
-            src={featuredData?.featuredImageRight?.sourceUrl}
-            alt={featuredData?.featuredImageRight?.altText}
+            src={featuredData?.featuredImageRight?.node?.sourceUrl}
+            alt={featuredData?.featuredImageRight?.node?.altText}
           />
         </div>
       </div>
@@ -67,8 +67,8 @@ export default function ServicePointFeature(props: MyProps) {
         <div className='cover relative col-span-12 mx-auto mt-5 hidden h-[400px] w-11/12 md:h-[500px] md:w-3/4 lg:h-[600px] xl:col-span-6 xl:col-end-7 xl:block xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
           <NextImage
             useSkeleton
-            src={featuredData?.featuredImageLeft?.sourceUrl}
-            alt={featuredData?.featuredImageLeft?.altText}
+            src={featuredData?.featuredImageLeft?.node?.sourceUrl}
+            alt={featuredData?.featuredImageLeft?.node?.altText}
             className='cover'
             layout='fill'
           />
@@ -120,8 +120,8 @@ export default function ServicePointFeature(props: MyProps) {
         <div className='cover relative col-span-12 mx-auto mt-5 block h-[400px] w-11/12 md:h-[700px] md:w-3/4 lg:h-[800px] xl:col-span-6 xl:col-end-7 xl:hidden xl:h-[85%] xl:w-[100%] 2xl:col-span-4 2xl:col-end-5'>
           <NextImage
             useSkeleton
-            src={featuredData?.featuredImageLeft?.sourceUrl}
-            alt={featuredData?.featuredImageLeft?.altText}
+            src={featuredData?.featuredImageLeft?.node?.sourceUrl}
+            alt={featuredData?.featuredImageLeft?.node?.altText}
             className='cover'
             layout='fill'
           />

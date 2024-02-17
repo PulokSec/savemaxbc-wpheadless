@@ -9,7 +9,7 @@ export default function FeatureSection(props: MyProps) {
   const { featuredData } = props;
   return (
     <>
-      {/* <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+      {/* <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
         <section>
           <div className='mx-auto py-10 lg:py-20'>
             <div className='mx-auto max-w-[1500px] pb-0'>
@@ -44,8 +44,8 @@ export default function FeatureSection(props: MyProps) {
                       <NextImage
                         useSkeleton
                         className='md:w-100 w-40 lg:w-[100%]'
-                        src={item?.image?.sourceUrl}
-                        alt={item?.image?.altText}
+                        src={item?.image?.node?.sourceUrl}
+                        alt={item?.image?.node?.altText}
                         width='600'
                         height='200'
                       />
@@ -60,8 +60,8 @@ export default function FeatureSection(props: MyProps) {
                       <NextImage
                         useSkeleton
                         className='md:w-100 w-40 lg:w-[100%]'
-                        src={item?.image?.sourceUrl}
-                        alt={item?.image?.altText}
+                        src={item?.image?.node?.sourceUrl}
+                        alt={item?.image?.node?.altText}
                         width='600'
                         height='200'
                       />
@@ -91,7 +91,7 @@ export default function FeatureSection(props: MyProps) {
           </div>
         </section>
       </div> */}
-      <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+      <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
         <section>
           <div className='mx-auto py-10 lg:py-20'>
             <div className='mx-auto max-w-[1400px] px-3 pb-6 lg:px-6 lg:pb-0 2xl:px-3'>
@@ -124,8 +124,8 @@ export default function FeatureSection(props: MyProps) {
                         <NextImage
                           useSkeleton
                           className='flex w-64 items-end justify-end md:w-[100%] '
-                          src={item?.image?.sourceUrl}
-                          alt={item?.image?.altText}
+                          src={item?.image?.node?.sourceUrl}
+                          alt={item?.image?.node?.altText}
                           width='600'
                           height='200'
                         />
@@ -139,8 +139,8 @@ export default function FeatureSection(props: MyProps) {
                         <NextImage
                           useSkeleton
                           className='w-64 md:w-[100%]'
-                          src={item?.image?.sourceUrl}
-                          alt={item?.image?.altText}
+                          src={item?.image?.node?.sourceUrl}
+                          alt={item?.image?.node?.altText}
                           width='600'
                           height='200'
                         />

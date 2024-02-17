@@ -27,7 +27,7 @@ export default function FaqBanner(props: MyProps) {
     <div
       className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat lg:h-[100vh]'
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),url(${bannerData?.bannerImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),url(${bannerData?.bannerImage?.node?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />

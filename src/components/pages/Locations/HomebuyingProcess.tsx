@@ -9,7 +9,7 @@ const HomeBuyingProcess = (props: MyProps) => {
     <div>
       <div
         style={{
-          background: `url(${featuredData?.backgroundImage?.sourceUrl}) no-repeat  center center`,
+          background: `url(${featuredData?.backgroundImage?.node?.sourceUrl}) no-repeat  center center`,
           backgroundSize: '100% 100%',
         }}
         className={` relative mt-10 hidden p-10 py-[300px] pb-[500px] text-white lg:mt-20 lg:block lg:py-[130px] lg:pb-[900px]`}

@@ -7,14 +7,14 @@ export default function CommercialPropertyBottomSection(props: MyProps) {
   const { bottomSection } = props;
   return (
     <section
-      className='mt-10 flex h-[50vh] w-full flex-col items-center justify-start bg-cover bg-center md:mt-20 lg:h-[120vh]'
+      className='mt-10 flex h-[50vh] w-full flex-col items-center justify-start bg-cover bg-center md:mt-20 lg:h-[80vh]'
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),url(${bottomSection?.backgroundImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),url(${bottomSection?.backgroundImage?.node?.sourceUrl})`,
       }}
     >
       <div className='lg:mt-0'>
         <div
-          className='md:text-md container mx-auto mt-10 px-5 lg:px-16 text-start text-xs text-white md:mt-24 lg:mt-40 lg:text-lg'
+          className='md:text-md container mx-auto mt-10 px-5 text-start text-xs text-white md:mt-24 lg:mt-40 lg:px-16 lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: bottomSection.description,
           }}

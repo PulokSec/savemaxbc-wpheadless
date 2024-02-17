@@ -41,6 +41,7 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.featureSection
         }
       />
+
       <LeftImageRightText
         featuredData={
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.benefitsSection
@@ -51,7 +52,14 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.benefitsSection2
         }
       />
-
+      <div className='mb-10 mt-16 flex items-center justify-center'>
+        <a
+          href='/listing'
+          className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+        >
+          See Listings
+        </a>
+      </div>
       <div className='mb-6'></div>
       <FeatureSection
         featuredData={
@@ -78,7 +86,14 @@ export default function TownhousesSaleSurreyLanding(props: MyProps) {
           allData?.pages?.nodes[0]?.townhousesForSaleSurrey?.topAreasSection2
         }
       />
-
+      <div className='mt-16 flex items-center justify-center'>
+        <a
+          href='/contact-us'
+          className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+        >
+          Contact Us
+        </a>
+      </div>
       <div className='-mt-52 md:mt-32 lg:-mt-52 xl:-mt-20 2xl:mt-24'></div>
       <WhyChooseUs
         featuredData={

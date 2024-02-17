@@ -1,5 +1,6 @@
-import Header from '@/components/shared/Header';
 import React from 'react';
+
+import Header from '@/components/shared/Header';
 
 type MyProps = {
   bannerData: any;
@@ -17,7 +18,7 @@ export default function BannerWithButton(props: MyProps) {
     <div
       className='relative h-[70vh] w-full bg-cover bg-fixed bg-[center_center] bg-no-repeat lg:h-[70vh]'
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${bannerData?.bannerImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${bannerData?.bannerImage?.node?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />
@@ -26,19 +27,19 @@ export default function BannerWithButton(props: MyProps) {
           <p className='w-full text-center text-lg font-bold leading-7 text-white lg:text-3xl'>
             {bannerData?.bannerSubhead}
           </p>
-          <h1 className='w-[350px] text-center text-xl font-bold tracking-wide text-white md:w-[600px] md:text-3xl lg:w-[900px] lg:text-5xl lg:leading-[60px] xl:w-[700px] xl:text-6xl xl:leading-[66px]'>
+          <h1 className='mx-auto w-[350px] text-center text-xl font-bold tracking-wide text-white md:w-[600px] md:text-3xl lg:w-[900px] lg:text-5xl lg:leading-[60px] xl:w-[700px] xl:text-6xl xl:leading-[66px]'>
             {bannerData?.bannerHeading}
           </h1>
           {bannerData?.bannerDescription && (
             <div
-              className='mt-8 text-center text-xl text-white lg:text-3xl'
+              className='mt-8 text-center text-lg text-white lg:text-xl'
               dangerouslySetInnerHTML={{
                 __html: bannerData?.bannerDescription,
               }}
             ></div>
           )}
           {bannerData?.bannerButton === 'Contact Us' && (
-            <div className='flex items-center justify-center'>
+            <div className='mt-5 flex items-center justify-center'>
               <a
                 href='/contact-us'
                 className='text-uppercase mt-5 rounded-md border-2 px-3 py-2 text-base font-semibold text-white shadow-sm hover:border-[#061632] hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:text-lg lg:px-5 lg:py-3'

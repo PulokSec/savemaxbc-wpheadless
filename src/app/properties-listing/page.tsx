@@ -1,14 +1,9 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import Head from 'next/head';
 
-import { getClient } from '@/lib/apollo';
-import { getAllProperties } from '@/lib/dataFetching';
-
-import GetInTouch from '@/components/pages/Listings/GetInTouch';
-import ListingBanner from '@/components/pages/Listings/ListingBanner';
-import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
-import Footer from '@/components/shared/Footer';
+import PropertiesListingComponent from '@/components/pages/Listings/PropertiesListingComponent';
 
 const query = gql`
   query {
@@ -31,7 +26,9 @@ const query = gql`
         listings {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
           }
@@ -44,7 +41,9 @@ const query = gql`
           getInTouch {
             title
             backgroundImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
           }
         }
@@ -54,8 +53,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -77,14 +78,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -110,27 +113,31 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
   return {
-    title: data?.pages?.nodes[0]?.seo?.title,
-    description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    title: 'Explore Premier Real Estate Listings In BC With Save Max',
+    description: 'Discover exceptional properties for sale in BC. Find your dream home with expert realtors at Save Max Westcoast. Your gateway to luxury living awaits.',
+    alternates: {
+      canonical: 'https://savemaxbc.com/properties-listing/',
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: 'https://savemaxbc.com/properties-listing/',
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -158,19 +165,16 @@ export default async function PropertiesListing({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
     },
   });
-  const allPosts = await getAllProperties({
-    pageParam: parseInt(searchParams?.page?.toString() || '1'),
-    typeParam: searchParams?.type?.toString() || '',
-    cityParam: searchParams?.city?.toString() || '',
-  });
+
   // console.log(searchParams);
 
   return (
@@ -179,60 +183,7 @@ export default async function PropertiesListing({
         <title>Latest Listings</title>
       </Head>
       <main>
-        <ListingBanner
-          bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-        />
-        {searchParams?.category === 'recent' ? (
-          <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
-            {searchParams?.city ? searchParams?.city : ''} Recent{' '}
-            <span className='text-leading-3 font-bold text-[#515151]'>
-              Listings
-            </span>
-          </h1>
-        ) : searchParams?.category === 'house' ? (
-          <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
-            {searchParams?.city ? searchParams?.city : ''} Homes{' '}
-            <span className='text-leading-3 font-bold text-[#515151]'>
-              Listings
-            </span>
-          </h1>
-        ) : searchParams?.category === 'townhouse' ? (
-          <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
-            {searchParams?.city ? searchParams?.city : ''} Townhouses{' '}
-            <span className='text-leading-3 font-bold text-[#515151]'>
-              Listings
-            </span>
-          </h1>
-        ) : searchParams?.category === 'condominium' ? (
-          <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
-            {searchParams?.city ? searchParams?.city : ''} Condominium{' '}
-            <span className='text-leading-3 font-bold text-[#515151]'>
-              Listings
-            </span>
-          </h1>
-        ) : (
-          <h1 className='mt-20 text-center text-lg md:text-5xl lg:mt-60'>
-            Featured{' '}
-            <span className='text-leading-3 font-bold text-[#515151]'>
-              Listings
-            </span>
-          </h1>
-        )}
-
-        <PaginationSearch
-          allPosts={allPosts?.listings}
-          totalCount={allPosts?.totalCount}
-          currentPageID={parseInt(searchParams?.page?.toString() || '1')}
-        />
-        <GetInTouch
-          bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}
-        />
-        <Footer
-          navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
-        />
+        <PropertiesListingComponent data={data} searchParams={searchParams} />
       </main>
     </>
   );

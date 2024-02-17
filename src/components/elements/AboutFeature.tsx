@@ -27,7 +27,7 @@ export default function AboutFeature(props: MyProps) {
             {featureSection?.featuredData?.map((item: any, i: number) =>
               i % 2 == 0 ? (
                 <div
-                  className='mt-20 bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/grey-bg.png")] bg-cover bg-no-repeat px-5 md:mt-20 md:px-10 lg:mt-60 lg:px-20'
+                  className='mt-20 bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/grey-bg.png")] bg-cover bg-no-repeat px-5 md:mt-20 md:px-10 lg:mt-60 lg:px-20'
                   key={i}
                 >
                   <div className='hidden md:block'>
@@ -44,8 +44,8 @@ export default function AboutFeature(props: MyProps) {
                             className='cover w-50 md:w-[300px] lg:w-[400px]'
                             width='400'
                             height='600'
-                            src={item?.aboutImage?.sourceUrl}
-                            alt={item?.aboutImage?.altText}
+                            src={item?.aboutImage?.node?.sourceUrl}
+                            alt={item?.aboutImage?.node?.altText}
                           />
                         </Fade>
                       </div>
@@ -115,8 +115,8 @@ export default function AboutFeature(props: MyProps) {
                               className='cover w-50 md:w-[400px]'
                               width='400'
                               height='600'
-                              src={item?.aboutImage?.sourceUrl}
-                              alt={item?.aboutImage?.altText}
+                              src={item?.aboutImage?.node?.sourceUrl}
+                              alt={item?.aboutImage?.node?.altText}
                             />
                           </Fade>
                         </div>
@@ -194,8 +194,8 @@ export default function AboutFeature(props: MyProps) {
                             className='cover w-50 w-[300px] lg:w-[400px]'
                             width='400'
                             height='600'
-                            src={item?.aboutImage?.sourceUrl}
-                            alt={item?.aboutImage?.altText}
+                            src={item?.aboutImage?.node?.sourceUrl}
+                            alt={item?.aboutImage?.node?.altText}
                           />
                         </Slide>
                       </div>
@@ -237,8 +237,8 @@ export default function AboutFeature(props: MyProps) {
                               className='cover w-50 md:w-[400px]'
                               width='400'
                               height='600'
-                              src={item?.aboutImage?.sourceUrl}
-                              alt={item?.aboutImage?.altText}
+                              src={item?.aboutImage?.node?.sourceUrl}
+                              alt={item?.aboutImage?.node?.altText}
                             />
                           </Slide>
                         </div>

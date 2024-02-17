@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-
-import { getClient } from '@/lib/apollo';
 
 const FindSection = dynamic(() => import('@/components/elements/FindSection'), {
   ssr: false,
@@ -43,7 +42,9 @@ const query = gql`
         findARealtor {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
             bannerDescription
@@ -56,16 +57,20 @@ const query = gql`
             featureTitle
             featureDescription
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           exploreSection {
             featureTitle
             featureDescription
             imageRight {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             featuredDivLeft {
               title
@@ -76,16 +81,20 @@ const query = gql`
               description
             }
             imageLeft {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           bottomFeatureSection {
             title
             featureDescription
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           allRealtors {
@@ -96,8 +105,10 @@ const query = gql`
               phone
               email
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
@@ -108,8 +119,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -131,14 +144,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -164,27 +179,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -209,9 +230,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FindARealtor() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
@@ -229,7 +251,7 @@ export default async function FindARealtor() {
           topDesc={data?.pages?.nodes[0]?.findARealtor?.topFeatureDescription}
         />
 
-        <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/bg.png")] bg-cover bg-no-repeat'>
+        <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/bg.png")] bg-cover bg-no-repeat'>
           <AllRealtorsSection
             allRealtors={data?.pages?.nodes[0]?.findARealtor?.allRealtors}
           />

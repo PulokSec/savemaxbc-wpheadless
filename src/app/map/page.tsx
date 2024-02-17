@@ -1,9 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import React from 'react';
-
-import { getClient } from '@/lib/apollo';
-import { getMapSearchQuery } from '@/lib/dataFetching';
 
 import MapSearch from '@/components/elements/MapSearch';
 import GetInTouch from '@/components/pages/Listings/GetInTouch';
@@ -31,14 +29,18 @@ const query = gql`
         map {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
           }
           getInTouch {
             title
             backgroundImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
           }
         }
@@ -48,8 +50,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -71,14 +75,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -104,27 +110,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -152,41 +164,16 @@ export default async function MapPage({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
 
-  // console.log(allPosts);
-  const listings = await getMapSearchQuery({
-    searchQuery: searchParams?.query?.toString() || '',
-  });
-
-  // const geoJsonData = {
-  //   type: 'FeatureCollection',
-  //   features: listings?.map((item: any) => ({
-  //     type: 'Feature',
-  //     properties: {
-  //       // Add any additional properties here
-  //       // cardImageUrl: item?.cardImageUrl,
-  //       post: item,
-  //     },
-  //     geometry: {
-  //       type: 'Point',
-  //       coordinates: [item?.location?.lng, item?.location?.lat],
-  //     },
-  //   })),
-  // };
-
-  // // Write GeoJSON data to a file
-  // const geoJsonFilePath = '../../../assets/geoData.geojson'; // Replace with the desired path
-  // fs.writeFileSync(geoJsonFilePath, JSON.stringify(geoJsonData, null, 2));
-
-  // console.log(`GeoJSON file generated successfully at: ${geoJsonFilePath}`);
 
   return (
     <>
@@ -198,11 +185,9 @@ export default async function MapPage({
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
         />
         <MapSearch
-          posts={listings?.listings}
-          totalCount={listings?.totalCount}
-          latitude={parseFloat(listings?.listings[0]?.Latitude)}
-          longitude={parseFloat(listings?.listings[0]?.Longitude)}
+          searchParams={searchParams}
         />
+
         <div className='mt-10'>
           <GetInTouch bottomSection={data?.pages?.nodes[0]?.map?.getInTouch} />
         </div>

@@ -1,7 +1,6 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
-
-import { getClient } from '@/lib/apollo';
 
 import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
 import ServicePointFeature from '@/components/service-menu-components/ServicePointFeature';
@@ -28,8 +27,10 @@ const query = gql`
         leasingService {
           bannerSection {
             bannerImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             bannerHeading
           }
@@ -39,8 +40,10 @@ const query = gql`
             featureTitle
             featureSubtitle
             featuredImageRight {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             featuredDivLeft {
               tabNo
@@ -53,14 +56,18 @@ const query = gql`
               description
             }
             featuredImageLeft {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           bottomSection {
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             title
             description
@@ -72,8 +79,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -95,14 +104,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -128,27 +139,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -173,11 +190,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function LeasingService() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
@@ -210,7 +228,7 @@ export default async function LeasingService() {
         <section
           className='flex h-[500px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.leasingService?.bottomSection?.backgroundImage?.sourceUrl})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.leasingService?.bottomSection?.backgroundImage?.node?.sourceUrl})`,
           }}
         >
           <div className='mt-10 flex h-full flex-col items-center justify-center text-center '>

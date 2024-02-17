@@ -11,19 +11,19 @@ export default function ListingTable(props: MyProps) {
   const propertyType = [
     {
       type: 'MLS Number',
-      value: details?.DdfListingID || '',
+      value: details?.property_details[0]?.DdfListingID || '',
     },
     {
       type: 'Property Type',
-      value: details?.PropertyType || '',
+      value: details?.property_details[0]?.PropertyType || '',
     },
     {
       type: 'View Type',
-      value: details?.ViewType || '',
+      value: details?.property_details[0]?.ViewType || '',
     },
     {
       type: 'Type',
-      value: details?.Type || '',
+      value: details?.property_details[0]?.Type || '',
     },
   ];
   const parkingType = [
@@ -33,62 +33,62 @@ export default function ListingTable(props: MyProps) {
     },
     {
       type: 'Property Type',
-      value: details?.PropertyType || '',
+      value: details?.property_details[0]?.PropertyType || '',
     },
     {
       type: 'View Type',
-      value: details?.ViewType || '',
+      value: details?.property_details[0]?.ViewType || '',
     },
   ];
   const landType = [
     {
       type: 'Acreage',
-      value: details?.Acreage || '',
+      value: details?.property_details[0]?.Acreage || '',
     },
     {
       type: 'Size Irregular',
-      value: details?.SizeIrregular || '',
+      value: details?.property_details[0]?.SizeIrregular || '',
     },
     {
       type: 'Size Total',
-      value: details?.SizeTotal || '',
+      value: details?.property_details[0]?.SizeTotal || '',
     },
   ];
 
   const buildingType = [
     {
       type: 'Bedrooms Total',
-      value: details?.BedroomsTotal || '',
+      value: details?.property_details[0]?.BedroomsTotal || '',
     },
     {
       type: 'Bathroom Total',
-      value: details?.BathroomTotal || '',
+      value: details?.property_details[0]?.BathroomTotal || '',
     },
     {
       type: 'Basement Type',
-      value: details?.BasementType || '',
+      value: details?.property_details[0]?.BasementType || '',
     },
     {
       type: 'Appliances',
-      value: details?.Appliances || '',
+      value: details?.property_details[0]?.Appliances || '',
     },
     {
       type: 'Constructed Date',
-      value: details?.ConstructedDate || '',
+      value: details?.property_details[0]?.ConstructedDate || '',
     },
     {
       type: 'Construction Style Attachment',
-      value: details?.ConstructionStyleAttachment || '',
+      value: details?.property_details[0]?.ConstructionStyleAttachment || '',
     },
     {
       type: 'Construction Style Split Level',
-      value: details?.ConstructionStyleSplitLevel || '',
+      value: details?.property_details[0]?.ConstructionStyleSplitLevel || '',
     },
     {
       type: 'Size Interior',
-      value: details?.SizeInterior?.includes('sqft')
-        ? `${details?.SizeInterior}`
-        : `${details?.SizeInterior} sqft` || '',
+      value: details?.property_details[0]?.SizeInterior?.includes('sqft')
+        ? `${details?.property_details[0]?.SizeInterior}`
+        : `${details?.property_details[0]?.SizeInterior} sqft` || '',
     },
   ];
   return (

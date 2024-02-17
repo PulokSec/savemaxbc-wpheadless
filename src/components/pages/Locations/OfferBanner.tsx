@@ -12,16 +12,14 @@ export default function OfferBanner(props: MyProps) {
     <div>
       <div
         style={{
-          background: `url(${offerBannerData?.backgroundImage?.sourceUrl}) no-repeat `,
+          background: `url(${offerBannerData?.backgroundImage?.node?.sourceUrl}) no-repeat `,
           backgroundSize: '100% 100%',
         }}
         className={` relative mt-10 py-[150px] text-white lg:mt-20`}
       >
         <div className='pb-30 mx-auto max-w-[1250px] p-3 py-20'>
-          <h2 className='text-[30px] font-semibold'>
-            {offerBannerData?.offerTitle}
-          </h2>
-          <h2 className='mt-3'>
+          <h2 className='text-[30px] font-semibold leading-[40px]'>
+            {offerBannerData?.offerTitle} <br />
             <span className='text-[40px]'>
               {offerBannerData?.offerSubtitle}
             </span>
@@ -37,8 +35,8 @@ export default function OfferBanner(props: MyProps) {
         <NextImage
           layout='fill'
           className='absolute bottom-[-80px] right-0 h-[300px] w-[600px]'
-          src={offerBannerData?.offerImage?.sourceUrl}
-          alt={offerBannerData?.offerImage?.altText}
+          src={offerBannerData?.offerImage?.node?.sourceUrl}
+          alt={offerBannerData?.offerImage?.node?.altText}
         />
       </div>
     </div>

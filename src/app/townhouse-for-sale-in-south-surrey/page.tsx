@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 
-import { getClient } from '@/lib/apollo';
 import { getAllProperties } from '@/lib/dataFetching';
 
 import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
@@ -35,7 +35,9 @@ const query = gql`
         townSouthSurrey {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
             bannerSubhead
@@ -49,13 +51,17 @@ const query = gql`
             cardSubtitle
             cardDescription
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             cardData {
               cardImage {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
               cardTitle
               cardDescription
@@ -79,8 +85,10 @@ const query = gql`
           }
           choiceBanner {
             bannerImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             bannerTitle
             bannerSubtitle
@@ -90,14 +98,18 @@ const query = gql`
             title
             description
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           essentialSection {
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             featureTitle
             featureSubtitle
@@ -106,8 +118,10 @@ const query = gql`
               title
               description
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
             bottomDescription
@@ -116,8 +130,10 @@ const query = gql`
             title
             description
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
@@ -127,8 +143,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -150,14 +168,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -183,27 +203,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -232,22 +258,23 @@ export default async function TownhouseSaleSouthSurrey({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
   const townPosts = await getAllProperties({
     pageParam: parseInt(searchParams?.page?.toString() || '1'),
     typeParam: searchParams?.type?.toString() || 'Town',
-    cityParam: searchParams?.city?.toString() || 'Surrey',
+    queryParam: searchParams?.city?.toString() || 'Surrey',
   });
   return (
     <main>
-      <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+      <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
         <LocationBanner
           bannerData={data?.pages?.nodes[0]?.townSouthSurrey?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
@@ -281,6 +308,14 @@ export default async function TownhouseSaleSouthSurrey({
         <CardSection
           cardSection={data?.pages?.nodes[0]?.townSouthSurrey?.cardSection}
         />
+        <div className='mt-5 flex items-center justify-center'>
+          <a
+            href='/contact-us'
+            className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+          >
+            Contact Us
+          </a>
+        </div>
         <div className='md:h-32 lg:h-0 xl:h-32'></div>
         <div className='lg:-mt-52 2xl:mt-0'>
           <WhyChooseUs

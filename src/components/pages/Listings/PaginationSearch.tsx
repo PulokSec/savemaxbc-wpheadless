@@ -1,10 +1,8 @@
 'use client';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import '../../../styles/carousel.css';
-
-import { getPhotos } from '@/lib/dataFetching';
 
 import NextImage from '@/components/NextImage';
 import Pagination from '@/components/utils/Pagination';
@@ -19,7 +17,6 @@ export default function PaginationSearch(props: MyProps) {
   const { allPosts, totalCount, currentPageID } = props;
   const totalPages = Math.ceil(totalCount / 12);
   const [currentPage, setCurrentPage] = useState<number>(currentPageID);
-  const [posts, setPosts] = useState(allPosts);
   const { setQueryParam } = useQueryParams();
 
   const handlePageClick = (selected: number) => {
@@ -27,105 +24,83 @@ export default function PaginationSearch(props: MyProps) {
     setQueryParam('page', selected.toString());
   };
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await Promise.all(
-        allPosts?.map(async (post: any) => {
-          const image = await getPhotos({ listingId: post?.ListingID });
-          const bufferOriginal = Buffer.from(image[0].Photos.data);
-          const cardImageUrl = JSON.parse(bufferOriginal.toString('utf8'))
-            ?.LargePhoto?.filename;
-
-          return {
-            post,
-            cardImageUrl,
-          };
-        })
-      );
-
-      setPosts(data);
-    }
-
-    fetchData();
-  }, [allPosts]);
-
+  console.log('posts pagination', allPosts);
   return (
     <div>
-      {posts && posts.length > 0 ? (
+      {allPosts && allPosts.length > 0 ? (
         <section className='mt-14 '>
-          <div className='mt-8 grid grid-cols-1 gap-x-4 gap-y-10 px-2 pb-10 md:grid-cols-2 lg:grid-cols-3 lg:px-4 2xl:px-6 2xl:mt-28 2xl:grid-cols-4'>
-            {posts?.map(({ post, cardImageUrl }: any) => {
+          <div className='mt-8 grid grid-cols-1 gap-x-4 gap-y-10 px-2 pb-10 md:grid-cols-2 lg:grid-cols-3 lg:px-4 2xl:mt-28 2xl:grid-cols-4 2xl:px-6'>
+            {allPosts?.map((post: any) => {
               return (
                 <Link
-                  key={post?.ListingID}
-                  href={`/listing/${post?.StreetAddress?.replaceAll(
-                    ' ',
-                    '-'
-                  ).toLowerCase()}-${post?.City?.replaceAll(
-                    ' ',
-                    '-'
-                  ).toLowerCase()}-${post?.Province?.replaceAll(
-                    ' ',
-                    '-'
-                  ).toLowerCase()}-${post?.PostalCode}-${post?.ListingID}`}
-                  className='card2-width mx-auto flex h-[450px] cursor-pointer flex-col justify-start overflow-hidden rounded-lg bg-white hover:shadow-2xl hover:shadow-slate-800 md:h-[500px]'
-                  style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
-                  target='_blank'
-                >
-                  <div className='flex items-end justify-end'>
-                    <div
-                      className='absolute z-10 mb-[-50px] w-[100px] origin-top bg-yellow-500 text-end'
-                      // style={{ transform: 'translateX(50%) rotate(45deg)' }}
-                    >
-                      <p className='z-5 relative top-0 px-5 text-center text-lg font-semibold uppercase text-white'>
-                        {post?.TransactionType}
-                      </p>
-                    </div>
-                  </div>
-                  <div className='relative'>
-                    <NextImage
-                      className='relative h-[275px] w-full rounded-lg'
-                      src={cardImageUrl}
-                      layout='fill'
-                      alt='Icon'
-                    />
-                  </div>
-                  <div className='desc p-3 text-start text-black'>
-                    <p className='mt-2 text-[20px] font-semibold text-black'>
-                      {post?.StreetAddress} {post?.CommunityName}{' '}
-                      {post?.PostalCode}
-                    </p>
-                    <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
-                      ${' '}
-                      {parseFloat(post?.Price).toLocaleString('en-US', {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })}
+                key={post?.property_details?.ListingID}
+                target='_blank'
+                href={`/listing/${post?.property_details?.StreetAddress
+                  ?.replaceAll(' ', '-')
+                  .replaceAll('#', '')
+                  .toLowerCase()}-${post?.property_details?.City
+                  ?.replaceAll(' ', '-')
+                  .toLowerCase()}-${post?.property_details?.Province
+                  ?.replaceAll(' ', '-')
+                  .toLowerCase()}-${post?.property_details?.PostalCode}-${post?.property_details?.ListingID}`}
+                className='card-width mx-auto flex h-[480px] cursor-pointer flex-col justify-start rounded-lg bg-white shadow hover:shadow-2xl hover:shadow-slate-800 md:h-[480px] '
+                style={{ boxShadow: '0 1px 12px rgba(0,0,0,0.15)' }}
+              >
+                <div className='flex items-end justify-end'>
+                  <div
+                    className='relative z-10 mb-[-50px] w-[100px] origin-top bg-yellow-500 text-end uppercase'
+                    // style={{ transform: 'translateX(50%) rotate(45deg)' }}
+                  >
+                    <p className='z-5 relative top-0 px-5 text-center text-lg font-semibold text-white'>
+                      {post?.property_details?.TransactionType}
                     </p>
                   </div>
+                </div>
+                <div className='relative'>
+                  <NextImage
+                    useSkeleton
+                    className='relative h-[275px] w-full rounded-lg'
+                    src={post?.photo_url}
+                    layout='fill'
+                    alt='Icon'
+                  />
+                </div>
+                <div className='desc p-3 text-start text-black'>
+                  <p className='mt-2 text-[20px] font-semibold text-black'>
+                    {post?.property_details?.StreetAddress} {post?.property_details?.CommunityName}{' '}
+                    {post?.property_details?.PostalCode}
+                  </p>
+                  <p className='mt-2 font-medium text-gray-800 md:text-[18px] 2xl:text-[20px]'>
+                    ${' '}
+                    {parseFloat(post?.property_details?.Price).toLocaleString('en-US', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{' '}
+                  </p>
+                </div>
 
-                  <div className='flex items-center justify-start gap-2 px-3 text-black'>
-                    {/* {post?.BedroomsTotal && (
-                  
-                )} */}
-                    <p className='text-[15px]'>{post?.BedroomsTotal} Bedroom</p>
-                    <p className='text-[15px]'>
-                      {post?.BathroomTotal} Bathroom
-                    </p>
-                    {post?.lease && (
-                      <p className='text-[15px]'>{post?.lease} Sqft</p>
-                    )}
-                  </div>
-                  <p className='px-3 text-[15px] capitalize text-black'>
-                    {post?.City}/{post?.Province}
+                <div className='flex items-center justify-start gap-2 px-3 text-black'>
+                  {/* {post?.BedroomsTotal && (
+                
+              )} */}
+                  <p className='text-[15px]'>{post?.property_details?.BedroomsTotal} Bedroom</p>
+                  <p className='text-[15px]'>
+                    {post?.property_details?.BathroomTotal} Bathroom
                   </p>
-                  <p className='px-3 text-[15px] text-black'>
-                    {post?.Features} {post?.WaterFrontType}
-                  </p>
-                  <p className='mt-2 px-3 text-[11px] font-semibold tracking-wide text-gray-700'>
-                    MLS&reg; Number{post?.DdfListingID}
-                  </p>
-                </Link>
+                  {post?.property_details?.Lease && (
+                    <p className='text-[15px]'>{post?.lease} Sqft</p>
+                  )}
+                </div>
+                <p className='px-3 text-[15px] capitalize text-black'>
+                  {post?.property_details?.City}/{post?.property_details?.Province}
+                </p>
+                <p className='px-3 text-[15px] text-black'>
+                  {post?.property_details?.Features} {post?.property_details?.WaterFrontType}
+                </p>
+                <p className='mt-2 px-3 text-[11px] font-semibold tracking-wide text-gray-700'>
+                  MLS&reg; Number{post?.property_details?.DdfListingID}
+                </p>
+              </Link>
               );
             })}
           </div>

@@ -20,6 +20,7 @@ export async function query({
     dbconnection.end();
     return results;
   } catch (error: unknown) {
+    console.log(error);
     if (error instanceof Error) {
       throw error;
     }

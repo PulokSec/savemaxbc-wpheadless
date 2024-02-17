@@ -13,7 +13,7 @@ export default function BenefitsSection(props: MyProps) {
   const { featuredData } = props;
   const [active, setActive] = useState(0);
   return (
-    <section className=' bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat pb-20 pt-80 md:px-10 md:pt-56 lg:pb-44 lg:pt-[380px] xl:pt-[360px] 2xl:pb-20 2xl:pt-40'>
+    <section className=' bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/why-choose-savemax-background.png")] bg-cover bg-no-repeat pb-20 pt-80 md:px-10 md:pt-56 lg:pb-44 lg:pt-[380px] xl:pt-[360px] 2xl:pb-20 2xl:pt-40'>
       <div className='col-span-12 mt-10 px-5 md:col-span-12 md:mt-10 md:px-5 lg:col-span-8 lg:col-start-1 lg:mt-20 lg:px-10 2xl:mt-28'>
         <h2 className='text-center text-2xl md:text-4xl'>
           {featuredData?.featureTitle}
@@ -38,7 +38,7 @@ export default function BenefitsSection(props: MyProps) {
                     useSkeleton
                     className='mt-[-40px] h-[50px] w-[40px]'
                     src={active == i ? homeImg : homeImgGrey}
-                    alt='{item?.image?.altText}'
+                    alt='{item?.image?.node?.altText}'
                     width='50'
                     height='40'
                   />
@@ -78,7 +78,7 @@ export default function BenefitsSection(props: MyProps) {
                     useSkeleton
                     className='h-[50px] w-[40px]'
                     src={active == i ? homeImg : homeImgGrey}
-                    alt='{item?.image?.altText}'
+                    alt='{item?.image?.node?.altText}'
                     width='50'
                     height='40'
                   />

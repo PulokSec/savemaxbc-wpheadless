@@ -1,20 +1,8 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 
-import { getClient } from '@/lib/apollo';
-
-const NewsSection = dynamic(() => import('@/components/elements/NewsSection'), {
-  ssr: false,
-});
-const NewsBottom = dynamic(() => import('@/components/pages/News/NewsBottom'), {
-  ssr: false,
-});
-const Footer = dynamic(() => import('@/components/shared/Footer'), {
-  ssr: false,
-});
-
-import NewsBanner from '@/components/pages/News/NewsBanner';
+import NewsPageComponent from '@/components/pages/News/NewsPageComponent';
 
 const query = gql`
   query {
@@ -37,7 +25,9 @@ const query = gql`
         news {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
             bannerButton
@@ -45,7 +35,9 @@ const query = gql`
           bottomSection {
             featureTitle
             backgroundImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             linkText
           }
@@ -56,8 +48,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -79,14 +73,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -146,27 +142,33 @@ const query = gql`
 export async function generateMetadata(): Promise<Metadata> {
   // You can set this dynamically based on user input or route parameter
 
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -195,11 +197,11 @@ export default async function News({
 }: {
   searchParams?: { [key: string]: string | undefined };
 }) {
+  const client = await getClient();
   const perPage = 12;
   const currentPage = parseInt(searchParams?.page || '1');
   const prevPage = currentPage - 1;
   const firstPage = prevPage > 1 ? prevPage * 12 : 12;
-
   const newsCursor = gql`
     query GetPrevNews($previousPage: Int!) {
       posts(first: $previousPage) {
@@ -216,14 +218,9 @@ export default async function News({
       }
     }
   `;
-  const prevData = await getClient().query({
+  const prevData = await client.query({
     query: newsCursor,
     variables: { previousPage: firstPage },
-    context: {
-      fetchOptions: {
-        next: { revalidate: 5 },
-      },
-    },
   });
   const endCursor =
     prevPage > 0 ? prevData?.data?.posts?.pageInfo.endCursor : '';
@@ -249,7 +246,9 @@ export default async function News({
           news {
             bannerSection {
               bannerImage {
-                sourceUrl
+                node {
+                  sourceUrl
+                }
               }
               bannerHeading
               bannerSubheading
@@ -259,7 +258,9 @@ export default async function News({
               featureTitle
               featureSubtitle
               backgroundImage {
-                sourceUrl
+                node {
+                  sourceUrl
+                }
               }
               linkText
             }
@@ -270,8 +271,10 @@ export default async function News({
         savemaxOptions {
           headerSettings {
             uploadLogo {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           generalSettings {
@@ -293,14 +296,16 @@ export default async function News({
             footerLogoSection {
               logoText
               logoUpload {
-                altText
-                sourceUrl
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
         }
       }
-      menus(where: { location: MENU_2 }) {
+      menus(where: { location: PRIMARY }) {
         nodes {
           name
           slug
@@ -358,14 +363,9 @@ export default async function News({
     }
   `;
 
-  const { data } = await getClient().query({
+  const { data } = await client.query({
     query: newsQuery,
     variables: { perPage, after: endCursor },
-    context: {
-      fetchOptions: {
-        next: { revalidate: 5 },
-      },
-    },
   });
 
   const totalPages = Math.ceil(
@@ -374,24 +374,7 @@ export default async function News({
   return (
     <>
       <main>
-        <NewsBanner
-          bannerData={data?.pages?.nodes[0]?.news?.bannerSection}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-          usingFor='news'
-        />
-        <NewsSection
-          totalPages={totalPages}
-          currentPageID={parseInt(searchParams?.page?.toString() || '1')}
-          newsSection={data?.posts?.nodes}
-        />
-        <NewsBottom
-          bottomSection={data?.pages?.nodes[0]?.news?.bottomSection}
-        />
-        <Footer
-          navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
-        />
+        <NewsPageComponent data={data} searchParams={searchParams} totalPages={totalPages} />
       </main>
     </>
   );

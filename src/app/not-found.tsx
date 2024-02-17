@@ -14,7 +14,7 @@ export default function NotFound() {
           <Image
             width='320'
             height='175'
-            src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
+            src='https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
             alt='Save Max Westcoast Realty'
           />
           <h1 className='mt-8 text-4xl md:text-6xl'>Page Not Found</h1>

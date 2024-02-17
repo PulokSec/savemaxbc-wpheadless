@@ -11,7 +11,7 @@ const SouthSurreyRealtorServiceLeftRight = (props: Props) => {
   return (
     <div>
       <div className='py-10 lg:py-20'>
-        <h2 className='px-5 text-center text-2xl md:text-3xl lg:text-4xl xl:text-[42px] font-bold'>
+        <h2 className='px-5 text-center text-2xl font-bold md:text-3xl lg:text-4xl xl:text-[42px]'>
           {data?.title}
         </h2>
         <div
@@ -40,8 +40,8 @@ const SouthSurreyRealtorServiceLeftRight = (props: Props) => {
                 <NextImage
                   useSkeleton
                   className='w-full md:w-[100%]'
-                  src={item?.image?.sourceUrl}
-                  alt={item?.image?.altText}
+                  src={item?.image?.node?.sourceUrl}
+                  alt={item?.image?.node?.altText}
                   width='600'
                   height='200'
                 />

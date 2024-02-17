@@ -10,7 +10,7 @@ export default function ChoiceBanner(props: MyProps) {
     <div>
       <div
         style={{
-          background: `url(${choiceBannerData?.bannerImage?.sourceUrl}) no-repeat center center`,
+          background: `url(${choiceBannerData?.bannerImage?.node?.sourceUrl}) no-repeat center center`,
           backgroundSize: '100% 100%',
         }}
         className='mb-10 mt-10 flex h-[300px] flex-col items-center justify-center md:h-[400px] lg:mt-20 lg:h-[500px] 2xl:h-[600px]'

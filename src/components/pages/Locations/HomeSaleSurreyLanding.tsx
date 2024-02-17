@@ -5,7 +5,6 @@ import WhyChooseUs from '@/components/elements/WhyChooseUs';
 import FeatureSection from '@/components/pages/Home/FeatureSection';
 import HomeSaleSurreyBanner from '@/components/pages/Locations/HomeSaleSurreyBanner';
 import HomeSurreyTopText from '@/components/pages/Locations/HomeSurreyTopText';
-import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import Footer from '@/components/shared/Footer';
 import Header from '@/components/shared/Header';
 
@@ -39,7 +38,7 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
         <div
           className='relative h-[80vh] w-full bg-cover bg-fixed bg-[center_center] bg-no-repeat lg:h-[100vh]'
           style={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection?.bannerImage?.sourceUrl})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${allData?.pages?.nodes[0]?.homeForSaleInSurrey?.bannerSection?.bannerImage?.node?.sourceUrl})`,
           }}
         >
           <Header
@@ -103,7 +102,14 @@ export default function HomeSaleSurreyLanding(props: MyProps) {
             ?.leftImageRightTextSection2
         }
       />
-
+      <div className='mt-16 flex items-center justify-center'>
+        <a
+          href='/listing'
+          className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+        >
+          See Listings
+        </a>
+      </div>
       <div className='mx-auto max-w-[1600px] pt-10 lg:pt-20'>
         <HomeBuyerSection
           featuredData={

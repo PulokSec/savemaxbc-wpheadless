@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://savemaxbc.com/
+
+# Sitemaps
+Sitemap: https://savemaxbc.com/sitemap.xml/
+Sitemap: https://savemaxbc.com/page-sitemap.xml/
+Sitemap: https://savemaxbc.com/blog-sitemap.xml/
+Sitemap: https://savemaxbc.com/location-sitemap.xml/

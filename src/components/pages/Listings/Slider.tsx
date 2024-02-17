@@ -1,20 +1,22 @@
-import Image from 'next/image';
-import React, { useState } from 'react';
-import 'react-image-gallery/styles/css/image-gallery.css';
+import React from 'react';
 import ImageGallery from 'react-image-gallery';
 
-type Props = { images: any };
+import 'react-image-gallery/styles/css/image-gallery.css';
+
+import { constructPhotoUrl } from '@/components/utils/utils';
+
+type Props = { images: any, listingId: any };
 
 const Slider = (props: Props) => {
-  const { images } = props;
+  const { images,listingId } = props;
   const allImages = [];
   for (const img of images) {
-    const bufferOriginal = Buffer.from(img.Photos.data);
-    const imageUrl = JSON.parse(bufferOriginal.toString('utf8'))?.LargePhoto
-      ?.filename;
+    // const bufferOriginal = Buffer.from(img.Photos.data);
+    // const imageUrl = JSON.parse(bufferOriginal.toString('utf8'))?.LargePhoto
+    //   ?.filename;
     const image = {
-      original: imageUrl,
-      thumbnail: imageUrl,
+      original: constructPhotoUrl(listingId,img),
+      thumbnail: constructPhotoUrl(listingId,img),
     };
     allImages.push(image);
   }

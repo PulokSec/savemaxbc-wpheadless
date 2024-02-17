@@ -12,8 +12,8 @@ const EssentialCard = (props: MyProps) => {
       <NextImage
         layout='fill'
         className='relative mx-auto h-[250px] w-full'
-        src={cardData?.image?.sourceUrl}
-        alt={cardData?.image?.altText}
+        src={cardData?.image?.node?.sourceUrl}
+        alt={cardData?.image?.node?.altText}
       />
 
       <div className='desc p-2 text-center text-black'>

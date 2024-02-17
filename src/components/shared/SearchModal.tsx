@@ -6,6 +6,7 @@ import { GoSearch } from 'react-icons/go';
 import { getSearchQuery } from '@/lib/dataFetching';
 
 import { UseClickOutside } from '@/components/custom-hooks/UseClickOutside';
+import FilterModal from '@/components/shared/FilterModal';
 import Scroll from '@/components/utils/Scroll';
 
 type Props = {
@@ -18,18 +19,15 @@ const SearchModal = (props: Props) => {
   const [filtersData, setFiltersData] = useState([]);
   const [searchShow, setSearchShow] = useState(false);
   const [searchField, setSearchField] = useState('');
+  const [openFilterModal, setOpenFilterModal] = useState(false);
   const domNode: any = useRef();
   const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
-      const city = searchField.split(',')[0] || searchField;
-      const street = searchField.split(',')[1] || searchField;
-      const province = searchField.split(',')[2] || searchField;
+      const query= searchField;
       const result = await getSearchQuery({
-        cityParam: city ? city : '',
-        streetParam: street ? street : '',
-        provinceParam: province ? province : '',
+        queryParam: query,
         pageParam: 1,
       });
       setFiltersData(result?.listings);
@@ -45,9 +43,16 @@ const SearchModal = (props: Props) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (searchField?.length > 0) {
-      router.push(`/listing?query=${searchField}`);
+      setSearchShow(false);
+      setOpenFilterModal(true);
     }
   };
+  //  const handleClick = (e: any) => {
+  //   e.preventDefault();
+  //   if (searchField?.length > 0) {
+  //     router.push(`/listing?query=${searchField}`);
+  //   }
+  // };
   useEffect(() => {
     const interval = setInterval(() => {
       if (!searchField.length) {
@@ -63,14 +68,15 @@ const SearchModal = (props: Props) => {
   });
   return (
     <>
-      <div
+      {!openFilterModal ? (<>
+        <div
         className='fixed inset-0 z-40 bg-black opacity-50'
         onClick={() => setModalOpen(false)}
       ></div>
       <div
         className={`${
           searchField.length ? '' : ''
-        } fixed left-1/2 top-1/2 z-50 mx-auto flex h-[350px] w-11/12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-lg bg-white shadow-lg  md:w-[600px] lg:top-1/2 lg:h-[300px]`}
+        } fixed left-1/2 top-1/2 z-50 mx-auto flex h-[350px] w-11/12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-lg bg-white shadow-lg  md:w-[600px] lg:top-1/2 lg:h-[400px]`}
       >
         <div className='relative  '>
           <div className='fixed right-3 top-3'>
@@ -161,7 +167,15 @@ const SearchModal = (props: Props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div></>):
+(
+                <FilterModal
+                  setModalOpen={setOpenFilterModal}
+                  modalOpen={openFilterModal}
+                  preInput={searchField}
+                />
+              )
+              }
     </>
   );
 };

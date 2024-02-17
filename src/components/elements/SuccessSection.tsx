@@ -9,7 +9,7 @@ export default function SuccessSection(props: MyProps) {
   const { featuredData } = props;
   return (
     <section className='mt-0 px-5 md:px-10'>
-      <div className='-mt-20 pb-5 pt-0 md:-mt-10 lg:-mt-20 xl:-mt-10 md:py-10 md:pb-10'>
+      <div className='-mt-20 pb-5 pt-0 md:-mt-10 md:py-10 md:pb-10 lg:-mt-20 xl:-mt-10'>
         <div className='mx-auto max-w-[1400px]'>
           <div className='flex flex-col items-center justify-center gap-4 md:mt-10 md:px-10 lg:mx-0 lg:flex-row xl:mt-20'>
             <div className='flex flex-col items-start justify-center lg:w-1/2'>
@@ -37,8 +37,8 @@ export default function SuccessSection(props: MyProps) {
               <NextImage
                 useSkeleton
                 className='flex w-64 items-end justify-end md:w-[100%] '
-                src={featuredData?.image?.sourceUrl}
-                alt={featuredData?.image?.altText}
+                src={featuredData?.image?.node?.sourceUrl}
+                alt={featuredData?.image?.node?.altText}
                 width='500'
                 height='200'
               />

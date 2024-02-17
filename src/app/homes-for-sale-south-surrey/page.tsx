@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 
-import { getClient } from '@/lib/apollo';
 import { getAllProperties } from '@/lib/dataFetching';
 
 import BottomFeatureSection from '@/components/elements/BottomFeatureSection';
@@ -10,12 +10,11 @@ import CardSection from '@/components/pages/Locations/CardSection';
 import ChoiceBanner from '@/components/pages/Locations/ChoiceBanner';
 import ChoiceSection from '@/components/pages/Locations/ChoiceSection';
 import EssentialSection from '@/components/pages/Locations/EssentialSection';
-import HomeBuyingProcess from '@/components/pages/Locations/HomebuyingProcess';
+import HomeBuyingProcessSouthSurrey from '@/components/pages/Locations/HomeBuyingProcessSouthSurrey';
 import LocationBanner from '@/components/pages/Locations/LocationBanner';
 import OfferBanner from '@/components/pages/Locations/OfferBanner';
 import OfferSection from '@/components/pages/Locations/OfferSection';
 import Footer from '@/components/shared/Footer';
-import HomeBuyingProcessSouthSurrey from '@/components/pages/Locations/HomeBuyingProcessSouthSurrey';
 
 const query = gql`
   query {
@@ -38,7 +37,9 @@ const query = gql`
         southSurrey {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
             bannerSubhead
@@ -52,13 +53,17 @@ const query = gql`
             cardSubtitle
             cardDescription
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             cardData {
               cardImage {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
               cardTitle
               cardDescription
@@ -69,12 +74,16 @@ const query = gql`
             offerSubtitle
             offerDescription
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             offerImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           listingSection {
@@ -89,14 +98,18 @@ const query = gql`
             title
             description
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           choiceBanner {
             bannerImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             bannerTitle
             bannerSubtitle
@@ -106,14 +119,18 @@ const query = gql`
             title
             description
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           homebuyingSection {
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             featureTitle
             featureDescription
@@ -125,8 +142,10 @@ const query = gql`
           }
           essentialSection {
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             featureTitle
             featureSubtitle
@@ -135,8 +154,10 @@ const query = gql`
               title
               description
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
             bottomDescription
@@ -145,8 +166,10 @@ const query = gql`
             title
             description
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
@@ -156,8 +179,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -179,14 +204,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -212,27 +239,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -261,22 +294,23 @@ export default async function HomeSouthSurrey({
 }: {
   searchParams?: { [key: string]: string | string[] | undefined };
 }) {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
   const homePosts = await getAllProperties({
     pageParam: parseInt(searchParams?.page?.toString() || '1'),
     typeParam: searchParams?.type?.toString() || 'House',
-    cityParam: searchParams?.city?.toString() || 'Surrey',
+    queryParam: searchParams?.city?.toString() || 'Surrey',
   });
   return (
     <main>
-      <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+      <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/Middle-part-bg.png")] bg-cover bg-no-repeat'>
         <LocationBanner
           bannerData={data?.pages?.nodes[0]?.southSurrey?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
@@ -286,10 +320,10 @@ export default async function HomeSouthSurrey({
         />
         <div className=''>
           <div className=''>
-            <p className='text-md mt-5 w-full text-center font-bold text-[#515151] md:text-xl lg:text-2xl hidden md:block'>
+            <p className='text-md mt-5 hidden w-full text-center font-bold text-[#515151] md:block md:text-xl lg:text-2xl'>
               {data?.pages?.nodes[0]?.southSurrey?.listingSection?.topHead}
             </p>
-            <h1 className='mt-8 md:mt-36 text-center text-lg md:text-4xl'>
+            <h1 className='mt-8 text-center text-lg md:mt-36 md:text-4xl'>
               {
                 data?.pages?.nodes[0]?.southSurrey?.listingSection
                   ?.recentListingsTitle
@@ -319,6 +353,14 @@ export default async function HomeSouthSurrey({
         <CardSection
           cardSection={data?.pages?.nodes[0]?.southSurrey?.cardSection}
         />
+        <div className='mt-5 flex items-center justify-center'>
+          <a
+            href='/contact-us'
+            className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+          >
+            Contact Us
+          </a>
+        </div>
         <OfferBanner
           offerBannerData={data?.pages?.nodes[0]?.southSurrey?.offerBanner}
           featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
@@ -326,12 +368,21 @@ export default async function HomeSouthSurrey({
         <OfferSection
           featuredData={data?.pages?.nodes[0]?.southSurrey?.offerSection}
         />
+        <div className='mb-20 flex items-center justify-center md:mb-0'>
+          <a
+            href='/listing'
+            className='rounded-xl border-2 border-solid border-[#061632] bg-white px-3 py-2 font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+          >
+            See Listings
+          </a>
+        </div>
         <ChoiceBanner
           choiceBannerData={data?.pages?.nodes[0]?.southSurrey?.choiceBanner}
         />
         <ChoiceSection
           featuredData={data?.pages?.nodes[0]?.southSurrey?.choiceSection}
         />
+
         <HomeBuyingProcessSouthSurrey
           featuredData={data?.pages?.nodes[0]?.southSurrey?.homebuyingSection}
         />

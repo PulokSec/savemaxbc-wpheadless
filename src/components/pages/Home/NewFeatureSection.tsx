@@ -1,7 +1,8 @@
 'use client';
 import Image from 'next/image';
 import React from 'react';
-import { Fade, Slide } from 'react-awesome-reveal';
+import { Fade } from 'react-awesome-reveal';
+
 import '../../../styles/button.css';
 
 type MyProps = {
@@ -13,7 +14,13 @@ type MyProps = {
 const NewFeatureSection = (props: MyProps) => {
   const { featuredData, featuredTitle, featuredSubtitle } = props;
   return (
-    <div className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat'>
+    <div
+      className='max-w-screen overflow-x-hidden bg-cover bg-no-repeat'
+      style={{
+        backgroundImage: `url(${featuredData?.featureBackground?.node?.sourceUrl})`,
+      }}
+      aria-label={featuredData?.featureBackground?.node?.altText}
+    >
       <section>
         <div className='mx-auto py-10 lg:py-20'>
           <h1 className='text-leading-3 text-center text-[22px] font-bold md:text-5xl'>
@@ -43,7 +50,7 @@ const NewFeatureSection = (props: MyProps) => {
                         ></div>
                         <div className=' mt-2  py-10 text-start'>
                           <a
-                            href='/properties-listing'
+                            href={item?.link}
                             className='custom-button'
                           >
                             See More
@@ -61,10 +68,10 @@ const NewFeatureSection = (props: MyProps) => {
                     >
                       <Image
                         className='hidden md:block md:w-[500px] 2xl:w-[650px]'
-                        src={item?.image?.sourceUrl}
+                        src={item?.image?.node?.sourceUrl}
                         width={500}
                         height={500}
-                        alt={item?.image?.altText}
+                        alt={item?.image?.node?.altText}
                       />
                     </Fade>
                     <Fade
@@ -75,10 +82,10 @@ const NewFeatureSection = (props: MyProps) => {
                     >
                       <Image
                         className='md:hidden'
-                        src={item?.image?.sourceUrl}
+                        src={item?.image?.node?.sourceUrl}
                         width={250}
                         height={250}
-                        alt={item?.image?.altText}
+                        alt={item?.image?.node?.altText}
                       />
                     </Fade>
                   </div>
@@ -97,10 +104,10 @@ const NewFeatureSection = (props: MyProps) => {
                     >
                       <Image
                         className='md:w-[500px] 2xl:w-[650px]'
-                        src={item?.image?.sourceUrl}
+                        src={item?.image?.node?.sourceUrl}
                         width={500}
                         height={500}
-                        alt={item?.image?.altText}
+                        alt={item?.image?.node?.altText}
                       />
                     </Fade>
                   </div>
@@ -118,7 +125,7 @@ const NewFeatureSection = (props: MyProps) => {
                         ></div>
                         <div className=' mt-2  py-10 text-start'>
                           <a
-                            href='/properties-listing'
+                            href={item?.link}
                             className='custom-button'
                           >
                             See More
@@ -136,10 +143,10 @@ const NewFeatureSection = (props: MyProps) => {
                     >
                       <Image
                         className=''
-                        src={item?.image?.sourceUrl}
+                        src={item?.image?.node?.sourceUrl}
                         width={250}
                         height={250}
-                        alt={item?.image?.altText}
+                        alt={item?.image?.node?.altText}
                       />
                     </Fade>
                   </div>

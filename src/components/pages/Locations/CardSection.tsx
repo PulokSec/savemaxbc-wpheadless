@@ -12,14 +12,14 @@ export default function CardSection(props: MyProps) {
     <div>
       <div
         style={{
-          background: `url('${cardSection?.backgroundImage?.sourceUrl}') center center`,
+          background: `url('${cardSection?.backgroundImage?.node?.sourceUrl}') center center`,
           backgroundSize: '100% 100%',
         }}
         className={` hidden bg-no-repeat text-white md:pt-[50px] lg:block 2xl:-mt-28`}
       >
         <div className='mx-auto mt-10 max-w-[1250px] p-6 xl:mt-[45%] xl:p-3 2xl:mt-[30%]'>
           <h2 className='text-center text-[30px] font-semibold lg:pt-[300px] xl:pt-0 xl:text-start xl:text-[50px] 2xl:pt-6'>
-            {cardSection?.cardTitle} <br /> <br/>
+            {cardSection?.cardTitle} <br /> <br />
             {cardSection?.cardSubtitle}
           </h2>
 
@@ -35,7 +35,7 @@ export default function CardSection(props: MyProps) {
               __html: cardSection?.cardDescription,
             }}
           ></div>
-          <div className='mb-14 flex flex-wrap items-start justify-center lg:mt-16 lg:gap-8 xl:mt-28 2xl:mt-20 xl:gap-20'>
+          <div className='mb-14 flex flex-wrap items-start justify-center lg:mt-16 lg:gap-8 xl:mt-28 xl:gap-20 2xl:mt-20'>
             {cardSection?.cardData?.map((cardData: any, idx: any) => (
               <Card cardData={cardData} key={idx} />
             ))}

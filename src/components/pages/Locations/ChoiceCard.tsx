@@ -20,11 +20,11 @@ const ChoiceCard = (props: MyProps) => {
         <NextImage
           className='relative z-10 h-[80px] w-[80px] rounded-full'
           layout='fill'
-          src={cardData?.image?.sourceUrl}
-          alt={cardData?.image?.altText}
+          src={cardData?.image?.node?.sourceUrl}
+          alt={cardData?.image?.node?.altText}
         />
 
-        <h3 className='mx-2 text-[20px] text-black md:mx-5 font-bold w-3/4 md:w-auto'>
+        <h3 className='mx-2 w-3/4 text-[20px] font-bold text-black md:mx-5 md:w-auto'>
           {cardData?.title}
         </h3>
       </div>

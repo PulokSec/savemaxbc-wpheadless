@@ -2,6 +2,9 @@
 import axios from 'axios';
 import { Facebook, Instagram } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
+
+import useAuth from '@/components/custom-hooks/useAuth';
+import ButtonLoader from '@/components/pages/Contact/ButtonLoader';
 type Props = {
   title: any;
   desc: any;
@@ -13,7 +16,7 @@ type Props = {
 
 const ApplyNowForm = (props: Props) => {
   const { title, desc, phone, email, address, fields } = props;
-  const [selected, setSelected] = useState('');
+  const { loggedIn } = useAuth();
   const [name, setName] = useState('');
   const [mail, setMail] = useState('');
   const [message, setMessage] = useState('');
@@ -22,6 +25,8 @@ const ApplyNowForm = (props: Props) => {
   const [cvName, setCvName] = useState(null);
   const [success, setSuccess] = useState(null);
   const [alert, setAlert] = useState(false);
+  const [submitClicked, setSubmitClicked] = useState(false);
+  const [btnLoading, setBtnLoading] = useState(false);
   const handleChange = (event: any, setFunction: (arg0: any) => void) => {
     setFunction(event.target.value);
   };
@@ -40,50 +45,59 @@ const ApplyNowForm = (props: Props) => {
     target: { reset: () => void };
   }) => {
     e.preventDefault();
-    if (name.length < 1 || mail.length < 5 || phone.length < 8 || !cv) {
-      setAlert(true);
-      setSuccess(null);
-      return;
-    }
-    const bodyData = new FormData();
-    bodyData.set('fromEmail', 'noreply@savemaxbc.com');
-    bodyData.set('toEmail', 'pulok@cansoft.com');
-    bodyData.set(
-      'cc',
-      'keegan@cansoft.com, pulok@cansoft.com, huzaifa@cansoft.com'
-    );
-    bodyData.set('emailSubject', 'New Submission From' + '- ' + name);
-    bodyData.set('name', name);
-    bodyData.set('field', selected);
-    bodyData.set('mail', mail);
-    bodyData.set('phone', number);
-    bodyData.set('message', message);
-    if (cv) {
-      bodyData.set('cv', cv);
-    }
+    setSubmitClicked(true);
+    if (loggedIn) {
+      if (name.length < 1 || mail.length < 5 || phone.length < 8 || !cv) {
+        setAlert(true);
+        setSuccess(null);
+        return;
+      }
+      setBtnLoading(true);
+      const bodyData = new FormData();
+      bodyData.set('fromEmail', 'noreply@savemaxbc.com');
+      bodyData.set('toEmail', 'admin@savemaxwestcoast.com');
+      bodyData.set('cc', '');
+      bodyData.set('emailSubject', 'New Submission From' + '- ' + name);
+      bodyData.set('name', name);
+      bodyData.set('mail', mail);
+      bodyData.set('phone', number);
+      bodyData.set('message', message);
+      if (cv) {
+        bodyData.set('cv', cv);
+      }
 
-    try {
-      const config = {
-        method: 'POST',
-        url: `${process.env.NEXT_PUBLIC_BASEURL}/api/apply-now`,
-        data: bodyData,
-        headers: { 'Content-Type': 'multipart/form-data' },
-      };
-      const response = await axios(config);
-      setSuccess(response?.data.message);
-      // e.target.reset();
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setName('');
-      setMail('');
-      setNumber('');
-      setMessage('');
-      setSelected('');
-      setCv(undefined);
-      setAlert(true);
+      try {
+        const post_config = {
+          method: 'POST',
+          url: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/wp-json/api/v1/add-applied-submission/`,
+          data: bodyData,
+          headers: { 'Content-Type': 'multipart/form-data' },
+        };
+        const mail_config = {
+          method: 'POST',
+          url: `${process.env.NEXT_PUBLIC_BASEURL}/api/apply-now`,
+          data: bodyData,
+          headers: { 'Content-Type': 'multipart/form-data' },
+        };
+        const email_response = await axios(mail_config);
+        const post_response = await axios(post_config);
+        setSuccess(email_response?.data.message);
+        setBtnLoading(false);
+        // e.target.reset();
+      } catch (error) {
+        setBtnLoading(false);
+        console.log(error);
+      } finally {
+        setName('');
+        setMail('');
+        setNumber('');
+        setMessage('');
+        setCv(undefined);
+        setAlert(true);
+      }
     }
   };
+
   useEffect(() => {
     setTimeout(() => {
       setAlert(false);
@@ -105,9 +119,6 @@ const ApplyNowForm = (props: Props) => {
       </div>
       <div className='mx-auto flex max-w-[1400px] flex-col items-center justify-center gap-5 p-5 pb-10 md:flex-row lg:gap-10'>
         <div className='mx-auto flex flex-col items-center md:w-1/2 md:items-start'>
-          {/* {heading && (
-                  <h2 className='uppercase text-gray-800'>Apply Now</h2>
-                )} */}
           <h2 className='uppercase text-gray-800'>Apply Now</h2>
           <p className='md:text-md mt-5 text-xs hover:text-[#B48237] lg:text-lg'>
             Phone: <a href={`tel:${phone}`}>{phone}</a>
@@ -184,7 +195,7 @@ const ApplyNowForm = (props: Props) => {
               />
             </div>
 
-            <div className='relative mb-6' data-te-input-wrapper-init>
+            {/* <div className='relative mb-6' data-te-input-wrapper-init>
               <select
                 onChange={(e) => handleChange(e, setSelected)}
                 value={selected}
@@ -211,7 +222,7 @@ const ApplyNowForm = (props: Props) => {
                   );
                 })}
               </select>
-            </div>
+            </div> */}
             <div className='relative mb-6 ' data-te-input-wrapper-init>
               <label
                 htmlFor='cv'
@@ -255,7 +266,13 @@ const ApplyNowForm = (props: Props) => {
               data-te-ripple-color='light'
               className=' w-full rounded border border-gray-400 bg-[#061632]  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-[#061632] focus:border md:w-[600px]'
             >
-              Send Message
+              {btnLoading ? (
+                <>
+                  <ButtonLoader text='Sending...' />
+                </>
+              ) : (
+                'Send Message'
+              )}
             </button>
           </form>
           {alert && success && (
@@ -291,7 +308,7 @@ const ApplyNowForm = (props: Props) => {
                 className='h-5 w-5'
               >
                 <path
-                  fill-rule='evenodd'
+                  fillRule='evenodd'
                   d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z'
                   clip-rule='evenodd'
                 />
@@ -300,6 +317,30 @@ const ApplyNowForm = (props: Props) => {
               <div>
                 <span className='font-medium'>Sorry! </span> Please fill all the
                 fields.
+              </div>
+            </div>
+          )}
+          {!loggedIn && submitClicked && (
+            <div
+              className='mt-5 flex w-full items-center rounded-lg border bg-red-300 p-4 text-sm text-red-700 md:w-[600px]'
+              role='alert'
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='currentColor'
+                className='h-5 w-5'
+              >
+                <path
+                  fillRule='evenodd'
+                  d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z'
+                  clip-rule='evenodd'
+                />
+              </svg>
+              <span className='sr-only'>Info</span>
+              <div>
+                <span className='font-medium'>Sorry! </span> Please login to
+                apply!
               </div>
             </div>
           )}

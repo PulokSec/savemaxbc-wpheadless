@@ -17,8 +17,8 @@ const OfferCard = (props: MyProps) => {
       <NextImage
         layout='fill'
         className='relative h-[250px] w-[500px]'
-        src={cardData?.image?.sourceUrl}
-        alt={cardData?.image?.altText}
+        src={cardData?.image?.node?.sourceUrl}
+        alt={cardData?.image?.node?.altText}
       />
 
       <div
