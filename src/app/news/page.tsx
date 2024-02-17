@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client';
 import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 
 import NewsPageComponent from '@/components/pages/News/NewsPageComponent';
 

@@ -6,6 +6,7 @@ import CommercialBanner from '@/components/elements/CommercialBanner';
 import AdviceServiceFeature from '@/components/service-menu-components/AdviceServiceFeature';
 import BottomServiceSection from '@/components/service-menu-components/BottomServiceSection';
 import Footer from '@/components/shared/Footer';
+import CommercialBanner from '@/components/elements/CommercialBanner';
 
 const query = gql`
   query {
@@ -190,7 +191,7 @@ context: {
   // console.log(data);
   return (
     <>
-      <main className='max-w-screen bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
+      <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
         <CommercialBanner
           bannerData={data?.pages?.nodes[0]?.sellingServices?.bannerSection}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}

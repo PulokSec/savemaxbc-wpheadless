@@ -214,7 +214,7 @@ context: {
   // console.log(data);
   return (
     <>
-      <main className='max-w-screen bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
+      <main className='max-w-screen bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-center bg-no-repeat'>
         <CommercialBanner
           bannerData={
             data?.pages?.nodes[0]?.commercialPropertySale?.bannerSection

@@ -2,6 +2,7 @@ import { gql } from '@apollo/client';
 import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 
+
 import FaqBanner from '@/components/elements/FaqBanner';
 import FaqSection from '@/components/pages/Faq/FaqSection';
 import Footer from '@/components/shared/Footer';
