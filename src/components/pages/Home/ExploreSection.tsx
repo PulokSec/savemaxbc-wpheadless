@@ -50,8 +50,8 @@ export default function ExploreSection(props: MyProps) {
               <NextImage
                 useSkeleton
                 className='md:w-100 w-40 lg:w-[500px]'
-                src={featuredData?.image?.sourceUrl}
-                alt={featuredData?.image?.altText}
+                src={featuredData?.image?.node?.sourceUrl}
+                alt={featuredData?.image?.node?.altText}
                 width='500'
                 height='200'
               />

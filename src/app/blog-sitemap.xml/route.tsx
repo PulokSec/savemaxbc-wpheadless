@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 const query = gql`
   query {
     posts(first: 100) {
@@ -8,13 +9,13 @@ const query = gql`
     }
   }
 `;
-import { getClient } from '@/lib/apollo';
 export async function GET() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });

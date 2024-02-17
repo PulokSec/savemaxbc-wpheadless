@@ -25,23 +25,23 @@ export default function FindSection(props: MyProps) {
         <div className='hidden w-full items-start justify-start md:flex md:w-1/2 xl:w-2/5'>
           <Image
             className='md:w-[500px] 2xl:w-full'
-            src={featuredData?.image?.sourceUrl}
+            src={featuredData?.image?.node?.sourceUrl}
             width={500}
             height={500}
-            alt={featuredData?.image?.altText}
+            alt={featuredData?.image?.node?.altText}
           />
         </div>
         <div className='flex w-full items-start justify-start md:hidden md:w-1/2 xl:w-2/5'>
           <Image
             className=''
-            src={featuredData?.image?.sourceUrl}
+            src={featuredData?.image?.node?.sourceUrl}
             width={300}
             height={300}
-            alt={featuredData?.image?.altText}
+            alt={featuredData?.image?.node?.altText}
           />
         </div>
         <div className='mx-auto flex w-full flex-col items-end md:w-1/2 xl:w-3/5'>
-          <div className='mx-auto px-5 md:px-0 md:w-3/4 xl:w-2/3'>
+          <div className='mx-auto px-5 md:w-3/4 md:px-0 xl:w-2/3'>
             <h3 className='w-full text-center text-2xl md:text-start md:text-4xl '>
               {featuredData?.featureTitle}
             </h3>

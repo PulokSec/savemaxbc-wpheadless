@@ -30,7 +30,7 @@ export default function HomeSaleSurreyBanner(props: MyProps) {
     <div
       className='relative h-[80vh] w-full bg-cover bg-fixed bg-[center_center] bg-no-repeat lg:h-[100vh]'
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${bannerData?.bannerImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url(${bannerData?.bannerImage?.node?.sourceUrl})`,
       }}
     >
       <Header navigation={headerData} settingsData={settingsData} />

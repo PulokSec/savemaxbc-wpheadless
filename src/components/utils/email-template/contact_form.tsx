@@ -19,19 +19,21 @@ interface MyProps {
   mail: string;
   phone: string;
   message: string;
+  title?: string;
+  emailSubject: string;
 }
 
-const ApplyNowEmail = ({ name, mail, phone, message, field }: MyProps) => (
+const ApplyNowEmail = ({ name, mail, phone, message, field, title, emailSubject }: MyProps) => (
   <Html>
     <Head />
-    <Preview>New Form Submission: {name}</Preview>
+    <Preview>{emailSubject}</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section>
           <Column>
             <Img
               style={sectionLogo}
-              src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
+              src='https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
               width='155'
               height='50'
               alt='Google Play'
@@ -41,7 +43,7 @@ const ApplyNowEmail = ({ name, mail, phone, message, field }: MyProps) => (
 
         <Section style={paragraphContent}>
           <Hr style={hr} />
-          <Text style={heading}>New Form Submission: {name}</Text>
+          <Text style={heading}>{emailSubject}</Text>
           <Text style={paragraph}>Hello Save Max Westcoast Realty Inc,</Text>
           <Text style={paragraph}>
             A new form submission has been received with the following details:
@@ -50,8 +52,9 @@ const ApplyNowEmail = ({ name, mail, phone, message, field }: MyProps) => (
         </Section>
         <Section style={paragraphList}>
           <Text style={paragraph}>Email Address: {mail}</Text>
-          <Text style={paragraph}>Phone Number: {phone}</Text>
-          <Text style={paragraph}>Field: {field}</Text>
+          {phone && <Text style={paragraph}>Phone Number: {phone}</Text>}
+          {field && <Text style={paragraph}>Field: {field}</Text>}
+          {title && <Text style={paragraph}>Question Title: {title}</Text>}
         </Section>
         <Section style={paragraphContent}>
           <Text style={paragraph}>Queries: {message}</Text>
@@ -82,7 +85,7 @@ const ApplyNowEmail = ({ name, mail, phone, message, field }: MyProps) => (
             <Img
               width='380'
               height='110'
-              src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
+              src='https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
             />
           </Row>
         </Section>

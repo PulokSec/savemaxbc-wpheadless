@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import React from 'react';
-
-import { getClient } from '@/lib/apollo';
 
 import AuthContent from '@/components/authContents/AuthContent';
 import ProfileLanding from '@/components/pages/MyProfile/ProfileLanding';
@@ -15,8 +14,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -38,14 +39,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -71,17 +74,21 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
   return {
     title: 'My Profile - Savemax',
     description: 'My Profile - Savemax',
+    alternates: {
+      canonical: 'https://savemaxbc.com/my-profile',
+    },
     robots: { index: false, follow: false },
 
     // icons: {
@@ -89,9 +96,9 @@ export async function generateMetadata(): Promise<Metadata> {
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: 'https://savemaxbc.com/my-profile',
       title: 'My Profile - Savemax',
       description: 'My Profile - Savemax',
       siteName: 'https://savemaxbc.com/',
@@ -116,11 +123,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function SignUp() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });

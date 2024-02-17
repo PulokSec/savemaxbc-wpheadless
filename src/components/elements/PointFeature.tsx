@@ -8,7 +8,7 @@ type MyProps = {
 export default function PointFeature(props: MyProps) {
   const { featuredData } = props;
   return (
-    <section className='max-w-screen overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat pt-10'>
+    <section className='max-w-screen overflow-x-hidden bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat pt-10'>
       <div className='mx-auto max-w-[1600px]'>
         <div className='mt-10 flex flex-col items-center justify-center px-5 md:px-10 lg:mt-20'>
           <div className=' flex flex-col items-center justify-center gap-4 lg:flex-row '>
@@ -40,8 +40,8 @@ export default function PointFeature(props: MyProps) {
               <NextImage
                 useSkeleton
                 className='flex w-64 items-end justify-end md:w-[100%] '
-                src={featuredData?.imageRight?.sourceUrl}
-                alt={featuredData?.imageRight?.altText}
+                src={featuredData?.imageRight?.node?.sourceUrl}
+                alt={featuredData?.imageRight?.node?.altText}
                 width='600'
                 height='200'
               />
@@ -54,8 +54,8 @@ export default function PointFeature(props: MyProps) {
                 <NextImage
                   useSkeleton
                   className='w-64 md:w-[100%]'
-                  src={featuredData?.imageLeft?.sourceUrl}
-                  alt={featuredData?.imageLeft?.altText}
+                  src={featuredData?.imageLeft?.node?.sourceUrl}
+                  alt={featuredData?.imageLeft?.node?.altText}
                   width='600'
                   height='200'
                 />

@@ -1,10 +1,9 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React from 'react';
-
-import { getClient } from '@/lib/apollo';
 
 import AboutBanner from '@/components/elements/AboutBanner';
 const AboutFeature = dynamic(
@@ -37,10 +36,14 @@ const query = gql`
         aboutUs {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerImagePc {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
           }
@@ -54,8 +57,10 @@ const query = gql`
               designation
               subDesignation
               aboutImage {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
@@ -63,8 +68,10 @@ const query = gql`
             title
             featureDescription
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
@@ -74,8 +81,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -97,14 +106,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -130,27 +141,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -174,11 +191,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 export default async function page() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
@@ -194,18 +212,18 @@ export default async function page() {
           featureSection={data?.pages?.nodes[0]?.aboutUs?.aboutFeatureSection}
         />
         <section className='mx-auto w-full '>
-          <div className='relative h-[40vh] w-full overflow-x-hidden lg:h-[60vh] xl:h-[100vh]'>
+          <div className='relative h-[40vh] w-full overflow-x-hidden lg:h-[50vh] xl:h-[85vh]'>
             <Image
               src={
                 data?.pages?.nodes[0]?.aboutUs?.bottomFeatureSection
-                  ?.backgroundImage?.sourceUrl
+                  ?.backgroundImage?.node?.sourceUrl
               }
               fill={true}
               alt={
                 data?.pages?.nodes[0]?.aboutUs?.bottomFeatureSection
-                  ?.backgroundImage?.altText
+                  ?.backgroundImage?.node?.altText
               }
-              className='rounded-t-[100%]'
+              className='rounded-t-[100%] object-cover'
             />
             <div className='absolute h-full w-full overflow-hidden rounded-t-[100%] bg-gray-500 bg-opacity-70'>
               <div className=''>

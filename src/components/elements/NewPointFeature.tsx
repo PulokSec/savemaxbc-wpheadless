@@ -50,17 +50,17 @@ export default function NewPointFeature(props: MyProps) {
           <div className='flex w-full items-end justify-end md:w-1/2 xl:w-1/3'>
             <Image
               className='hidden md:block md:w-[500px] 2xl:w-[650px]'
-              src={featuredData?.imageRight?.sourceUrl}
+              src={featuredData?.imageRight?.node?.sourceUrl}
               width={500}
               height={500}
-              alt={featuredData?.imageRight?.altText}
+              alt={featuredData?.imageRight?.node?.altText}
             />
             <Image
               className='md:hidden'
-              src={featuredData?.imageRight?.sourceUrl}
+              src={featuredData?.imageRight?.node?.sourceUrl}
               width={250}
               height={250}
-              alt={featuredData?.imageRight?.altText}
+              alt={featuredData?.imageRight?.node?.altText}
             />
           </div>
         </div>
@@ -68,10 +68,10 @@ export default function NewPointFeature(props: MyProps) {
           <div className='hidden w-full items-start justify-start md:flex md:w-1/2 xl:w-2/5'>
             <Image
               className='md:w-[500px] 2xl:w-[650px]'
-              src={featuredData?.imageLeft?.sourceUrl}
+              src={featuredData?.imageLeft?.node?.sourceUrl}
               width={500}
               height={500}
-              alt={featuredData?.imageLeft?.altText}
+              alt={featuredData?.imageLeft?.node?.altText}
             />
           </div>
           <div className='mx-auto flex w-full flex-col items-end md:w-1/2 xl:w-3/5'>
@@ -99,10 +99,10 @@ export default function NewPointFeature(props: MyProps) {
           <div className='flex w-full items-start justify-start md:hidden md:w-1/2 xl:w-2/5'>
             <Image
               className=''
-              src={featuredData?.imageLeft?.sourceUrl}
+              src={featuredData?.imageLeft?.node?.sourceUrl}
               width={250}
               height={250}
-              alt={featuredData?.imageLeft?.altText}
+              alt={featuredData?.imageLeft?.node?.altText}
             />
           </div>
         </div>

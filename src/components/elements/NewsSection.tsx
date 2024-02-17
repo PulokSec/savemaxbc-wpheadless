@@ -45,7 +45,7 @@ export default function NewsSection(props: MyProps) {
               </div>
               <NewsCard newsData={newsSection[2]} index={3} />
               <Image
-                src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2024/01/line.png'
+                src='https://savemaxbc.wpengine.com/wp-content/uploads/2024/01/line.png'
                 width={100}
                 height={5}
                 alt='line'
@@ -73,7 +73,7 @@ export default function NewsSection(props: MyProps) {
                 <NewsCard newsData={newsSection[5]} index={6} />
               </div>
               <Image
-                src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2024/01/line.png'
+                src='https://savemaxbc.wpengine.com/wp-content/uploads/2024/01/line.png'
                 width={100}
                 height={5}
                 alt='line'
@@ -102,7 +102,7 @@ export default function NewsSection(props: MyProps) {
                 <NewsCard newsData={newsSection[8]} index={9} />
               </div>
               <Image
-                src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2024/01/line.png'
+                src='https://savemaxbc.wpengine.com/wp-content/uploads/2024/01/line.png'
                 width={100}
                 height={5}
                 alt='line'
@@ -130,7 +130,7 @@ export default function NewsSection(props: MyProps) {
                 <NewsCard newsData={newsSection[11]} index={12} />
               </div>
               <Image
-                src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2024/01/line.png'
+                src='https://savemaxbc.wpengine.com/wp-content/uploads/2024/01/line.png'
                 width={100}
                 height={5}
                 alt='line'

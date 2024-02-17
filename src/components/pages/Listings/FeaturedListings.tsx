@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { getAllProperties } from '@/lib/dataFetching';
-
 import ListingCarousel from '@/components/pages/Listings/ListingCarousel';
 
 type MyProps = {
@@ -11,28 +9,23 @@ type MyProps = {
   topHead?: any;
   listingDescription?: any;
   usingFor?: any;
+  recentPosts?: any;
   searchParams?: any;
+  housePosts?: any;
+  townPosts?: any;
 };
 
 export default async function FeaturedListings(props: MyProps) {
-  const { titleData, usingFor, topHead, listingDescription, searchParams } =
-    props;
-
-  const recentPosts = await getAllProperties({
-    pageParam: parseInt(searchParams?.page?.toString() || '1'),
-    typeParam: searchParams?.type?.toString() || '',
-    cityParam: searchParams?.city?.toString() || 'Surrey',
-  });
-  const housePosts = await getAllProperties({
-    pageParam: parseInt(searchParams?.page?.toString() || '1'),
-    typeParam: searchParams?.type?.toString() || 'House',
-    cityParam: searchParams?.city?.toString() || 'Surrey',
-  });
-  const townPosts = await getAllProperties({
-    pageParam: parseInt(searchParams?.page?.toString() || '1'),
-    typeParam: searchParams?.type?.toString() || 'Town',
-    cityParam: searchParams?.city?.toString() || 'Surrey',
-  });
+  const {
+    titleData,
+    usingFor,
+    topHead,
+    listingDescription,
+    searchParams,
+    recentPosts,
+    housePosts,
+    townPosts,
+  } = props;
 
   return (
     <div>
@@ -83,10 +76,12 @@ export default async function FeaturedListings(props: MyProps) {
               ></div>
             </>
           ) : null}
-          <ListingCarousel posts={recentPosts?.listings} />
+          {recentPosts?.listings && (
+            <ListingCarousel posts={recentPosts?.listings} />
+          )}
           <div className='mt-5 text-center md:mt-10'>
             <a
-              href='/properties-listing?city=Surrey&category=recent'
+              href='/listing?query=Surrey&category=recent'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:mt-[-20px] md:px-3.5'
             >
               See More
@@ -100,10 +95,12 @@ export default async function FeaturedListings(props: MyProps) {
               {titleData?.detachedHomesTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
-          <ListingCarousel posts={housePosts?.listings} />
+          {housePosts?.listings && (
+            <ListingCarousel posts={housePosts?.listings} />
+          )}
           <div className='mt-5 text-center md:mt-10'>
             <a
-              href='/properties-listing?city=Surrey&type=House&category=house'
+              href='/listing?query=Surrey&type=House&category=house'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:mt-[-20px] md:px-3.5'
             >
               See More
@@ -117,10 +114,12 @@ export default async function FeaturedListings(props: MyProps) {
               {titleData?.semiDetachedTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
-          <ListingCarousel posts={townPosts?.listings} />
+          {townPosts?.listings && (
+            <ListingCarousel posts={townPosts?.listings} />
+          )}
           <div className='mt-5 text-center md:mt-10'>
             <a
-              href='/properties-listing?city=Surrey&type=Town&category=townhouse'
+              href='/listing?query=Surrey&type=Town&category=townhouse'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:mt-[-20px] md:px-3.5'
             >
               See More
@@ -134,10 +133,12 @@ export default async function FeaturedListings(props: MyProps) {
               {titleData?.rentalHomesTitle?.split(/ (.*)/)[1]}
             </span>
           </h2>
-          <ListingCarousel posts={housePosts?.listings} />
+          {housePosts?.listings && (
+            <ListingCarousel posts={housePosts?.listings} />
+          )}
           <div className='mt-5 text-center md:mt-10'>
             <a
-              href='/properties-listing?city=Surrey&type=Condo&category=condominium'
+              href='/listing?query=Surrey&type=Condo&category=condominium'
               className='text-uppercase relative z-10 mt-0 rounded-[8px] border border-solid bg-white px-2 py-2.5 text-sm font-semibold text-black shadow-sm  hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:mt-[-20px] md:px-3.5'
             >
               See More

@@ -14,9 +14,9 @@ export const myIcon = new Leaflet.Icon({
   iconAnchor: [10, 41],
   popupAnchor: [2, -40],
   iconUrl:
-    'https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/marker-icon.png',
+    'https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/marker-icon.png',
   shadowUrl:
-    'https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/marker-shadow.png',
+    'https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/marker-shadow.png',
 });
 const MapComponent = (props: MyProps) => {
   const { location, address } = props;

@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 type MyProps = {
   serviceData: any;
@@ -10,10 +10,18 @@ const HighestLevelService = (props: MyProps) => {
   const { serviceData } = props;
   const [selectedDiv, setSelectedDiv] = useState(0);
   return (
-    <div className='max-w-screen relative h-[120vh] overflow-x-hidden bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/ensure-highest-level-of-services.png")] bg-cover bg-center bg-no-repeat'>
-      <h2 className='z-2 mb-8 mt-14 px-3 text-center uppercase text-white md:mb-16 lg:mt-56'>
+    <div className='max-w-screen relative h-[120vh] overflow-x-hidden'>
+       <Image
+          src={serviceData?.backgroundImage?.node?.sourceUrl}
+          layout="fill"
+          alt={serviceData?.backgroundImage?.node?.altText}
+          loading="lazy"
+          className='object-center object-cover pointer-events-none z-0 absolute'
+      />
+      <div className='z-20'>
+        <h2 className='mb-8 mt-14 px-3 text-center uppercase text-white md:mb-16 lg:mt-56 relative'>
         {serviceData?.heading}
-      </h2>
+        </h2>
 
       <div className='hidden md:block'>
         <div className='mx-auto flex w-11/12 items-center justify-center gap-5 lg:w-11/12 lg:gap-10 2xl:w-3/4 '>
@@ -51,10 +59,10 @@ const HighestLevelService = (props: MyProps) => {
                 ></p>
               )}
               <Image
-                src={item?.image?.sourceUrl}
+                src={item?.image?.node?.sourceUrl}
                 fill={true}
                 className='object-cover opacity-50'
-                alt={item?.image?.altText}
+                alt={item?.image?.node?.altText}
               />
             </div>
           ))}
@@ -88,14 +96,15 @@ const HighestLevelService = (props: MyProps) => {
                 ></p>
               )}
               <Image
-                src={item?.image?.sourceUrl}
+                src={item?.image?.node?.sourceUrl}
                 fill={true}
                 className='rounded-2xl object-cover opacity-50'
-                alt={item?.image?.altText}
+                alt={item?.image?.node?.altText}
               />
             </div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   );

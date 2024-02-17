@@ -1,32 +1,82 @@
-/** @type {import('next').NextConfig} */
+import { withFaust } from '@faustwp/core';
+/**
+ * @type {import('next').NextConfig}
+ **/
 const nextConfig = {
   eslint: {
-    dirs: ["src"],
+    dirs: ['src'],
     ignoreDuringBuilds: true,
   },
-
   reactStrictMode: true,
-  swcMinify: true,
 
   // Uncoment to add domain whitelist
   images: {
-    domains: [
-      "res.cloudinary.com",
-      "savemaxbc.com",
-      "ddfcdn.realtor.ca",
-      "savemaxheadlessdemo.csoft.ca",
-      "secure.gravatar.com",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'savemaxbc.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ddfcdn.realtor.ca',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'savemaxheadlessdemo.csoft.ca',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'savemaxbc.wpenginepowered.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'savemaxbc.wpengine.com',
+        pathname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'savemax-local.local',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'secure.gravatar.com',
+        pathname: '**',
+      },
     ],
+  },
+  async redirects() {
+        return [
+          {
+            source: "/condos-for-sale-in-surrey",
+            destination: "/condos-for-sale-surrey",
+            permanent: true,
+          },
+          {
+            source: "/townhouses-for-sale-in-surrey",
+            destination: "/townhouses-for-sale-surrey",
+            permanent: true,
+          },
+        ];
   },
   async headers() {
     return [
       {
-        source: "/:all*(svg|jpg|png|webp)",
+        source: '/:all*(svg|jpg|png|webp)',
         locale: false,
         headers: [
           {
-            key: "Cache-Control",
-            value: "public, s-maxage=10, stale-while-revalidate=59",
+            key: 'Cache-Control',
+            value: 'public, max-age=9999999999, must-revalidate',
           },
           {
             key: "X-Robots-Tag",
@@ -34,12 +84,22 @@ const nextConfig = {
           },
         ],
       },
+      {
+            source: "/(.*)",
+            headers: [
+              {
+                key: "Strict-Transport-Security",
+                value: "max-age=31536000; includeSubDomains; preload",
+              },
+            ],
+          },
     ];
+    
   },
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
-      rule.test?.test?.(".svg")
+      rule.test?.test?.('.svg')
     );
 
     config.module.rules.push(
@@ -54,7 +114,7 @@ const nextConfig = {
         test: /\.svg$/i,
         issuer: { not: /\.(css|scss|sass)$/ },
         resourceQuery: { not: /url/ }, // exclude if *.svg?url
-        loader: "@svgr/webpack",
+        loader: '@svgr/webpack',
         options: {
           dimensions: false,
           titleProp: true,
@@ -69,4 +129,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default withFaust(nextConfig);

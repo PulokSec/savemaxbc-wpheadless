@@ -23,15 +23,15 @@ const LeftImageRightText = (props: Props) => {
               }}
             ></div>
           </div>
-          
+
           <div className='mx-auto max-w-[1500px]'>
             <div className='mx-auto mt-10 flex flex-col items-center justify-center gap-10 px-5 md:mt-20 md:px-10 lg:mx-0 lg:max-w-none lg:flex-row lg:gap-4'>
               <div className='lg:w-1/2'>
                 <NextImage
                   useSkeleton
                   className='w-64 md:w-[100%]'
-                  src={featuredData?.leftImage?.sourceUrl}
-                  alt={featuredData?.leftImage?.altText}
+                  src={featuredData?.leftImage?.node?.sourceUrl}
+                  alt={featuredData?.leftImage?.node?.altText}
                   width='600'
                   height='200'
                 />

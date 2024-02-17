@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-
-import { getClient } from '@/lib/apollo';
 
 const ServicePointFeature = dynamic(
   () => import('@/components/service-menu-components/ServicePointFeature'),
@@ -12,8 +11,7 @@ const Footer = dynamic(() => import('@/components/shared/Footer'), {
   ssr: false,
 });
 
-import SharedBanner from '@/components/elements/SharedBanner';
-import SubServicesBottomSection from '@/components/service-menu-components/SubServicesBottomSection';
+import FirstTimeHomeBuyer from '@/components/pages/Services/FirstTimeHomeBuyer';
 
 const query = gql`
   query {
@@ -33,10 +31,12 @@ const query = gql`
             raw
           }
         }
-        FirstTimeBuyers {
+        firstTimeBuyers {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
             bannerDescription
@@ -47,8 +47,10 @@ const query = gql`
             featureTitle
             featureSubtitle
             featuredImageRight {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             featuredDivLeft {
               tabNo
@@ -61,14 +63,18 @@ const query = gql`
               description
             }
             featuredImageLeft {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           bottomSection {
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             description
           }
@@ -79,8 +85,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -102,14 +110,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -135,27 +145,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -180,9 +196,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function FirstTimeBuyers() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
@@ -192,44 +209,7 @@ export default async function FirstTimeBuyers() {
   return (
     <>
       <main>
-        <SharedBanner
-          bannerData={data?.pages?.nodes[0]?.FirstTimeBuyers?.bannerSection}
-          headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-          topTitle={data?.pages?.nodes[0]?.FirstTimeBuyers?.topFeatureTitle}
-          topDesc={
-            data?.pages?.nodes[0]?.FirstTimeBuyers?.topFeatureDescription
-          }
-          usingFor='fthb'
-        />
-        <div className='mt-10 md:mt-16 lg:mt-40 xl:mt-60'>
-          <div className='text-center'>
-            <h2 className='w-full text-center text-xl text-[#585858] md:text-2xl lg:text-3xl'>
-              {
-                data?.pages?.nodes[0]?.FirstTimeBuyers?.serviceFeatureSection
-                  ?.featureTitle
-              }
-            </h2>
-            <h2 className='mt-1 w-full text-center text-2xl md:mt-4 md:text-3xl lg:text-5xl'>
-              {
-                data?.pages?.nodes[0]?.FirstTimeBuyers?.serviceFeatureSection
-                  ?.featureSubtitle
-              }
-            </h2>
-          </div>
-        </div>
-        <ServicePointFeature
-          featuredData={
-            data?.pages?.nodes[0]?.FirstTimeBuyers?.serviceFeatureSection
-          }
-        />
-        <SubServicesBottomSection
-          bottomSection={data?.pages?.nodes[0]?.FirstTimeBuyers?.bottomSection}
-        />
-        <Footer
-          navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-          settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
-        />
+       <FirstTimeHomeBuyer data={data}/>
       </main>
     </>
   );

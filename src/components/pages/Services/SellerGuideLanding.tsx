@@ -67,8 +67,8 @@ export default function SellerGuideLanding(props: MyProps) {
                   <NextImage
                     useSkeleton
                     className='w-[300px] lg:w-[100%]'
-                    src={item?.image?.sourceUrl}
-                    alt={item?.image?.altText}
+                    src={item?.image?.node?.sourceUrl}
+                    alt={item?.image?.node?.altText}
                     width='600'
                     height='200'
                   />

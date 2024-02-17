@@ -7,9 +7,9 @@ export default function NewsBottom(props: MyProps) {
   const { bottomSection } = props;
   return (
     <section
-      className='mt-40 flex min-h-[50vh] flex-col items-start justify-center overflow-x-hidden bg-cover bg-center md:min-h-screen '
+      className='mt-40 flex min-h-[50vh] flex-col items-start justify-center overflow-x-hidden bg-cover bg-center md:h-[50vh] xl:h-[90vh]'
       style={{
-        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
+        backgroundImage: `url(${bottomSection?.backgroundImage?.node?.sourceUrl})`,
       }}
     >
       <div className='mt-10 text-start xl:mt-20'>

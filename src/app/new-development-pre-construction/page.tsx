@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import React from 'react';
-
-import { getClient } from '@/lib/apollo';
 
 import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
 import SouthSurreyRealtorServiceLeftRight from '@/components/pages/Locations/SouthSurreyRealtorServiceLeftRight';
@@ -29,7 +28,9 @@ const query = gql`
         newDevelopmentPreConstruction {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
           }
@@ -41,8 +42,10 @@ const query = gql`
             servicesDiv {
               description
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
@@ -50,8 +53,10 @@ const query = gql`
             title
             description
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
@@ -61,8 +66,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -84,14 +91,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -117,28 +126,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
-  console.log('data', data);
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -163,11 +177,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function NewDevelopmentPreConstruction() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
@@ -186,7 +201,7 @@ export default async function NewDevelopmentPreConstruction() {
           />
 
           <div className='bg-[#464646] py-20 text-white'>
-            <h2 className='mx-auto max-w-[1400px] px-5 text-center text-xl md:text-2xl lg:text-4xl font-semibold'>
+            <h2 className='mx-auto max-w-[1400px] px-5 text-center text-xl font-semibold md:text-2xl lg:text-4xl'>
               {
                 data?.pages?.nodes[0]?.newDevelopmentPreConstruction
                   ?.topBannerTitle
@@ -211,10 +226,10 @@ export default async function NewDevelopmentPreConstruction() {
           <section
             className='flex h-[400px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.newDevelopmentPreConstruction?.contactSection?.image?.sourceUrl})`,
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.newDevelopmentPreConstruction?.contactSection?.image?.node?.sourceUrl})`,
             }}
           >
-            <div className='mt-5 md:mt-10 flex h-full flex-col items-center justify-center text-center '>
+            <div className='mt-5 flex h-full flex-col items-center justify-center text-center md:mt-10 '>
               {data?.pages?.nodes[0]?.newDevelopmentPreConstruction
                 ?.contactSection?.title && (
                 <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>

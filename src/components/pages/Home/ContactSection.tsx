@@ -1,9 +1,10 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsFacebook } from 'react-icons/bs';
 import { FaInstagramSquare } from 'react-icons/fa';
 
 import NextImage from '@/components/NextImage';
+import ButtonLoader from '@/components/pages/Contact/ButtonLoader';
 
 const fields = [{ name: 'Buying' }, { name: 'Selling' }];
 
@@ -20,6 +21,7 @@ export default function ContactSection(props: MyProps) {
   const [phone, setPhone] = useState('');
   const [success, setSuccess] = useState(null);
   const [alert, setAlert] = useState(false);
+  const [btnLoader, setBtnLoader] = useState(false);
   const handleChange = (event: any, setFunction: (arg0: any) => void) => {
     setFunction(event.target.value);
   };
@@ -33,11 +35,11 @@ export default function ContactSection(props: MyProps) {
       setSuccess(null);
       return;
     }
-
+    setBtnLoader(true);
     const bodyData = JSON.stringify({
       fromEmail: 'noreply@savemaxbc.com',
       toEmail: 'admin@savemaxwestcoast.com',
-      cc: 'keegan@cansoft.com, pulok@cansoft.com, huzaifa@cansoft.com',
+      cc: '',
       emailSubject: 'New Submission From' + '- ' + name,
       name: name || '',
       field: selected || '',
@@ -54,9 +56,11 @@ export default function ContactSection(props: MyProps) {
       const data = await response.json();
 
       setSuccess(data.message);
+      setBtnLoader(false);
       e.target.reset();
     } catch (error) {
-      console.log(error);
+      setBtnLoader(false);
+      
     } finally {
       setName('');
       setMail('');
@@ -67,7 +71,7 @@ export default function ContactSection(props: MyProps) {
     }
   };
   useEffect(() => {
-    // when the component is mounted, the alert is displayed for 3 seconds
+    
     setTimeout(() => {
       setAlert(false);
     }, 3000);
@@ -92,16 +96,16 @@ export default function ContactSection(props: MyProps) {
               <NextImage
                 useSkeleton
                 className='w-40 md:w-[250px] xl:w-[300px]'
-                src={contactData?.contactImage?.sourceUrl}
-                alt={contactData?.contactImage?.altText}
+                src={contactData?.contactImage?.node?.sourceUrl}
+                alt={contactData?.contactImage?.node?.altText}
                 width='500'
                 height='200'
               />
             </div>
             <div className=''>
-              <h2 className='w-full text-3xl md:w-full xl:w-[500px] xl:text-4xl'>
+              <p className='w-full text-3xl font-bold md:w-full xl:w-[500px] xl:text-4xl'>  
                 {contactData?.heading}
-              </h2>
+              </p>
               <p className='md:text-md mt-5 text-xs xl:text-xl'>
                 Phone: {contactData?.phone}{' '}
               </p>
@@ -213,7 +217,13 @@ export default function ContactSection(props: MyProps) {
                 data-te-ripple-color='light'
                 className=' w-full rounded border border-gray-400 bg-[#061632]  py-1.5 text-[18px] text-white placeholder:text-[14px] hover:bg-white hover:text-[#061632] focus:border md:w-[600px]'
               >
-                Send
+                {btnLoader ? (
+                  <>
+                    <ButtonLoader text='Sending...' />
+                  </>
+                ) : (
+                  'Send'
+                )}
               </button>
             </form>
             {alert && success && (
@@ -249,7 +259,7 @@ export default function ContactSection(props: MyProps) {
                   className='h-5 w-5'
                 >
                   <path
-                    fill-rule='evenodd'
+                    fillRule='evenodd'
                     d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z'
                     clip-rule='evenodd'
                   />

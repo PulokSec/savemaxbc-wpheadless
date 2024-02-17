@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import React from 'react';
-
-import { getClient } from '@/lib/apollo';
 
 import BenefitsSection from '@/components/elements/BenefitsSection';
 import HomeBuyerSection from '@/components/elements/HomeBuyerSection';
@@ -33,7 +32,9 @@ const query = gql`
         duplexSaleSouthSurrey {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
           }
@@ -41,14 +42,18 @@ const query = gql`
             title
             rightText
             leftImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           choiceBanner {
             bannerImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             bannerTitle
             bannerSubtitle
@@ -58,8 +63,10 @@ const query = gql`
             title
             description
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           benefitsSection {
@@ -85,8 +92,10 @@ const query = gql`
             servicesDiv {
               description
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
@@ -94,8 +103,10 @@ const query = gql`
             title
             description
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
@@ -105,8 +116,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -128,14 +141,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -161,28 +176,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
-  // console.log('data', data);
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -207,11 +227,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function DuplexSaleSouthSurrey() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
@@ -258,11 +279,11 @@ export default async function DuplexSaleSouthSurrey() {
                           className='w-[100%]'
                           src={
                             data?.pages?.nodes[0]?.duplexSaleSouthSurrey
-                              ?.aboutSection?.leftImage?.sourceUrl
+                              ?.aboutSection?.leftImage?.node?.sourceUrl
                           }
                           alt={
                             data?.pages?.nodes[0]?.duplexSaleSouthSurrey
-                              ?.aboutSection?.leftImage?.altText
+                              ?.aboutSection?.leftImage?.node?.altText
                           }
                           width='600'
                           height='200'
@@ -277,7 +298,7 @@ export default async function DuplexSaleSouthSurrey() {
 
           <div
             style={{
-              background: `url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner?.bannerImage?.sourceUrl}) no-repeat center center`,
+              background: `url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceBanner?.bannerImage?.node?.sourceUrl}) no-repeat center center`,
               backgroundSize: '100% 100%',
             }}
             className='flex h-[300px] items-center justify-center md:h-[400px] lg:h-[500px] 2xl:h-[700px] '
@@ -300,7 +321,7 @@ export default async function DuplexSaleSouthSurrey() {
             </div>
           </div>
 
-          <div className='bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat pb-[20px] text-white'>
+          <div className='bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Middle-part-bg.png")] bg-cover bg-no-repeat pb-[20px] text-white'>
             <div className='mx-auto max-w-[1250px] p-3'>
               <div className=' my-10'>
                 {data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.choiceFeature?.map(
@@ -344,7 +365,7 @@ export default async function DuplexSaleSouthSurrey() {
           <section
             className='flex h-[500px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.contactSection?.image?.sourceUrl})`,
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.duplexSaleSouthSurrey?.contactSection?.image?.node?.sourceUrl})`,
             }}
           >
             <div className='mt-10 flex h-full flex-col items-center justify-center text-center '>

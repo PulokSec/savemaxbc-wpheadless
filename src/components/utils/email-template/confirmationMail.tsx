@@ -30,7 +30,7 @@ const ConfirmationEmail = ({ name }: MyProps) => (
           <Column>
             <Img
               style={sectionLogo}
-              src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
+              src='https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
               width='155'
               height='50'
               alt='Google Play'
@@ -90,7 +90,7 @@ const ConfirmationEmail = ({ name }: MyProps) => (
                 <Img
                   width='28'
                   height='28'
-                  src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/107175_circle_facebook_icon.png'
+                  src='https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/107175_circle_facebook_icon.png'
                 />
               </Link>
             </Column>
@@ -99,7 +99,7 @@ const ConfirmationEmail = ({ name }: MyProps) => (
                 <Img
                   width='28'
                   height='28'
-                  src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/3225191_app_instagram_logo_media_popular_icon.png'
+                  src='https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/3225191_app_instagram_logo_media_popular_icon.png'
                 />
               </Link>
             </Column>
@@ -116,7 +116,7 @@ const ConfirmationEmail = ({ name }: MyProps) => (
             <Img
               width='380'
               height='110'
-              src='https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
+              src='https://savemaxbc.wpengine.com/wp-content/uploads/2023/10/Save-Max-Westcoast-Realty.png'
             />
           </Row>
         </Section>

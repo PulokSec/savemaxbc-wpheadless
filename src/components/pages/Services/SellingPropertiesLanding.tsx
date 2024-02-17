@@ -74,8 +74,8 @@ export default function SellingPropertiesLanding(props: MyProps) {
                     <NextImage
                       useSkeleton
                       className='w-[300px] lg:mx-10 lg:w-[100%]'
-                      src={item?.image?.sourceUrl}
-                      alt={item?.image?.altText}
+                      src={item?.image?.node?.sourceUrl}
+                      alt={item?.image?.node?.altText}
                       width='400'
                       height='200'
                     />
@@ -89,7 +89,7 @@ export default function SellingPropertiesLanding(props: MyProps) {
       <section
         className='flex h-[500px] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:mt-20 md:h-[500px] md:justify-between'
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${allData?.pages?.nodes[0]?.sellingProperties?.bottomSection?.backgroundImage?.sourceUrl})`,
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${allData?.pages?.nodes[0]?.sellingProperties?.bottomSection?.backgroundImage?.node?.sourceUrl})`,
         }}
       >
         <div className='mt-10 flex h-full flex-col items-center justify-center text-center '>

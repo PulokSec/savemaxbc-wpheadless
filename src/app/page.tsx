@@ -1,37 +1,44 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
-import { getClient } from '@/lib/apollo';
+const AboutSection = dynamic(
+  () => import('@/components/pages/Home/AboutSection'),
+  { ssr: true }
+);
+const ContactSection = dynamic(
+  () => import('@/components/pages/Home/ContactSection'),
+  { ssr: true }
+);
+const HighestLevelService = dynamic(
+  () => import('@/components/pages/Home/HighestLevelService'),
+  { ssr: true }
+);
+const NewFeatureSection = dynamic(
+  () => import('@/components/pages/Home/NewFeatureSection'),
+  { ssr: true }
+);
+const Footer = dynamic(() => import('@/components/shared/Footer'), {
+  ssr: true,
+});
+const Banner = dynamic(() => import('@/components/pages/Home/Banner'), {
+  ssr: true,
+})
 
-import AboutSection from '@/components/pages/Home/AboutSection';
-import Banner from '@/components/pages/Home/Banner';
-import ContactSection from '@/components/pages/Home/ContactSection';
-import HighestLevelService from '@/components/pages/Home/HighestLevelService';
-import NewFeatureSection from '@/components/pages/Home/NewFeatureSection';
-import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
     pages(where: { id: 10 }) {
       nodes {
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-          openGraph {
-            image {
-              url
-            }
-          }
-          jsonLd {
-            raw
-          }
-        }
-        HomePage {
+        homePage {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+                altText
+              }
             }
             bannerHeading
             bannerSubtitle
@@ -41,15 +48,20 @@ const query = gql`
           featureSubtitle
           featureSection {
             featureBackground {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             featuredDiv {
               title
               description
+              link
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
@@ -57,22 +69,28 @@ const query = gql`
             aboutTitle
             aboutDescription
             aboutImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           ensureSection {
             heading
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             gallery {
               title
               desc
               image {
-                sourceUrl
-                altText
+                node {
+                  altText
+                  sourceUrl
+                }
               }
             }
           }
@@ -81,12 +99,16 @@ const query = gql`
             contactDescription
             heading
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             contactImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             phone
             email
@@ -102,8 +124,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -125,14 +149,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -158,27 +184,55 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
-    query,
+  const client = await getClient();
+  const { data } = await client.query({
+    query: gql`
+      {
+        pages(where: { id: 10 }) {
+          nodes {
+            seo {
+              title
+              description
+              canonicalUrl
+              focusKeywords
+              openGraph {
+                image {
+                  url
+                }
+              }
+              jsonLd {
+                raw
+              }
+            }
+          }
+        }
+      }
+    `,
     context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -203,42 +257,56 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
     },
   });
+  
   return (
     <>
       <main>
         <section className='bg-white'>
           <div>
             <Banner
-              bannerData={data?.pages?.nodes[0]?.HomePage?.bannerSection}
+              bannerData={data?.pages?.nodes[0]?.homePage?.bannerSection}
               headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
               settingsData={
                 data?.settingsOptions?.savemaxOptions?.headerSettings
               }
             />
             <NewFeatureSection
-              featuredData={data?.pages?.nodes[0]?.HomePage?.featureSection}
-              featuredTitle={data?.pages?.nodes[0]?.HomePage?.featureTitle}
+              featuredData={data?.pages?.nodes[0]?.homePage?.featureSection}
+              featuredTitle={data?.pages?.nodes[0]?.homePage?.featureTitle}
               featuredSubtitle={
-                data?.pages?.nodes[0]?.HomePage?.featureSubtitle
+                data?.pages?.nodes[0]?.homePage?.featureSubtitle
               }
             />
             <AboutSection
-              aboutData={data?.pages?.nodes[0]?.HomePage?.aboutSection}
+              aboutData={data?.pages?.nodes[0]?.homePage?.aboutSection}
             />
-            <div className='bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/10/Contact-form-bg.png")] bg-cover bg-center bg-no-repeat'>
-              <HighestLevelService
-                serviceData={data?.pages?.nodes[0]?.HomePage?.ensureSection}
-              />
-              <ContactSection
-                contactData={data?.pages?.nodes[0]?.HomePage?.contactSection}
+            <div
+              className='relative'
+              aria-label="Let's Turn Your Dream Into A Reality"
+            >
+              <div className='z-[1] relative'>
+                <HighestLevelService
+                  serviceData={data?.pages?.nodes[0]?.homePage?.ensureSection}
+                />
+                <ContactSection
+                  contactData={data?.pages?.nodes[0]?.homePage?.contactSection}
+                />
+              </div>
+              <Image
+                src="https://savemaxbc.wpengine.com/wp-content/uploads/2024/02/Lets-Turn-Your-Dream-Into-A-Reality.webp"
+                layout="fill"
+                alt="Let's Turn Your Dream Into A Reality"
+                loading="lazy"
+                className='object-center object-cover pointer-events-none z-0 absolute'
               />
             </div>
             <Footer

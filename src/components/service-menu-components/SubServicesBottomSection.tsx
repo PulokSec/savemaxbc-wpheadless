@@ -7,14 +7,14 @@ export default function SubServicesBottomSection(props: MyProps) {
   const { bottomSection } = props;
   return (
     <section
-      className='mt-10 flex h-[50vh] w-full flex-col items-center justify-start bg-cover bg-center md:mt-20 lg:h-[100vh] xl:h-[120vh]'
+      className='mt-10 flex h-[50vh] w-full flex-col items-center justify-start bg-cover bg-center md:mt-20 lg:h-[45vh] xl:h-[85vh] lg:rounded-t-[50%]'
       style={{
-        backgroundImage: `url(${bottomSection?.backgroundImage?.sourceUrl})`,
+        backgroundImage: `url(${bottomSection?.backgroundImage?.node?.sourceUrl})`,
       }}
     >
-      <div className='lg:mt-0'>
+      <div className='lg:mt-8 xl:mt-20'>
         <div
-          className='md:text-md container mx-auto mt-10 px-5 text-start text-xs text-white md:mt-24 lg:mt-40 lg:px-10 lg:text-lg'
+          className='md:text-md container mx-auto mt-10 px-5 text-start text-xs text-white md:mt-24 lg:mt-40 lg:px-20 xl:px-10 lg:text-lg'
           dangerouslySetInnerHTML={{
             __html: bottomSection.description,
           }}

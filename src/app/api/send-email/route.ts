@@ -19,6 +19,7 @@ export async function POST(request: NextRequest) {
       field,
       message,
       cc,
+      title,
     } = body;
 
     await sendEmail({
@@ -33,6 +34,8 @@ export async function POST(request: NextRequest) {
           mail,
           phone,
           message,
+          title,
+          emailSubject
         })
       ),
     });

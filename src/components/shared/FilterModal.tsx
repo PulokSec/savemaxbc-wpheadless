@@ -1,13 +1,13 @@
 'use client';
 import { RotateCcw, SearchCheck, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Select from 'react-select';
 
 type Props = {
   setModalOpen?: any;
   modalOpen?: boolean;
-  transactionFields: any;
+  preInput?:any;
 };
 
 const propertyOptions = [
@@ -82,9 +82,10 @@ const transactionOptions = [
   { value: 'For Sale Or Rent', label: 'For Sale Or Rent' },
 ];
 
+
 const FilterModal = (props: Props) => {
-  const { modalOpen, setModalOpen, transactionFields } = props;
-  const [city, setCity] = useState('');
+  const { modalOpen, setModalOpen, preInput } = props;
+  const [city, setCity] = useState(preInput);
   const [transactionField, setTransactionField] = useState<string | any>();
   const [propertyField, setPropertyField] = useState<string | any>();
   const [businessField, setBusinessField] = useState<string | any>();
@@ -110,10 +111,33 @@ const FilterModal = (props: Props) => {
     setCity('');
   };
   const handleSearch = () => {
-    // search function
-    router.push(
-      `/our-listings?city=${city}&streetAddress=${city}&province=${city}&transactionType=${transactionField?.value?.toString()}&businessType=${businessField?.value?.toString()}&propertyType=${propertyField?.value?.toString()}&type=${buildingField?.value?.toString()}&bedroom=${bedroom?.toString()}&bathroom=${bathroom?.toString()}&price=${price?.toString()}`
-    );
+    setModalOpen(false);
+
+    const queryParams: { [key: string]: string } = {};
+
+    if (city) {
+      queryParams.query = city;
+    }
+    if (
+      transactionField &&
+      transactionField?.value !== 'Choose Transaction Type'
+    )
+      queryParams.transactionType = transactionField.value.toString();
+    if (businessField && businessField?.value !== 'Choose Business Type')
+      queryParams.businessType = businessField.value.toString();
+    if (propertyField && propertyField?.value !== 'Choose Property Type')
+      queryParams.propertyType = propertyField.value.toString();
+    if (buildingField && buildingField?.value !== 'Choose Building Type')
+      queryParams.type = buildingField.value.toString();
+    if (bedroom) queryParams.bedroom = bedroom.toString();
+    if (bathroom) queryParams.bathroom = bathroom.toString();
+    if (price) queryParams.price = price.toString();
+
+    const queryString = Object.keys(queryParams)
+      .map((key) => `${key}=${queryParams[key]}`)
+      .join('&');
+
+    router.push(`/properties-listing${queryString ? `?${queryString}` : ''}`);
   };
   return (
     <>
@@ -150,6 +174,7 @@ const FilterModal = (props: Props) => {
               options={transactionOptions}
               placeholder={transactionOptions[0].value}
               value={transactionField}
+              className='text-left'
             />
           </div>
           <div className='mx-auto w-full md:w-1/2'>
@@ -159,6 +184,7 @@ const FilterModal = (props: Props) => {
               options={propertyOptions}
               placeholder={propertyOptions[0].value}
               value={propertyField}
+              className='text-left'
             />
           </div>
         </div>
@@ -170,6 +196,7 @@ const FilterModal = (props: Props) => {
               options={businessOptions}
               placeholder={businessOptions[0].value}
               value={businessField}
+              className='text-left'
             />
           </div>
           <div className='mx-auto w-full md:w-1/2'>
@@ -179,12 +206,13 @@ const FilterModal = (props: Props) => {
               options={buildingOptions}
               placeholder={buildingOptions[0].value}
               value={buildingField}
+              className='text-left'
             />
           </div>
         </div>
         <div className='mx-auto my-2 flex w-11/12 items-center gap-4 px-2 md:px-10'>
-          <p className='w-1/2'>Bedrooms: {bedroom}</p>
-          <p className='w-1/2'>Bathrooms: {bathroom}</p>
+          <p className='w-1/2 text-left'>Bedrooms: {bedroom}</p>
+          <p className='w-1/2 text-left'>Bathrooms: {bathroom}</p>
         </div>
         <div className='mx-auto flex w-11/12 items-center gap-4 px-2 md:px-10'>
           <input
@@ -211,7 +239,7 @@ const FilterModal = (props: Props) => {
           />
         </div>
         <div className='mx-auto my-3 flex w-11/12 items-center gap-4 px-2 md:px-10'>
-          <p className='w-1/2'>Price: ${price}</p>
+          <p className='w-1/2 text-left'>Price: ${price}</p>
         </div>
         <div className='flex w-11/12 items-center gap-4 px-2 md:px-10'>
           <input

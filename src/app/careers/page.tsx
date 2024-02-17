@@ -1,8 +1,7 @@
-import dynamic from 'next/dynamic';
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
-
-import { getClient } from '@/lib/apollo';
+import dynamic from 'next/dynamic';
 
 const BottomFeatureSection = dynamic(
   () => import('@/components/elements/BottomFeatureSection'),
@@ -52,7 +51,9 @@ const query = gql`
         careers {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
             bannerDescription
@@ -61,13 +62,16 @@ const query = gql`
           topFeatureTitle
           aboutSection {
             topHead
+            topHeadCopy
             topDescription
             description
             featureTitle
             featureDescription
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           successSection {
@@ -75,8 +79,10 @@ const query = gql`
             featureDescription
             linkUrl
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           joinSection {
@@ -84,8 +90,10 @@ const query = gql`
             featureDescription
             linkUrl
             image {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
           choiceSection {
@@ -98,10 +106,13 @@ const query = gql`
           }
           bottomFeatureSection {
             featureTitle
+            featureTitle2
             featureDescription
             backgroundImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
@@ -111,8 +122,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -134,14 +147,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -167,27 +182,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -212,11 +233,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function CareersPage() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
@@ -241,9 +263,60 @@ export default async function CareersPage() {
         <JoinSection
           featuredData={data?.pages?.nodes[0]?.careers?.joinSection}
         />
-        <BottomFeatureSection
+        <section
+          className='mt-10 flex h-[60vh] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:justify-between lg:mt-20 xl:h-[80vh]'
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${data?.pages?.nodes[0]?.careers?.bottomFeatureSection?.backgroundImage?.node?.sourceUrl})`,
+            overflow: 'hidden',
+          }}
+        >
+          <div className='mt-10 text-center xl:mt-20'>
+            {data?.pages?.nodes[0]?.careers?.bottomFeatureSection
+              ?.featureTitle &&
+              data?.pages?.nodes[0]?.careers?.bottomFeatureSection
+                ?.featureTitle2 && (
+                <>
+                  <h2 className='mt-5 px-5 text-lg font-bold leading-[36px] text-[#f3f4f6] md:text-xl md:leading-[40px] lg:mt-10 lg:text-[40px] lg:leading-[80px]'>
+                    {
+                      data?.pages?.nodes[0]?.careers?.bottomFeatureSection
+                        ?.featureTitle
+                    }{' '}
+                    <br />{' '}
+                    <span className='text-2xl font-bold text-white md:text-2xl lg:text-5xl'>
+                      {
+                        data?.pages?.nodes[0]?.careers?.bottomFeatureSection
+                          ?.featureTitle2
+                      }
+                    </span>
+                  </h2>
+                </>
+              )}
+
+            {data?.pages?.nodes[0]?.careers?.bottomFeatureSection
+              ?.featureDescription && (
+              <div
+                className='text-leading-5 md:text-md container mx-auto mt-10 px-5 pb-10 text-xs md:pb-0 lg:text-lg'
+                dangerouslySetInnerHTML={{
+                  __html:
+                    data?.pages?.nodes[0]?.careers?.bottomFeatureSection
+                      ?.featureDescription,
+                }}
+              ></div>
+            )}
+
+            <div className='flex items-center justify-center'>
+              <a
+                href='/contact-us'
+                className='text-uppercase mt-5 rounded-xl border border-solid bg-white px-2 py-1 text-xs font-semibold text-black shadow-sm hover:bg-[#061632] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#061632] md:px-3.5 md:py-2.5 md:text-lg'
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </section>
+        {/* <BottomFeatureSection
           bottomSection={data?.pages?.nodes[0]?.careers?.bottomFeatureSection}
-        />
+        /> */}
         <Footer
           navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}

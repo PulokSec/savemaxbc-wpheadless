@@ -1,38 +1,21 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
-import { getClient } from '@/lib/apollo';
 
 import BlogBanner from '@/components/elements/BlogBanner';
 import Footer from '@/components/shared/Footer';
 
 const query = gql`
   query {
-    pages(where: { id: 20 }) {
-      nodes {
-        seo {
-          title
-          description
-          canonicalUrl
-          focusKeywords
-          openGraph {
-            image {
-              url
-            }
-          }
-          jsonLd {
-            raw
-          }
-        }
-      }
-    }
     settingsOptions {
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -54,14 +37,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -86,39 +71,72 @@ const query = gql`
     }
   }
 `;
-export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
-    query,
-    context: {
-      fetchOptions: {
-        next: { revalidate: 5 },
-      },
-    },
+export async function generateMetadata({
+  params,
+}: {
+  params: { newsId: string };
+}): Promise<Metadata> {
+  const seo = gql`
+  query {
+    post(id: "${params.newsId}", idType: URI) {
+      seo {
+        title
+        description
+        canonicalUrl
+        focusKeywords
+        openGraph {
+          image {
+            url
+          }
+        }
+        jsonLd {
+          raw
+        }
+    }
+  }
+  }
+  `;
+  const client = await getClient();
+  const { data } = await client.query({
+    query: seo,
   });
+
+   if (data?.post?.seo?.canonicalUrl === undefined || data?.post?.seo?.canonicalUrl === null) {
+    notFound();
+  }
+
+  const path = new URL(data?.post?.seo?.canonicalUrl).pathname;
+
+ 
+  
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
-    title: data?.pages?.nodes[0]?.seo?.title,
-    description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    title: data?.post?.seo?.title,
+    description: data?.post?.seo?.description,
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
-      title: data?.pages?.nodes[0]?.seo?.title || 'Not Found',
-      description: data?.pages?.nodes[0]?.seo?.description,
+      url: canonical_url,
+      title: data?.post?.seo?.title || 'Not Found',
+      description: data?.post?.seo?.description,
       siteName: 'https://savemaxbc.com/',
-      images: data?.pages?.nodes[0]?.seo?.openGraph?.image?.url,
+      images: data?.post?.seo?.openGraph?.image?.url,
       type: 'website',
       locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
-      title: data?.pages?.nodes[0]?.seo?.title,
-      description: data?.pages?.nodes[0]?.seo?.description,
+      title: data?.post?.seo?.title,
+      description: data?.post?.seo?.description,
       // images: [`${siteConfig.url}/images/og.jpg`],
       creator: '@PulokSec',
     },
@@ -136,11 +154,12 @@ export default async function SingleNews({
 }: {
   params: { newsId: string };
 }) {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
@@ -167,13 +186,8 @@ export default async function SingleNews({
       }
     }
   `;
-  const singleBlog = await getClient().query({
+  const singleBlog = await client.query({
     query: singleQuery,
-    context: {
-      fetchOptions: {
-        next: { revalidate: 5 },
-      },
-    },
   });
   if (singleBlog?.data?.post?.date === undefined) {
     notFound();
@@ -191,7 +205,7 @@ export default async function SingleNews({
     <>
       <main>
         <BlogBanner
-          bannerImage={singleBlog?.data?.post?.featuredImage?.node}
+          bannerImage={singleBlog?.data?.post?.featuredImage}
           bannerHeading={singleBlog?.data?.post?.title}
           headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
           settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}

@@ -9,7 +9,7 @@ export default function BottomFeatureSection(props: MyProps) {
     <section
       className='mt-10 flex h-[60vh] flex-col items-center overflow-x-hidden bg-cover bg-center text-white md:justify-between lg:mt-20 xl:h-[80vh]'
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${bottomSection?.backgroundImage?.sourceUrl})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),url(${bottomSection?.backgroundImage?.node?.sourceUrl})`,
         overflow: 'hidden',
       }}
     >

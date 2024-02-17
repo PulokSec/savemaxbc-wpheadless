@@ -1,4 +1,4 @@
-import React from 'react';
+import Image from 'next/image';
 
 import Header from '@/components/shared/Header';
 
@@ -24,13 +24,17 @@ export default function FindRealtorBanner(props: MyProps) {
     usingFor,
   } = props;
   return (
-    <div
-      className='relative h-[80vh] w-full bg-cover bg-center bg-no-repeat md:h-[80vh]'
-      style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),url(${bannerData?.bannerImage?.sourceUrl})`,
-      }}
-    >
-      <Header navigation={headerData} settingsData={settingsData} />
+    <div className='relative h-[80vh] w-full md:h-[80vh]'>
+      <Image src={bannerData?.bannerImage?.node?.sourceUrl} 
+              alt={bannerData?.bannerImage?.node?.altText} 
+              layout='fill' 
+              priority={true} 
+              className='object-cover object-center z-0' 
+      />
+      <div style={{backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))'}} className="absolute inset-0 z-1"></div>
+
+      <div className='relative z-2'>
+        <Header navigation={headerData} settingsData={settingsData} />
       <div className='flex h-[70vh] flex-col items-center justify-center md:h-[80vh]'>
         <div className='py-8 md:py-16'>
           <div
@@ -141,6 +145,7 @@ export default function FindRealtorBanner(props: MyProps) {
             </div>
           </div>
         )}
+      </div>
       </div>
     </div>
   );

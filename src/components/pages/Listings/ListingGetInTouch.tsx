@@ -9,12 +9,12 @@ export default function ListingGetInTouch(props: MyProps) {
   return (
     <>
       <section className='mx-auto w-full '>
-        <div className='relative h-[30vh] md:h-[50vh] w-full overflow-x-hidden lg:h-[50vh] xl:h-[100vh] 2xl:h-[110vh]'>
+        <div className='relative h-[30vh] w-full overflow-x-hidden md:h-[40vh] lg:h-[40vh] xl:h-[80vh]'>
           <Image
-            src={bottomSection?.backgroundImage?.sourceUrl}
+            src={bottomSection?.backgroundImage?.node?.sourceUrl}
             fill={true}
-            alt={bottomSection?.backgroundImage?.altText}
-            className='rounded-t-[100%]'
+            alt={bottomSection?.backgroundImage?.node?.altText}
+            className='rounded-t-[100%] object-cover'
           />
           <div className='absolute h-full w-full overflow-hidden rounded-t-[100%] bg-gray-500 bg-opacity-70'>
             <div className=''>

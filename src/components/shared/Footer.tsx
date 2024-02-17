@@ -1,7 +1,7 @@
 'use client';
 import { LucideMailOpen } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
 import { MdLocationCity, MdPhoneInTalk } from 'react-icons/md';
@@ -14,17 +14,25 @@ type MyProps = {
 };
 export default function Footer(props: MyProps) {
   const { navigation, settingsData } = props;
-  // console.log('nav  ', navigation);
+  
   return (
     <div>
-      <footer className="flex h-full flex-col justify-between bg-[url('https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/footer-1-1.png')] bg-cover bg-right bg-no-repeat py-6 lg:h-[80vh]">
-        <div className='mx-auto mt-5 grid justify-center gap-4 py-6 md:mt-10 md:grid-cols-12'>
+      <footer className="flex h-full flex-col justify-between py-6 lg:h-[80vh] relative" aria-label='Footer'>
+         <Image
+          src='https://savemaxbc.wpengine.com/wp-content/uploads/2024/02/Footer-Background.jpg'
+          layout="fill"
+          alt='Footer'
+          loading="lazy"
+          className='object-right object-cover pointer-events-none z-0 absolute'
+      />
+        <div className='z-20 relative'>
+          <div className='mx-auto mt-5 grid justify-center gap-4 py-6 md:mt-10 md:grid-cols-12'>
           <div className='col-start-l col-span-12 ml-6 md:col-span-12 md:col-start-4 lg:col-start-2 lg:col-end-4 lg:ml-0'>
             <div className='w-full text-white'>
-              <p className='flex w-full items-center justify-start md:text-3xl'>
+              <p className='flex w-full items-center justify-start md:text-3xl text-xl font-bold'>
                 <span>{settingsData?.footerLeftWidget?.title}</span>
               </p>
-              <p className='mt-5 flex cursor-pointer items-center justify-start gap-4 text-xs md:text-lg'>
+              <p className='mt-5 flex cursor-pointer items-center justify-start gap-4 text-md md:text-lg'>
                 <span>
                   <MdPhoneInTalk className='h-5 w-5 rotate-[30deg]' />
                 </span>{' '}
@@ -32,7 +40,7 @@ export default function Footer(props: MyProps) {
                   {settingsData?.footerLeftWidget?.phone}
                 </a>{' '}
               </p>
-              <p className='mt-5 flex cursor-pointer items-center justify-start gap-4 text-xs md:text-lg'>
+              <p className='mt-5 flex cursor-pointer items-center justify-start gap-4 text-md md:text-lg'>
                 <span>
                   <LucideMailOpen className='h-5 w-5' />
                 </span>{' '}
@@ -45,7 +53,7 @@ export default function Footer(props: MyProps) {
               <Link
                 href='https://maps.app.goo.gl/YVWPgcZgGzkoat7W7'
                 target='_blank'
-                className='mt-5 flex items-center justify-start gap-4 text-xs md:text-lg'
+                className='mt-5 flex items-center justify-start gap-4 text-md md:text-lg'
               >
                 <span>
                   <MdLocationCity className='h-5 w-5' />
@@ -127,15 +135,19 @@ export default function Footer(props: MyProps) {
               <NextImage
                 useSkeleton
                 className='md:[250px] w-60 lg:w-[240px] xl:w-[300px]'
-                src={settingsData?.footerLogoSection?.logoUpload?.sourceUrl}
-                alt={settingsData?.footerLogoSection?.logoUpload?.altText}
+                src={
+                  settingsData?.footerLogoSection?.logoUpload?.node?.sourceUrl
+                }
+                alt={settingsData?.footerLogoSection?.logoUpload?.node?.altText}
                 width='500'
                 height='200'
               />
             </a>
           </div>
         </div>
-        <div className='ml-6 md:ml-0'>
+       
+        </div>
+         <div className='ml-6 md:ml-0 z-20 relative'>
           <Link
             href='https://cansoft.com/'
             target='_blank'

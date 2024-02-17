@@ -12,7 +12,9 @@ const RightImageLeftText = (props: Props) => {
     <div className='max-w-screen overflow-x-hidden '>
       <section>
         <div
-          className={`${featuredData?.title ? 'py-10 lg:py-20' : 'lg:-mt-10'} mx-auto `}
+          className={`${
+            featuredData?.title ? 'py-10 lg:py-20' : 'lg:-mt-10'
+          } mx-auto `}
         >
           <div className={`mx-auto max-w-[1400px] px-3 lg:px-6 2xl:px-3 `}>
             <h2 className='text-center text-2xl md:text-3xl lg:text-4xl'>
@@ -28,7 +30,6 @@ const RightImageLeftText = (props: Props) => {
             )}
           </div>
 
-          
           <div className='mx-auto max-w-[1500px]'>
             <div className=' flex flex-col-reverse items-center justify-center gap-4 px-5 md:px-10 lg:mx-0 lg:mt-20 lg:flex-row '>
               <div className='flex flex-col items-start justify-center lg:w-1/2'>
@@ -41,12 +42,12 @@ const RightImageLeftText = (props: Props) => {
                   ></div>
                 </div>
               </div>
-              <div className='mx-auto lg:w-1/2 mb-4 lg:mb-0'>
+              <div className='mx-auto mb-4 lg:mb-0 lg:w-1/2'>
                 <NextImage
                   useSkeleton
                   className='flex w-64 items-end justify-end md:w-[100%] '
-                  src={featuredData?.leftImage?.sourceUrl}
-                  alt={featuredData?.leftImage?.altText}
+                  src={featuredData?.leftImage?.node?.sourceUrl}
+                  alt={featuredData?.leftImage?.node?.altText}
                   width='600'
                   height='200'
                 />

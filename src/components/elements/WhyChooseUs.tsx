@@ -13,7 +13,7 @@ export default function WhyChooseUs(props: MyProps) {
   const { featuredData } = props;
   const [active, setActive] = useState(0);
   return (
-    <section className='-mt-48 h-full bg-[url("https://savemaxheadlessdemo.csoft.ca/wp-content/uploads/2023/12/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10 lg:-mt-24'>
+    <section className='-mt-48 h-full bg-[url("https://savemaxbc.wpengine.com/wp-content/uploads/2023/12/why-choose-savemax-background.png")] bg-cover bg-no-repeat md:px-10 lg:-mt-24'>
       <div className='h-[360px] md:h-64 lg:h-[400px] xl:h-[300px] 2xl:h-64'></div>
       <div className='col-span-12 px-5 md:col-span-12 md:px-5 lg:col-span-8 lg:col-start-1 lg:px-10'>
         <h2 className='text-center text-2xl md:text-5xl'>
@@ -26,7 +26,7 @@ export default function WhyChooseUs(props: MyProps) {
           }}
         ></div>
       </div>
-      <div className='px-10 pb-48 pt-20 md:px-10 md:pb-40 md:pt-20 lg:pt-20 lg:pb-52 xl:pt-20 xl:pb-40'>
+      <div className='px-10 pb-48 pt-20 md:px-10 md:pb-40 md:pt-20 lg:pb-52 lg:pt-20 xl:pb-40 xl:pt-20'>
         <div className='relative space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-slate-900 before:to-transparent lg:before:mx-auto lg:before:translate-x-0'>
           {featuredData?.featuredDiv?.map((item: any, i: number) =>
             i % 2 == 0 ? (
@@ -39,7 +39,7 @@ export default function WhyChooseUs(props: MyProps) {
                     useSkeleton
                     className='mt-[-40px] h-[50px] w-[40px]'
                     src={active == i ? homeImg : homeImgGrey}
-                    alt='{item?.image?.altText}'
+                    alt='{item?.image?.node?.altText}'
                     width='50'
                     height='40'
                   />
@@ -79,7 +79,7 @@ export default function WhyChooseUs(props: MyProps) {
                     useSkeleton
                     className='h-[50px] w-[40px]'
                     src={active == i ? homeImg : homeImgGrey}
-                    alt='{item?.image?.altText}'
+                    alt='{item?.image?.node?.altText}'
                     width='50'
                     height='40'
                   />

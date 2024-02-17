@@ -1,21 +1,13 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
-import { Suspense } from 'react';
-
-import { getClient } from '@/lib/apollo';
-import { getAllProperties, getSearchQuery } from '@/lib/dataFetching';
 
 const Footer = dynamic(() => import('@/components/shared/Footer'), {
   ssr: false,
 });
 
-import FeaturedListings from '@/components/pages/Listings/FeaturedListings';
-import ListingBanner from '@/components/pages/Listings/ListingBanner';
-import ListingGetInTouch from '@/components/pages/Listings/ListingGetInTouch';
-import PaginationSearch from '@/components/pages/Listings/PaginationSearch';
-import Skeleton from '@/components/Skeleton';
+import ListingPageComponent from '@/components/pages/Listings/ListingPageComponent';
 
 const query = gql`
   query {
@@ -38,7 +30,9 @@ const query = gql`
         listings {
           bannerSection {
             bannerImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
             bannerHeading
           }
@@ -51,9 +45,12 @@ const query = gql`
           getInTouch {
             title
             backgroundImage {
-              sourceUrl
+              node {
+                sourceUrl
+              }
             }
           }
+          disclaimer
         }
       }
     }
@@ -61,8 +58,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -84,14 +83,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -117,27 +118,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
         next: { revalidate: 5 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -165,78 +172,20 @@ export default async function Listing({
 }: {
   searchParams?: { [key: string]: string | undefined };
 }) {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
-  let allData = {
-    listings: [],
-    totalCount: 0,
-  };
-
-  if (searchParams?.query) {
-    const commonParams = {
-      pageParam: parseInt(searchParams?.page?.toString() || '1'),
-    };
-
-    if (
-      searchParams?.type === 'House' ||
-      searchParams?.type === 'Town' ||
-      searchParams?.type === 'Condo'
-    ) {
-      allData = await getAllProperties({
-        ...commonParams,
-        typeParam: searchParams.type,
-        cityParam: searchParams?.query,
-      });
-    } else {
-      const [city, street, province] = searchParams?.query?.split(',') || [];
-      allData = await getSearchQuery({
-        cityParam: city || '',
-        streetParam: street || '',
-        provinceParam: province || '',
-        ...commonParams,
-      });
-    }
-  }
 
   return (
     <>
-      <Head>
-        <title>Latest Listings</title>
-      </Head>
       <main>
-        <Suspense fallback={<Skeleton />}>
-          <ListingBanner
-            bannerData={data?.pages?.nodes[0]?.listings?.bannerSection}
-            headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
-            settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
-          />
-          {searchParams?.query ? (
-            <PaginationSearch
-              allPosts={allData?.listings}
-              totalCount={allData?.totalCount}
-              currentPageID={parseInt(searchParams?.page?.toString() || '1')}
-            />
-          ) : (
-            <FeaturedListings
-              searchParams={searchParams}
-              titleData={data?.pages?.nodes[0]?.listings?.listingSection}
-              usingFor='listings'
-            />
-          )}
-          <ListingGetInTouch
-            bottomSection={data?.pages?.nodes[0]?.listings?.getInTouch}
-          />
-          <Footer
-            navigation={data?.menus?.nodes[0]?.menuItems?.nodes}
-            settingsData={data?.settingsOptions?.savemaxOptions?.footerSettings}
-          />
-        </Suspense>
+        <ListingPageComponent data={data} searchParams={searchParams} />
       </main>
     </>
   );

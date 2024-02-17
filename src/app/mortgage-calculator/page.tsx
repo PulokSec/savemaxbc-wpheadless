@@ -1,8 +1,7 @@
 import { gql } from '@apollo/client';
+import { getClient } from '@faustwp/experimental-app-router';
 import { Metadata } from 'next';
 import React from 'react';
-
-import { getClient } from '@/lib/apollo';
 
 import MortgageContact from '@/components/pages/Contact/MortgageContact';
 import BannerWithButton from '@/components/pages/Locations/BannerWithButton';
@@ -26,11 +25,13 @@ const query = gql`
             raw
           }
         }
-        Mortgagecalculator {
+        mortgagecalculator {
           bannerSection {
             bannerImage {
-              sourceUrl
-              altText
+              node {
+                altText
+                sourceUrl
+              }
             }
             bannerHeading
           }
@@ -42,8 +43,10 @@ const query = gql`
       savemaxOptions {
         headerSettings {
           uploadLogo {
-            sourceUrl
-            altText
+            node {
+              altText
+              sourceUrl
+            }
           }
         }
         generalSettings {
@@ -65,14 +68,16 @@ const query = gql`
           footerLogoSection {
             logoText
             logoUpload {
-              altText
-              sourceUrl
+              node {
+                altText
+                sourceUrl
+              }
             }
           }
         }
       }
     }
-    menus(where: { location: MENU_2 }) {
+    menus(where: { location: PRIMARY }) {
       nodes {
         name
         slug
@@ -98,27 +103,33 @@ const query = gql`
   }
 `;
 export async function generateMetadata(): Promise<Metadata> {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
+  const path = new URL(data?.pages?.nodes[0]?.seo?.canonicalUrl).pathname;
+  const canonical_url = `${process.env.NEXT_PUBLIC_BASEURL}${path}`;
   return {
     title: data?.pages?.nodes[0]?.seo?.title,
     description: data?.pages?.nodes[0]?.seo?.description,
-    robots: { index: false, follow: false },
+    alternates: {
+      canonical: canonical_url,
+    },
+    robots: { index: true, follow: true },
 
     // icons: {
     //   icon: '/favicon/favicon.ico',
     //   shortcut: '/favicon/favicon-16x16.png',
     //   apple: '/favicon/apple-touch-icon.png',
     // },
-    manifest: `/favicon/site.webmanifest`,
+    // manifest: `/favicon/site.webmanifest`,
     openGraph: {
-      url: 'https://savemaxbc.com/',
+      url: canonical_url,
       title: data?.pages?.nodes[0]?.seo?.title,
       description: data?.pages?.nodes[0]?.seo?.description,
       siteName: 'https://savemaxbc.com/',
@@ -143,18 +154,19 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function MortgageCalculator() {
-  const { data } = await getClient().query({
+  const client = await getClient();
+  const { data } = await client.query({
     query,
-    context: {
+context: {
       fetchOptions: {
-        next: { revalidate: 5 },
+        next: { revalidate: 120 },
       },
     },
   });
   return (
     <main>
       <BannerWithButton
-        bannerData={data?.pages?.nodes[0]?.Mortgagecalculator?.bannerSection}
+        bannerData={data?.pages?.nodes[0]?.mortgagecalculator?.bannerSection}
         headerData={data?.menus?.nodes[0]?.menuItems?.nodes}
         settingsData={data?.settingsOptions?.savemaxOptions?.headerSettings}
       />
@@ -169,7 +181,7 @@ export default async function MortgageCalculator() {
           className='md:text-md mx-auto mt-5 h-full max-h-[1765px] w-full max-w-[1400px] px-10 text-center text-xs lg:text-lg'
           dangerouslySetInnerHTML={{
             __html:
-              data?.pages?.nodes[0]?.Mortgagecalculator?.calculatorPageContent,
+              data?.pages?.nodes[0]?.mortgagecalculator?.calculatorPageContent,
           }}
         ></div>
       </div>

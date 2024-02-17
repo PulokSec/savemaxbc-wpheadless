@@ -30,7 +30,7 @@ export default function EssentialSection(props: MyProps) {
       </div>
       <div
         style={{
-          background: `url(${featuredData?.backgroundImage?.sourceUrl}) no-repeat `,
+          background: `url(${featuredData?.backgroundImage?.node?.sourceUrl}) no-repeat `,
           backgroundSize: '100% 100%',
         }}
         className={` hidden text-white lg:block `}

@@ -19,7 +19,7 @@ export default function Pagination({
   setCurrentPage,
 }: Props) {
   const pageNums = getPaginationItems(currentPage, lastPage, maxLength);
-  console.log(pageNums);
+  console.log(lastPage);
   const paginationVariants = {
     hidden: {
       opacity: 0,
@@ -42,7 +42,7 @@ export default function Pagination({
       initial='hidden'
       animate='visible'
     >
-      <nav className='flex flex-wrap' aria-label='Pagination'>
+      <nav className={`flex flex-wrap ${pageNums?.length === 1 && 'hidden'}`} aria-label='Pagination'>
         <PageLink
           disabled={currentPage === 1}
           onClick={() => setCurrentPage(currentPage - 1)}
@@ -63,7 +63,7 @@ export default function Pagination({
           </PageLink>
         ))}
         <PageLink
-          disabled={currentPage === lastPage}
+          disabled={currentPage === lastPage || lastPage === 0}
           onClick={() => setCurrentPage(currentPage + 1)}
           className='flex h-10 w-10 items-center justify-center rounded-md '
         >
